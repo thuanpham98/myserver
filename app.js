@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+
 myPort = 6969;
 
 var index = require('./routers/index');
@@ -13,7 +14,6 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use('/', index);
 app.use('/users', users);
-
 
 
 
