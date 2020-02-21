@@ -8,11 +8,12 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.get('/', function(req, res) {
-    res.send('Birds home page');
+    res.redirect('myserver');
+    res.sendfile(__dirname + '/views/a.htm ');
 });
 
-router.get('/sub1', function(req, res) {
-    res.send('About birds');
-})
+router.get('/sub/:id', function(req, res) {
+    res.send('About birds' + req.params.id);
+});
 
 module.exports = router
