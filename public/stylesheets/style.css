@@ -1,7 +1,7 @@
-body 
-{
+body {
     background-color: antiquewhite;
 }
+
 .clock {
     text-align: center;
     font-size: 60px;
@@ -9,10 +9,12 @@ body
     color: aqua;
     background-color: black;
 }
+
+
 /**/
+
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-

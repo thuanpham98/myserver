@@ -4,12 +4,14 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title  #{title}
-        // add icon
-        link(rel="icon" , type="image/png", href="https://www.vippng.com/png/detail/334-3348274_facebook-sticker-logo-face-rosa-png.png")
-        link(rel="stylesheet" , href = "/stylesheets/style.css")
-        // Clock//
+        //---add icon---///
+        link(rel="icon" , type="image/png", href="images/icon.png")
+        //--add a css file--//
+        link(rel="stylesheet" href="/stylesheets/style.css")
+        //--add js file---//
         script(type ="text/javascript",src="/javascripts/tool.js").
             showTime()
+        //----//
     body(onload="showTime()")
         //--clock---///
         div(id ="Clock", class= "clock")
@@ -29,7 +31,7 @@ html(lang="en")
             h3 
                 b Viewer : 
             p with this choice, you can see the content of other esp if it publish
-            a(href="/list", target="_blank")
+            a(href="/viewer", target="_blank")
                 img(src="/images/viewer.jpg",  width="400" , height="400", class="center")
         br
                 //---creator----//
@@ -37,7 +39,7 @@ html(lang="en")
             h3 
                 b Creator : 
             p with this choice, you can config server and see all database 
-            a(href="/test", target="_blank")
+            a(href="/creator", target="_blank")
                 img(src="/images/creator.jpg",  width="400" , height="400", class="center")
         br
                 //---Advertise--//
