@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title  #{title}
+        //---add icon---///
+        link(rel="icon" , type="image/png", href="images/icon.png")
+        //--add a css file--//
+        link(rel="stylesheet" href="/stylesheets/style.css")
+        //--add js file---//
+
+    body
+        div
+            h1(class="center") Access
+            form(action='/access', method='post')
+                input(type="text" name="name" placeholder="Your name..")
+                input(type="text" name="pass" placeholder="Your password..")
+                input(type='submit', value='Log in')
+        br
+    form(action='/asign')
+        h2(class="center") if you don't have acount , click here
+        button(type='submit',class="button") Asign

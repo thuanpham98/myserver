@@ -20,6 +20,7 @@
         "ejs": "^3.0.1",
         "express": "^4.17.1",
         "express-mvc-generator": "^2.2.4",
+        "mongodb": "^3.5.3",
         "pug": "^2.0.4"
     }
 }
