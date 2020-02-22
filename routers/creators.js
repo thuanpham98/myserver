@@ -9,13 +9,8 @@ router.use(function timeLog(req, res, next) {
 
 
 router.get('/', function(req, res) {
-    res.render('index', { title: 'Home Page' });
+    res.send("this is creator page, FIxing");
 });
 
-
-
-router.get('/access', function(req, res) {
-    res.send('About birds' + req.params.id);
-});
 
 module.exports = router
