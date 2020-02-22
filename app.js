@@ -5,6 +5,13 @@ const app = express();
 //--config port--///
 myPort = 6969;
 
+//----------- handler cookie from client------//
+var cookieParser = require('cookie-parser')
+app.use(cookieParser());
+//--------------use for post method----------------------------//
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 //--- config direction of router--///
 var index = require('./routers/index');
 var user = require('./routers/users');
