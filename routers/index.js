@@ -12,12 +12,14 @@ router.use(function timeLog(req, res, next) {
 
 
 router.get('/', function(req, res) {
-    res.sendFile(base + '../views/a.htm');
+    console.log(__dirname);
+    //res.sendFile('../public/t.htm');
+    res.render('index', { title: 'home page' });
 });
 
 
 
-router.get('/sub/:id', function(req, res) {
+router.get('/access', function(req, res) {
     res.send('About birds' + req.params.id);
 });
 

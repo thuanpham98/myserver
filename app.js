@@ -8,9 +8,8 @@ var index = require('./routers/index');
 var users = require('./routers/users');
 
 
-app.set('view engine', 'ejs');
-
-
+app.set('view engine', 'pug');
+app.set('views', './views');
 app.use(express.static('public'));
 app.use('/', index);
 app.use('/users', users);
