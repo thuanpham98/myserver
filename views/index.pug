@@ -2,7 +2,7 @@
 html(lang="en")
     head
         meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0,user-scalable=yes")
         title  #{title}
         //---add icon---///
         link(rel="icon" , type="image/png", href="images/icon.png")
@@ -20,29 +20,29 @@ html(lang="en")
         h1(style="text-align :center") chosse your work
                 //---user----//
         div(style="border:1px solid black")
-            h3 
-                b User : 
+            h3
+                b User :
             p with this choice, you can connect esp to my server and display content you want
             a(href="/access", target="_blank")
-                img(src="/images/user.jpg",  width="400" , height="400", class="center")
+                img(src="/images/user.png",  width="400" , height="400", class="center")
         br
                 //---viewer----//
         div(style="border:1px solid black")
-            h3 
-                b Viewer : 
+            h3
+                b Viewer :
             p with this choice, you can see the content of other esp if it publish
             a(href="/viewer", target="_blank")
-                img(src="/images/viewer.jpg",  width="400" , height="400", class="center")
+                img(src="/images/viewer.png",  width="400" , height="400", class="center")
         br
                 //---creator----//
         div(style="border:1px solid black")
-            h3 
-                b Creator : 
+            h3
+                b Creator :
             p with this choice, you can config server and see all database 
             a(href="/creator", target="_blank")
                 img(src="/images/creator.jpg",  width="400" , height="400", class="center")
         br
                 //---Advertise--//
-        
+
         h1(style="text-align: center") Adverisement
         iframe(class="center", width="640" ,height="360" ,src="https://www.youtube.com/embed/v=z9NAfxbrCr8?autoplay=1&playlist=z9NAfxbrCr8&loop=1")
