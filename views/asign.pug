@@ -14,11 +14,13 @@ html(lang="en")
         div
             h1(class="center") Asign
             form(action='/asign', method='post')
-                input(type="text" name="a_name" placeholder="Your name..")
-                input(type="text" name="a_pass" placeholder="Your password..")
+                input(type="email" name="a_email" placeholder="Your email..")
+                input(type="password" name="a_pass" placeholder="Your password..")
                 br
                 input(type='submit', value='Asign')
         br
+        form(action='/access', method='get')
+            input(type='submit', value='Access',style="width: 10%")
 
         form(action='/', method='get')
             br

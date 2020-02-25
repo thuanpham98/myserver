@@ -8,7 +8,7 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.get('/', function(req, res) {
-    res.send('this is user page');
+    res.render('user', { title: 'User Page' });
 
 });
 
