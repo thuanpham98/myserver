@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0,user-scalable=yes")
+        title  #{title}
+        //---add icon---///
+        link(rel="icon" , type="image/png", href="images/icon.png")
+        //--add a css file--//
+        link(rel="stylesheet" href="/stylesheets/style.css")
+        //--add js file---//
+        script(type ="text/javascript",src="/javascripts/tool.js").
+            showTime()
+    //---------------------------------------------//
+    body(onload="showTime()")
+        //--clock---///
+        div(id ="Clock", class= "clock")
+        hr
+        //----content--///

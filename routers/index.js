@@ -1,36 +1,35 @@
+//----module make http server -----//
 var express = require('express');
 var router = express.Router();
+
 var user_account = [];
 
-var popup = require('popups');
+//---module  check error ---//
 var assert = require('assert');
 
+//--module from ./module/database----//
 var client = require('../models/database');
 
-// middleware that is specific to this router
+//--module hash --//
+var bcrypt = require('bcrypt');
+
+//---module email to check ID---//
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({ // config mail server
+    service: 'gmail',
+    auth: {
+        user: 'thuandeptrainek@gmail.com',
+        pass: 'thuanthao69'
+    }
+});
+//---timestamp  if have a even happen---//
 router.use(function timeLog(req, res, next) {
     console.log('Time: ', Date.now());
     next();
 });
 
-// //---midleware to authority url you want-----//
-// function requireLogin(req, res, next) {
-//     if (req.session.loggedIn) {
-//         next(); // allow the next route to run
-//     } else {
-//         // require the user to log in
-//         res.redirect("/access"); // or render a form, etc.
-//     }
-// }
-
-// // Automatically apply the `requireLogin` middleware to all
-// // routes starting with `/admin`
-// router.all("/user/*", requireLogin, function(req, res, next) {
-//     next(); // if the middleware allowed us to get here,
-//     // just move on to the next route handler
-// });
-//------------------------------------------///
-
+//----------------------------------------------------------------------///
+//----------------------------------------------------------------------///
 //----Home page ---///
 router.get('/', function(req, res) {
     res.render('index', { title: 'Home Page' });
@@ -43,7 +42,27 @@ router.get('/access', function(req, res) {
 });
 
 router.post('/access', function(req, res) {
-    res.redirect('/user');
+    try {
+        let a_account = {
+            email: req.body.email,
+            password: req.body.pass
+        }
+        client.connect(function(err) {
+            assert.equal(null, err);
+            let account = client.db('account');
+            let query = { email: a_account.email };
+            account.collection("user_account").find(query, function(err, result) {
+                assert.equal(null, err);
+                console.log(result.password);
+                bcrypt.compare(a_account.pass, result.password, function(err, result) {
+                    res.redirect('/user');
+                    console.log(result);
+                });
+            });
+        });
+    } catch {
+        res.redirect('/access');
+    }
 });
 //-------------------------//
 
@@ -52,27 +71,47 @@ router.get('/asign', function(req, res) {
     res.render('asign', { title: 'Asign Page' });
 });
 
-router.post('/asign', function(req, res) {
-    let i_account = {
-            //_id: Date.now(),
-            name: req.body.a_name,
-            pass: req.body.a_pass
-        }
-        //user_account.push(i_account);
-    client.connect(function(err) {
-        assert.equal(null, err);
-        var account = client.db('account');
-        account.collection("user_account").insertOne(i_account, function(err, res) {
+router.post('/asign', async function(req, res) {
+    try {
+        //--hash  password to secret---//
+        const hash_PassWord = await bcrypt.hash(req.body.a_pass, 10);
+
+        //--object store imfomation user post--//
+        let asign_account = {
+            id_t: Date.now(),
+            id_s: ' ',
+            email: req.body.a_email,
+            password: hash_PassWord
+        };
+        //-- connect to database --//
+        client.connect(function(err) {
+            //-- test error---//
             assert.equal(null, err);
-            console.log("your ID is " + res.insertedId);
-            popup.alert({
-                content: "your ID is " + res.insertedId
+            //-- pointer to  database--//
+            let account = client.db('account');
+            //---pointer  to colection and  do somthing  with document---//
+            account.collection("user_account").insertOne(asign_account, function(err, result) {
+                assert.equal(null, err);
+                //--- for testing ---//
+                asign_account.id_s = result.insertedId.toString();
             });
-
         });
-    });
+        let mainOptions = { // thiết lập đối tượng, nội dung gửi mail
+            from: 'thuandeptrainek',
+            to: asign_account.email,
+            subject: 'IoT core Te',
+            text: 'your ID to use is ' + asign_account.id_t.toString()
+        }
+        transporter.sendMail(mainOptions, function(err, info) {
+            assert.equal(null, err);
+        });
 
-    res.redirect('/access');
+        /// floow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799
+        res.redirect('/access'); // if suscessfull,  poit to Access page
+    } catch {
+        res.redirect('/asign'); //if crat , retry
+    }
+
 });
 //-------------------------//
 
