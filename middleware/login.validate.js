@@ -5,7 +5,9 @@ var User = require('../models/user');
 //---module  check error ---//
 var assert = require('assert');
 
+//------------------------------------//
 
+//------------------------------------//
 module.exports.checkFilled = function(req, res, next) {
     let error = [];
     if (!req.body.email) {
@@ -23,26 +25,23 @@ module.exports.checkFilled = function(req, res, next) {
 
 
 module.exports.checkAccount = async function(req, res, next) {
-    let account;
+    let test;
     console.log(req.body.email);
     console.log("start check");
-    await User.find({ email: req.body.email, password: req.body.pass }, function(err, result) {
+    await User.find({ email: req.body.email }, function(err, result) {
         assert.equal(null, err);
         account = result;
-
-
     });
-    console.log(account);
-    console.log(account.length);
-    console.log("end check");
-
-    if (account.length) {
-        next();
-
-    } else {
-
-        //return
+    if (!account.length) {
         res.render('login', { title: 'Login Page', status: "account is not exist or not correct " });
         return;
-    };
+
+    } else {
+        test = account[0]
+        console.log(test.password);
+        res.locals.pass = test.password;
+        console.log("end check");
+        next();
+    }
+
 };
