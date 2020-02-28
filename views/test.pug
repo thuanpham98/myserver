@@ -13,11 +13,11 @@ html(lang="en")
     //---------------------------------------------//
     body
         //----content--///
+        h2(class="center") #{status}
         div
-            h1(class="center") Test code
-            form(action='/test', method='post')
-                input(type="text" name="test" placeholder="Your test code..")
+            form(action='/user/123214', method='get')
+                input(type="text" name="token" placeholder="token verify...")
                 br
-                input(type='submit', value='Test')
+                input(type='submit', value='Verify')
         br
         hr

@@ -6,7 +6,6 @@ var router = express.Router();
 var controller = require('../controllers/register.controller');
 
 //--require middleware for register----//
-
 var validation = require('../middleware/register.validate');
 
 //---timestamp module  if have a even happen---//

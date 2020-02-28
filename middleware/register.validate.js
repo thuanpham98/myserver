@@ -19,28 +19,43 @@ module.exports.checkFilled = function(req, res, next) {
         error.push('pass is not fill');
     }
     if (error.length) {
-        res.render('register', { title: 'Register Page', error: error });
-        return
+        res.render('register', { title: 'Register Page', status: error });
+        return;
     }
     next();
 };
-module.exports.checkAccount = function(req, res, next) {
+module.exports.checkAccount = async function(req, res, next) {
     let account;
-    User.find({ email: req.body.a_email }, function(err, result) {
+    console.log(req.body.a_email);
+    console.log("start check");
+    await User.find({ email: req.body.a_email }, function(err, result) {
         assert.equal(null, err);
         account = result;
-        console.log(account);
+
+
     });
-    if (account) {
-        res.render('register', { title: 'Register Page', error: "account is exist " });
-        return
-    } else {
-        Email.form.to = req.body.a_email;
-        Email.form.text = "hello thuan";
-        Email.mailServer.sendMail(Email.form, function(err, info) {
-            assert.equal(null, err);
-        }); // follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799
-        res.render('register', { title: 'Register Page', error: "register suscesfully" });
+    console.log(account);
+    console.log(typeof(account));
+    console.log("end check");
+
+    if (account.length) {
+        res.render('register', { title: 'Register Page', status: "account is exist " });
+        return;
+
     }
+    console.log("start send mail");
+    var token = Date.now();
+    Email.form.to = req.body.a_email;
+    Email.form.text = "your token: " + token.toString();
+    Email.mailServer.sendMail(Email.form, function(err, info) {
+        assert.equal(null, err);
+    }); // follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799
+    console.log("done send mail");
+    //return
+    res.locals.user = {
+        token: token,
+        email: req.body.a_email,
+        password: req.body.a_pass
+    };
     next();
 };

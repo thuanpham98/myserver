@@ -5,7 +5,7 @@ var historySchema = new mongoose.Schema({
     name: String,
     email: String,
     phone: String,
-    status: Number,
+    status: Number
 });
 
 var History = mongoose.model('History', historySchema, 'history');

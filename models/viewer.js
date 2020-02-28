@@ -5,6 +5,7 @@ var viewerSchema = new mongoose.Schema({
     name: String,
     email: String,
     phone: String,
+    status: Number
 });
 
 var Viewer = mongoose.model('Viewer', viewerSchema, 'viewer');
