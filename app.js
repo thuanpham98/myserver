@@ -20,6 +20,7 @@ var viewer = require('./routers/viewers');
 var creator = require('./routers/creators');
 var login = require('./routers/login');
 var register = require('./routers/register');
+var test = require('./routers/test');
 
 //--set view engine--//
 app.set('view engine', 'pug');
@@ -33,7 +34,7 @@ app.use('/viewer', viewer);
 app.use('/creator', creator);
 app.use('/login', login);
 app.use('/register', register);
-
+app.use('/test', test);
 
 //---- listen--///
 app.listen(process.env.PORT, function() {
