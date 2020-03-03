@@ -17,3 +17,37 @@ html(lang="en")
         div(id ="Clock", class= "clock")
         hr
         //----content--///
+        h2(style="text-align :center") #{status}
+
+        form(action='/user/active', method='get')
+            br
+            hr
+            input(type='submit', value='Active',style="width: 10%;background-color: green")
+
+        form(action='/user/update', method='get')
+            br
+            hr
+            input(type='submit', value='Update',style="width: 10%;background-color: green")
+
+        form(action='/user/logout', method='get')
+            br
+            hr
+            input(type='submit', value='Log out',style="width: 10%;background-color: red")
+        
+        form(action='/user/delete', method='get')
+            br
+            hr
+            input(type='submit', value='Delete Acc',style="width: 10%;background-color: black")
+
+        form(action='/', method='get')
+            br
+            hr
+            input(type='submit', value='Home',style="width: 10%;background-color: red")
+        br
+        hr
+        br
+        br
+        div(style="padding: 50px 800px 50px 800px;")
+            a(href="/user/display", target="_blank")
+                img(src="/images/next.png",style="width:200px;height:200px;",class="center")
+        

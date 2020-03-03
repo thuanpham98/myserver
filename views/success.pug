@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title  #{title}
+        //---add icon---///
+        link(rel="icon" , type="image/png", href="images/icon.png")
+        //--add a css file--//
+        link(rel="stylesheet" href="/stylesheets/style.css")
+        //--add js file---//
+
+    body
+
+        h2(class="center") #{status}
+        br
+        form(action='/user', method='get')
+            br
+            hr
+            input(type='submit', value='Return',style="width: 10%;background-color: green")
+        br
+
+        form(action='/user/logout', method='get')
+            br
+            hr
+            input(type='submit', value='Log out',style="width: 10%;background-color: red")
