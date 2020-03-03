@@ -1,11 +1,26 @@
-//--add module--///
+//-- module--///
 const express = require('express');
 var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
 require('dotenv').config();
 
+//--connect to server--//
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+
+//--use promise global---//
+mongoose.Promise = global.Promise;
+
+//--db represent a connection---//
+var db = mongoose.connection;
+
+//--bind event error to console error--//
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+//--behavior server---//
 const app = express();
+
+//--auth module---//
+Auth = require('./middleware/auth.middleware');
 
 //----------- handler cookie from client------//
 app.use(cookieParser());
@@ -29,7 +44,7 @@ app.set('views', './views'); // view folder if equaltion with app.js and public 
 //--use router and static--//
 app.use(express.static('public'));
 app.use('/', index);
-app.use('/user', user);
+app.use('/user', Auth.requireAuth, user);
 app.use('/viewer', viewer);
 app.use('/creator', creator);
 app.use('/login', login);
@@ -38,5 +53,5 @@ app.use('/test', test);
 
 //---- listen--///
 app.listen(process.env.PORT, function() {
-    console.log("server is opening and listening");
+    console.log("Server is listening");
 });

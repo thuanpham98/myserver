@@ -22,7 +22,7 @@ module.exports.checkFilled = function(req, res, next) {
         error.push('pass is not fill');
     }
     if (error.length) {
-        res.render('login', { title: 'Login Page', status: error });
+        res.render('delete', { title: 'Login Page', status: error });
         return;
     }
     next();
@@ -30,16 +30,6 @@ module.exports.checkFilled = function(req, res, next) {
 
 
 module.exports.checkAccount = async function(req, res, next) {
-
-    //Moi
-    //neu co access_token tu cookie -> dung jwt verify access_token
-    //neu hop le -> gui thong tin user -> req (luc dung o cac controller thi goi req.user)
-    //req.user = { userID: userID, email: email }
-    //neu khong hop le thi khong lam gi het
-    // end moi
-
-    //Khong dung jwt
-    //logginSession -> access_token -> exp <= new Date() -> fail (va nguoc lai) -> neu fail loggingSession.delete()
 
     let account;
     console.log(req.body.email);
@@ -52,31 +42,41 @@ module.exports.checkAccount = async function(req, res, next) {
     console.log(account);
     //-- if have a account
     if (!account.length) {
-        res.render('login', { title: 'Login Page', status: "account is not exist or not correct " });
+        res.render('delete', { title: 'Delete Page', status: "account is not exist or not correct " });
         return;
-
     }
-
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+    console.log(decoded);
     let test = account[0];
+    if (decoded.accessToken != test.email) {
+        res.render('delete', {
+            title: 'Delete Page',
+            status: "This is not your email"
+        });
+        return;
+    }
     match = await bcrypt.compare(req.body.pass, test.password);
+
     console.log(match);
 
     if (!match) {
-        res.render('login', { title: 'Login Page', status: "password incorrect" });
+        res.render('delete', { title: 'Login Page', status: "password incorrect" });
         return;
-
     }
+    console.log("start delete ");
+    await User.deleteOne({ email: test.email }, function(err, result) {
 
+        if (err) {
 
-    //login hop le -> dung jwt de ma hoa payload thanh access_token gui ve cookie
-    //var privateKey = "thuan";
-    var token = await jwt.sign({ accessToken: test.email }, process.env.PRIVATE_KEY);
-    console.log(token);
-    res.cookie('access_token', token);
+            console.log("error query");
 
-    //let access_token = generateAccessToken();
-    //let userPayload = { userID, exp: new Date() + 123 };
-    //loggingSessions.set(access_token, userPayload);
+        } else {
 
+            console.log(result);
+
+        }
+
+    });
+    console.log("end delete");
     next();
 };
