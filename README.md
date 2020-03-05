@@ -1,8 +1,17 @@
 # myserver
 this is my server on ubuntu 18.04, I try to make a Template flowing a MVC struct, every body can use and pull request for me to introduce this server
-# First time : 
+# After clone this git :
+ # First time : 
  npm install 
-to install npm package in node_module
+ # second :
+ npm install --save dotenv
+ # three :
+ make file .env 
+ # 4 : 
+ coppy content from env.txt to .env
+ # 5: 
+ npm run dev : for development 
+ node app.js : for using
 
 # run if lag : see PID of the server which is running to kill
  sudo lsof -i :6969
