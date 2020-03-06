@@ -1,0 +1,9 @@
+# for .env 
+MONGO_URL=mongodb://localhost:27017/iot_core_te
+
+PORT=6969
+
+EMAIL=thuandeptrainek@gmail.com
+PASS_EMAIL=thuanthao69
+
+PRIVATE_KEY="D0:17:C2:19:90:6C"
