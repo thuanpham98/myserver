@@ -1,5 +1,10 @@
 //-- module--///
-const express = require('express');
+var express = require('express');
+var app = express();
+// var http = require('http');
+// var server = http.Server(app);
+// var io = require('socket.io').listen(server);
+
 var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
 require('dotenv').config();
@@ -15,9 +20,6 @@ var db = mongoose.connection;
 
 //--bind event error to console error--//
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-//--behavior server---//
-const app = express();
 
 //--auth module---//
 Auth = require('./middleware/auth.middleware');
@@ -50,6 +52,12 @@ app.use('/creator', creator);
 app.use('/login', login);
 app.use('/register', register);
 app.use('/test', test);
+
+// io.of("/creator");
+// io.on('connection', function(socket) {
+//     console.log("hello client");
+// });
+
 
 //---- listen--///
 app.listen(process.env.PORT, function() {

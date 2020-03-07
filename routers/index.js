@@ -2,9 +2,6 @@
 var express = require('express');
 var router = express.Router();
 
-//---module  check error ---//
-var assert = require('assert');
-
 //---timestamp module  if have a even happen---//
 var timestamp = require('../models/timestamp');
 router.use(timestamp);

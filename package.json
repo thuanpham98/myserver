@@ -26,11 +26,13 @@
         "express-mvc-generator": "^2.2.4",
         "express-session": "^1.17.0",
         "express.io": "^1.1.13",
+        "http": "0.0.0",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.9.3",
         "nodemailer": "^6.4.4",
         "promise": "^8.1.0",
         "pug": "^2.0.4",
+        "socket.io": "^2.3.0",
         "util": "^0.12.2"
     },
     "devDependencies": {

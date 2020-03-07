@@ -6,12 +6,16 @@ this is my server on ubuntu 18.04, I try to make a Template flowing a MVC struct
 # After clone this git :
  ## First time : 
  npm install 
+ 
  ## second :
  npm install --save dotenv
+
  ## three :
- make file .env 
+ create file .env 
+
  ## 4 : 
  coppy content from env.document.txt to .env
+ 
  ## 5: 
  ### for development 
  npm run dev 

@@ -13,11 +13,13 @@ var dataController = require('../controllers/data.controller');
 
 //--------------------------------//
 //-------------------------------//
-
+var ob = {
+    name: "thuan ",
+    age: 24
+};
+var a = JSON.stringify(ob);
 router.get('/', function(req, res) {
-    console.log(req.body);
-
-    res.send(null);
+    res.send(a);
 
 });
 
