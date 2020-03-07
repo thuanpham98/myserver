@@ -21,7 +21,8 @@ this is my server on ubuntu 18.04, I try to make a Template flowing a MVC struct
 ***
 # run if lag : see PID of the server which is running to kill
  sudo lsof -i :6969
- kill -9 {PID}
+ 
+ kill -9 {$PID}
  ***
 # 4/3/2020 
  complete template, only display data with char real time 
