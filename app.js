@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 var index = require('./routers/index');
 var user = require('./routers/users');
 var viewer = require('./routers/viewers');
-var creator = require('./routers/creators');
+var storage = require('./routers/storage');
 var login = require('./routers/login');
 var register = require('./routers/register');
 var test = require('./routers/test');
@@ -48,7 +48,7 @@ app.use(express.static('public'));
 app.use('/', index);
 app.use('/user', Auth.requireAuth, user);
 app.use('/viewer', viewer);
-app.use('/creator', creator);
+app.use('/storage', storage);
 app.use('/login', login);
 app.use('/register', register);
 app.use('/test', test);
