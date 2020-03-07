@@ -5,6 +5,9 @@ var User = require('../models/user');
 //---module  check error ---//
 var assert = require('assert');
 
+//--module bcrypt---//
+const bcrypt = require('bcrypt');
+
 //---module email to check ID---//
 var Email = require('../models/email');
 var nodemailer = require('nodemailer');
@@ -52,10 +55,28 @@ module.exports.checkAccount = async function(req, res, next) {
     }); // follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799
     console.log("done send mail");
     //return
-    res.locals.user = {
-        token: token,
+
+
+    //----coder pass--//
+    console.log("start hash");
+    //----------------//
+    let hash = await bcrypt.hash(req.body.a_pass, 10);
+    //-------------------//
+    console.log("end hash");
+    console.log(hash);;
+
+    await User.create({
+        timestamp: token,
         email: req.body.a_email,
-        password: req.body.a_pass
-    };
+        password: hash,
+        status: 0,
+    }, function(err, result) {
+        if (err) {
+            console.error(err);
+            throw err;
+        }
+        console.log(result);
+    });
+
     next();
 };

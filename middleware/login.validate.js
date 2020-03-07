@@ -67,7 +67,6 @@ module.exports.checkAccount = async function(req, res, next) {
 
     }
 
-
     //login hop le -> dung jwt de ma hoa payload thanh access_token gui ve cookie
     //var privateKey = "thuan";
     var token = await jwt.sign({ accessToken: test.email }, process.env.PRIVATE_KEY);
