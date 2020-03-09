@@ -2,12 +2,13 @@
 html(lang="en")
     head
         meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0,user-scalable=yes")
         title  #{title}
         //---add icon---///
         link(rel="icon" , type="image/png", href="images/icon.png")
         //--add a css file--//
-        link(rel="stylesheet" href="/stylesheets/style.css")
+        link(rel="stylesheet" ,href="/stylesheets/style.css")
+        link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
         //--add js file---//
 
     body
@@ -24,4 +25,4 @@ html(lang="en")
     form(action='/user', method='get')
         br
         hr
-        input(type='submit', value='Return',style="width: 10%;background-color: red")
+        input(type='submit', value='    Return    ',style="width: auto;background-color: red")

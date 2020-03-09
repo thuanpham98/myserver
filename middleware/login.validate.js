@@ -31,16 +31,6 @@ module.exports.checkFilled = function(req, res, next) {
 
 module.exports.checkAccount = async function(req, res, next) {
 
-    //Moi
-    //neu co access_token tu cookie -> dung jwt verify access_token
-    //neu hop le -> gui thong tin user -> req (luc dung o cac controller thi goi req.user)
-    //req.user = { userID: userID, email: email }
-    //neu khong hop le thi khong lam gi het
-    // end moi
-
-    //Khong dung jwt
-    //logginSession -> access_token -> exp <= new Date() -> fail (va nguoc lai) -> neu fail loggingSession.delete()
-
     let account;
     console.log(req.body.email);
     console.log("start check");
@@ -67,15 +57,9 @@ module.exports.checkAccount = async function(req, res, next) {
 
     }
 
-    //login hop le -> dung jwt de ma hoa payload thanh access_token gui ve cookie
-    //var privateKey = "thuan";
     var token = await jwt.sign({ accessToken: test.email }, process.env.PRIVATE_KEY);
     console.log(token);
     res.cookie('access_token', token);
-
-    //let access_token = generateAccessToken();
-    //let userPayload = { userID, exp: new Date() + 123 };
-    //loggingSessions.set(access_token, userPayload);
 
     next();
 };

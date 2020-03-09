@@ -7,6 +7,7 @@ router.use(timestamp);
 
 //--module user ,history in ./models --//
 var User = require('../models/user');
+var History = require('../models/history');
 
 //--module JWT --//
 var jwt = require('jsonwebtoken');
@@ -50,7 +51,22 @@ router.get('/update', updateController.get);
 router.post('/update', updateValidation.checkFilled, updateValidation.checkAccount, updateController.post);
 
 //--------------log out-------------------------//
-router.get('/logout', function(req, res) {
+router.get('/logout', async function(req, res) {
+
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+    console.log("start logout")
+    await History.create({
+        timestamp: Date.now(),
+        email: decoded.accessToken ,
+        act : 0
+    }, function(err, result) {
+        if (err) {
+            console.error(err);
+            throw err;
+        }
+        console.log(result);
+    });
+    
     res.clearCookie('access_token');
     res.redirect('/login');
 });
@@ -61,6 +77,7 @@ router.post('/delete', deleteValidation.checkFilled, deleteValidation.checkAccou
 
 //-------------display----------//
 router.get('/display', function(req, res) {
+    console.log(req.body);
     res.send('DIsplay page');
 });
 
