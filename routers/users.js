@@ -42,8 +42,6 @@ router.get('/active', async function(req, res) {
 
     console.log("done");
     res.send("<h1> Active Successfull</h1>");
-
-
 });
 
 //---------------update----------/
@@ -74,12 +72,6 @@ router.get('/logout', async function(req, res) {
 //--------------delete----------//
 router.get('/delete', deleteController.get);
 router.post('/delete', deleteValidation.checkFilled, deleteValidation.checkAccount, deleteController.post);
-
-//-------------display----------//
-router.get('/display', function(req, res) {
-    console.log(req.body);
-    res.send('DIsplay page');
-});
 
 //----export----/
 module.exports = router

@@ -38,7 +38,7 @@ var storage = require('./routers/storage');
 var login = require('./routers/login');
 var register = require('./routers/register');
 var test = require('./routers/test');
-
+var display = require('./routers/display')
 //--set view engine--//
 app.set('view engine', 'pug');
 app.set('views', './views'); // view folder if equaltion with app.js and public folder
@@ -52,11 +52,7 @@ app.use('/storage', storage);
 app.use('/login', login);
 app.use('/register', register);
 app.use('/test', test);
-
-// io.of("/creator");
-// io.on('connection', function(socket) {
-//     console.log("hello client");
-// });
+app.use('/user/display',display);
 
 
 //---- listen--///
