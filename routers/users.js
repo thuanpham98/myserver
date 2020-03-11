@@ -7,6 +7,7 @@ router.use(timestamp);
 
 //--module user ,history in ./models --//
 var User = require('../models/user');
+var History = require('../models/history');
 
 //--module JWT --//
 var jwt = require('jsonwebtoken');
@@ -41,8 +42,6 @@ router.get('/active', async function(req, res) {
 
     console.log("done");
     res.send("<h1> Active Successfull</h1>");
-
-
 });
 
 //---------------update----------/
@@ -50,7 +49,22 @@ router.get('/update', updateController.get);
 router.post('/update', updateValidation.checkFilled, updateValidation.checkAccount, updateController.post);
 
 //--------------log out-------------------------//
-router.get('/logout', function(req, res) {
+router.get('/logout', async function(req, res) {
+
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+    console.log("start logout")
+    await History.create({
+        timestamp: Date.now(),
+        email: decoded.accessToken ,
+        act : 0
+    }, function(err, result) {
+        if (err) {
+            console.error(err);
+            throw err;
+        }
+        console.log(result);
+    });
+    
     res.clearCookie('access_token');
     res.redirect('/login');
 });
@@ -58,11 +72,6 @@ router.get('/logout', function(req, res) {
 //--------------delete----------//
 router.get('/delete', deleteController.get);
 router.post('/delete', deleteValidation.checkFilled, deleteValidation.checkAccount, deleteController.post);
-
-//-------------display----------//
-router.get('/display', function(req, res) {
-    res.send('DIsplay page');
-});
 
 //----export----/
 module.exports = router

@@ -15,12 +15,20 @@ var dataController = require('../controllers/data.controller');
 //-------------------------------//
 var ob = {
     name: "thuan ",
-    age: 24
+    age: 24,
+    sex: "Male"
 };
 var a = JSON.stringify(ob);
+var n = 1;
 router.get('/', function(req, res) {
-    res.send(a);
 
+    if (n) {
+        res.send(null);
+        n = 0
+    } else {
+        res.send(a);
+        n = 1;
+    }
 });
 
 router.post('/', dataValidation.checkID, dataController.post);

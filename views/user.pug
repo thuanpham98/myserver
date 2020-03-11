@@ -7,7 +7,8 @@ html(lang="en")
         //---add icon---///
         link(rel="icon" , type="image/png", href="images/icon.png")
         //--add a css file--//
-        link(rel="stylesheet" href="/stylesheets/style.css")
+        link(rel="stylesheet" ,href="/stylesheets/style.css")
+        link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
         //--add js file---//
         script(type ="text/javascript",src="/javascripts/tool.js").
             showTime()
@@ -22,32 +23,33 @@ html(lang="en")
         form(action='/user/active', method='get')
             br
             hr
-            input(type='submit', value='Active',style="width: 10%;background-color: green")
+            input(type='submit', value='    Active    ',style="width: auto;background-color: green")
 
         form(action='/user/update', method='get')
             br
             hr
-            input(type='submit', value='Update',style="width: 10%;background-color: green")
+            input(type='submit', value='    Update    ',style="width: auto;background-color: green")
 
         form(action='/user/logout', method='get')
             br
             hr
-            input(type='submit', value='Log out',style="width: 10%;background-color: red")
+            input(type='submit', value='    Log out    ',style="width: auto;background-color: red")
         
         form(action='/user/delete', method='get')
             br
             hr
-            input(type='submit', value='Delete Acc',style="width: 10%;background-color: black")
+            input(type='submit', value='    Delete    ',style="width: auto;background-color: black")
 
         form(action='/', method='get')
             br
             hr
-            input(type='submit', value='Home',style="width: 10%;background-color: red")
+            input(type='submit', value='    Home    ',style="width: auto;background-color: red")
         br
         hr
         br
         br
-        div(style="padding: 50px 800px 50px 800px;")
-            a(href="/user/display", target="_blank")
-                img(src="/images/next.png",style="width:200px;height:200px;",class="center")
+        form(action='/user/display', method='get')
+            br
+            hr
+            input(type='submit', value='    Display    ',style="width: auto;background-color: blue")
         

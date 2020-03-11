@@ -2,11 +2,9 @@ var mongoose = require('mongoose');
 
 var historySchema = new mongoose.Schema({
     timestamp: Number,
-    name: String,
     email: String,
-    phone: String,
-    status: Number
-});
+    act : Number
+},{ versionKey: false});
 
 var History = mongoose.model('History', historySchema, 'history');
 
