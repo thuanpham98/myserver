@@ -11,17 +11,17 @@ html(lang="en")
         link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
         //--add js file---//
         script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js")
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js")
-        script(type="text/javascript" src="/node_modules/chart.js/dist/Chart.js")
+        //--script(type="text/javascript" src="/node_modules/chart.js/dist/Chart.js")
+        //--script(type="text/javascript" src="/javascripts/mychar.js")
+        script(src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js") 
 
         //----//
     body
-        div
+        div(class="container")
             canvas(id="mychart")
 
         script. 
-            var m_data=#{m_data};
-            var m_label=#{m_label};
+
             var mychart = document.getElementById("mychart").getContext('2d');
             Chart.defaults.global.defaultFontFamily = 'Lato';
             Chart.defaults.global.defaultFontSize = 18;
@@ -30,10 +30,10 @@ html(lang="en")
             var massPopChart = new Chart(mychart, {
                 type:'line', 
                 data:{
-                    labels: m_label,
+                    labels: [],
                     datasets:[{
                         label:"sensor 1",
-                        data: m_data,
+                        data: [],
                         backgroundColor:[
                             'rgba(255, 99, 132, 0.6)'
                         ],
@@ -45,6 +45,7 @@ html(lang="en")
                 },
                 options:{
                     title:{
+                        
                         display:true,
                         text:'Chart of sensor 1 follow timestamp',
                         fontSize:25
@@ -69,6 +70,28 @@ html(lang="en")
                     }
                 }
             });
+
+            //--this post id drives the example data
+            async function getData(){
+                var response= await fetch('http://localhost:6969/user/display/test');
+                var datum= await response.text();
+                datum =JSON.parse(datum);
+
+                massPopChart.data.labels.push(datum.label);
+                massPopChart.data.datasets.forEach((dataset) => {
+                    dataset.data.push(datum.data);
+                });
+                massPopChart.update();
+            }
+
+        
+            setInterval(getData, 2000);
+
+        form(action='/user', method='get')
+            br
+            hr
+            input(type='submit', value='    Return    ',style="width: auto;background-color: red")
+
 
           
 
