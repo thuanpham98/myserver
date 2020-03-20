@@ -1,10 +1,6 @@
-//-- module--///
+/* module we need */
 var express = require('express');
 var app = express();
-// var http = require('http');
-// var server = http.Server(app);
-// var io = require('socket.io').listen(server);
-
 var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
 require('dotenv').config();
@@ -39,6 +35,7 @@ var login = require('./routers/login');
 var register = require('./routers/register');
 var test = require('./routers/test');
 var display = require('./routers/display')
+var GUI = require('./routers/GUI')
 //--set view engine--//
 app.set('view engine', 'pug');
 app.set('views', './views'); // view folder if equaltion with app.js and public folder
@@ -53,6 +50,7 @@ app.use('/login', login);
 app.use('/register', register);
 app.use('/test', test);
 app.use('/user/display',display);
+app.use('/user/GUI',GUI);
 
 
 //---- listen--///

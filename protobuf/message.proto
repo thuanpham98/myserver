@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+
+message Sensor {
+    string ID=1;
+    uint32 device=2;
+    uint32 io =3;
+    float value=4;
+}
+
+message Sensors {
+    repeated Sensor sensors=1;
+}

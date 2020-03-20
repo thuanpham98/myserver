@@ -1,6 +1,5 @@
 //--module user ,history in ./models --//
 var User = require('../models/user');
-//--mongoose using model.where is very useful
 
 //---module  check error ---//
 var assert = require('assert');
