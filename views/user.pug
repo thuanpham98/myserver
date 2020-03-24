@@ -46,8 +46,11 @@ html(lang="en")
             input(type='submit', value='    Home    ',style="width: auto;background-color: red")
         br
         hr
-        br
-        br
+        form(action='/user/GUI', method='get')
+            br
+            hr
+            input(type='submit', value='    GUI    ',style="width: auto;background-color: green")
+            
         form(action='/user/display', method='get')
             br
             hr

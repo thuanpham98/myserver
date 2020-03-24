@@ -1,11 +1,8 @@
-//--module hash --//
+/* module hash */
 var bcrypt = require('bcrypt');
 
-//--module user ,history in ./models --//
+/* modal User */
 var User = require('../models/user');
-
-//----------------------------//
-//----------------------------//
 
 module.exports.get = function(req, res) {
     res.render('update', {

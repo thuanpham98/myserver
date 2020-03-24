@@ -1,18 +1,15 @@
-//--module user ,history in ./models --//
+/* modal User */
 var User = require('../models/user');
-//--mongoose using model.where is very useful
 
-//---module  check error ---//
+/* module  check error */
 var assert = require('assert');
 
-//--module JWT --//
+/* module JWT */
 var jwt = require('jsonwebtoken');
 
-//--module hash --//
+/* module hash */
 var bcrypt = require('bcrypt');
 
-//------------------------------------//
-//------------------------------------//
 module.exports.checkFilled = function(req, res, next) {
     let error = [];
     if (!req.body.email) {

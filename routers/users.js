@@ -1,27 +1,27 @@
+/** module express */
 var express = require('express');
 var router = express.Router();
 
-//---timestamp module  if have a even happen---//
+/** module timestamp */
 var timestamp = require('../models/timestamp');
 router.use(timestamp);
 
-//--module user ,history in ./models --//
+/* modal message for mongodb */
 var User = require('../models/user');
 var History = require('../models/history');
 
-//--module JWT --//
+/* module JWT */
 var jwt = require('jsonwebtoken');
 
-//module validation---//
+/* middleware */
 var updateValidation = require('../middleware/update.validate');
 var deleteValidation = require('../middleware/delete.validate');
 
-//--module controll--//
+/* controller */
 var updateController = require('../controllers/update.controller.js');
 var deleteController = require('../controllers/delete.controller');
 
-//-----------------------------------//
-
+/** /user */
 router.get('/', function(req, res) {
     res.render('user', {
         title: 'myAccount',
@@ -29,12 +29,12 @@ router.get('/', function(req, res) {
     });
 });
 
-//------------active ------------//
+/* user/active */
 router.get('/active', async function(req, res) {
 
-    var decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
-    //check token on database--//
+    /* check token on database */
     User.find({ email: decoded.accessToken }, function(err, doc) {
         doc[0].status = 1;
         doc[0].save();
@@ -44,11 +44,11 @@ router.get('/active', async function(req, res) {
     res.send("<h1> Active Successfull</h1>");
 });
 
-//---------------update----------/
+/* user/update */
 router.get('/update', updateController.get);
 router.post('/update', updateValidation.checkFilled, updateValidation.checkAccount, updateController.post);
 
-//--------------log out-------------------------//
+/* user/log out */
 router.get('/logout', async function(req, res) {
 
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
@@ -69,9 +69,9 @@ router.get('/logout', async function(req, res) {
     res.redirect('/login');
 });
 
-//--------------delete----------//
+/* delete */
 router.get('/delete', deleteController.get);
 router.post('/delete', deleteValidation.checkFilled, deleteValidation.checkAccount, deleteController.post);
 
-//----export----/
+/* export user */
 module.exports = router

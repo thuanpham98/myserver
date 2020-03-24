@@ -1,39 +1,39 @@
+/** module express */
 var express = require('express');
 var router = express.Router();
 
-//---timestamp module  if have a even happen---//
+/** module timestamp */
 var timestamp = require('../models/timestamp');
 router.use(timestamp);
 
-//---------module midleware-----//
+/** Middlerware */
 var dataValidation = require('../middleware/data.validate');
 
-//---------module controller---//
+/** Controller */
 var dataController = require('../controllers/data.controller');
 
-/* module protoc */
-const Schema=require('../protobuf/message_pb');
+/* protobuf */
+const Schema = require('../protobuf/message_pb');
 
-/* modules Data */
+/* modal Data */
 var Command = require('../models/command');
 
 /* modules  check error */
 var assert = require('assert');
-//--------------------------------//
-//-------------------------------//
 
-router.get('/', async  function(req, res) {
+/* /storage */
+router.get('/', async function (req, res) {
 
     let data;
     let data_send;
-    await Command.find({ ID: req.headers.id}, function(err, result) {
+    await Command.find({ ID: req.headers.id }, function (err, result) {
         assert.equal(null, err);
         if (!result.length) {
             console.log("no data");
-            data_send=null;
+            data_send = null;
         }
-        else{
-            data=result[0];
+        else {
+            data = result[0];
 
             let ob = new Schema.Sensor;
             ob.setId(data.ID);
@@ -42,14 +42,14 @@ router.get('/', async  function(req, res) {
             ob.setValue(data.value);
 
             console.log(data);
-            data_send= ob.serializeBinary().toString();
+            data_send = ob.serializeBinary().toString();
         }
         res.send(data_send);
-        
+
     }).sort({ _id: -1 }).limit(1);
-    
+
     console.log("start delete ");
-    await Command.deleteMany({ ID: req.headers.id}, function(err, result) {
+    await Command.deleteMany({ ID: req.headers.id }, function (err, result) {
 
         if (err) {
             console.log("error query");
@@ -61,10 +61,8 @@ router.get('/', async  function(req, res) {
     });
     console.log("end deleta");
 
-    
 });
-
 router.post('/', dataValidation.checkID, dataController.post);
 
-
+/* export storage */
 module.exports = router

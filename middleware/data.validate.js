@@ -1,12 +1,10 @@
-//--module user ,history in ./models --//
+/* modal */
 var User = require('../models/user');
 var Data = require('../models/data');
 
-//---module  check error ---//
+/* module  check error */
 var assert = require('assert');
 
-//--------------------------//
-//-------------------------//
 module.exports.checkID = async function(req, res, next) {
 
     let account, time = Date.now();

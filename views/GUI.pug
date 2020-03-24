@@ -10,10 +10,6 @@ html(lang="en")
         link(rel="stylesheet" ,href="/stylesheets/style.css")
         link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
 
-        //--!> add js file 
-        script(type ="text/javascript",src="/javascripts/tool.js").
-            showTime()
-
     body
         h2(class="center") on off the device  
         form(action="/user/GUI", method='post')
@@ -47,3 +43,71 @@ html(lang="en")
         br
         hr
         h2(class="center")  Controll PWM 
+        form(action="/user/GUI", method='post')
+            
+            select(name="device",style="width: auto" , class="center")
+                option(value="0") #{Dev_0}
+                option(value="1") #{Dev_1}
+                option(value="2") #{Dev_2}
+                option(value="3") #{Dev_3}
+
+            p Please select io pwm
+            <input type="radio" id="pwm0" name="io" value="0">
+                <label for="pwm0"> io 0 </label>
+                <br>
+            <input type="radio" id="pwm1" name="io" value="1">
+                <label for="pwm1"> io 1</label>
+                <br>
+            <input type="radio" id="pwm5" name="io" value="5" checked>
+                <label for="pwm2"> io 5</label>
+
+            div(class="slidecontainer")
+                input(type="range", min="1" ,max="255" ,value="50" ,class="slider" ,id="duty", name="value")
+                span(id="displayPWM")
+                
+            input(type='submit', value='    set duty    ',style="width: auto;background-color: black")
+
+
+            script. 
+                var slider = document.getElementById("duty");
+                var output = document.getElementById("displayPWM");
+                output.innerHTML = slider.value;
+
+                slider.oninput = function() {
+                output.innerHTML = this.value;
+                }
+
+                    br
+        hr
+        h2(class="center")  Controll DAC 
+        form(action="/user/GUI", method='post')
+            
+            select(name="device",style="width: auto" , class="center")
+                option(value="0") #{Dev_0}
+                option(value="1") #{Dev_1}
+                option(value="2") #{Dev_2}
+                option(value="3") #{Dev_3}
+
+            p Please select io pwm
+            <input type="radio" id="dac0" name="io" value="25" checked>
+                <label for="dac0"> DAC Channel 0 </label>
+                <br>
+            <input type="radio" id="dac1" name="io" value="26">
+                <label for="dac1"> DAC Channel 1</label>
+                <br>
+
+            div(class="slidecontainer")
+                input(type="range", min="1" ,max="255" ,value="50" ,class="slider" ,id="dac", name="value")
+                span(id="displayDAC")
+                
+            input(type='submit', value='    set duty    ',style="width: auto;background-color: black")
+
+
+            script. 
+                var slider = document.getElementById("dac");
+                var output = document.getElementById("displayDAC");
+                output.innerHTML = slider.value;
+
+                slider.oninput = function() {
+                output.innerHTML = this.value;
+                }

@@ -1,15 +1,15 @@
-//----module make http server -----//
+/** module express */
 var express = require('express');
 var router = express.Router();
 
-//---timestamp module  if have a even happen---//
+/* modal timestamp */
 var timestamp = require('../models/timestamp');
 router.use(timestamp);
 
-//----Home page ---///
+/* Home page */
 router.get('/', function(req, res) {
     res.render('index', { title: 'Home Page' });
 });
 
-//------export module-------//
+/* export home */
 module.exports = router

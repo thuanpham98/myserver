@@ -1,18 +1,15 @@
-//--module user ,history in ./models --//
+/* modal  user */
 var User = require('../models/user');
-//--mongoose using model.where is very useful
 
-//---module  check error ---//
+/* module  check error */
 var assert = require('assert');
 
-//--module hash --//
+/* module hash */
 var bcrypt = require('bcrypt');
 
-//--module JWT --//
+/* module JWT */
 var jwt = require('jsonwebtoken');
 
-//------------------------------------//
-//------------------------------------//
 module.exports.checkFilled = function(req, res, next) {
     let error = [];
     if (!req.body.email) {
@@ -38,13 +35,14 @@ module.exports.checkAccount = async function(req, res, next) {
     let account;
     console.log(req.body.email);
     console.log("start check");
-    //--test email exist---//
+
+    /* test email exist */
     await User.find({ email: req.body.email }, function(err, result) {
         assert.equal(null, err);
         account = result;
     });
     console.log(account);
-    //-- if have a account
+
     if (!account.length) {
         res.render('update', {
             title: 'Update Page ',

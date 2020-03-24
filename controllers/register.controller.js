@@ -5,7 +5,5 @@ module.exports.get = function(req, res) {
 module.exports.post = function(req, res) {
 
     console.log("done make account");
-
     res.redirect('/login');
-
 };

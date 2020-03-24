@@ -1,11 +1,8 @@
-//----module History----//
+/* modal History */
 var History = require('../models/history');
 
-//---module  check error ---//
+/* module  check error */
 var assert = require('assert');
-
-
-
 
 module.exports.get = function(req, res) {
     res.render('login', { title: 'Login Page' });
