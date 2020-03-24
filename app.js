@@ -5,28 +5,29 @@ var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
 require('dotenv').config();
 
-//--connect to server--//
+/* connect to mongodb server */
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
-//--use promise global---//
+/* use promise global */
 mongoose.Promise = global.Promise;
 
-//--db represent a connection---//
+/* db represent a connection */
 var db = mongoose.connection;
 
-//--bind event error to console error--//
+/* bind event error to console error */
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-//--auth module---//
+/* auth module */
 Auth = require('./middleware/auth.middleware');
 
-//----------- handler cookie from client------//
+/* handler cookie from client */
 app.use(cookieParser());
-//--------------use for post method----------------------------//
-app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-//--- config direction of router--///
+/* config method parse with json and url */
+app.use(express.json()); /*!> for parsing application/json */
+app.use(express.urlencoded({ extended: true })); /*!> for parsing application/x-www-form-urlencoded */
+
+/* config direction of router */
 var index = require('./routers/index');
 var user = require('./routers/users');
 var viewer = require('./routers/viewers');
@@ -36,11 +37,12 @@ var register = require('./routers/register');
 var test = require('./routers/test');
 var display = require('./routers/display')
 var GUI = require('./routers/GUI')
-//--set view engine--//
-app.set('view engine', 'pug');
-app.set('views', './views'); // view folder if equaltion with app.js and public folder
 
-//--use router and static--//
+/* set view engine */
+app.set('view engine', 'pug');
+app.set('views', './views'); /*!> view folder if equaltion with app.js and public folder */
+
+/* declare router */
 app.use(express.static('public'));
 app.use('/', index);
 app.use('/user', Auth.requireAuth, user);
@@ -53,7 +55,7 @@ app.use('/user/display',display);
 app.use('/user/GUI',GUI);
 
 
-//---- listen--///
+/* server listen */
 app.listen(process.env.PORT, function() {
     console.log("Server is listening");
 });

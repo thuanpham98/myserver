@@ -1,21 +1,20 @@
-//----module make http server -----//
+/* module express */
 var express = require('express');
 var router = express.Router();
 
-//---require controller for register----//
+/** Controller */
 var controller = require('../controllers/register.controller');
 
-//--require middleware for register----//
+/* middleware */
 var validation = require('../middleware/register.validate');
 
-//---timestamp module  if have a even happen---//
+/* modal timestamp */
 var timestamp = require('../models/timestamp');
 router.use(timestamp);
 
-//---Register page--/////
+/* /register */
 router.get('/', controller.get);
-
 router.post('/', validation.checkFilled, validation.checkAccount, controller.post);
 
-//------export module-------//
+/* export register */
 module.exports = router

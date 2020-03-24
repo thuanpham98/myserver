@@ -1,18 +1,16 @@
-//--module user ,history in ./models --//
+/* modal  user */
 var User = require('../models/user');
-//--mongoose using model.where is very useful
 
-//---module  check error ---//
+/* module  check error */
 var assert = require('assert');
 
-//--module bcrypt---//
+/* module bcrypt */
 const bcrypt = require('bcrypt');
 
-//---module email to check ID---//
+/* module email to check ID */
 var Email = require('../models/email');
 var nodemailer = require('nodemailer');
 
-//---------------------------------------//
 module.exports.checkFilled = function(req, res, next) {
     var error = [];
     if (!req.body.a_email) {
@@ -52,16 +50,12 @@ module.exports.checkAccount = async function(req, res, next) {
     Email.form.text = "your token: " + token.toString();
     Email.mailServer.sendMail(Email.form, function(err, info) {
         assert.equal(null, err);
-    }); // follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799
+    }); //!> follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799
     console.log("done send mail");
-    //return
 
-
-    //----coder pass--//
+    /* coder password */
     console.log("start hash");
-    //----------------//
     let hash = await bcrypt.hash(req.body.a_pass, 10);
-    //-------------------//
     console.log("end hash");
     console.log(hash);;
 
