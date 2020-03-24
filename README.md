@@ -30,3 +30,5 @@ this is my server on ubuntu 18.04, I try to make a Template flowing a MVC struct
  ***
 # 4/3/2020 
  complete template, only display data with char real time 
+# 23/3/2020
+ complete code controll esp with message protoc-c
