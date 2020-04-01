@@ -6,7 +6,7 @@ var router = express.Router();
 var controller = require('../controllers/register.controller');
 
 /* middleware */
-var validation = require('../middleware/register.validate');
+var validation = require('../middlewares/register.validate');
 
 /* modal timestamp */
 var timestamp = require('../models/timestamp');

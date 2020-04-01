@@ -14,8 +14,8 @@ var History = require('../models/history');
 var jwt = require('jsonwebtoken');
 
 /* middleware */
-var updateValidation = require('../middleware/update.validate');
-var deleteValidation = require('../middleware/delete.validate');
+var updateValidation = require('../middlewares/update.validate');
+var deleteValidation = require('../middlewares/delete.validate');
 
 /* controller */
 var updateController = require('../controllers/update.controller.js');

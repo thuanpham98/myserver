@@ -10,7 +10,7 @@ router.use(timestamp);
 var controller = require('../controllers/login.controller');
 
 /* middleware */
-var validation = require('../middleware/login.validate');
+var validation = require('../middlewares/login.validate');
 
 /** /login */
 router.get('/', controller.get);

@@ -7,7 +7,7 @@ var timestamp = require('../models/timestamp');
 router.use(timestamp);
 
 /** Middlerware */
-var dataValidation = require('../middleware/data.validate');
+var dataValidation = require('../middlewares/data.validate');
 
 /** Controller */
 var dataController = require('../controllers/data.controller');

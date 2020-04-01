@@ -18,7 +18,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 /* auth module */
-Auth = require('./middleware/auth.middleware');
+Auth = require('./middlewares/auth.middleware');
 
 /* handler cookie from client */
 app.use(cookieParser());
@@ -28,15 +28,14 @@ app.use(express.json()); /*!> for parsing application/json */
 app.use(express.urlencoded({ extended: true })); /*!> for parsing application/x-www-form-urlencoded */
 
 /* config direction of router */
-var index = require('./routers/index');
+var index = require('./routers/indexs');
 var user = require('./routers/users');
-var viewer = require('./routers/viewers');
-var storage = require('./routers/storage');
-var login = require('./routers/login');
-var register = require('./routers/register');
+var storage = require('./routers/storages');
+var login = require('./routers/logins');
+var register = require('./routers/registers');
 var test = require('./routers/test');
-var display = require('./routers/display')
-var GUI = require('./routers/GUI')
+var display = require('./routers/displays')
+var gui = require('./routers/guis')
 
 /* set view engine */
 app.set('view engine', 'pug');
@@ -45,14 +44,13 @@ app.set('views', './views'); /*!> view folder if equaltion with app.js and publi
 /* declare router */
 app.use(express.static('public'));
 app.use('/', index);
-app.use('/user', Auth.requireAuth, user);
-app.use('/viewer', viewer);
 app.use('/storage', storage);
 app.use('/login', login);
 app.use('/register', register);
 app.use('/test', test);
+app.use('/user', Auth.requireAuth, user);
 app.use('/user/display',display);
-app.use('/user/GUI',GUI);
+app.use('/user/gui',gui);
 
 
 /* server listen */
