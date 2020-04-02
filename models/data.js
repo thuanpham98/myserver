@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var dataSchema = new mongoose.Schema({
     ID: String,
-    timestamp: Number,
+    timestamp: String,
     form: Object
 },{ versionKey: false});
 

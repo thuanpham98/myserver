@@ -12,6 +12,11 @@ html(lang="en")
         //--add js file---//
         script(type ="text/javascript",src="/javascripts/tool.js").
             showTime()
+        //-for io module--//
+        //- script(src="socket.io/socket.io.js")
+        //- script. 
+        //-     var socket =io("http://localhost:6969");
+        //-     socket.emit("client","hello");
         //----//
     body(onload="showTime()")
         //--clock---///
@@ -28,22 +33,22 @@ html(lang="en")
             a(href="/user", target="_blank")
                 img(src="/images/user.png",class="center")
         br
-                //---viewer----//
+                //---test----//
         div(style="border:1px solid black")
             h3
-                b Viewer :
-            p with this choice, you can see the content of other esp if it publish
-            a(href="/viewer", target="_blank")
+                b Tester :
+            p For Test
+            a(href="/test", target="_blank")
                 img(src="/images/viewer.png",class="center")
         br
-                //---creator----//
-        div(style="border:1px solid black")
-            h3
-                b Storage :
-            p this is a storage, which esp send data to store in database
-            a(href="/storage", target="_blank")
-                img(src="/images/storage.jpg", class="center")
-        br
+        //-         //---Storage----//
+        //- div(style="border:1px solid black")
+        //-     h3
+        //-         b Storage :
+        //-     p this is a storage, which esp send data to store in database
+        //-     a(href="/storage", target="_blank")
+        //-         img(src="/images/storage.jpg", class="center")
+        //- br
                 //---Advertise--//
 
         h1(style="text-align: center") Adverisement

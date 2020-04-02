@@ -73,7 +73,6 @@ html(lang="en")
             });
 
             //--this post id drives the example data
-            var k=0;
             async function getData(){
                 var response= await fetch('http://localhost:6969/user/display/test');
                 var datum= await response.text();
@@ -86,22 +85,10 @@ html(lang="en")
                     i ++;
                 });
                 massPopChart.update();
-                k++;
-            }
-            if(k===10)
-            {
-                var i=0;
-                massPopChart.data.labels.pop();
-                massPopChart.data.datasets.forEach((dataset) => {
-                    dataset.data.pop();
-                    i ++;
-                });
-                massPopChart.update();
-                k=0;
             }
 
         
-            setInterval(getData, 1000);
+            setInterval(getData, 2000);
 
         form(action='/user', method='get')
             br

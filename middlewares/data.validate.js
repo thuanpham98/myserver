@@ -7,7 +7,7 @@ var assert = require('assert');
 
 module.exports.checkID = async function(req, res, next) {
 
-    let account, time = Date.now();
+    let account, time = Date().toString();
     console.log(req.body.ID);
     console.log("start check");
     await User.find({ timestamp: req.body.ID }, function(err, result) {

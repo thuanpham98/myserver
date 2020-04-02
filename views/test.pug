@@ -16,84 +16,24 @@ html(lang="en")
         script(src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js") 
 
         //----//
-    body
-        div(class="container")
-            canvas(id="mychart")
-
+    body(onload="getData()")
+        div(id="te") hello
         script. 
-
-            var mychart = document.getElementById("mychart").getContext('2d');
-            var massPopChart = new Chart(mychart, {
-                type:'line', 
-                data:{
-                    labels: [],
-                    datasets:[{
-                        fill:false,
-                        label:"sensor 1",
-                        data: [],
-                        backgroundColor:'rgba(153, 102, 255, 0.2)',
-                        
-                        borderColor:'#47',
-                        borderWidth: 5
-                    },{
-                        fill:false,
-                        label:"sensor 2",
-                        data: [],
-                        backgroundColor:'rgba(75, 192, 192, 0.2)',
-                        borderColor:'#48',
-                        borderWidth: 5
-                    }]
-                },
-                options:{
-                    title:{
-                        
-                        display:true,
-                        text:'Chart of sensor 1 follow timestamp',
-                        fontSize:25
-                    },
-                    legend:{
-                        display:true,
-                        position:'right',
-                        labels:{
-                            fontColor:'#35'
-                        }
-                    },
-                    layout:{
-                        padding:{
-                            left:50,
-                            right:0,
-                            bottom:0,
-                            top:0
-                        }
-                    },
-                    tooltips:{
-                        enabled:true
-                    }
-                }
-            });
-
             //--this post id drives the example data
             async function getData(){
                 var response= await fetch('http://localhost:6969/user/display/test');
                 var datum= await response.text();
                 datum =JSON.parse(datum);
-
-                var i=0;
-                massPopChart.data.labels.push(datum.label);
-                massPopChart.data.datasets.forEach((dataset) => {
-                    dataset.data.push(datum.data[i]);
-                    i ++;
-                });
-                massPopChart.update();
+                
+                document.getElementById("te").innerHTML = datum.data[i].toString();
             }
+            getData();
+            setInterval(getData, 1000);
 
-        
-            setInterval(getData, 2000);
-
-        form(action='/user', method='get')
-            br
-            hr
-            input(type='submit', value='    Return    ',style="width: auto;background-color: red")
+    form(action='/user', method='get')
+        br
+        hr
+        input(type='submit', value='    Return    ',style="width: auto;background-color: red")
 
 
           

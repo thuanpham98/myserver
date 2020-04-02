@@ -5,6 +5,9 @@ var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
 require('dotenv').config();
 
+var server=require("http").Server(app);
+var io = require("socket.io")(server);
+
 /* connect to mongodb server */
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -52,8 +55,19 @@ app.use('/user', Auth.requireAuth, user);
 app.use('/user/display',display);
 app.use('/user/gui',gui);
 
-
 /* server listen */
-app.listen(process.env.PORT, function() {
+server.listen(process.env.PORT, function() {
     console.log("Server is listening");
 });
+
+io.on("connection",function(socket){
+    console.log(socket.id+ "connect");
+    socket.on("disconnect",function(){
+        console.log(socket.id + "disconnect")
+    })
+
+    socket.on("client",function(data){
+        console.log(data);
+    })
+
+})
