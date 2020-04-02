@@ -56,7 +56,7 @@ app.use('/user/display',display);
 app.use('/user/gui',gui);
 
 /* server listen */
-server.listen(process.env.PORT, function() {
+server.listen(process.env.PORT || 6969, function() {
     console.log("Server is listening");
 });
 
