@@ -38,7 +38,7 @@ router.get('/active', async function(req, res) {
     User.find({ email: decoded.accessToken }, function(err, doc) {
         doc[0].status = 1;
         doc[0].save();
-        id=doc[0].timestamp.toString();
+        id=doc[0].timestamp;
     });
 
     console.log("done");
