@@ -42,7 +42,7 @@ router.get('/getdata', async function(req, res) {
                     console.log("no data");
 
                     let m_data=[0,0,0,0,0,0,0,0,0,0];
-                    let m_label= Data();
+                    let m_label= Date().toString();
                     respp={label: m_label,data: m_data};
                     respp=JSON.stringify(respp);
                 
@@ -57,11 +57,11 @@ router.get('/getdata', async function(req, res) {
                     data=result;
                     let m_label=data[0].timestamp;
                     //m_labe=m_label.toString();
-                    let m_data=[data[0].form.sensor_1,data[0].form.sensor_2,
-                                data[0].form.sensor_3,data[0].form.sensor_4,
-                                data[0].form.sensor_5,data[0].form.sensor_6,
-                                data[0].form.sensor_7,data[0].form.sensor_8,
-                                data[0].form.sensor_9,data[0].form.sensor_10
+                    let m_data=[data[0].form.sensor_1.toFixed(2),data[0].form.sensor_2.toFixed(2),
+                                data[0].form.sensor_3.toFixed(2),data[0].form.sensor_4.toFixed(2),
+                                data[0].form.sensor_5.toFixed(2),data[0].form.sensor_6.toFixed(2),
+                                data[0].form.sensor_7.toFixed(2),data[0].form.sensor_8.toFixed(2),
+                                data[0].form.sensor_9.toFixed(2),data[0].form.sensor_10.toFixed(2)
                             ];
                 
                     // for(let i =data.length ; i >0;i --)
