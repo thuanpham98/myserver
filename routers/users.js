@@ -40,10 +40,10 @@ router.get('/active', async function(req, res) {
         doc[0].status = 1;
         doc[0].save();
     });
-    id=id.toString();
+
     console.log("done");
     console.log(id);
-    res.send(id + "active success");
+    res.write(id);
 });
 
 /* user/update */
