@@ -35,30 +35,32 @@ module.exports.checkAccount = async function(req, res, next) {
     /* test email exist */
     await User.find({ email: req.body.email }, function(err, result) {
         assert.equal(null, err);
-        account = result;
+        account = result[0];
     });
     console.log(account);
 
-    /* if have a account */
-    if (!account.length) {
+    /* test account */
+    if ((account===undefined)||(account===[])) {
         res.render('login', { title: 'Login Page', status: "account is not exist or not correct " });
         return;
 
     }
-
-    let test = account[0];
-    match = await bcrypt.compare(req.body.pass, test.password);
-    console.log(match);
-
-    if (!match) {
-        res.render('login', { title: 'Login Page', status: "password incorrect" });
-        return;
-
+    else{
+        let test = account;
+        console.log(test);
+        match = await bcrypt.compare(req.body.pass, test.password);
+        console.log(match);
+        if (!match) {
+            res.render('login', { title: 'Login Page', status: "password incorrect" });
+            return;
+    
+        }
+        else{
+            var token = await jwt.sign({ accessToken: test.email }, process.env.PRIVATE_KEY);
+            console.log(token);
+            res.cookie('access_token', token);
+        }
     }
-
-    var token = await jwt.sign({ accessToken: test.email }, process.env.PRIVATE_KEY);
-    console.log(token);
-    res.cookie('access_token', token);
 
     next();
 };

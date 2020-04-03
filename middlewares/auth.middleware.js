@@ -20,12 +20,14 @@ module.exports.requireAuth = async function(req, res, next) {
     await User.find({ email: decoded.accessToken }, function(err, result) {
         assert.equal(null, err);
         account = result;
+        
+        if (!account.length) {
+            res.redirect('/login');
+            return;
+        }
     });
 
-    if (!account.length) {
-        res.redirect('/login');
-        return;
-    }
+
     next();
 
 };

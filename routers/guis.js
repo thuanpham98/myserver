@@ -48,35 +48,33 @@ router.post('/',async function(req,res){
 
     let account;
 
-    var decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
-
-    /* check token on database */
-    await User.find({ email: decoded.accessToken }, function(err, result) {
-        assert.equal(null, err);
-        account = result[0];
-    });
-    console.log(account.timestamp);
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     let dev = parseInt(req.body.device);
     let io = parseInt(req.body.io);
     let val = parseInt(req.body.value);
 
-    console.log("Start creat")
-    await Command.create({
+    /* check token on database */
+    await User.find({ email: decoded.accessToken }, async function(err, result) {
+        assert.equal(null, err);
+        account = result[0];
 
-        ID: account.timestamp,
-        timestamp: Date.now(),
-        device:dev,
-        io :io,
-        value: val,
-    }, function(err, result) {
-        if (err) {
-            console.error(err);
-            throw err;
+        if(account!==undefined){
+            console.log("Start creat")
+            let result= await Command.create({
+        
+                ID: account.timestamp,
+                timestamp: Date.now(),
+                device:dev,
+                io :io,
+                value: val,
+            });
+
+            console.log(result);
+       
+            console.log("End create")
         }
-        console.log(result);
     });
-    console.log("End create")
 
     res.redirect('/user/GUI');
 
