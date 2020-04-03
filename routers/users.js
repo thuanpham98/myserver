@@ -22,29 +22,33 @@ var updateController = require('../controllers/update.controller.js');
 var deleteController = require('../controllers/delete.controller');
 
 /** /user */
-router.get('/', function(req, res) {
+router.get('/', async function(req, res) {
+
+    let temp;
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    /* check token on database */
+    temp = await User.find({ email: decoded.accessToken });
+    let id = temp[0].timestamp.toString();
     res.render('user', {
         title: 'myAccount',
-        status: 'Click Active if this is the first time you come here or account will be auto remove after 15 day'
+        status: 'hello'+ id +'Click Active if this is the first time you come here or account will be auto remove after 15 day'
     });
 });
 
 /* user/active */
 router.get('/active', async function(req, res) {
 
-    let temp ;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     /* check token on database */
     User.find({ email: decoded.accessToken }, function(err, doc) {
-        temp=doc[0];
         doc[0].status = 1;
         doc[0].save();
     });
 
     console.log("done");
-    console.log(temp);
-    res.send("<h1> sucess active </h1>");
+    res.send("<h1> Sucess Active </h1>");
 });
 
 /* user/update */
