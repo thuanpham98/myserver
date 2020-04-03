@@ -32,7 +32,7 @@ router.get('/', async function(req, res) {
     let id = temp[0].timestamp.toString();
     res.render('user', {
         title: 'myAccount',
-        status: 'hello'+ id +'Click Active if this is the first time you come here or account will be auto remove after 15 day'
+        status: 'Hello '+ id +'. Click Active if this is the first time you come here or account will be auto remove after 15 day'
     });
 });
 
