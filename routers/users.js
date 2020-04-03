@@ -32,18 +32,19 @@ router.get('/', function(req, res) {
 /* user/active */
 router.get('/active', async function(req, res) {
 
+    let temp ;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
-    let id;
+
     /* check token on database */
     User.find({ email: decoded.accessToken }, function(err, doc) {
-        id=doc[0].timestamp;
+        temp=doc[0];
         doc[0].status = 1;
         doc[0].save();
     });
 
     console.log("done");
-    console.log(id);
-    res.write(id);
+    console.log(temp);
+    res.send("<h1> sucess active </h1>");
 });
 
 /* user/update */
