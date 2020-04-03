@@ -42,6 +42,7 @@ router.get('/active', async function(req, res) {
     });
 
     console.log("done");
+    console.log(id);
     res.send(id + "active success");
 });
 
