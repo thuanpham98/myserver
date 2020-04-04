@@ -44,7 +44,7 @@ html(lang="en")
             
         br
         hr
-        h2(class="center")  Controll PWM 
+        h2(class="center")  Controll PWM VS DAC
         form(action="/user/GUI", method='post')
             
             select(name="device",style="width: auto" , class="center")
@@ -53,63 +53,46 @@ html(lang="en")
                 option(value="2") #{Dev_2}
                 option(value="3") #{Dev_3}
 
-            p Please select io pwm
-            <input type="radio" id="pwm0" name="io" value="0">
-                <label for="pwm0"> io 0 </label>
+            br
+            <input type="radio" id="pwm0" name="io" value="34" checked>
+                <label for="pwm0"> PWM HS Channel 0 :    #{dataPWM0} </label>
                 <br>
-            <input type="radio" id="pwm1" name="io" value="1">
-                <label for="pwm1"> io 1</label>
+            <input type="radio" id="pwm1" name="io" value="35">
+                <label for="pwm1"> PWM HS Channel 1 :    #{dataPWM1}</label>
                 <br>
-            <input type="radio" id="pwm5" name="io" value="5" checked>
-                <label for="pwm2"> io 5</label>
+            <input type="radio" id="pwm2" name="io" value="36">
+                <label for="pwm2"> PWM HS Channel 0 :    #{dataPWM2}</label>
+                <br>
+            <input type="radio" id="pwm3" name="io" value="39">
+                <label for="pwm3"> PWM HS Channel 1 :    #{dataPWM3}</label>
+                <br>
+            <input type="radio" id="dac0" name="io" value="25">
+                <label for="dac0"> DAC Channel 0    :    #{dataDAC0}</label>
+                <br>
+            <input type="radio" id="dac1" name="io" value="26">
+                <label for="dac1"> DAC Channel 1    :    #{dataDAC1}</label>
+                <br>
 
             div(class="slidecontainer")
-                input(type="range", min="1" ,max="255" ,value="50" ,class="slider" ,id="duty", name="value")
-                span(id="displayPWM")
+                input(type="range", min="0" ,max="255" ,value='#{datacurrent}' ,class="slider" ,id="duty", name="value")
+                span(id="display")
                 
             input(type='submit', value='    set duty    ',style="width: auto;background-color: black")
 
-
             script. 
                 var slider = document.getElementById("duty");
-                var output = document.getElementById("displayPWM");
+                var output = document.getElementById("display");
                 output.innerHTML = slider.value;
 
                 slider.oninput = function() {
                 output.innerHTML = this.value;
                 }
-
-                    br
         hr
-        h2(class="center")  Controll DAC 
-        form(action="/user/GUI", method='post')
-            
-            select(name="device",style="width: auto" , class="center")
-                option(value="0") #{Dev_0}
-                option(value="1") #{Dev_1}
-                option(value="2") #{Dev_2}
-                option(value="3") #{Dev_3}
+        br
+        form(action='/user', method='get')
+            input(type='submit', value='    Return    ',style="width: auto;background-color: red")
 
-            p Please select io pwm
-            <input type="radio" id="dac0" name="io" value="25" checked>
-                <label for="dac0"> DAC Channel 0 </label>
-                <br>
-            <input type="radio" id="dac1" name="io" value="26">
-                <label for="dac1"> DAC Channel 1</label>
-                <br>
 
-            div(class="slidecontainer")
-                input(type="range", min="1" ,max="255" ,value="50" ,class="slider" ,id="dac", name="value")
-                span(id="displayDAC")
                 
-            input(type='submit', value='    set duty    ',style="width: auto;background-color: black")
 
 
-            script. 
-                var slider2 = document.getElementById("dac");
-                var output2 = document.getElementById("displayDAC");
-                output.innerHTML = slider2.value;
-
-                slider.oninput = function() {
-                output.innerHTML = this.value;
-                }

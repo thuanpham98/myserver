@@ -42,40 +42,25 @@ router.get('/getdata', async function(req, res) {
                     console.log("no data");
 
                     let m_data=[0,0,0,0,0,0,0,0,0,0];
-                    let m_label= Date().toString();
+                    let m_label= new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
+                    
                     respp={label: m_label,data: m_data};
                     respp=JSON.stringify(respp);
-                
-                    //console.log(respp);
-                    
                     res.send(respp);
                 }
-                
-                //{((data!==undefined) && (data!=="no data"))
                 else 
                 {
                     data=result;
                     let m_label=data[0].timestamp;
-                    //m_labe=m_label.toString();
                     let m_data=[data[0].form.sensor_1.toFixed(2),data[0].form.sensor_2.toFixed(2),
                                 data[0].form.sensor_3.toFixed(2),data[0].form.sensor_4.toFixed(2),
                                 data[0].form.sensor_5.toFixed(2),data[0].form.sensor_6.toFixed(2),
                                 data[0].form.sensor_7.toFixed(2),data[0].form.sensor_8.toFixed(2),
                                 data[0].form.sensor_9.toFixed(2),data[0].form.sensor_10.toFixed(2)
                             ];
-                
-                    // for(let i =data.length ; i >0;i --)
-                    // {
-                    //     m_label.push(data[i-1].timestamp);
-                    //     m_data.push(data[i-1].form.sensor_1);
-                    // }
-                    //console.log(m_data);
-                
+
                     respp={label: m_label,data: m_data};
                     respp=JSON.stringify(respp);
-                
-                    //console.log(respp);
-                    
                     res.send(respp);
                 }
                 
@@ -84,8 +69,6 @@ router.get('/getdata', async function(req, res) {
     });
 
 });
-
-
 
 //----export----/
 module.exports = router

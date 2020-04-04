@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var commandSchema = new mongoose.Schema({
     ID: String,
-    timestamp: Number,
+    timestamp: String,
     device: Number,
     io: Number,
     value: Number

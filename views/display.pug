@@ -16,6 +16,9 @@ html(lang="en")
 
         //----//
     body
+        form(action='/user/display', method='get')
+            input(type='submit', value='    Refresh    ',style="width: auto;background-color: green")
+        br
         div(class="container")
             canvas(id="mychart")
 
@@ -125,7 +128,7 @@ html(lang="en")
             });     
             //--this post id drives the example data
             async function getData(){
-                var response= await fetch('https://iotmakerserver.herokuapp.com/user/display/getdata');
+                var response= await fetch('http://localhost:6969/user/display/getdata');
                 var datum= await response.text();
                 datum =JSON.parse(datum);
 
@@ -144,7 +147,7 @@ html(lang="en")
                 });
                 massPopChart2.update();
             }
-            setInterval(getData, 100);
+            setInterval(getData, 1000);
 
         form(action='/user', method='get')
             br

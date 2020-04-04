@@ -61,7 +61,7 @@ router.get('/logout', async function(req, res) {
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     console.log("start logout")
     await History.create({
-        timestamp: Date.now(),
+        timestamp: new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE }),
         email: decoded.accessToken ,
         act : 0
     }, function(err, result) {

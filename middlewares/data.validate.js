@@ -7,7 +7,7 @@ var assert = require('assert');
 
 module.exports.checkID = async function(req, res, next) {
 
-    let account, time = Date().toString();
+    let time = new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });//Date().toString();
     console.log(req.body.ID);
     console.log("start check");
     await User.find({ timestamp: req.body.ID }, function(err, result) {

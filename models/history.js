@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var historySchema = new mongoose.Schema({
-    timestamp: Number,
+    timestamp: String,
     email: String,
     act : Number
 },{ versionKey: false});

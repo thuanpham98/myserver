@@ -10,7 +10,7 @@ module.exports.get = function(req, res) {
 module.exports.post = async  function(req, res) {
 
     await History.create({
-        timestamp: Date.now(),
+        timestamp: new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE }),
         email: req.body.email,
         act : 1
     }, function(err, result) {
