@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
-//require('dotenv').config();
+require('dotenv').config();
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
