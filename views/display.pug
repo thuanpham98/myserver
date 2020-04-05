@@ -129,7 +129,7 @@ html(lang="en")
             });     
             //--this post id drives the example data
             async function getData(){
-                var response= await fetch('https://iotmakerserver.herokuapp.com/user/display/getdata');
+                var response= await fetch('https://iotmakerserver.herokuapp.com/user/display/getdata/');
                 var datum= await response.text();
                 datum =JSON.parse(datum);
 
