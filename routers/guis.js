@@ -148,7 +148,7 @@ router.post('/',async function(req,res){
 router.get('/livingroom',function(req,res){
     res.render('guilivingroom',{title: 'living room'});
 });
-router.post('/livingroom',function(req,res){
+router.post('/livingroom',async function(req,res){
     let account;
 
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
@@ -177,13 +177,14 @@ router.post('/livingroom',function(req,res){
 
         }
     });
+    res.render('guilivingroom',{title: 'living room'});
 });
 
 /**Bad room */
 router.get('/badroom',function(req,res){
     res.render('guibadroom',{title: 'bad room'});
 });
-router.post('/badroom',function(req,res){
+router.post('/badroom',async function(req,res){
     let account;
 
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
@@ -212,13 +213,14 @@ router.post('/badroom',function(req,res){
 
         }
     });
+    res.render('guibadroom',{title: 'bad room'});
 });
 
 /**Kitchen */
 router.get('/kitchen',function(req,res){
     res.render('guikitchen',{title: 'kitchen'});
 });
-router.post('/kitchen',function(req,res){
+router.post('/kitchen',async function(req,res){
     let account;
 
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
@@ -247,13 +249,14 @@ router.post('/kitchen',function(req,res){
 
         }
     });
+    res.render('guikitchen',{title: 'kitchen'});
 });
 
 /**Bath room */
 router.get('/bathroom',function(req,res){
     res.render('guibathroom',{title: 'bath room'});
 });
-router.post('/bathroom',function(req,res){
+router.post('/bathroom',async function(req,res){
     let account;
 
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
@@ -282,13 +285,14 @@ router.post('/bathroom',function(req,res){
 
         }
     });
+    res.render('guibathroom',{title: 'bath room'});
 });
 
 /**Toilet */
 router.get('/toilet',function(req,res){
     res.render('guitoilet',{title: 'toilet'});
 });
-router.post('/toilet',function(req,res){
+router.post('/toilet',async function(req,res){
     let account;
 
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
@@ -317,6 +321,7 @@ router.post('/toilet',function(req,res){
 
         }
     });
+    res.render('guitoilet',{title: 'toilet'});
 });
 
 /* export user/GUI */ 
