@@ -76,7 +76,7 @@ html(lang="en")
                 input(type="range", min="0" ,max="255" ,value='#{datacurrent}' ,class="slider" ,id="duty", name="value")
                 span(id="display")
                 
-            input(type='submit', value='    set duty    ',style="width: auto;background-color: black")
+            input(type='submit', value='    set duty    ',style="width: auto;background-color: black",class="center")
 
             script. 
                 var slider = document.getElementById("duty");
@@ -89,4 +89,4 @@ html(lang="en")
         hr
         br
         form(action='/user', method='get')
-            input(type='submit', value='    Return    ',style="width: auto;background-color: red;border-radius: 50%;")
+            input(type='submit', value='    Return    ',style="width: auto;background-color: red;border-radius: 50%;",class="center")
