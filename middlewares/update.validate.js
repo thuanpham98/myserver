@@ -18,8 +18,10 @@ module.exports.checkFilled = function(req, res, next) {
     if (!req.body.o_pass) {
         error.push('old pass is not fill');
     }
-    if (!req.body.n_pass) {
-        error.push('new pass is not fill');
+    if(req.body.changeID===undefined){
+        if (!req.body.n_pass) {
+            error.push('new pass is not fill');
+        }
     }
     if (error.length) {
         res.render('update', { title: 'Update Page', status: error });
@@ -31,7 +33,7 @@ module.exports.checkFilled = function(req, res, next) {
 
 module.exports.checkAccount = async function(req, res, next) {
 
-
+    console.log(req.body.changeID);
     let account;
     console.log(req.body.email);
     console.log("start check");
@@ -67,7 +69,7 @@ module.exports.checkAccount = async function(req, res, next) {
     if (!match) {
         res.render('update', {
             title: 'Update Page',
-            status: "old password incorrect"
+            status: "password incorrect"
         });
         return;
     }
