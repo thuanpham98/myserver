@@ -12,7 +12,7 @@ html(lang="en")
 
     body
         h2(class="center") on off the device  
-        form(action="/user/GUI", method='post')
+        form(action="/user/GUI/kitchen", method='post')
             select(name="io",style="width: auto" , class="center")
                 option(value="16") Fan
                 option(value="17") Refrigerator
@@ -20,7 +20,7 @@ html(lang="en")
                 option(value="19") Ligth
 
             br 
-            input(name="device",style="width: auto" , value ="0")
+            input(name="device",type="hidden", value ="0")
 
 
             button(name="value", type="submit" ,value=0 ,style="width: auto;background-color: green" , class="center")  ON

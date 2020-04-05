@@ -12,12 +12,12 @@ html(lang="en")
 
     body
         h2(class="center") on off the device  
-        form(action="/user/GUI", method='post')
+        form(action="/user/GUI/bathroom", method='post')
             select(name="io",style="width: auto" , class="center")
                 option(value="21") Light
                 option(value="22") Fan
             br 
-            input(name="device",style="width: auto" , value ="0")
+            input(name="device",type="hidden", value ="0")
 
 
             button(name="value", type="submit" ,value=0 ,style="width: auto;background-color: green" , class="center")  ON
