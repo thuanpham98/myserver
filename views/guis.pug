@@ -8,51 +8,51 @@ html(lang="en")
         //--!> add link srouce here
         link(rel="icon" , type="image/png", href="/images/icon.png")
         link(rel="stylesheet" ,href="/stylesheets/style.css")
-        link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+    style.
+        .btn-group button {
+        background-color: #4CAF50; /* Green background */
+        border: 1px solid green; /* Green border */
+        color: white; /* White text */
+        padding: 10px 24px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        width: 50%; /* Set a width if needed */
+        display: block; /* Make the buttons appear below each other */
+        }
 
-    body
-        h2(class="center") on off the device  
-        form(action="/user/GUI", method='post')
-            select(name="io",style="width: auto" , class="center")
-                option(value="0") #{Pin_0}
-                option(value="2") #{Pin_2}
-                option(value="4") #{Pin_4}
-                option(value="5") #{Pin_5}
-                option(value="12") #{Pin_12}
-                option(value="13") #{Pin_13}
-                option(value="14") #{Pin_14}
-                option(value="15") #{Pin_15}
-                option(value="16") #{Pin_16}
-                option(value="17") #{Pin_17}
-                option(value="18") #{Pin_18}
-                option(value="19") #{Pin_19}
-                option(value="21") #{Pin_21}
-                option(value="22") #{Pin_22}
-                option(value="23") #{Pin_23}
-                option(value="27") #{Pin_27}
-                option(value="32") #{Pin_32}
-                option(value="33") #{Pin_33}
-            br 
-            select(name="device",style="width: auto" , class="center")
-                option(value="0") #{Dev_0}
-                option(value="1") #{Dev_1}
-                option(value="2") #{Dev_2}
-                option(value="3") #{Dev_3}
+        .btn-group button:not(:last-child) {
+        border-bottom: none; /* Prevent double borders */
+        }
 
-            button(name="value", type="submit" ,value=0 ,style="width: auto;background-color: green" , class="center")  ON
-            button(name="value" ,type="submit" ,value=1 ,style="width: auto;background-color: red" , class="center") OFF
-            
-        br
-        hr
+        /* Add a background color on hover */
+        .btn-group button:hover {
+        background-color: #3e8e41;
+        }
+    body 
+        div(class="btn-group", style="width:100%")
+            form(action='/user/GUI/livingroom', method='get')
+                button(style="width:80%",class="center") 
+                    p living room
+                br
+            form(action='/user/GUI/badroom', method='get')
+                button(style="width:80%",class="center") 
+                    p badroom
+                br
+            form(action='/user/GUI/kitchen', method='get')
+                button(style="width:80%",class="center") 
+                    p kitchen
+                br
+            form(action='/user/GUI/bathroom', method='get')
+                button(style="width:80%",class="center") 
+                    p bathroom
+                br
+            form(action='/user/GUI/toilet', method='get')
+                button(style="width:80%",class="center") 
+                    p toilet
+
         h2(class="center")  Controll PWM VS DAC
         form(action="/user/GUI", method='post')
             
-            select(name="device",style="width: auto" , class="center")
-                option(value="0") #{Dev_0}
-                option(value="1") #{Dev_1}
-                option(value="2") #{Dev_2}
-                option(value="3") #{Dev_3}
-
+            input(type="hidden",name ="device",value="0")
             br
             <input type="radio" id="pwm0" name="io" value="34" checked>
                 <label for="pwm0"> PWM HS Channel 0 :    #{dataPWM0} </label>
@@ -90,9 +90,4 @@ html(lang="en")
         hr
         br
         form(action='/user', method='get')
-            input(type='submit', value='    Return    ',style="width: auto;background-color: red")
-
-
-                
-
-
+            input(type='submit', value='    Return    ',style="width: auto;background-color: red;border-radius: 50%;")

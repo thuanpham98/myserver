@@ -50,22 +50,8 @@ router.get('/', async function(req,res){
                 console.log(temp.dataPWM0);
             }
                 ////////////////////////////////////
-            res.render('GUI',{title: 'GUI Page' ,
-
-            /* define number device here */
-            Dev_0 : "device 0",Dev_1 : "device 1",Dev_2 : "device 2",Dev_3 : "device 3",
-
-            /** define pin out here */
-            Pin_0 : "lam0",Pin_2 : "lam2",Pin_4 : "lam4",Pin_5 : "lam5",
-            Pin_12: "lam12",Pin_13 : "lam13",Pin_14 : "lam14",Pin_15 : "lam15",
-            Pin_16 : "lam16",Pin_17 : "lam17",
-            Pin_18: "lam18",Pin_19 : "lam19",Pin_21 : "lam21",Pin_22 : "lam22",
-            Pin_23 : "lam23",Pin_27 : "lam27",Pin_32 : "lam32",Pin_33 : "lam33",
-            
-            /** Define DAC and PWM value here */
-
-            dataPWM0 : temp.dataPWM0, dataPWM1 : dataPWM1,dataPWM2 : dataPWM2,
-            dataPWM3 : dataPWM3,dataDAC0 : dataDAC0,dataDAC1 : dataDAC1
+            res.render('guis',{title: 'GUI Page' ,  dataPWM0 : temp.dataPWM0, dataPWM1 : temp.dataPWM1,dataPWM2 : temp.dataPWM2,
+                                                    dataPWM3 : temp.dataPWM3, dataDAC0 : temp.dataDAC0,dataDAC1 : temp.dataDAC1
             });
         }
     });
@@ -105,7 +91,6 @@ router.post('/',async function(req,res){
         }
     });
 
-    //var dataPWM0,dataPWM1,dataPWM2,dataPWM3,dataDAC0,dataDAC1;
     switch (io) {
         case 34:
             dataPWM0 = val.toString();
@@ -154,7 +139,7 @@ router.post('/',async function(req,res){
 
     console.log("End create")
 
-    res.render('GUI',{title: 'GUI Page' ,
+    res.render('guis',{title: 'GUI Page' ,
 
     /* define number device here */
     Dev_0 : "device 0",Dev_1 : "device 1",Dev_2 : "device 2",Dev_3 : "device 3",
@@ -172,6 +157,10 @@ router.post('/',async function(req,res){
     dataPWM3 : dataPWM3,dataDAC0 : dataDAC0,dataDAC1 : dataDAC1
     });
 
+});
+
+router.get('/livingroom',function(req,res){
+    res.render('guisLivingRoom',{title: 'GUI Page'});
 });
 
 /* export user/GUI */ 
