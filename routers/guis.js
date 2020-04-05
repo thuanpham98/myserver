@@ -160,7 +160,7 @@ router.post('/',async function(req,res){
 });
 
 router.get('/livingroom',function(req,res){
-    res.render('guisLivingRoom',{title: 'GUI Page'});
+    res.render('guislivingroom',{title: 'GUI Page'});
 });
 
 /* export user/GUI */ 
