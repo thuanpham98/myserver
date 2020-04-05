@@ -140,19 +140,7 @@ router.post('/',async function(req,res){
     console.log("End create")
 
     res.render('guis',{title: 'GUI Page' ,
-
-    /* define number device here */
-    Dev_0 : "device 0",Dev_1 : "device 1",Dev_2 : "device 2",Dev_3 : "device 3",
-
-    /** define pin out here */
-    Pin_0 : "lam0",Pin_2 : "lam2",Pin_4 : "lam4",Pin_5 : "lam5",
-    Pin_12: "lam12",Pin_13 : "lam13",Pin_14 : "lam14",Pin_15 : "lam15",
-    Pin_16 : "lam16",Pin_17 : "lam17",
-    Pin_18: "lam18",Pin_19 : "lam19",Pin_21 : "lam21",Pin_22 : "lam22",
-    Pin_23 : "lam23",Pin_27 : "lam27",Pin_32 : "lam32",Pin_33 : "lam33",
-    
     /** Define DAC and PWM value here */
-
     dataPWM0 : dataPWM0, dataPWM1 : dataPWM1,dataPWM2 : dataPWM2,
     dataPWM3 : dataPWM3,dataDAC0 : dataDAC0,dataDAC1 : dataDAC1
     });
@@ -160,8 +148,19 @@ router.post('/',async function(req,res){
 });
 
 router.get('/livingroom',function(req,res){
-    res.render('guislivingroom',{title: 'GUI Page'});
+    res.render('guilivingroom',{title: 'living room'});
 });
-
+router.get('/badroom',function(req,res){
+    res.render('guibadroom',{title: 'bad room'});
+});
+router.get('/kitchen',function(req,res){
+    res.render('guikitchen',{title: 'kitchen'});
+});
+router.get('/bathroom',function(req,res){
+    res.render('guibathroom',{title: 'bath room'});
+});
+router.get('/toilet',function(req,res){
+    res.render('guitoilet',{title: 'toilet'});
+});
 /* export user/GUI */ 
 module.exports = router

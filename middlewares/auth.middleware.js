@@ -26,8 +26,5 @@ module.exports.requireAuth = async function(req, res, next) {
             return;
         }
     });
-
-
     next();
-
 };
