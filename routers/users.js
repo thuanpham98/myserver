@@ -24,15 +24,15 @@ var deleteController = require('../controllers/delete.controller');
 /** /user */
 router.get('/', async function(req, res) {
 
-    let temp;
-    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+    //let temp;
+    //let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     /* check token on database */
-    temp = await User.find({ email: decoded.accessToken });
-    let id = temp[0].timestamp.toString();
+    //temp = await User.find({ email: decoded.accessToken });
+    //let id = temp[0].timestamp.toString();
     res.render('user', {
         title: 'myAccount',
-        status: 'Hello '+ id +'. Click Active if this is the first time you come here or account will be auto remove after 15 day'
+        status: 'Hello click Active button if this is the first time you come here or account will be auto remove after 15 day'
     });
 });
 
