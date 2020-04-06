@@ -5,7 +5,7 @@ module.exports.mailServer = nodemailer.createTransport({
     auth: {
         user: process.env.EMAIL,
         pass: process.env.PASS_EMAIL
-    },
+    }
 });
 module.exports.form = {
     from: "Server IoT core Te",
