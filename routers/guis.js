@@ -89,12 +89,12 @@ router.post('/',async function(req,res){
     });
 
     switch (io) {
-        case 34:
+        case 32:
             dataPWM0 = val.toString();
             datacurrent=dataPWM0;
             break;
         
-        case 35:
+        case 33:
             dataPWM1 = val.toString();
             datacurrent=dataPWM1;
             break;
