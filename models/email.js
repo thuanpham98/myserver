@@ -6,10 +6,6 @@ module.exports.mailServer = nodemailer.createTransport({
         user: process.env.EMAIL,
         pass: process.env.PASS_EMAIL
     },
-    tls: {
-        // do not fail on invalid certs
-        rejectUnauthorized: false
-    }
 });
 module.exports.form = {
     from: "Server IoT core Te",
