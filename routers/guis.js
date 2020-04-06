@@ -20,9 +20,9 @@ var assert = require('assert');
 var jwt = require('jsonwebtoken');
 
 /////////////////////////////////////////////////////////////////
-var dataPWM0=0,dataPWM1=0,dataPWM2=0,dataPWM3=0,dataDAC0=0,dataDAC1=0;
+var dataPWM0=0,dataPWM1=0,dataDAC0=0,dataDAC1=0;
 var temp_gui= {
-                "dataPWM0" : dataPWM0,"dataPWM1" : dataPWM1,"dataPWM2" : dataPWM2,"dataPWM3" : dataPWM3,
+                "dataPWM0" : dataPWM0,"dataPWM1" : dataPWM1,
                 "dataDAC0" : dataDAC0,"dataDAC1" : dataDAC1
             };
 
@@ -50,8 +50,8 @@ router.get('/', async function(req,res){
                 console.log(temp.dataPWM0);
             }
                 ////////////////////////////////////
-            res.render('guis',{title: 'GUI Page' ,  dataPWM0 : temp.dataPWM0, dataPWM1 : temp.dataPWM1,dataPWM2 : temp.dataPWM2,
-                                                    dataPWM3 : temp.dataPWM3, dataDAC0 : temp.dataDAC0,dataDAC1 : temp.dataDAC1
+            res.render('guis',{title: 'GUI Page' ,  dataPWM0 : temp.dataPWM0, dataPWM1 : temp.dataPWM1,
+                                                    dataDAC0 : temp.dataDAC0,dataDAC1 : temp.dataDAC1
             });
         }
     });
@@ -99,16 +99,6 @@ router.post('/',async function(req,res){
             datacurrent=dataPWM1;
             break;
 
-        case 36:
-            dataPWM2 = val.toString();
-            datacurrent=dataPWM2;
-            break;  
-
-        case 39:
-            dataPWM3 = val.toString();
-            datacurrent=dataPWM3
-            break; 
-
         case 25:
             dataDAC0 = val.toString();
             datacurrent=dataDAC0;
@@ -122,7 +112,7 @@ router.post('/',async function(req,res){
 
     /** history for command */
     temp_gui= {
-        "dataPWM0" : dataPWM0,"dataPWM1" : dataPWM1,"dataPWM2" : dataPWM2,"dataPWM3" : dataPWM3,
+        "dataPWM0" : dataPWM0,"dataPWM1" : dataPWM1,
         "dataDAC0" : dataDAC0,"dataDAC1" : dataDAC1
     };
     console.log("Start creat")
@@ -138,8 +128,8 @@ router.post('/',async function(req,res){
 
     res.render('guis',{title: 'GUI Page' ,
     /** Define DAC and PWM value here */
-    dataPWM0 : dataPWM0, dataPWM1 : dataPWM1,dataPWM2 : dataPWM2,
-    dataPWM3 : dataPWM3,dataDAC0 : dataDAC0,dataDAC1 : dataDAC1
+    dataPWM0 : dataPWM0, dataPWM1 : dataPWM1,
+    dataDAC0 : dataDAC0,dataDAC1 : dataDAC1
     });
 
 });
