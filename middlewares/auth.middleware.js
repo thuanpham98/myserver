@@ -1,3 +1,4 @@
+"use strict"
 /* modal  user */
 var User = require('../models/user');
 

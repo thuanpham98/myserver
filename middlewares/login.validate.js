@@ -1,3 +1,4 @@
+"use strict"
 /* modal  user */
 var User = require('../models/user');
 
@@ -48,7 +49,7 @@ module.exports.checkAccount = async function(req, res, next) {
     else{
         let test = account;
         console.log(test);
-        match = await bcrypt.compare(req.body.pass, test.password);
+        let match = await bcrypt.compare(req.body.pass, test.password);
         console.log(match);
         if (!match) {
             res.render('login', { title: 'Login Page', status: "password incorrect" });

@@ -1,3 +1,4 @@
+"use strict"
 /* module we need */
 var express = require('express');
 var app = express();

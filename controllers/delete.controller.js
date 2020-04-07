@@ -1,3 +1,4 @@
+"use strict"
 module.exports.get = function(req, res) {
     res.render('delete', { title: 'Delete Page' });
 };

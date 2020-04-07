@@ -1,3 +1,4 @@
+"use strict"
 /* modal User */
 var User = require('../models/user');
 
@@ -52,7 +53,7 @@ module.exports.checkAccount = async function(req, res, next) {
         });
         return;
     }
-    match = await bcrypt.compare(req.body.pass, test.password);
+    let match = await bcrypt.compare(req.body.pass, test.password);
 
     console.log(match);
 

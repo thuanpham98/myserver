@@ -1,3 +1,4 @@
+"use strict"
 /** module express */
 var express = require('express');
 var router = express.Router();
@@ -23,13 +24,6 @@ var deleteController = require('../controllers/delete.controller');
 
 /** /user */
 router.get('/', async function(req, res) {
-
-    //let temp;
-    //let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
-
-    /* check token on database */
-    //temp = await User.find({ email: decoded.accessToken });
-    //let id = temp[0].timestamp.toString();
     res.render('user', {
         title: 'myAccount',
         status: 'Hello click Active button if this is the first time you come here or account will be auto remove after 15 day'
@@ -38,16 +32,6 @@ router.get('/', async function(req, res) {
 
 /* user/active */
 router.get('/active', async function(req, res) {
-
-    // let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
-
-    // /* check token on database */
-    // User.find({ email: decoded.accessToken }, function(err, doc) {
-    //     doc[0].status = 1;
-    //     doc[0].save();
-    // });
-
-    // console.log("done");
     res.render('active', {
         title: 'Active Page',
         status: 'if you do not receive any ID , go to update to receive again '

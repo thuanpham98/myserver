@@ -1,3 +1,4 @@
+"use strict"
 //----module make http server -----//
 var express = require('express');
 var router = express.Router();

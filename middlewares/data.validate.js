@@ -1,3 +1,4 @@
+"use strict"
 /* modal */
 var User = require('../models/user');
 var Data = require('../models/data');
@@ -24,7 +25,7 @@ module.exports.checkID = async function(req, res, next) {
     };
 
     console.log("start send");
-    result = await Data.create(ob);
+    let result = await Data.create(ob);
     console.log(result);
     next();
 };
