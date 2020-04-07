@@ -1,3 +1,4 @@
+"use strict"
 var mychart = document.getElementById("mychart").getContext('2d');
 var mychart2 = document.getElementById("mychart2").getContext('2d');
 var mychart3 = document.getElementById("mychart3").getContext('2d');
@@ -125,7 +126,7 @@ var massPopChart = new Chart(mychart, {
                 scaleLabel: {
                         display: true,
                         labelString: 'Value (%)',
-                        fontSize: 40
+                        fontSize: 30
                 }
             }]
         },
@@ -258,7 +259,7 @@ var massPopChart2 = new Chart(mychart2, {
                 scaleLabel: {
                         display: true,
                         labelString: 'Value (%)',
-                        fontSize: 40
+                        fontSize: 30
                 }
             }]
         },
