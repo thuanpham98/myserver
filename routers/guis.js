@@ -36,7 +36,7 @@ router.get('/', async function(req,res){
 
     await User.find({ email: decoded.accessToken }, async function(err, result) {
         assert.equal(null, err);
-        account = result[0];
+        let account = result[0];
 
         if(account!==undefined){
             console.log("Start creat")
