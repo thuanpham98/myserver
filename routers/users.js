@@ -55,7 +55,7 @@ router.get('/active', async function(req, res) {
 });
 router.post('/active',async function(req, res) {
 
-    //let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     let a =req.body.ID ;
     /* check token on database */
     User.find({ email: decoded.accessToken }, function(err, doc) {
