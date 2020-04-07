@@ -25,7 +25,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 /* auth module */
-Auth = require('./middlewares/auth.middleware');
+var Auth = require('./middlewares/auth.middleware');
 
 /* handler cookie from client */
 app.use(cookieParser());
