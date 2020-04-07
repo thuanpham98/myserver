@@ -317,10 +317,10 @@ async function getData(){
     k=k+1;
 }
 function removeData(){
-    if(k===100){
+    if(k===10){
         let j=0;
 
-        massPopChart.clear();
+        //massPopChart.clear();
 
         massPopChart.data.labels=[];
         massPopChart.data.datasets.forEach((dataset) => {
