@@ -1,4 +1,3 @@
-"use strict"
 var mychart = document.getElementById("mychart").getContext('2d');
 var mychart2 = document.getElementById("mychart2").getContext('2d');
 var mychart3 = document.getElementById("mychart3").getContext('2d');
