@@ -117,6 +117,9 @@ var massPopChart = new Chart(mychart, {
                 scaleLabel: {
                         display: true,
                         labelString: 'Time'
+                },
+                ticks: {
+                    fontSize: 40
                 }
             }],
             yAxes: [{
@@ -124,6 +127,9 @@ var massPopChart = new Chart(mychart, {
                 scaleLabel: {
                         display: true,
                         labelString: 'Value (%)'
+                },
+                ticks: {
+                    fontSize: 40
                 }
             }]
         },
@@ -248,6 +254,9 @@ var massPopChart2 = new Chart(mychart2, {
                 scaleLabel: {
                         display: true,
                         labelString: 'Time'
+                },
+                ticks: {
+                    fontSize: 40
                 }
             }],
             yAxes: [{
@@ -255,6 +264,9 @@ var massPopChart2 = new Chart(mychart2, {
                 scaleLabel: {
                         display: true,
                         labelString: 'Value (%)'
+                },
+                ticks: {
+                    fontSize: 40
                 }
             }]
         },
