@@ -48,18 +48,18 @@ router.get('/', async function (req, res) {
 
     }).sort({ _id: -1 }).limit(1);
 
-    console.log("start delete ");
-    await Command.deleteMany({ ID: req.headers.id }, function (err, result) {
+    // console.log("start delete ");
+    // await Command.deleteMany({ ID: req.headers.id }, function (err, result) {
 
-        if (err) {
-            console.log("error query");
-        } else {
+    //     if (err) {
+    //         console.log("error query");
+    //     } else {
 
-            console.log(result);
-        }
+    //         console.log(result);
+    //     }
 
-    });
-    console.log("end deleta");
+    // });
+    // console.log("end deleta");
 
 });
 router.post('/', dataValidation.checkID, dataController.post);

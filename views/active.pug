@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0,user-scalable=yes")
+        title  #{title}
+        //---add icon---///
+        link(rel="icon" , type="image/png", href="images/icon.png")
+        //--add a css file--//
+        link(rel="stylesheet" ,href="/stylesheets/style.css")
+        link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        //--add js file---//
+
+    body
+        h2(class="center") #{status}
+        div
+            h1(class="center") Active
+            form(action='/user/active', method='post')
+                input(type="text" name="ID" placeholder="Your ID you received")
+                input(type='submit', value='Log in',name="Login")
+        br
+
+    form(action='/user', method='get')
+        br
+        hr
+        input(type='submit', value='    Return    ',style="width: auto;background-color: red")
