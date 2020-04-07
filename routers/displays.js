@@ -45,9 +45,9 @@ router.get('/getdata', async function(req, res) {
                     let m_data=[0,0,0,0,0,0,0,0,0,0];
                     let m_label= new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
                     
-                    respp={label: m_label,data: m_data};
-                    respp=JSON.stringify(respp);
-                    res.send(respp);
+                    let resAPI={label: m_label,data: m_data};
+                    resAPI=JSON.stringify(resAPI);
+                    res.send(resAPI);
                 }
                 else 
                 {
@@ -60,9 +60,9 @@ router.get('/getdata', async function(req, res) {
                                 data[0].form.sensor_9.toFixed(2),data[0].form.sensor_10.toFixed(2)
                             ];
 
-                    respp={label: m_label,data: m_data};
-                    respp=JSON.stringify(respp);
-                    res.send(respp);
+                    let resAPI={label: m_label,data: m_data};
+                    resAPI=JSON.stringify(resAPI);
+                    res.send(resAPI);
                 }
                 
             }).sort({ _id: -1 }).limit(1);
