@@ -320,7 +320,7 @@ function removeData(){
     if(k===100){
         let j=0;
 
-        //massPopChart.clear();
+        massPopChart.clear();
 
         massPopChart.data.labels=[];
         massPopChart.data.datasets.forEach((dataset) => {
