@@ -5,11 +5,11 @@ var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
 //require('dotenv').config();
 
-app.use(function(req, res, next) {
+app.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-  });
+});
 
 /* connect to mongodb server */
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
