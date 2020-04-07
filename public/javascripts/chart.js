@@ -327,7 +327,7 @@ function removeData(){
             dataset.data=[];
             j++;
         });
-        massPopChart.update();
+        //massPopChart.update();
         k=0;
     }
 }
