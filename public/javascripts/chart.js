@@ -265,7 +265,7 @@ var massPopChart2 = new Chart(mychart2, {
 }); 
 //--this post id drives the example data
 async function getData(){
-    var response= await fetch('http://localhost:6969/user/display/getdata');
+    var response= await fetch('https://iotmakerserver.herokuapp.com/user/display/getdata');
     var datum= await response.text();
     datum =JSON.parse(datum);
 
