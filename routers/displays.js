@@ -36,12 +36,12 @@ router.get('/getdata', async function(req, res) {
         account = result[0];
 
         if((account!==undefined) && (account!=="no data")){
-            await Data.find({ ID: account.timestamp}, function(err, result) {
+            await Data.find({ ID: account.timestamp, device : 1}, function(err, result) {
                 assert.equal(null, err);
                 if (!result.length) {
                     console.log("no data");
 
-                    let m_data=[0,0,0,0,0,0,0,0,0,0];
+                    let m_data=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
                     let m_label= new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
                     
                     respp={label: m_label,data: m_data};
@@ -56,7 +56,12 @@ router.get('/getdata', async function(req, res) {
                                 data[0].form.sensor_3.toFixed(2),data[0].form.sensor_4.toFixed(2),
                                 data[0].form.sensor_5.toFixed(2),data[0].form.sensor_6.toFixed(2),
                                 data[0].form.sensor_7.toFixed(2),data[0].form.sensor_8.toFixed(2),
-                                data[0].form.sensor_9.toFixed(2),data[0].form.sensor_10.toFixed(2)
+                                data[0].form.sensor_9.toFixed(2),data[0].form.sensor_10.toFixed(2),
+                                data[0].form.sensor_11.toFixed(2),data[0].form.sensor_12.toFixed(2),
+                                data[0].form.sensor_13.toFixed(2),data[0].form.sensor_14.toFixed(2),
+                                data[0].form.sensor_15.toFixed(2),data[0].form.sensor_16.toFixed(2),
+                                data[0].form.sensor_17.toFixed(2),data[0].form.sensor_18.toFixed(2),
+                                data[0].form.sensor_19.toFixed(2),data[0].form.sensor_20.toFixed(2)
                             ];
 
                     respp={label: m_label,data: m_data};
