@@ -34,14 +34,14 @@ router.get('/', async function (req, res) {
     esp_num =parseInt(esp_num, 10);
     console.log(esp_id);
     console.log(esp_num);
-    
-    await Command.find({ ID: esp_id,device:esp_num }, async function (err, result) {
+
+    await Command.find({ ID: esp_id}, async function (err, result) {
         assert.equal(null, err);
         if (!result.length) {
             console.log("no data");
             data_send = null;
         }
-        else {
+        else if(result[0].device===esp_num) {
             data = result[0];
 
             let ob = new Schema.Sensor;
@@ -65,6 +65,9 @@ router.get('/', async function (req, res) {
         
             });
             console.log("end deleta");
+        }
+        else{
+            data_send = null;
         }
         res.send(data_send);
 
