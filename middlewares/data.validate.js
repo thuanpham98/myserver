@@ -20,6 +20,7 @@ module.exports.checkID = async function(req, res, next) {
 
     let ob = {
         ID: req.body.ID,
+        device : req.body.dev,
         timestamp: time,
         form: req.body.form
     };
