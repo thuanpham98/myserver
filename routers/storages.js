@@ -41,7 +41,7 @@ router.get('/', async function (req, res) {
             console.log("no data");
             data_send = null;
         }
-        else if(result[0].device==esp_num) {
+        else{
             data = result[0];
 
             let ob = new Schema.Sensor;
@@ -66,12 +66,7 @@ router.get('/', async function (req, res) {
             });
             console.log("end deleta");
         }
-        else{
-            data_send = null;
-        }
         res.send(data_send);
-
-
     }).sort({ _id: -1 }).limit(1);
 
 });
