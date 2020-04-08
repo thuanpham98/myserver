@@ -35,13 +35,13 @@ router.get('/', async function (req, res) {
     console.log(esp_id);
     console.log(esp_num);
 
-    await Command.find({ ID: esp_id}, async function (err, result) {
+    await Command.find({ID: esp_id,device:esp_num}, async function (err, result) {
         assert.equal(null, err);
         if (!result.length) {
             console.log("no data");
             data_send = null;
         }
-        else if(result[0].device===esp_num) {
+        else if(result[0].device==esp_num) {
             data = result[0];
 
             let ob = new Schema.Sensor;
@@ -54,7 +54,7 @@ router.get('/', async function (req, res) {
             data_send = ob.serializeBinary().toString();
 
             console.log("start delete ");
-            await Command.deleteMany({ ID: esp_id,device:esp_num}, function (err, result) {
+            await Command.deleteMany({ID: esp_id,device:esp_num}, function (err, result) {
         
                 if (err) {
                     console.log("error query");
