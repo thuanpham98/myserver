@@ -118,7 +118,7 @@ function makeChart(){
                     scaleLabel: {
                             display: true,
                             labelString: 'Time',
-                            fontSize : 40
+                            fontSize : 24
                             
                     },
                     ticks: {
@@ -134,7 +134,7 @@ function makeChart(){
                     scaleLabel: {
                             display: true,
                             labelString: 'Value (%)',
-                            fontSize : 40
+                            fontSize : 24
                     },
                     ticks: {
                         min: 0,
@@ -267,7 +267,7 @@ var massPopChart2 = new Chart(mychart2, {
                 scaleLabel: {
                         display: true,
                         labelString: 'Time',
-                        fontSize : 40
+                        fontSize : 24
                 }
             }],
             yAxes: [{
@@ -275,7 +275,7 @@ var massPopChart2 = new Chart(mychart2, {
                 scaleLabel: {
                         display: true,
                         labelString: 'Value (%)',
-                        fontSize : 40
+                        fontSize : 24
                 },
                 ticks: {
                     min: 0,

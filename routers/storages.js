@@ -27,7 +27,15 @@ router.get('/', async function (req, res) {
 
     let data;
     let data_send;
-    await Command.find({ ID: req.headers.id }, function (err, result) {
+
+    let esp_id=req.headers.id.slice(0,13);
+    let esp_num = req.headers.id.slice(13,req.headers.id.length);
+
+    esp_num =parseInt(esp_num, 10);
+    console.log(esp_id);
+    console.log(esp_num);
+    
+    await Command.find({ ID: esp_id,device:esp_num }, async function (err, result) {
         assert.equal(null, err);
         if (!result.length) {
             console.log("no data");
@@ -44,23 +52,24 @@ router.get('/', async function (req, res) {
 
             console.log(data);
             data_send = ob.serializeBinary().toString();
+
+            console.log("start delete ");
+            await Command.deleteMany({ ID: esp_id,device:esp_num}, function (err, result) {
+        
+                if (err) {
+                    console.log("error query");
+                } else {
+        
+                    console.log(result);
+                }
+        
+            });
+            console.log("end deleta");
         }
         res.send(data_send);
 
+
     }).sort({ _id: -1 }).limit(1);
-
-    // console.log("start delete ");
-    // await Command.deleteMany({ ID: req.headers.id }, function (err, result) {
-
-    //     if (err) {
-    //         console.log("error query");
-    //     } else {
-
-    //         console.log(result);
-    //     }
-
-    // });
-    // console.log("end deleta");
 
 });
 router.post('/', dataValidation.checkID, dataController.post);
