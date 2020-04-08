@@ -54,7 +54,7 @@ router.get('/', async function (req, res) {
             data_send = ob.serializeBinary().toString();
 
             console.log("start delete ");
-            await Command.deleteMany({ID: esp_id,device:esp_num}, function (err, result) {
+            await Command.deleteOne({ID: esp_id,device:esp_num}, function (err, result) {
         
                 if (err) {
                     console.log("error query");
@@ -63,7 +63,7 @@ router.get('/', async function (req, res) {
                     console.log(result);
                 }
         
-            });
+            }).sort({ _id: -1 }).limit(1);
             console.log("end deleta");
         }
         res.send(data_send);
