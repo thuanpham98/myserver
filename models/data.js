@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var dataSchema = new mongoose.Schema({
     ID: String,
+    device: Number,
     timestamp: String,
     form: Object
 },{ versionKey: false});
