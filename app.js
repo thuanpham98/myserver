@@ -27,17 +27,6 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 /* auth module */
 var Auth = require('./middlewares/auth.middleware');
 
-/** redict http and https */
-app.use(function (req, res, next) {
-    if (req.secure) {
-        // request was via https, so do no special handling
-        next();
-    } else {
-        // request was via http, so redirect to https
-        res.redirect('https://' + req.headers.host + req.url);
-    }
-});
-
 /* handler cookie from client */
 app.use(cookieParser());
 
@@ -70,6 +59,16 @@ app.use('/user', Auth.requireAuth, user);
 app.use('/user/display', display);
 app.use('/user/gui', gui);
 
+/** redict http and https */
+app.use(function (req, res, next) {
+    if (req.secure) {
+        // request was via https, so do no special handling
+        next();
+    } else {
+        // request was via http, so redirect to https
+        res.redirect('https://' + req.headers.host + req.url);
+    }
+});
 
 /* server listen */
 app.listen(process.env.PORT || 6969, function () {
