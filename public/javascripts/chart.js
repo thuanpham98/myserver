@@ -91,6 +91,10 @@ function makeChart(){
             ]
         },
         options:{
+            showScale: false,
+            responsive: true,
+            maintainAspectRatio: false,
+            animation:{duration:0},
             title:{
                 display:true,
                 text:'Chart flow time',
@@ -152,6 +156,7 @@ function makeChart(){
     });
 } 
 var massPopChart = makeChart();
+
 var massPopChart2 = new Chart(mychart2, {
     type:'bar', 
     data:{
@@ -240,6 +245,9 @@ var massPopChart2 = new Chart(mychart2, {
         ]
     },
     options:{
+        responsive: true,
+        maintainAspectRatio: false,
+        animation:{duration:0},
         title:{
             display:true,
             text:'Chart flow time',
@@ -293,10 +301,19 @@ var massPopChart2 = new Chart(mychart2, {
 }); 
 //--this post id drives the example data
 var k=0;
+
 async function getData(){
-    var response= await fetch('http://iotmakerserver.herokuapp.com/user/display/getdata');
-    var datum= await response.text();
-    datum =JSON.parse(datum);
+    let response= await fetch('https://localhost:6969/user/display/getdata',{
+        method: 'get',
+        headers:{
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        }
+    });
+    let datum= await response.json();
+    //console.log(response);
+    //console.log(datum);
+    //datum =JSON.parse(datum);
 
     let i=0;
     massPopChart.data.labels.push(datum.label);
@@ -305,7 +322,7 @@ async function getData(){
         i ++;
     });
     massPopChart.update();
-    
+    console.log(massPopChart.data.labels)
 
     i=0;
     massPopChart2.data.labels=[datum.label];

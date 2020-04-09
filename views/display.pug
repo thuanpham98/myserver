@@ -7,19 +7,19 @@ html(lang="en")
 
         link(rel="icon" , type="image/png", href="/images/icon.png")
         link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
-        //-script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js")
-        script(src="/javascripts/Chart.bundle.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js")
+        
     body
         form(action='/user/display', method='get')
             input(type='submit', value='    Refresh    ',style="width: auto;background-color: green")
         br
         hr
-        div(class="container")
-            canvas(id="mychart")
+        div
+            canvas(id="mychart",height="400", width="400")
         hr
         br
-        div(class="container")
-            canvas(id="mychart2")
+        div
+            canvas(id="mychart2",height="400", width="400")
         hr
         br
         
@@ -35,4 +35,3 @@ html(lang="en")
 
 
     
-

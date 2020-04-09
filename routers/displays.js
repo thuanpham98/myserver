@@ -28,7 +28,7 @@ router.get('/getdata', async function(req, res) {
    
     let account;
     let data;
-
+    //console.log(req.body);
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     //check token on database--//
@@ -39,6 +39,7 @@ router.get('/getdata', async function(req, res) {
         if((account!==undefined) && (account!=="no data")){
             await Data.find({ ID: account.timestamp, device : 1}, function(err, result) {
                 assert.equal(null, err);
+                //console.log(result);
                 if (!result.length) {
                     console.log("no data");
 
@@ -46,10 +47,10 @@ router.get('/getdata', async function(req, res) {
                     let m_label= new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
                     
                     let resAPI={label: m_label,data: m_data};
-                    resAPI=JSON.stringify(resAPI);
-                    res.send(resAPI);
+                    //resAPI=JSON.stringify(resAPI);
+                    res.json(resAPI);
                 }
-                else 
+                else
                 {
                     data=result;
                     let m_label=data[0].timestamp;
@@ -58,19 +59,24 @@ router.get('/getdata', async function(req, res) {
                                 data[0].form.sensor_5.toFixed(2),data[0].form.sensor_6.toFixed(2),
                                 data[0].form.sensor_7.toFixed(2),data[0].form.sensor_8.toFixed(2),
                                 data[0].form.sensor_9.toFixed(2),data[0].form.sensor_10.toFixed(2),
-                                data[0].form.sensor_11.toFixed(2),data[0].form.sensor_12.toFixed(2),
-                                data[0].form.sensor_13.toFixed(2),data[0].form.sensor_14.toFixed(2),
-                                data[0].form.sensor_15.toFixed(2),data[0].form.sensor_16.toFixed(2),
-                                data[0].form.sensor_17.toFixed(2),data[0].form.sensor_18.toFixed(2),
-                                data[0].form.sensor_19.toFixed(2),data[0].form.sensor_20.toFixed(2)
+                                data[0].form.sensor_11.toFixed(),data[0].form.sensor_12.toFixed(),
+                                data[0].form.sensor_13.toFixed(),data[0].form.sensor_14.toFixed(),
+                                data[0].form.sensor_15.toFixed(),data[0].form.sensor_16.toFixed(),
+                                data[0].form.sensor_17.toFixed(),data[0].form.sensor_18.toFixed(),
+                                data[0].form.sensor_19.toFixed(),data[0].form.sensor_20.toFixed()
                             ];
 
                     let resAPI={label: m_label,data: m_data};
-                    resAPI=JSON.stringify(resAPI);
-                    res.send(resAPI);
+                    //console.log(resAPI);
+                    //resAPI=JSON.stringify(resAPI);
+                    //console.log(resAPI);
+                    res.json(resAPI);
                 }
-                
             }).sort({ _id: -1 }).limit(1);
+        }
+        else{
+            console.log("no data");
+            res.send("no fine account");
         }
     });
 
