@@ -303,7 +303,7 @@ var massPopChart2 = new Chart(mychart2, {
 var k=0;
 
 async function getData(){
-    let response= await fetch('https://localhost:6969/user/display/getdata',{
+    let response= await fetch('http://iotmakerserver.herokuapp.com/user/display/getdata',{
         method: 'get',
         headers:{
             'Accept': 'application/json, text/plain, */*',
