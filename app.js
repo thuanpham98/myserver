@@ -61,12 +61,13 @@ app.use('/user/gui', gui);
 
 /** redict http and https */
 app.use(function (req, res, next) {
-    if (req.secure) {
+    if (!req.secure) {
         // request was via https, so do no special handling
         next();
     } else {
         // request was via http, so redirect to https
-        res.redirect('https://' + req.headers.host + req.url);
+        res.redirect('http://' + req.headers.host + req.url);
+        //next();
     }
 });
 
