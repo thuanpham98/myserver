@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
 //require('dotenv').config();
 
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -28,13 +28,13 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 var Auth = require('./middlewares/auth.middleware');
 
 /** redict http and https */
-app.use (function (req, res, next) {
+app.use(function (req, res, next) {
     if (req.secure) {
-            // request was via https, so do no special handling
-            next();
+        // request was via https, so do no special handling
+        next();
     } else {
-            // request was via http, so redirect to https
-            res.redirect('https://' + req.headers.host + req.url);
+        // request was via http, so redirect to https
+        res.redirect('https://' + req.headers.host + req.url);
     }
 });
 
@@ -67,11 +67,11 @@ app.use('/login', login);
 app.use('/register', register);
 app.use('/test', test);
 app.use('/user', Auth.requireAuth, user);
-app.use('/user/display',display);
-app.use('/user/gui',gui);
+app.use('/user/display', display);
+app.use('/user/gui', gui);
 
 
 /* server listen */
-app.listen(process.env.PORT || 6969, function() {
+app.listen(process.env.PORT || 6969, function () {
     console.log("Server is listening");
 });
