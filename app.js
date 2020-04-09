@@ -59,7 +59,7 @@ app.use('/user', Auth.requireAuth, user);
 app.use('/user/display', display);
 app.use('/user/gui', gui);
 
-/** redict http and https */
+/** redict https and http because android >=8 use https  */
 app.use(function (req, res, next) {
     if (!req.secure) {
         // request was via https, so do no special handling
