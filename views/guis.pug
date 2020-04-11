@@ -48,30 +48,31 @@ html(lang="en")
             form(action='/user/GUI/toilet', method='get')
                 button(style="width:60%",class="center") 
                     p toilet
+        br 
+        br
+        div(class="center",style="width:100%")
 
-        h2(class="center")  Controll PWM VS DAC
-        form(action="/user/GUI", method='post')
+            h2(class="center")  Controll PWM VS DAC
             
-            input(type="hidden",name ="device",value="0")
-            <input type="radio" id="pwm0" name="io" value="32" checked>
-                <label for="pwm0"> PWM HS Channel 0 :    #{dataPWM0} </label>
-                <br>
-            <input type="radio" id="pwm1" name="io" value="33">
-                <label for="pwm1"> PWM HS Channel 1 :    #{dataPWM1}</label>
-                <br>
-            <input type="radio" id="dac0" name="io" value="25">
-                <label for="dac0"> DAC Channel 0    :    #{dataDAC0}</label>
-                <br>
-            <input type="radio" id="dac1" name="io" value="26">
-                <label for="dac1"> DAC Channel 1    :    #{dataDAC1}</label>
-                <br>
+            input(type="hidden",name ="device",value="0",id="dev")
 
-            div(class="slidecontainer")
-                input(type="range", min="0" ,max="255" ,value='#{datacurrent}' ,class="slider" ,id="duty", name="value")
-                span(id="display")
-                
-            input(type='submit', value='    set duty    ',style="width: auto;background-color: black",class="center")
-
+            input(type="radio" id="pwm0" name="io" value="32")
+            label(for="pwm0",id="lp0") PWM HS Channel 0 : #{dataPWM0}
+            br
+            input(type="radio" id="pwm1" name="io" value="33")
+            label(for="pwm1",id="lp1") PWM HS Channel 1 : #{dataPWM1}
+            br
+            input(type="radio" id="dac0" name="io" value="25")
+            label(for="dac0",id="ld0") DAC Channel 0    : #{dataDAC0}
+            br
+            input(type="radio" id="dac1" name="io" value="26")
+            label(for="dac1",id="ld1") DAC Channel 1    : #{dataDAC1}
+            br
+        br
+        div(class="slidecontainer")
+            input(type="range", min="0" ,max="255" ,value='0' ,class="slider" ,id="duty", name="value")
+            span(id="display")
+            
             script. 
                 var slider = document.getElementById("duty");
                 var output = document.getElementById("display");
@@ -80,7 +81,9 @@ html(lang="en")
                 slider.oninput = function() {
                 output.innerHTML = this.value;
                 }
-        hr
         br
+        
+        script(src="/javascripts/control.js")
+
         form(action='/user', method='get')
             input(type='submit', value='    Return    ',style="width: auto;background-color: red;border-radius: 50%;",class="center")
