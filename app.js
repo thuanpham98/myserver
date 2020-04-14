@@ -1,6 +1,5 @@
 "use strict"
 /* module we need */
-const https = require('https');
 const http = require('http');
 var express = require('express');
 var app = express();
@@ -19,11 +18,8 @@ var cors =require('cors');
 app.use(cors());
 
 /// server my sude
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer({
-  key: fs.readFileSync('./ssl/server.key'),
-  cert: fs.readFileSync('./ssl/server.crt'),
-}, app);
+const server = http.createServer(app);
+
 /* connect to mongodb server */
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -85,10 +81,7 @@ app.use('/user/gui', gui);
 // });
 
 /* server listen */
-httpServer.listen(process.env.PORT || 6969, function () {
+server.listen(process.env.PORT, function () {
     console.log("Server is listening");
 });
 
-httpsServer.listen(process.env.PORT || 9696, function () {
-    console.log("Server is listening");
-});
