@@ -1,17 +1,29 @@
 "use strict"
 /* module we need */
+const https = require('https');
+const http = require('http');
 var express = require('express');
 var app = express();
 var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
+var cors =require('cors');
 //require('dotenv').config();
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+/** CORS  */
+// app.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
+app.use(cors());
+
+/// server my sude
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer({
+  key: fs.readFileSync(__dirname,'ssl','server.crt'),
+  cert: fs.readFileSync(__dirname,'ssl','server.key'),
+}, app);
 /* connect to mongodb server */
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -60,19 +72,23 @@ app.use('/user/display', display);
 app.use('/user/gui', gui);
 
 /** redict https and http because android >=8 use https  */
-app.use(function (req, res, next) {
-    if (req.secure) {
-        // request was via https, so do no special handling
-        res.redirect('http://' + req.headers.host + req.url);
-        next();
-    } else {
-        // request was via http, so redirect to https
-        //res.redirect('http://' + req.headers.host + req.url);
-        next();
-    }
-});
+// app.use(function (req, res, next) {
+//     if (req.secure) {
+//         // request was via https, so do no special handling
+//         res.redirect('http://' + req.headers.host + req.url);
+//         next();
+//     } else {
+//         // request was via http, so redirect to https
+//         //res.redirect('http://' + req.headers.host + req.url);
+//         next();
+//     }
+// });
 
 /* server listen */
-app.listen(process.env.PORT, function () {
+httpServer.listen(process.env.PORT || 6969, function () {
+    console.log("Server is listening");
+});
+
+httpsServer.listen(process.env.PORT || 9696, function () {
     console.log("Server is listening");
 });
