@@ -305,6 +305,7 @@ var k=0;
 async function getData(){
     let response= await fetch('http://iotmakerserver.herokuapp.com/user/display/getdata',{
         method: 'get',
+        mode: 'cors',
         headers:{
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'

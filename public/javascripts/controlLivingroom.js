@@ -6,6 +6,7 @@ var a,b,c,d;
 async function getData(){
     let response= await fetch('http://iotmakerserver.herokuapp.com/user/GUI/livingroom/getdata',{
         method: 'get',
+        mode: 'cors',
         headers:{
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
