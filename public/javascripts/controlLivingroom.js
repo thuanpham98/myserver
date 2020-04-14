@@ -4,7 +4,7 @@ var frame_post,frame_get={"s0":1,"s2":1,"s4":1,"s5":1};
 var pre_0,pre_2,pre_4,pre_5;
 var a,b,c,d;
 async function getData(){
-    let response= await fetch('http://192.168.1.11:6969/user/GUI/livingroom/getdata',{
+    let response= await fetch('https://iotmakerserver.herokuapp.com/user/GUI/livingroom/getdata',{
         method: 'get',
         headers:{
             'Accept': 'application/json, text/plain, */*',
@@ -35,7 +35,7 @@ function load(){
 }
 
 async function postData(){
-    let response = await fetch('http://192.168.1.11:6969/user/GUI/livingroom/postdata',{
+    let response = await fetch('https://iotmakerserver.herokuapp.com/user/GUI/livingroom/postdata',{
         method: 'post',
         mode: 'cors', 
         headers:{
