@@ -63,11 +63,11 @@ app.use('/user/gui', gui);
 app.use(function (req, res, next) {
     if (!req.secure) {
         // request was via https, so do no special handling
-        res.redirect('https://' + req.headers.host + req.url);
+        
         next();
     } else {
         // request was via http, so redirect to https
-        //res.redirect('http://' + req.headers.host + req.url);
+        res.redirect('http://' + req.headers.host + req.url);
         next();
     }
 });
