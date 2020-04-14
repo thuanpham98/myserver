@@ -21,8 +21,8 @@ app.use(cors());
 /// server my sude
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer({
-  key: fs.readFileSync(__dirname,'ssl','server.crt'),
-  cert: fs.readFileSync(__dirname,'ssl','server.key'),
+  key: fs.readFileSync('./ssl/server.crt'),
+  cert: fs.readFileSync('./ssl/server.key'),
 }, app);
 /* connect to mongodb server */
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
