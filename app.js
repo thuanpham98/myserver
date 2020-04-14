@@ -67,7 +67,7 @@ app.use(function (req, res, next) {
     } else {
         // request was via http, so redirect to https
         res.redirect('http://' + req.headers.host + req.url);
-        //next();
+        next();
     }
 });
 
