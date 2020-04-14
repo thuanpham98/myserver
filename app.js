@@ -61,9 +61,9 @@ app.use('/user/gui', gui);
 
 /** redict https and http because android >=8 use https  */
 app.use(function (req, res, next) {
-    if (!req.secure) {
+    if (req.secure) {
         // request was via https, so do no special handling
-        res.redirect('https://' + req.headers.host + req.url);
+        res.redirect('http://' + req.headers.host + req.url);
         console.log(req.headers.host);
         console.log(req.url);
         //next();
