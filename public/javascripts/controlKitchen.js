@@ -1,10 +1,10 @@
 "use strict"
 
-var frame_post,frame_get={"s0":1,"s2":1,"s4":1,"s5":1};
+var frame_post,frame_get={"s16":1,"s17":1,"s18":1,"s19":1};
 var pre_0,pre_1,pre_2,pre_3;
 var a,b,c,d;
 async function getData(){
-    let response= await fetch('http://iotmakerserver.herokuapp.com/user/GUI/livingroom/getdata',{
+    let response= await fetch('http://iotmakerserver.herokuapp.com/user/GUI/kitchen/getdata',{
         method: 'get',
         mode: 'cors',
         headers:{
@@ -19,24 +19,24 @@ async function getData(){
 };
 function load(){
 
-    pre_0 = 1-frame_get.s0;
-    pre_1 = 1-frame_get.s2;
-    pre_2 = 1-frame_get.s4;
-    pre_3 = 1-frame_get.s5;
+    pre_0 = 1-frame_get.s16;
+    pre_1 = 1-frame_get.s17;
+    pre_2 = 1-frame_get.s18;
+    pre_3 = 1-frame_get.s19;
 
-    document.getElementById("s0").checked=Boolean(1-frame_get.s0);
-    document.getElementById("s2").checked=Boolean(1-frame_get.s2);
-    document.getElementById("s4").checked=Boolean(1-frame_get.s4);
-    document.getElementById("s5").checked=Boolean(1-frame_get.s5);
+    document.getElementById("s16").checked=Boolean(1-frame_get.s16);
+    document.getElementById("s17").checked=Boolean(1-frame_get.s17);
+    document.getElementById("s18").checked=Boolean(1-frame_get.s18);
+    document.getElementById("s19").checked=Boolean(1-frame_get.s19);
 
-    a = 1-frame_get.s0;
-    b = 1-frame_get.s2;
-    c = 1-frame_get.s4;
-    d = 1-frame_get.s5;
+    a = 1-frame_get.s16;
+    b = 1-frame_get.s17;
+    c = 1-frame_get.s18;
+    d = 1-frame_get.s19;
 }
 
 async function postData(){
-    let response = await fetch('http://iotmakerserver.herokuapp.com/user/GUI/livingroom/postdata',{
+    let response = await fetch('http://iotmakerserver.herokuapp.com/user/GUI/kitchen/postdata',{
         method: 'post',
         mode: 'cors', 
         headers:{
@@ -52,10 +52,10 @@ async function postData(){
 
 function choose(){
     
-    a=document.getElementById("s0").checked;
-    b=document.getElementById("s2").checked;
-    c=document.getElementById("s4").checked;
-    d=document.getElementById("s5").checked;
+    a=document.getElementById("s16").checked;
+    b=document.getElementById("s17").checked;
+    c=document.getElementById("s18").checked;
+    d=document.getElementById("s19").checked;
 
     let valDev = document.getElementById('dev').value;
     console.log(valDev);
@@ -79,31 +79,25 @@ function choose(){
     else d=0;
 //-------------------------------------------------
     if(a!==pre_0){
-        frame_post={device : parseInt(valDev) , io : 0, value : 1-a };
+        frame_post={device : parseInt(valDev) , io : 16, value : 1-a };
         postData();
         pre_0 =a;
     }
     if(b!==pre_1){
-        frame_post={device : parseInt(valDev) , io : 2, value : 1-b };
+        frame_post={device : parseInt(valDev) , io : 17, value : 1-b };
         postData();
         pre_1 =b;
     }
     if(c!==pre_2){
-        frame_post={device : parseInt(valDev) , io : 4, value : 1-c };
+        frame_post={device : parseInt(valDev) , io : 18, value : 1-c };
         postData();
         pre_2 =c;
     }
     if(d!==pre_3){
-        frame_post={device : parseInt(valDev) , io : 5, value : 1-d };
+        frame_post={device : parseInt(valDev) , io : 19, value : 1-d };
         postData();
         pre_3 = d;
     }
-}
-
-function sleep(ms) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, ms);
-    });
 }
 
 getData();

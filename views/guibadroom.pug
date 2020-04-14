@@ -8,26 +8,52 @@ html(lang="en")
         //--!> add link srouce here
         link(rel="icon" , type="image/png", href="/images/icon.png")
         link(rel="stylesheet" ,href="/stylesheets/style.css")
-        link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        link(rel="stylesheet" ,href="/stylesheets/sliderButton.css")
+        //- link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        style. 
+            .button {
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+            }
 
-    body
-        h2(class="center") on off the device  
-        form(action="/user/GUI/badroom", method='post')
-            select(name="io",style="width: auto" , class="center")
-                option(value="12") Fan
-                option(value="13") Ligth
-                option(value="14") air-conditioner
-                option(value="15") Tivi
+    body(style="background-color:black;")
+        div(style="background-color:white")
+            input(type="hidden",name ="device",value="0",id="dev")
+            h2 Living room
+            hr
+            p Light
+            label(class="switch") 
+                input(type="checkbox", id="s12", name="io" ,value="12")
+                span(class="slider round")
+            br
+            p Fan
+            label(class="switch")
+                input(type="checkbox",id="s13" name="io" value="13")
+                span(class="slider round")
+            br
+            p TV
+            label(class="switch") 
+                input(type="checkbox",id="s14" name="io" value="14")
+                span(class="slider round")
+            br
+            p Chandeliers
+            label(class="switch")
+                input(type="checkbox",id="s15" name="io" value="15")
+                span(class="slider round")
+        br
+        br
 
-            br 
-            input(name="device",type="hidden", value ="0")
+        form(action='/user/GUI/livingroom' method='POST')       
+            input(type='submit' value='  ((=Previus  ',style="width: auto")        
+        br
+        form(action='/user/GUI/kitchen' method='POST')
+            input(type='submit' value='    Next=))    ',style="width: auto")    
 
-
-            button(name="value", type="submit" ,value=0 ,style="width: auto;background-color: green" , class="center")  ON
-            button(name="value" ,type="submit" ,value=1 ,style="width: auto;background-color: red" , class="center") OFF
-
-
-
-                
-
-
+        script(src="/javascripts/controlBadroom.js")
