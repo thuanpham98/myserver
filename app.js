@@ -60,19 +60,17 @@ app.use('/user/display', display);
 app.use('/user/gui', gui);
 
 /** redict https and http because android >=8 use https  */
-// app.use(function (req, res, next) {
-//     if (req.secure) {
-//         // request was via https, so do no special handling
-//         res.redirect('http://' + req.headers.host + req.url);
-//         console.log(req.headers.host);
-//         console.log(req.url);
-//         //next();
-//     } else {
-//         // request was via http, so redirect to https
-//         //res.redirect('http://' + req.headers.host + req.url);
-//         next();
-//     }
-// });
+app.use(function (req, res, next) {
+    if (req.secure) {
+        // request was via https, so do no special handling
+        res.redirect('http://' + req.headers.host + req.url);
+        next();
+    } else {
+        // request was via http, so redirect to https
+        //res.redirect('http://' + req.headers.host + req.url);
+        next();
+    }
+});
 
 /* server listen */
 app.listen(process.env.PORT, function () {
