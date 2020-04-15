@@ -125,6 +125,11 @@ router.post('/postdata',async function(req,res){
 });
 
 //-----------------------------------------------------------------------------------------
+var onoff={"s0":1,"s2":1,"s4":1,"s5":1,
+        "s12":1,"s13":1,"s14":1,"s15":1,
+        "s16":1,"s17":1,"s18":1,"s19":1,
+        "s21":1,"s22":1,"s23":1,"s27":1
+};
 /**Living room */
 router.get('/livingroom',function(req,res){
     res.render('guilivingroom',{title: 'living room',test : "checked"});
@@ -158,12 +163,6 @@ router.get('/livingroom/getdata',async function(req,res){
         }
     });
 });
-
-var onoff={"s0":1,"s2":1,"s4":1,"s5":1,
-        "s12":1,"s13":1,"s14":1,"s15":1,
-        "s16":1,"s17":1,"s18":1,"s19":1,
-        "s21":1,"s22":1,"s23":1,"s27":1
-};
 router.post('/livingroom/postdata' ,async function(req,res){
     
     console.log(req.body);
@@ -205,15 +204,45 @@ router.post('/livingroom/postdata' ,async function(req,res){
     res.json("ok");
 });
 //----------------------------------------------------------------------------------
+
 /**Bad room */
 router.get('/badroom',function(req,res){
     res.render('guibadroom',{title: 'bad room'});
 });
-router.post('/badroom',async function(req,res){
-    let account;
+router.get('/badroom/getdata',async function(req,res){
 
+    let frame_send={"s12":1,"s13":1,"s14":1,"s15":1};
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    await User.find({ email: decoded.accessToken }, async function(err, result) {
+        assert.equal(null, err);
+        let account = result[0];
+
+        if(account!==undefined){
+            console.log("Start creat")
+            let result= await CommandOnoff.find({ID: account.timestamp}).sort({ _id: -1 }).limit(1);
+            if (!result.length) {
+                console.log("no data");
+                frame_send=null;
+            }
+            else{
+                frame_send.s12=result[0].io.s12;
+                frame_send.s13=result[0].io.s13;
+                frame_send.s14=result[0].io.s14;
+                frame_send.s15=result[0].io.s15;
+            }
+            res.json(frame_send);
+        }
+    });
+});
+router.post('/badroom/postdata',async function(req,res){
+    console.log(req.body);
+    let account;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     
+    let devonoff='s'+req.body.io.toString();
+    console.log(devonoff);
+
     let dev = parseInt(req.body.device);
     let io = parseInt(req.body.io);
     let val = parseInt(req.body.value);
@@ -226,30 +255,65 @@ router.post('/badroom',async function(req,res){
         if(account!==undefined){
             console.log("Start creat")
             let result= await Command.create({
-        
                 ID: account.timestamp,
                 timestamp: new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE }),
                 device:dev,
                 io :io,
                 value: val,
             });
-       
             console.log("End create")
-
+            onoff[devonoff] = val;
+            console.log(onoff[devonoff]);
+            await CommandOnoff.create({
+                ID: account.timestamp,
+                timestamp: new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE }),
+                device:dev,
+                io :onoff,
+            })
         }
     });
-    res.render('guibadroom',{title: 'bad room'});
+    res.json("ok");
 });
+//-----------------------------------------------------------------------------------
 
 /**Kitchen */
 router.get('/kitchen',function(req,res){
-    res.render('guikitchen',{title: 'kitchen'});
+    res.render('guikitchen',{title: 'Kitchen'});
 });
-router.post('/kitchen',async function(req,res){
-    let account;
+router.get('/kitchen/getdata',async function(req,res){
 
+    let frame_send={"s16":1,"s17":1,"s18":1,"s19":1};
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    await User.find({ email: decoded.accessToken }, async function(err, result) {
+        assert.equal(null, err);
+        let account = result[0];
+
+        if(account!==undefined){
+            console.log("Start creat")
+            let result= await CommandOnoff.find({ID: account.timestamp}).sort({ _id: -1 }).limit(1);
+            if (!result.length) {
+                console.log("no data");
+                frame_send=null;
+            }
+            else{
+                frame_send.s16=result[0].io.s16;
+                frame_send.s17=result[0].io.s17;
+                frame_send.s18=result[0].io.s18;
+                frame_send.s19=result[0].io.s19;
+            }
+            res.json(frame_send);
+        }
+    });
+});
+router.post('/kitchen/postdata',async function(req,res){
+    console.log(req.body);
+    let account;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     
+    let devonoff='s'+req.body.io.toString();
+    console.log(devonoff);
+
     let dev = parseInt(req.body.device);
     let io = parseInt(req.body.io);
     let val = parseInt(req.body.value);
@@ -262,30 +326,63 @@ router.post('/kitchen',async function(req,res){
         if(account!==undefined){
             console.log("Start creat")
             let result= await Command.create({
-        
                 ID: account.timestamp,
                 timestamp: new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE }),
                 device:dev,
                 io :io,
                 value: val,
             });
-       
             console.log("End create")
-
+            onoff[devonoff] = val;
+            console.log(onoff[devonoff]);
+            await CommandOnoff.create({
+                ID: account.timestamp,
+                timestamp: new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE }),
+                device:dev,
+                io :onoff,
+            })
         }
     });
-    res.render('guikitchen',{title: 'kitchen'});
+    res.json("ok");
 });
+//-----------------------------------------------------------------------------------
 
 /**Bath room */
 router.get('/bathroom',function(req,res){
     res.render('guibathroom',{title: 'bath room'});
 });
-router.post('/bathroom',async function(req,res){
-    let account;
+router.get('/bathroom/getdata',async function(req,res){
 
+    let frame_send={"s21":1,"s22":1};
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    await User.find({ email: decoded.accessToken }, async function(err, result) {
+        assert.equal(null, err);
+        let account = result[0];
+
+        if(account!==undefined){
+            console.log("Start creat")
+            let result= await CommandOnoff.find({ID: account.timestamp}).sort({ _id: -1 }).limit(1);
+            if (!result.length) {
+                console.log("no data");
+                frame_send=null;
+            }
+            else{
+                frame_send.s21=result[0].io.s21;
+                frame_send.s22=result[0].io.s22;
+            }
+            res.json(frame_send);
+        }
+    });
+});
+router.post('/bathroom/postdata',async function(req,res){
+    console.log(req.body);
+    let account;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     
+    let devonoff='s'+req.body.io.toString();
+    console.log(devonoff);
+
     let dev = parseInt(req.body.device);
     let io = parseInt(req.body.io);
     let val = parseInt(req.body.value);
@@ -298,30 +395,62 @@ router.post('/bathroom',async function(req,res){
         if(account!==undefined){
             console.log("Start creat")
             let result= await Command.create({
-        
                 ID: account.timestamp,
                 timestamp: new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE }),
                 device:dev,
                 io :io,
                 value: val,
             });
-       
             console.log("End create")
-
+            onoff[devonoff] = val;
+            console.log(onoff[devonoff]);
+            await CommandOnoff.create({
+                ID: account.timestamp,
+                timestamp: new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE }),
+                device:dev,
+                io :onoff,
+            })
         }
     });
-    res.render('guibathroom',{title: 'bath room'});
+    res.json("ok");
 });
 
 /**Toilet */
 router.get('/toilet',function(req,res){
     res.render('guitoilet',{title: 'toilet'});
 });
-router.post('/toilet',async function(req,res){
-    let account;
+router.get('/toilet/getdata',async function(req,res){
 
+    let frame_send={"s23":1,"s27":1};
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    await User.find({ email: decoded.accessToken }, async function(err, result) {
+        assert.equal(null, err);
+        let account = result[0];
+
+        if(account!==undefined){
+            console.log("Start creat")
+            let result= await CommandOnoff.find({ID: account.timestamp}).sort({ _id: -1 }).limit(1);
+            if (!result.length) {
+                console.log("no data");
+                frame_send=null;
+            }
+            else{
+                frame_send.s23=result[0].io.s23;
+                frame_send.s27=result[0].io.s27;
+            }
+            res.json(frame_send);
+        }
+    });
+});
+router.post('/toilet/postdata',async function(req,res){
+    console.log(req.body);
+    let account;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     
+    let devonoff='s'+req.body.io.toString();
+    console.log(devonoff);
+
     let dev = parseInt(req.body.device);
     let io = parseInt(req.body.io);
     let val = parseInt(req.body.value);
@@ -334,19 +463,24 @@ router.post('/toilet',async function(req,res){
         if(account!==undefined){
             console.log("Start creat")
             let result= await Command.create({
-        
                 ID: account.timestamp,
                 timestamp: new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE }),
                 device:dev,
                 io :io,
                 value: val,
             });
-       
             console.log("End create")
-
+            onoff[devonoff] = val;
+            console.log(onoff[devonoff]);
+            await CommandOnoff.create({
+                ID: account.timestamp,
+                timestamp: new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE }),
+                device:dev,
+                io :onoff,
+            })
         }
     });
-    res.render('guitoilet',{title: 'toilet'});
+    res.json("ok");
 });
 
 /* export user/GUI */ 
