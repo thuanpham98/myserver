@@ -7,6 +7,7 @@ html(lang="en")
         //---add icon---///
         link(rel="icon" , type="image/png", href="images/icon.png")
         //--add a css file--//
+        link(rel="stylesheet" ,href="/stylesheets/style.css")
         link(rel="stylesheet" ,href="/stylesheets/styleRowColumn.css")
         link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
         //--add js file---//
@@ -59,9 +60,21 @@ html(lang="en")
         <h2>Two Equal Columns</h2>
 
         <div class="row">
-        <div class="column" style="background-color:#aaa;">
-            <h2>Column 1</h2>
-            <p>Some text..</p>
+            <div class="column" style="background-color:#aaa;">
+                form(action='/user/active', method='get')
+                    br
+                    hr
+                    input(type='submit', value='    Active    ',style="width: auto;background-color: green")
+
+                form(action='/user/update', method='get')
+                    br
+                    hr
+                    input(type='submit', value='    Update    ',style="width: auto;background-color: green")
+
+                form(action='/user/logout', method='get')
+                    br
+                    hr
+                    input(type='submit', value='    Log out    ',style="width: auto;background-color: red")
         </div>
         <div class="column" style="background-color:#bbb;">
             <h2>Column 2</h2>
