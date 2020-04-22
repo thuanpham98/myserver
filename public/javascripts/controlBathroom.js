@@ -4,7 +4,7 @@ var frame_post,frame_get={"s21":1,"s22":1};
 var pre_0,pre_1;
 var a,b;
 async function getData(){
-    let response= await fetch('http://iotmakerserver.herokuapp.com/user/GUI/bathroom/getdata',{
+    let response= await fetch('http://localhost:6969/user/GUI/bathroom/getdata',{
         method: 'get',
         mode: 'cors',
         headers:{
@@ -31,7 +31,7 @@ function load(){
 }
 
 async function postData(){
-    let response = await fetch('http://iotmakerserver.herokuapp.com/user/GUI/bathroom/postdata',{
+    let response = await fetch('http://localhost:6969/user/GUI/bathroom/postdata',{
         method: 'post',
         mode: 'cors', 
         headers:{

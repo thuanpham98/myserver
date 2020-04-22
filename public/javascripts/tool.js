@@ -1,4 +1,4 @@
-////// function of clock /////////////
+/* function of clock */
 "use strict"
 function showTime() {
     var date = new Date();
@@ -27,4 +27,3 @@ function showTime() {
     setTimeout(showTime, 1000);
 
 }
-/////////////////////////////////////////////////////////////////////////////
