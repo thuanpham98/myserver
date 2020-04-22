@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  background-color:lightblue;
+  
 }
 
 /* Create two equal columns that floats next to each other */
@@ -8,7 +8,6 @@
   float: left;
   width: 50%;
   padding: 0px;
-  background-color:lightblue;
   /* Should be removed. Only for demonstration  height: 300px; */
 }
 
