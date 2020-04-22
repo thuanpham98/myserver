@@ -19,8 +19,8 @@ app.use(function (req, res, next) {
 
 /// server my sude
 var server=https.createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
+    key: process.env.KEY,
+    cert: process.env.CERT
 }, app);
 
 /* connect to mongodb server */
