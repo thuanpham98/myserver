@@ -4,7 +4,7 @@ var frame_post,frame_get={"s12":1,"s13":1,"s14":1,"s15":1};
 var pre_0,pre_1,pre_2,pre_3;
 var a,b,c,d;
 async function getData(){
-    let response= await fetch('http://localhost:6969/user/GUI/badroom/getdata',{
+    let response= await fetch('https://localhost:6969/user/GUI/badroom/getdata',{
         method: 'get',
         mode: 'cors',
         headers:{
@@ -36,7 +36,7 @@ function load(){
 }
 
 async function postData(){
-    let response = await fetch('http://localhost:6969/user/GUI/badroom/postdata',{
+    let response = await fetch('https://localhost:6969/user/GUI/badroom/postdata',{
         method: 'post',
         mode: 'cors', 
         headers:{

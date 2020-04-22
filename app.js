@@ -1,11 +1,12 @@
 "use strict"
 /* module we need */
-const http = require('http');
+var https = require('https');
+var fs = require('fs')
 var express = require('express');
 var app = express();
 var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
-var cors =require('cors');
+var cors = require('cors');
 require('dotenv').config();
 
 /** CORS  */
@@ -16,10 +17,11 @@ app.use(function (req, res, next) {
     next();
 });
 
-
-
 /// server my sude
-const server = http.createServer(app);
+var server=https.createServer({
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+}, app);
 
 /* connect to mongodb server */
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
