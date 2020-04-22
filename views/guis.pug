@@ -48,8 +48,8 @@ html(lang="en")
             form(action='/user/GUI/toilet', method='get')
                 button(style="width:60%;background-color:black;color:white;",class="center") 
                     p toilet
+        br
         hr
-
         div(class="center",style="width:100%;color: black;background-color:lightblue;")
             h2(class="center")  Controll PWM VS DAC
             
@@ -78,7 +78,7 @@ html(lang="en")
                 slider.oninput = function() {
                 output.innerHTML = this.value;
                 }
-                
+
         hr
         script(src="/javascripts/control.js")
 
