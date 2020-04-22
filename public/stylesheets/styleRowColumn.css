@@ -7,7 +7,8 @@
 .column {
   float: left;
   width: 50%;
-  padding: 10px;
+  padding: 0px;
+  background-color:lightblue;
   /* Should be removed. Only for demonstration  height: 300px; */
 }
 
