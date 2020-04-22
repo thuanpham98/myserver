@@ -1,7 +1,5 @@
 "use strict"
 /* module we need */
-var https = require('https');
-var fs = require('fs')
 var express = require('express');
 var app = express();
 var cookieParser = require('cookie-parser')
@@ -16,12 +14,6 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-
-/// server my sude
-var server=https.createServer({
-    key: process.env.KEY,
-    cert: process.env.CERT
-}, app);
 
 /* connect to mongodb server */
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
