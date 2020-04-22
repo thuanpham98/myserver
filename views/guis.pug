@@ -48,10 +48,8 @@ html(lang="en")
             form(action='/user/GUI/toilet', method='get')
                 button(style="width:60%;background-color:black;color:white;",class="center") 
                     p toilet
-        br 
-        hr
+    hr
         div(class="center",style="width:100%;color: black;background-color:lightblue;")
-
             h2(class="center")  Controll PWM VS DAC
             
             input(type="hidden",name ="device",value="0",id="dev")
@@ -67,7 +65,6 @@ html(lang="en")
             br
             input(type="radio" id="dac1" name="io" value="26")
             label(for="dac1",id="ld1") DAC Channel 1    : #{dataDAC1}
-            br
         div(class="slidecontainer",style="width:100%;color:black;background-color:lightblue;")
             input(type="range", min="0" ,max="255" ,value='0' ,class="slider" ,id="duty", name="value")
             span(id="display")
@@ -81,7 +78,7 @@ html(lang="en")
                 output.innerHTML = this.value;
                 }
         br
-        hr
+    hr
         script(src="/javascripts/control.js")
 
         form(action='/user', method='get')
