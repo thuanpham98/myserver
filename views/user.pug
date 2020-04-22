@@ -42,9 +42,11 @@ html(lang="en")
             </div>
             <div class="column" style="background-color:black;">
                 form(action='/user/logout', method='get')
+                    br
                     input(type='submit', value='    Log out    ',style="width: auto;background-color: red")
         
                 form(action='/user/delete', method='get')
+                    br
                     input(type='submit', value='    Delete    ',style="width: auto;background-color: red")
             
             </div>
@@ -55,14 +57,13 @@ html(lang="en")
         <div class="row",style="background-color:black;">
             <div class="column" style="background-color:black;">
                 form(action='/user/GUI', method='get')
+                    br
                     input(type='submit', value='    GUI    ',style="width: auto;background-color: white")
-
             </div>
-            br
             <div class="column" style="background-color:black;">
                 form(action='/user/display', method='get')
+                    br
                     input(type='submit', value='    Display    ',style="width: auto;background-color: white")
-            
             </div>
         </div>
 
