@@ -29,9 +29,8 @@ html(lang="en")
         
         <h2>Two Equal Columns</h2>
         //--Row 1
-        <div class="row">
-            <div class="column" style="background-color:white;">
-                <h2>Active your account or upadte password,ID </h2>
+        <div class="row",style="background-color:black;">
+            <div class="column" style="background-color:black;">
                 form(action='/user/active', method='get')
                     br
                     input(type='submit', value='    Active    ',style="width: auto;background-color: green")
@@ -41,14 +40,11 @@ html(lang="en")
                     input(type='submit', value='    Update    ',style="width: auto;background-color: green")
 
             </div>
-            <div class="column" style="background-color:white;">
-                <h2>Log out or Delete your account</h2>
+            <div class="column" style="background-color:black;">
                 form(action='/user/logout', method='get')
-                    br
-                input(type='submit', value='    Log out    ',style="width: auto;background-color: red")
+                    input(type='submit', value='    Log out    ',style="width: auto;background-color: red")
         
                 form(action='/user/delete', method='get')
-                    br
                     input(type='submit', value='    Delete    ',style="width: auto;background-color: red")
             
             </div>
@@ -56,18 +52,15 @@ html(lang="en")
         br
         hr
         //-- Row 2
-        <div class="row">
-            <div class="column" style="background-color:white;">
-                <h2>Controll devie in your home</h2>
+        <div class="row",style="background-color:black;">
+            <div class="column" style="background-color:black;">
                 form(action='/user/GUI', method='get')
-                    br
                     input(type='submit', value='    GUI    ',style="width: auto;background-color: white")
 
             </div>
-            <div class="column" style="background-color:white;">
-                <h2>See data from sensor</h2>
+            br
+            <div class="column" style="background-color:black;">
                 form(action='/user/display', method='get')
-                    br
                     input(type='submit', value='    Display    ',style="width: auto;background-color: white")
             
             </div>
