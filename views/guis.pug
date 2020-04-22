@@ -27,8 +27,8 @@ html(lang="en")
         .btn-group button:hover {
         background-color: #3e8e41;
         }
-    body(style="background-color:pink;")
-        div(class="btn-group", style="width:100%;background-color:black;")
+    body(style="background-color:lightblue;")
+        div(class="btn-group", style="width:100%;background-color:lightblue;")
             form(action='/user/GUI/livingroom', method='get')
                 button(style="width:60%",class="center") 
                     p living room
@@ -50,7 +50,7 @@ html(lang="en")
                     p toilet
         br 
         br
-        div(class="center",style="width:100%;color: white;background-color:black;")
+        div(class="center",style="width:100%;color: white;background-color:lightblue;")
 
             h2(class="center")  Controll PWM VS DAC
             
@@ -69,7 +69,7 @@ html(lang="en")
             label(for="dac1",id="ld1") DAC Channel 1    : #{dataDAC1}
             br
         br
-        div(class="slidecontainer",style="width:100%;color: white;background-color:black;")
+        div(class="slidecontainer",style="width:100%;color: white;background-color:lightblue;")
             input(type="range", min="0" ,max="255" ,value='0' ,class="slider" ,id="duty", name="value")
             span(id="display")
             
