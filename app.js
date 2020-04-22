@@ -74,7 +74,7 @@ app.use(function (req, res, next) {
 });
 
 /* server listen */
-server.listen(process.env.PORT, function () {
+app.listen(process.env.PORT, function () {
     console.log("Server is listening");
 });
 
