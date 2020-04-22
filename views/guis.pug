@@ -28,7 +28,7 @@ html(lang="en")
         background-color: #3e8e41;
         }
     body(style="background-color:lightblue;")
-        div(class="btn-group", style="width:100%;background-color:lightblue;")
+        div(class="btn-group", style="width:auto;background-color:lightblue;")
             form(action='/user/GUI/livingroom', method='get')
                 button(style="width:60%;background-color:black;color:white;",class="center") 
                     p living room
@@ -50,7 +50,7 @@ html(lang="en")
                     p toilet
         br
         hr
-        div(class="center",style="width:100%;color: black;background-color:lightblue;")
+        div(class="center",style="width:auto;color: black;background-color:lightblue;")
             h2(class="center")  Controll PWM VS DAC
             
             input(type="hidden",name ="device",value="0",id="dev")
@@ -66,7 +66,7 @@ html(lang="en")
             br
             input(type="radio" id="dac1" name="io" value="26")
             label(for="dac1",id="ld1") DAC Channel 1    : #{dataDAC1}
-        div(class="slidecontainer",style="width:100%;color:black;background-color:lightblue;")
+        div(class="slidecontainer",style="width:auto;color:black;background-color:lightblue;")
             input(type="range", min="0" ,max="255" ,value='0' ,class="slider" ,id="duty", name="value")
             span(id="display")
             
