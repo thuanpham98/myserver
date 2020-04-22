@@ -15,7 +15,7 @@ var valCurrentdac1=0;
 async function postData(){
     
 
-    let response = await fetch('https://localhost:6969/user/GUI/postdata',{
+    let response = await fetch('https://iotmakerserver.herokuapp.com/user/GUI/postdata',{
         method: 'post',
         mode: 'cors', 
         headers:{
