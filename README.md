@@ -14,7 +14,7 @@ this is my server on ubuntu 18.04, I try to make a Template flowing a MVC struct
  create file .env 
 
  ## 4 : 
- coppy content from env.document.txt to .env
+ coppy content from env.document.txt to .env (change some information of you into it)
  
  ## 5: 
  ### for development 
