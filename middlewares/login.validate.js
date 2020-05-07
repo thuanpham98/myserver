@@ -21,7 +21,7 @@ module.exports.checkFilled = function(req, res, next) {
         error.push('pass is not fill');
     }
     if (error.length) {
-        res.render('login', { title: 'Login Page', status: error });
+        res.json({redirected:0,error: error});
         return;
     }
     next();
