@@ -28,12 +28,13 @@ async function postData(){
         body:JSON.stringify(frame)
     });
     let datum= await response;
+    console.log(datum);
     if(datum.redirected)
     {
         window.location.replace( "/login");
     }
     else{
-        window.location.replace( "/register");
-        document.getElementById("status").value="error pass or email";
+        console.log("error");
+        document.getElementById("status").innerHTML="email or pass is incorrect";
     }
 }
