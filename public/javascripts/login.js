@@ -14,7 +14,7 @@ async function postData(){
     email=email.toString();
     pass=pass.toString();
     frame={email : email , pass : pass};
-    
+
     let response = await fetch('https://iot-server-365.herokuapp.com/login',{
         method: 'post',
         mode: 'cors', 
@@ -32,7 +32,8 @@ async function postData(){
         window.location.replace( "/user");
     }
     else{
-        window.location.replace( "/login");
-        document.getElementById("status").value="error pass or email";
+        //window.location.replace( "/login");
+        console.log("error");
+        
     }
 }
