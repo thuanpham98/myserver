@@ -34,6 +34,7 @@ async function postData(){
     else{
         //window.location.replace( "/login");
         console.log("error");
+        document.getElementById("status")="ok";
         
     }
 }
