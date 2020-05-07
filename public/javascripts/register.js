@@ -1,6 +1,6 @@
 "use strict"
 
-var frame,email,pass ;
+var frame,email,pass,conf_pass ;
 
 document.getElementById("regis").addEventListener("click", function(){
     console.log("button");
@@ -11,7 +11,8 @@ async function postData(){
     email =document.getElementById("a_email").value;
     pass =document.getElementById("a_pass").value;
     conf_pass =document.getElementById("a_confirm_pass").value;
-    
+
+    console.log(conf_pass);
     email=email.toString();
     pass=pass.toString();
     conf_pass= conf_pass.toString();
