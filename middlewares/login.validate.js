@@ -13,6 +13,7 @@ var bcrypt = require('bcrypt');
 
 module.exports.checkFilled = function(req, res, next) {
     let error = [];
+    console.log(req.body);
     if (!req.body.email) {
         error.push('email is not fill');
     }

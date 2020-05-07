@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0,user-scalable=yes")
+        title  #{title}
+        //---add icon---///
+        link(rel="icon" , type="image/png", href="images/icon.png")
+        //--add a css file--//
+        link(rel="stylesheet" ,href="/stylesheets/style.css")
+        link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        //--add js file---//
+
+    body(style="background-color:lightblue;")
+        h2(class="center") #{status}
+        div
+            h1(class="center") Regis
+            form(action='/register', method='post')
+                input(type="email" name="a_email" placeholder="Your email..")
+                input(type="password" name="a_pass" placeholder="Your password..")
+                input(type='submit', value='Regis')
+        br
+        form(action='/login', method='get')
+            input(type='submit', value='    Login    ',style="width: auto")
+
+        form(action='/', method='get')
+            br
+            hr
+            input(type='submit', value='    Home    ',style="width: auto;background-color: red")
+
