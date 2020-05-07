@@ -26,7 +26,7 @@ async function postData(){
     });
     
     let datum= await response;
-    console.log(datum.sta);
+    
     if(datum.redirected)
     {
         window.location.replace( "/user");
@@ -34,7 +34,7 @@ async function postData(){
     else{
         //window.location.replace( "/login");
         console.log("error");
-        document.getElementById("status").innerHTML=datum.sta.toString();
+        document.getElementById("status").innerHTML="email or pass is incorrect";
         
     }
 }
