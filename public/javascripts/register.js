@@ -35,6 +35,6 @@ async function postData(){
     }
     else{
         console.log("error");
-        document.getElementById("status").innerHTML="email or pass is incorrect";
+        document.getElementById("status").innerHTML="Account is exist or confim your password is incorrect";
     }
 }
