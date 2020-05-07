@@ -6,7 +6,7 @@ block content
             .col-lg-5
                 .card.shadow-lg.border-0.rounded-lg.mt-5
                     .card-header
-                        h3.text-center.font-weight-light.my-4 Login
+                        h3.text-center.font-weight-light.my-4 Veryfi special number
                         h6(id="status",style="color: red;")
                     .card-body
                         form
@@ -14,14 +14,12 @@ block content
                                 label.small.mb-1(for='email') Email
                                 input#email.form-control.py-4(type='email', placeholder='Enter email address')
                             .form-group
-                                label.small.mb-1(for='pass') Password
-                                input#pass.form-control.py-4(type='password', placeholder='Enter password')
+                                label.small.mb-1(for='number') Special number
+                                input#number.form-control.py-4(type='password', placeholder='Enter special number')
                             .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
-                                a.btn.btn-primary(type='submit',id="login",name="login") Login
+                                a.btn.btn-primary(type='submit',id="verify",name="verify") Verify
 
-                        script(src="/javascripts/login.js")
+                        script(src="/javascripts/verify.js")
                     .card-footer.text-center
                         .small
-                            a(href='/register') Need an account? Sign up!
-                        .small
-                            a(href='/forgetpass') Forget your password
+                            a(href='/forgetpass') Don't receive number, try again

@@ -44,9 +44,9 @@ var storage = require('./routers/storages');
 var login = require('./routers/logins');
 var register = require('./routers/registers');
 var test = require('./routers/test');
-var display = require('./routers/displays')
-var gui = require('./routers/guis')
-
+var display = require('./routers/displays');
+var gui = require('./routers/guis');
+var forgetpass =require("./routers/forgetpass");
 /* set view engine */
 app.set('view engine', 'pug');
 app.set('views', './views'); /*!> view folder if equaltion with app.js and public folder */
@@ -57,6 +57,7 @@ app.use('/', index);
 app.use('/storage', storage);
 app.use('/login', login);
 app.use('/register', register);
+app.use('/forgetpass',forgetpass);
 app.use('/test', test);
 app.use('/user', Auth.requireAuth, user);
 app.use('/user/display', display);
