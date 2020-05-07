@@ -30,7 +30,7 @@ async function postData(){
     let datum= await response;
     if(datum.redirected)
     {
-        window.location.replace( "https://iot-server-365.herokuapp.com/login");
+        window.location.replace( "/login");
     }
     else{
         window.location.replace( "/register");
