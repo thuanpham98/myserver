@@ -2,7 +2,7 @@
 
 var frame,email,pass ;
 
-document.getElementById("login").addEventListener("click", function(){
+document.getElementById("regis").addEventListener("click", function(){
     console.log("button");
     postData();
 });
