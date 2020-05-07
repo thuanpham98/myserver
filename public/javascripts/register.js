@@ -18,7 +18,7 @@ async function postData(){
     conf_pass= conf_pass.toString();
     
     frame={a_email : email , a_pass : pass, a_conf_pass:conf_pass};
-    let response = await fetch('http://iot-server-365.herokuapp.com/register',{
+    let response = await fetch('https://iot-server-365.herokuapp.com/register',{
         method: 'post',
         mode: 'cors', 
         headers:{
@@ -30,7 +30,7 @@ async function postData(){
     let datum= await response;
     if(datum.redirected)
     {
-        window.location.replace( "/login");
+        window.location.replace( "https://iot-server-365.herokuapp.com/login");
     }
     else{
         window.location.replace( "/register");
