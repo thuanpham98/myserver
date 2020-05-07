@@ -15,7 +15,7 @@ async function postData(){
     pass=pass.toString();
     
     frame={email : email , pass : pass};
-    let response = await fetch('https://iot-server-365.herokuapp.com/login',{
+    let response = await fetch(process.env.SERVER_URL+'/login',{
         method: 'post',
         mode: 'cors', 
         headers:{
@@ -24,7 +24,9 @@ async function postData(){
         },
         body:JSON.stringify(frame)
     });
+    
     let datum= await response;
+    console.log(datum);
     if(datum.redirected)
     {
         window.location.replace( "/user");
