@@ -20,6 +20,9 @@ module.exports.checkFilled = function(req, res, next) {
     if (!req.body.a_pass) {
         error.push('pass is not fill');
     }
+    if(req.body.a_pass!==req.body.a_confirm_pass){
+        error.push('pass is not correct ');
+    }
     if (error.length) {
         res.render('register', { title: 'Register Page', status: error });
         return;

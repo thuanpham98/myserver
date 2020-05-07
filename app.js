@@ -5,7 +5,7 @@ var app = express();
 var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
 var cors = require('cors');
-//require('dotenv').config();
+require('dotenv').config();
 
 /** CORS  */
 app.use(cors());
