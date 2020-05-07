@@ -13,9 +13,9 @@ async function postData(){
     
     email=email.toString();
     pass=pass.toString();
-    console.log(process.env.SERVER_URL.toString());
     frame={email : email , pass : pass};
-    let response = await fetch(process.env.SERVER_URL+'/login',{
+    
+    let response = await fetch('https://iot-server-365.herokuapp.com/login',{
         method: 'post',
         mode: 'cors', 
         headers:{
