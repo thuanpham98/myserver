@@ -13,7 +13,7 @@ async function postData(){
     
     email=email.toString();
     pass=pass.toString();
-    
+    console.log(process.env.SERVER_URL);
     frame={email : email , pass : pass};
     let response = await fetch(process.env.SERVER_URL+'/login',{
         method: 'post',
