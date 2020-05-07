@@ -17,7 +17,7 @@ async function postData(){
     conf_pass= conf_pass.toString();
     
     frame={a_email : email , a_pass : pass, a_conf_pass:conf_pass};
-    let response = await fetch('http://192.168.1.16:6969/register',{
+    let response = await fetch('http://iotmakerserver.herokuapp.com/register',{
         method: 'post',
         mode: 'cors', 
         headers:{

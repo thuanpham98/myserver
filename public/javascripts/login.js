@@ -15,7 +15,7 @@ async function postData(){
     pass=pass.toString();
     
     frame={email : email , pass : pass};
-    let response = await fetch('http://192.168.1.16:6969/login',{
+    let response = await fetch('http://iotmakerserver.herokuapp.com/login',{
         method: 'post',
         mode: 'cors', 
         headers:{
