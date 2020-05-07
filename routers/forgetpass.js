@@ -17,7 +17,7 @@ router.post('/', function(req,res){
 router.get('/verify', function(req,res){
     res.render('verify', {title: 'Verify Page'});
 });
-router.post('/', function(req,res){
+router.post('/verify', function(req,res){
     
 });
 /* export login */
