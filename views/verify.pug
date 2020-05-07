@@ -9,13 +9,7 @@ block meta
     meta(name='description', content='')
     meta(name='author', content='')
     meta(http-equiv="Content-Security-Policy" content="upgrade-insecure-requests")
-block scripts
-    //- Load jQuery
-    script(src='https://code.jquery.com/jquery-3.4.1.min.js', crossorigin='anonymous')
-    //- Load Bootstrap JS Bundle
-    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js', crossorigin='anonymous')
-    //- Load Global Template Scripts
-    script(src='/javascripts/scripts.js')
+
 
 block content
     .container
@@ -40,3 +34,10 @@ block content
                     .card-footer.text-center
                         .small
                             a(href='/forgetpass') Don't receive number, try again
+block scripts
+    //- Load jQuery
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', crossorigin='anonymous')
+    //- Load Bootstrap JS Bundle
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js', crossorigin='anonymous')
+    //- Load Global Template Scripts
+    script(src='/javascripts/scripts.js')
