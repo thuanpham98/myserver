@@ -29,7 +29,7 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
             a.nav-link.collapsed(href='/user/gui', data-toggle='collapse' data-target='#collapsePages' aria-expanded='false' aria-controls='collapsePages')
                 .sb-nav-link-icon
                     i.fas.fa-book-open
-                | Room
+                | Pages
                 .sb-sidenav-collapse-arrow
                     i.fas.fa-angle-down
             #collapsePages.collapse(aria-labelledby='headingTwo', data-parent='#sidenavAccordion')
@@ -43,10 +43,17 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                             a.nav-link(href='/login') Login
                             a.nav-link(href='/register') Register
                             a.nav-link(href='/forgetpass') Forgot Password
+                    a.nav-link.collapsed(href='#', data-toggle='collapse' data-target='#pagesCollapseError' aria-expanded='false' aria-controls='pagesCollapseError')
+                        | Rooms
+                        .sb-sidenav-collapse-arrow
+                            i.fas.fa-angle-down
+                    #pagesCollapseError.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordionPages')
+                        nav.sb-sidenav-menu-nested.nav
+                            a.nav-link(href='/user/gui/livingroom') Room 1 
             .sb-sidenav-menu-heading
                 | Addons
             
-            a.nav-link(href='/display')
+            a.nav-link(href='/user/display')
                 .sb-nav-link-icon
                     i.fas.fa-chart-area
                 | Charts
@@ -59,4 +66,4 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
     .sb-sidenav-footer
         
         .small Logged in as:
-        | User GUI
+        | Start Bootstrap
