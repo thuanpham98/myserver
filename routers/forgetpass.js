@@ -21,7 +21,7 @@ router.post('/', function(req,res){
     var special_number = Math.floor(Math.random() * (Date.now()+1)); 
 
     /** save number to check real account */
-    await User.find({ email: req.body.email }, function(err, doc) {
+    User.find({ email: req.body.email }, function(err, doc) {
         assert.equal(null, err);
 
         if (!doc.length) {
@@ -53,7 +53,7 @@ router.get('/verify', function(req,res){
 router.post('/verify', function(req,res){
     
     /** save number to check real account */
-    await User.find({ email: req.body.email }, async function(err, doc) {
+    User.find({ email: req.body.email }, async function(err, doc) {
         assert.equal(null, err);
 
         if (!doc.length) {
