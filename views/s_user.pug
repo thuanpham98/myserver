@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0,user-scalable=yes")
+        title  #{title}
+        //---add icon---///
+        link(rel="icon" , type="image/png", href="images/icon.png")
+        //--add a css file--//
+        link(rel="stylesheet" ,href="/stylesheets/style.css")
+        link(rel="stylesheet" ,href="/stylesheets/styleRowColumn.css")
+        link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        //--add js file---//
+        script(type ="text/javascript",src="/javascripts/tool.js").
+            showTime()
+    //---------------------------------------------//
+    body(onload="showTime()",style="background-color:lightblue;")
+        //--clock---///
+        div(id ="Clock", class= "clock")
+        hr
+        //----content--///
+        h2(style="text-align :center") #{status}
+
+        //--Row 1
+        <div class="row">
+            <div class="column" style="background-color:white;">
+                form(action='/user/active', method='get')
+                    input(type='submit', value='Active',style="width: auto;background-color: green")
+
+                form(action='/user/update', method='get')
+                    br
+                    input(type='submit', value='Update',style="width: auto;background-color: green")
+
+            </div>
+            <div class="column" style="background-color:white;">
+                form(action='/user/logout', method='get')
+                    input(type='submit', value='Log out',style="width: auto;background-color: red")
+        
+                form(action='/user/delete', method='get')
+                    br
+                    input(type='submit', value='Delete',style="width: auto;background-color: red")
+            
+            </div>
+        </div>
+        br
+        hr
+        //-- Row 2
+        <div class="row">
+            <div class="column" style="background-color:white;">
+                form(action='/user/GUI', method='get')
+                    input(type='submit', value='GUI',style="width: auto;background-color: black;")
+            </div>
+            <div class="column" style="background-color:white;">
+                form(action='/user/display', method='get')
+                    input(type='submit', value='Display',style="width: auto;background-color: black;")
+            </div>
+        </div>
+
+            
+        

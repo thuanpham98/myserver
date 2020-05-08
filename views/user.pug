@@ -1,60 +1,85 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0,user-scalable=yes")
-        title  #{title}
-        //---add icon---///
-        link(rel="icon" , type="image/png", href="images/icon.png")
-        //--add a css file--//
-        link(rel="stylesheet" ,href="/stylesheets/style.css")
-        link(rel="stylesheet" ,href="/stylesheets/styleRowColumn.css")
-        link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
-        //--add js file---//
-        script(type ="text/javascript",src="/javascripts/tool.js").
-            showTime()
-    //---------------------------------------------//
-    body(onload="showTime()",style="background-color:lightblue;")
-        //--clock---///
-        div(id ="Clock", class= "clock")
-        hr
-        //----content--///
-        h2(style="text-align :center") #{status}
+extends layouts/dashboard.pug
 
-        //--Row 1
-        <div class="row">
-            <div class="column" style="background-color:white;">
-                form(action='/user/active', method='get')
-                    input(type='submit', value='Active',style="width: auto;background-color: green")
+block config
+    - var bodyClass = 'sb-nav-fixed'
+    - var pageTitle = 'Dashboard';
+    - var index = true;
+    - var sidenavStyle = 'sb-sidenav-dark'
+    
+append css
+    link(href='https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css', rel='stylesheet', crossorigin='anonymous')
 
-                form(action='/user/update', method='get')
-                    br
-                    input(type='submit', value='Update',style="width: auto;background-color: green")
+block content
+    .container-fluid
+        include includes/page-header.pug
+        .row
+            .col-xl-3.col-md-6
+                .card.bg-primary.text-white.mb-4
+                    .card-body
+                        | Message Card
+                    .card-footer.d-flex.align-items-center.justify-content-between
+                        a(href='#').small.text-white.stretched-link
+                            | View Details
+                        .small.text-white
+                            i.fas.fa-angle-right
+            .col-xl-3.col-md-6
+                .card.bg-warning.text-white.mb-4
+                    .card-body
+                        | Clone Data Card
+                    .card-footer.d-flex.align-items-center.justify-content-between
+                        a(href='#').small.text-white.stretched-link
+                            | View Details
+                        .small.text-white
+                            i.fas.fa-angle-right
+            .col-xl-3.col-md-6
+                .card.bg-success.text-white.mb-4
+                    .card-body
+                        | Update Card
+                    .card-footer.d-flex.align-items-center.justify-content-between
+                        a(href='#').small.text-white.stretched-link
+                            | View Details
+                        .small.text-white
+                            i.fas.fa-angle-right
+            .col-xl-3.col-md-6
+                .card.bg-danger.text-white.mb-4
+                    .card-body
+                        | Delete Card
+                    .card-footer.d-flex.align-items-center.justify-content-between
+                        a(href='#').small.text-white.stretched-link
+                            | View Details
+                        .small.text-white
+                            i.fas.fa-angle-right
+        .row
 
-            </div>
-            <div class="column" style="background-color:white;">
-                form(action='/user/logout', method='get')
-                    input(type='submit', value='Log out',style="width: auto;background-color: red")
+            .col-xl-6
+                .card.mb-4
+                    .card-header
+                        i.fas.fa-chart-area.mr-1
+                        | Area Chart Example
+                    .card-body
+                        canvas#myAreaChart(width='100%', height='40')
+                    
+            .col-xl-6
+                .card.mb-4
+                    .card-header
+                        i.fas.fa-chart-bar.mr-1
+                        | Bar Chart Example
+                    .card-body
+                        canvas#myBarChart(width='100%', height='40')
         
-                form(action='/user/delete', method='get')
-                    br
-                    input(type='submit', value='Delete',style="width: auto;background-color: red")
-            
-            </div>
-        </div>
-        br
-        hr
-        //-- Row 2
-        <div class="row">
-            <div class="column" style="background-color:white;">
-                form(action='/user/GUI', method='get')
-                    input(type='submit', value='GUI',style="width: auto;background-color: black;")
-            </div>
-            <div class="column" style="background-color:white;">
-                form(action='/user/display', method='get')
-                    input(type='submit', value='Display',style="width: auto;background-color: black;")
-            </div>
-        </div>
+        .card.mb-4
+            .card-header
+                i.fas.fa-table.mr-1
+                | DataTable Example
+            .card-body
+                include includes/datatable.pug
 
-            
-        
+
+append scripts
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js', crossorigin='anonymous')
+    script(src='assets/demo/chart-area-demo.js')
+    script(src='assets/demo/chart-bar-demo.js')
+    
+    script(src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js', crossorigin='anonymous')
+    script(src='https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js', crossorigin='anonymous')
+    script(src='assets/demo/datatables-demo.js')
