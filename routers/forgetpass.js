@@ -61,24 +61,26 @@ router.post('/verify', function(req,res){
     
     /** save number to check real account */
     User.find({ email: req.body.email }, async function(err, doc) {
-
-        if (!doc.length) {
+        let account=doc;
+        if (!account.length) {
             res.render('verify', {title: 'Verify Page'});
             return;
         }
         else {
-            if(req.body.number==doc[0].status){
+            if(req.body.number==account[0].status){
                 temp_pass=(Math.floor(Math.random() * (Date.now()+1)) + 248*(Date.now()+1)).toString(); 
                 console.log("start hash");
-                let hash = await bcrypt.hash(temp_pass, 10);
+                let hash_pass = await bcrypt.hash(temp_pass, 10);
                 console.log("end hash");
+                doc[0].password=hash_pass;
+                doc[0].save();
 
                 /** send email verify */
                 console.log("start send mail");
                 Email.form.to = req.body.email;
                 Email.form.text = "your new pass: " + temp_pass;
                 Email.mailServer.sendMail(Email.form, function(err, info) {
-                    assert.equal(null, err);
+                    //assert.equal(null, err);
                 }); /*!> follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799 */
                 console.log("done send mail");
 

@@ -29,7 +29,7 @@ async function postData(){
     console.log(datum);
     if(datum.redirected)
     {
-        window.location.replace( "/login");
+        window.location.replace(datum.url);
     }
     else{
         console.log("error");
