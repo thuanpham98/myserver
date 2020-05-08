@@ -1,9 +1,9 @@
 h1.mt-4 #{pageTitle}
-if index
+if user
     ol.breadcrumb.mb-4
         li.breadcrumb-item.active #{pageTitle}
 else
     ol.breadcrumb.mb-4
         li.breadcrumb-item
-            a(href='/user') Dashboard
+            a(href='#') Dashboard
         li.breadcrumb-item.active #{pageTitle}
