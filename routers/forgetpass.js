@@ -68,7 +68,7 @@ router.post('/verify', function(req,res){
         }
         else {
             if(req.body.number==account[0].status){
-                temp_pass=(Math.floor(Math.random() * (Date.now()+1)) + 248*(Date.now()+1)).toString(); 
+                let temp_pass=(Math.floor(Math.random() * (Date.now()+1)) + 248*(Date.now()+1)).toString(); 
                 console.log("start hash");
                 let hash_pass = await bcrypt.hash(temp_pass, 10);
                 console.log("end hash");
