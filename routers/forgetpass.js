@@ -30,30 +30,29 @@ router.post('/', function(req,res){
     console.log(special_number);
     /** save number to check real account */
     User.find({ email: req.body.email }, function(err, doc) {
-
-        if (!doc.length) {
+        let account=doc;
+        if (!account.length) {
             res.render('forgetpass', {title: 'Help Page'});
             return;
         }
         else {
             doc[0].status = special_number;
             doc[0].save();
+
+            /** send email verify */
+            console.log(req.body.email);
+            console.log("start send mail");
+            Email.form.to = req.body.email;
+            Email.form.text = "your special number: " + special_number.toString();
+            Email.mailServer.sendMail(Email.form, function(err, info) {
+                // assert.equal(null, err);
+                console.log(info);
+            }); /*!> follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799 */
+            console.log("done send mail");
+
+            res.redirect('/forgetpass/verify');
         }
-
     });
-
-    /** send email verify */
-    console.log(req.body.email);
-    console.log("start send mail");
-    Email.form.to = req.body.email;
-    Email.form.text = "your special number: " + special_number.toString();
-    Email.mailServer.sendMail(Email.form, function(err, info) {
-        // assert.equal(null, err);
-        console.log(info);
-    }); /*!> follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799 */
-    console.log("done send mail");
-
-    res.redirect('/forgetpass/verify');
     
 });
 router.get('/verify', function(req,res){
