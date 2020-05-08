@@ -30,7 +30,6 @@ router.post('/', function(req,res){
 
     /** save number to check real account */
     User.find({ email: req.body.email }, function(err, doc) {
-        assert.equal(null, err);
 
         if (!doc.length) {
             res.render('forgetpass', {title: 'Help Page'});
@@ -62,7 +61,6 @@ router.post('/verify', function(req,res){
     
     /** save number to check real account */
     User.find({ email: req.body.email }, async function(err, doc) {
-        assert.equal(null, err);
 
         if (!doc.length) {
             res.render('verify', {title: 'Verify Page'});
