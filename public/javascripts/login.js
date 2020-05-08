@@ -2,10 +2,6 @@
 
 var frame,email,pass ;
 
-document.getElementById("login").addEventListener("click", function(){
-    console.log("button");
-    postData();
-});
 async function postData(){
 
     email =document.getElementById("email").value;
@@ -38,3 +34,8 @@ async function postData(){
         
     }
 }
+
+document.getElementById("login").addEventListener("click", function(){
+    console.log("button");
+    postData();
+});
