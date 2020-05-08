@@ -27,7 +27,7 @@ router.get('/', function(req,res){
 router.post('/', function(req,res){
 
     var special_number = Math.floor(Math.random() * (Date.now()+1)); 
-
+    console.log(special_number);
     /** save number to check real account */
     User.find({ email: req.body.email }, function(err, doc) {
 
