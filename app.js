@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
 var cors = require('cors');
 //require('dotenv').config();
+var bodyParser = require('body-parser');
 
 /** CORS  */
 app.use(cors());
@@ -36,6 +37,8 @@ app.use(cookieParser());
 /* config method parse with json and url */
 app.use(express.json()); /*!> for parsing application/json */
 app.use(express.urlencoded({ extended: true })); /*!> for parsing application/x-www-form-urlencoded */
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 /* config direction of router */
 var index = require('./routers/indexs');
@@ -64,15 +67,15 @@ app.use('/user/display', display);
 app.use('/user/gui', gui);
 
 /** redict https and http because android >=8 use https  */
-app.use(function (req, res, next) {
-    if (!req.secure) {
-        // request was via https, so do no special handling
-        next();
-    } else {
-        // request was via http, so redirect to https
-        res.redirect('http://' + req.headers.host + req.url);
-    }
-});
+// app.use(function (req, res, next) {
+//     if (!req.secure) {
+//         // request was via https, so do no special handling
+//         next();
+//     } else {
+//         // request was via http, so redirect to https
+//         res.redirect('http://' + req.headers.host + req.url);
+//     }
+// });
 
 /* server listen */
 app.listen(process.env.PORT, function () {
