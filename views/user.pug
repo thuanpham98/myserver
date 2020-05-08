@@ -11,7 +11,7 @@ append css
 
 block content
     .container-fluid
-        include includes/page-header.pug
+        include pages/includes/page-header.pug
         .row
             .col-xl-3.col-md-6
                 .card.bg-primary.text-white.mb-4
@@ -72,7 +72,7 @@ block content
                 i.fas.fa-table.mr-1
                 | DataTable Example
             .card-body
-                include includes/datatable.pug
+                include pages/includes/datatable.pug
 
 
 append scripts
@@ -80,6 +80,6 @@ append scripts
     script(src='/javascripts/chart-area-demo.js')
     script(src='/javascripts/chart-bar-demo.js')
     
-    //- script(src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js', crossorigin='anonymous')
-    //- script(src='https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js', crossorigin='anonymous')
-    //- script(src='/javascripts/datatables-demo.js')
+    script(src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js', crossorigin='anonymous')
+    script(src='https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js', crossorigin='anonymous')
+    script(src='/javascripts/datatables-demo.js')
