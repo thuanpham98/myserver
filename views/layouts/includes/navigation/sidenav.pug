@@ -7,7 +7,7 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
             .sb-sidenav-menu-heading
                 | Core
         
-            a.nav-link(href='/user')
+            a.nav-link(href='#')
                 .sb-nav-link-icon
                     i.fas.fa-tachometer-alt
                 | Dashboard
@@ -23,10 +23,10 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                     i.fas.fa-angle-down
             #collapseLayouts.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordion')
                 nav.sb-sidenav-menu-nested.nav
-                    a.nav-link(href='layout-static.html') Static Navigation
-                    a.nav-link(href='layout-sidenav-light.html') Light Sidenav
+                    a.nav-link(href='#') Static Navigation
+                    a.nav-link(href='#') Light Sidenav
             
-            a.nav-link.collapsed(href='/user/gui', data-toggle='collapse' data-target='#collapsePages' aria-expanded='false' aria-controls='collapsePages')
+            a.nav-link.collapsed(href='#', data-toggle='collapse' data-target='#collapsePages' aria-expanded='false' aria-controls='collapsePages')
                 .sb-nav-link-icon
                     i.fas.fa-book-open
                 | Pages
@@ -40,28 +40,28 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                             i.fas.fa-angle-down
                     #pagesCollapseAuth.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordionPages')
                         nav.sb-sidenav-menu-nested.nav
-                            a.nav-link(href='/login') Login
-                            a.nav-link(href='/register') Register
-                            a.nav-link(href='/forgetpass') Forgot Password
+                            a.nav-link(href='#') Login
+                            a.nav-link(href='#') Register
+                            a.nav-link(href='#') Forgot Password
                     a.nav-link.collapsed(href='#', data-toggle='collapse' data-target='#pagesCollapseError' aria-expanded='false' aria-controls='pagesCollapseError')
                         | Rooms
                         .sb-sidenav-collapse-arrow
                             i.fas.fa-angle-down
                     #pagesCollapseError.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordionPages')
                         nav.sb-sidenav-menu-nested.nav
-                            a.nav-link(href='/user/gui/livingroom') Room 1 
+                            a.nav-link(href='#') Room 1 
             .sb-sidenav-menu-heading
                 | Addons
             
-            a.nav-link(href='/user/display')
+            a.nav-link(href='#')
                 .sb-nav-link-icon
                     i.fas.fa-chart-area
                 | Charts
                 
-            //- a.nav-link(href='tables.html')
-            //-     .sb-nav-link-icon
-            //-         i.fas.fa-table
-            //-     | Tables
+            a.nav-link(href='#')
+                .sb-nav-link-icon
+                    i.fas.fa-table
+                | Tables
                         
     .sb-sidenav-footer
         
