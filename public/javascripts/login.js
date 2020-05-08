@@ -25,7 +25,7 @@ async function postData(){
     
     if(datum.redirected)
     {
-        window.location.replace( "/user");
+        window.location.replace(datum.url);
     }
     else{
         //window.location.replace( "/login");
