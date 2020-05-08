@@ -44,6 +44,7 @@ router.post('/', function(req,res){
             console.log("start send mail");
             Email.form.to = req.body.email.toString();
             Email.form.text = "your special number: " + special_number.toString();
+            Email.form.subject="Veryfi Email";
             Email.mailServer.sendMail(Email.form, function(err, info) {
                 // assert.equal(null, err);
             }); /*!> follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799 */
@@ -73,12 +74,14 @@ router.post('/verify', function(req,res){
                 let hash_pass = await bcrypt.hash(temp_pass, 10);
                 console.log("end hash");
                 doc[0].password=hash_pass;
+                doc[0].status=0;
                 doc[0].save();
 
                 /** send email verify */
                 console.log("start send mail");
                 Email.form.to = req.body.email;
                 Email.form.text = "your new pass: " + temp_pass;
+                Email.form.subject="Veryfi Number";
                 Email.mailServer.sendMail(Email.form, function(err, info) {
                     //assert.equal(null, err);
                 }); /*!> follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799 */
