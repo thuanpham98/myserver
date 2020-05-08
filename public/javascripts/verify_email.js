@@ -10,7 +10,9 @@ async function postData(){
 
     email =document.getElementById("email").value;
     email=email.toString();
- 
+
+    console.log(email);
+
     frame={email : email};
     let response = await fetch('https://iot-server-365.herokuapp.com/forgetpass',{
         method: 'post',
