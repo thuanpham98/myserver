@@ -1,6 +1,6 @@
 "use strict"
 
-var frame,email,number;
+var frame,email;
 
 document.getElementById("verify").addEventListener("click", function(){
     console.log("button");
@@ -9,13 +9,10 @@ document.getElementById("verify").addEventListener("click", function(){
 async function postData(){
 
     email =document.getElementById("email").value;
-    number =document.getElementById("number").value;
-
     email=email.toString();
-    number=number.toString();
-
-    frame={email : email , number : number};
-    let response = await fetch('https://iot-server-365.herokuapp.com/forgetpass/verify',{
+ 
+    frame={email : email};
+    let response = await fetch('https://iot-server-365.herokuapp.com/forgetpass',{
         method: 'post',
         mode: 'cors', 
         headers:{
@@ -28,10 +25,10 @@ async function postData(){
     console.log(datum);
     if(datum.redirected)
     {
-        window.location.replace( "/login");
+        window.location.replace( "/forgetpass/verify");
     }
     else{
         console.log("error");
-        document.getElementById("status").innerHTML="Number is incorrect";
+        document.getElementById("status").innerHTML="Account is exist";
     }
 }
