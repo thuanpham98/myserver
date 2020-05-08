@@ -46,10 +46,6 @@ router.post('/', function(req,res){
             Email.form.text = "your special number: " + special_number.toString();
             Email.mailServer.sendMail(Email.form, function(err, info) {
                 // assert.equal(null, err);
-                if (error) {
-                    console.log(error);
-                }
-                console.log('Message %s sent: %s', info.messageId, info.response);
             }); /*!> follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799 */
             console.log("done send mail");
 
