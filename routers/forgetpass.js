@@ -43,6 +43,7 @@ router.post('/', function(req,res){
     });
 
     /** send email verify */
+    console.log(req.body.email);
     console.log("start send mail");
     Email.form.to = req.body.email;
     Email.form.text = "your special number: " + special_number.toString();
