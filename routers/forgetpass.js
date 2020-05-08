@@ -1,4 +1,12 @@
 "use strict"
+/** module express */
+var express = require('express');
+var router = express.Router();
+
+/** module timestamp */
+var timestamp = require('../models/timestamp');
+router.use(timestamp);
+
 /* modal  user */
 var User = require('../models/user');
 
