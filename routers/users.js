@@ -23,7 +23,7 @@ var updateController = require('../controllers/update.controller.js');
 var deleteController = require('../controllers/delete.controller');
 
 /** /user */
-router.get('/', async function(req, res) {
+router.get('/', function(req, res) {
     res.render('user', {
         title: 'User Page',
         // status: 'Hello click Active button if this is the first time you come here or account will be auto remove after 15 day'
