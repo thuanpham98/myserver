@@ -31,6 +31,6 @@ async function postData(){
     }
     else{
         console.log("error");
-        document.getElementById("status").innerHTML="Account is exist";
+        document.getElementById("status").innerHTML="Account is not exist";
     }
 }

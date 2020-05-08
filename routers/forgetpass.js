@@ -82,15 +82,15 @@ router.post('/verify', function(req,res){
                     assert.equal(null, err);
                 }); /*!> follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799 */
                 console.log("done send mail");
+
+                res.redirect('/login');
             }
             else{
                 res.render('verify', {title: 'Verify Page'});
                 return;
             }
         }
-
     });
-    res.redirect('/login');
 });
 /* export login */
 module.exports = router

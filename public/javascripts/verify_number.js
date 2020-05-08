@@ -14,6 +14,7 @@ async function postData(){
     email=email.toString();
     number=number.toString();
 
+    console.log(number);
     frame={email : email , number : number};
     let response = await fetch('https://iot-server-365.herokuapp.com/forgetpass/verify',{
         method: 'post',
@@ -28,7 +29,7 @@ async function postData(){
     console.log(datum);
     if(datum.redirected)
     {
-        window.location.replace( "/login");
+        //window.location.replace( "/login");
     }
     else{
         console.log("error");
