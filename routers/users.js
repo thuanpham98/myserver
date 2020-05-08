@@ -25,6 +25,7 @@ var deleteController = require('../controllers/delete.controller');
 /** /user */
 router.get('/', function(req, res) {
     res.render('user', {title: 'User Page'});
+    console.log("ok");
 });
 
 // /* user/active */
