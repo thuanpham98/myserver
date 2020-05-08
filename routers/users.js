@@ -25,41 +25,41 @@ var deleteController = require('../controllers/delete.controller');
 /** /user */
 router.get('/', async function(req, res) {
     res.render('user', {
-        title: 'myAccount',
-        status: 'Hello click Active button if this is the first time you come here or account will be auto remove after 15 day'
+        title: 'User Page',
+        // status: 'Hello click Active button if this is the first time you come here or account will be auto remove after 15 day'
     });
 });
 
-/* user/active */
-router.get('/active', async function(req, res) {
-    res.render('active', {
-        title: 'Active Page',
-        status: 'if you do not receive any ID , go to update to receive again '
-    });
-});
-router.post('/active',async function(req, res) {
+// /* user/active */
+// router.get('/active', async function(req, res) {
+//     res.render('active', {
+//         title: 'Active Page',
+//         status: 'if you do not receive any ID , go to update to receive again '
+//     });
+// });
+// router.post('/active',async function(req, res) {
 
-    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
-    let a =req.body.ID ;
-    /* check token on database */
-    User.find({ email: decoded.accessToken }, function(err, doc) {
-        if(a==doc[0].timestamp){
-            doc[0].status = 1;
-            doc[0].save();
-            console.log("done");
-            res.render('active', {
-                title: 'Active Page',
-                status: 'success'
-            });
-        }
-        else{
-            res.render('active', {
-                title: 'Active Page',
-                status: 'Not Correct'
-            });
-        }
-    });
-});
+//     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+//     let a =req.body.ID ;
+//     /* check token on database */
+//     User.find({ email: decoded.accessToken }, function(err, doc) {
+//         if(a==doc[0].timestamp){
+//             doc[0].status = 1;
+//             doc[0].save();
+//             console.log("done");
+//             res.render('active', {
+//                 title: 'Active Page',
+//                 status: 'success'
+//             });
+//         }
+//         else{
+//             res.render('active', {
+//                 title: 'Active Page',
+//                 status: 'Not Correct'
+//             });
+//         }
+//     });
+// });
 
 /* user/update */
 router.get('/update', updateController.get);
