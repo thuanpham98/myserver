@@ -21,7 +21,7 @@ var jwt = require('jsonwebtoken');
 //-------------display----------//
 router.get('/', async function(req, res) {
 
-    res.render('display',{title :"Display Page"});
+    res.render('charts',{title :"Display Page"});
 
 });
 router.get('/getdata', async function(req, res) {
