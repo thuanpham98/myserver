@@ -93,8 +93,8 @@ var massPopChart =new Chart(mychart, {
         ]
     },
     options:{
-        showScale: false,
-        responsive: false,
+        // showScale: false,
+        responsive: true,
         maintainAspectRatio: false,
         animation:{duration:0},
         // title:{
@@ -110,14 +110,14 @@ var massPopChart =new Chart(mychart, {
 
             }
         },
-        // layout:{
-        //     padding:{
-        //         left:50,
-        //         right:0,
-        //         bottom:0,
-        //         top:0
-        //     }
-        // },
+        layout:{
+            padding:{
+                left:50,
+                right:0,
+                bottom:0,
+                top:0
+            }
+        },
         scales: {
             xAxes: [{
                 display: true,
