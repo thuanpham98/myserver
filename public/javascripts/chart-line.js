@@ -184,7 +184,7 @@ async function getData(){
     k=k+1;
 }
 function removeData(){
-    if(k===100){
+    if(k===1000){
         let j=0;
 
         massPopChart.clear();
