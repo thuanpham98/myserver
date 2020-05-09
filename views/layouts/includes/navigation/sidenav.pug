@@ -29,7 +29,7 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
             a.nav-link.collapsed(href='#', data-toggle='collapse' data-target='#collapsePages' aria-expanded='false' aria-controls='collapsePages')
                 .sb-nav-link-icon
                     i.fas.fa-book-open
-                | Pages
+                | GUI
                 .sb-sidenav-collapse-arrow
                     i.fas.fa-angle-down
             #collapsePages.collapse(aria-labelledby='headingTwo', data-parent='#sidenavAccordion')
@@ -40,8 +40,10 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                             i.fas.fa-angle-down
                     #pagesCollapseAuth.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordionPages')
                         nav.sb-sidenav-menu-nested.nav
-                            a.nav-link(href='/user/display') Display
-                            a.nav-link(href='/user/gui') Gui
+                            a.nav-link(href='#') Message 
+                            a.nav-link(href='#') Data Clone
+                            a.nav-link(href='/user/update') Update
+                            a.nav-link(href='/user/delete') Delete
                             a.nav-link(href='/forgetpass') Forgot Password
                     a.nav-link.collapsed(href='#', data-toggle='collapse' data-target='#pagesCollapseError' aria-expanded='false' aria-controls='pagesCollapseError')
                         | Rooms
@@ -50,6 +52,7 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                     #pagesCollapseError.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordionPages')
                         nav.sb-sidenav-menu-nested.nav
                             a.nav-link(href='user/gui/livingroom') Room 1 
+                            a.nav-link(href='user/gui/1') Room 2
             .sb-sidenav-menu-heading
                 | Addons
             
