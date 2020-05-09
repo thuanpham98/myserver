@@ -97,11 +97,11 @@ var massPopChart =new Chart(mychart, {
         responsive: true,
         maintainAspectRatio: false,
         animation:{duration:0},
-        title:{
-            display:true,
-            text:'Chart flow time',
-            fontSize:25
-        },
+        // title:{
+        //     display:true,
+        //     text:'Chart flow time',
+        //     fontSize:25
+        // },
         legend:{
             display:true,
             position:'right',
@@ -110,14 +110,14 @@ var massPopChart =new Chart(mychart, {
 
             }
         },
-        layout:{
-            padding:{
-                left:50,
-                right:0,
-                bottom:0,
-                top:0
-            }
-        },
+        // layout:{
+        //     padding:{
+        //         left:50,
+        //         right:0,
+        //         bottom:0,
+        //         top:0
+        //     }
+        // },
         scales: {
             xAxes: [{
                 display: true,
