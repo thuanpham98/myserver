@@ -22,7 +22,7 @@ var data=[
 
 $(document).ready(function () {
   $('#dataTable').DataTable({
-    //dom: 'Bfrtip',
+    dom: 'Bfrtip',
     buttons: [
       {
         extend: 'excel',
