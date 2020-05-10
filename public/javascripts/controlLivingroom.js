@@ -36,7 +36,7 @@ function load(){
 }
 
 async function postData(){
-    let response = await fetch('http://iotmakerserver.herokuapp.com/user/GUI/livingroom/postdata',{
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/gui/livingroom/postdata',{
         method: 'post',
         mode: 'cors', 
         headers:{
