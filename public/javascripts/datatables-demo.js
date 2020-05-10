@@ -26,7 +26,10 @@ $(document).ready(function () {
     buttons: {
       buttons: [
           { extend: 'copy', className: 'copyButton' },
-          { extend: 'excel', className: 'excelButton' }
+          { extend: 'excel', className: 'excelButton' },
+          { extend: 'csv', className: 'csvButton' },
+          { extend: 'pdf', className: 'pdfButton' },
+          { extend: 'print', className: 'printButton' }
       ]
   },
     data: data,
