@@ -6,13 +6,13 @@ var data = [
     "name": "temperature",
     "value": "23",
     "datetime": "2011/04/25",
-    "extn": "5421"
+    "timestamp": "5421"
   },
   {
     "name": "humanality",
     "value": "12",
     "datetime": "2011/07/25",
-    "extn": "8422"
+    "timestamp": "8422"
   },
   {
     "name": "báo cháy",
