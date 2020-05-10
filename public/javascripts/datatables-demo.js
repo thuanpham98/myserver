@@ -21,7 +21,7 @@ var data=[
 
 $(document).ready(function () {
   $('#dataTable').DataTable({
-    dom: 'Bfrtip',
+    // dom: 'Bfrtip',
     buttons: [
       'copy', 'csv', 'excel', 'pdf', 'print'
     ],
