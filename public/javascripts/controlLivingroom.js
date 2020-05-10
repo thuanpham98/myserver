@@ -4,7 +4,7 @@ var frame_post,frame_get={"s0":1,"s2":1,"s4":1,"s5":1};
 var pre_0,pre_1,pre_2,pre_3;
 var a,b,c,d;
 async function getData(){
-    let response= await fetch('http://iotmakerserver.herokuapp.com/user/GUI/livingroom/getdata',{
+    let response= await fetch('https://iot-server-365.herokuapp.com/user/gui/livingroom/getdata',{
         method: 'get',
         mode: 'cors',
         headers:{
