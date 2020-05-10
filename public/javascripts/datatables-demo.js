@@ -22,9 +22,17 @@ var data=[
 
 $(document).ready(function () {
   $('#dataTable').DataTable({
-    dom: 'Bfrtip',
+    //dom: 'Bfrtip',
     buttons: [
-      'copy', 'csv', 'excel', 'pdf', 'print'
+      {
+        extend: 'excel',
+        text: 'Save current page',
+        exportOptions: {
+            modifier: {
+                page: 'current'
+            }
+        }
+    }
     ],
     data: data,
     columns: [
