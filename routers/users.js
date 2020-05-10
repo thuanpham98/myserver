@@ -59,6 +59,11 @@ router.get('/', function(req, res) {
 //     });
 // });
 
+/** user/clone */
+router.get('/clone',function(req,res){
+    res.render('tables', {title: 'Data Table Page'});
+});
+
 /* user/update */
 router.get('/update', updateController.get);
 router.post('/update', updateValidation.checkFilled, updateValidation.checkAccount, updateController.post);
