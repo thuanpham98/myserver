@@ -1,5 +1,6 @@
-// Call the dataTables jQuery plugin
+"use strict"
 
+// Call the dataTables jQuery plugin
 var data=[
   {
       "name":       "Tiger Nixon",
