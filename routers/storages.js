@@ -27,7 +27,11 @@ router.get('/', async function (req, res) {
 
     let data;
     let data_send;
-    console.log(req.headers);
+    if(req.headers.connection==='close'){
+        console.log(req.headers.connection);
+        res.write("who are you");
+    }
+    
     let esp_id=req.headers.id.slice(0,13);
     let esp_num = req.headers.id.slice(13,req.headers.id.length);
 
