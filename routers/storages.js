@@ -30,6 +30,7 @@ router.get('/', async function (req, res) {
     if(req.headers.connection==='close'){
         console.log(req.headers.connection);
         res.write("who are you");
+        return;
     }
     
     let esp_id=req.headers.id.slice(0,13);
