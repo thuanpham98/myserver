@@ -17,7 +17,15 @@ var data=[
       "start_date": "2011/07/25",
       "office":     "Edinburgh",
       "extn":       "8422"
-  }
+  },
+  {
+    "name":       "Garrett Winters",
+    "position":   "Director",
+    "salary":     "$5,300",
+    "start_date": "2011/07/25",
+    "office":     "home",
+    "extn":       "8422"
+}
 ];
 
 $(document).ready(function () {
