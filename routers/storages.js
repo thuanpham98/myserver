@@ -57,7 +57,7 @@ router.get('/', async function (req, res) {
 
             console.log(data);
             data_send = ob.serializeBinary().toString();
-
+            console.log(data_send);
             console.log("start delete ");
             await Command.deleteOne({ID: esp_id,device:esp_num}, function (err, result) {
         
