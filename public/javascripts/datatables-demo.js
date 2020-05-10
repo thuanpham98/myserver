@@ -23,17 +23,12 @@ var data=[
 $(document).ready(function () {
   $('#dataTable').DataTable({
     dom: 'Bfrtip',
-    buttons: [
-      {
-        extend: 'excel',
-        text: 'Save current page',
-        exportOptions: {
-            modifier: {
-                page: 'current'
-            }
-        }
-    }
-    ],
+    buttons: {
+      buttons: [
+          { extend: 'copy', className: 'copyButton' },
+          { extend: 'excel', className: 'excelButton' }
+      ]
+  },
     data: data,
     columns: [
         { data: 'name' },
