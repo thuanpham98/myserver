@@ -25,7 +25,7 @@ var data=[
     "start_date": "2011/07/25",
     "office":     "home",
     "extn":       "8422"
-}
+  }
 ];
 
 $(document).ready(function () {
