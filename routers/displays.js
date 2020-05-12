@@ -46,7 +46,7 @@ router.get('/getdata', async function (req, res) {
                 if (!result.length) {
                     console.log("no data");
 
-                    let m_data = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+                    let m_data = [1,2,3,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
                     let m_label = new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
 
                     let resAPI = { label: m_label, data: m_data };
