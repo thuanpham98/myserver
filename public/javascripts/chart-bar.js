@@ -53,7 +53,7 @@ var massbarChart = new Chart(barchart, {
         //   },
         legend: {
             display: true,
-            position: 'right',
+            position: 'top',
             labels: {
                 fontColor: '#000000'
 

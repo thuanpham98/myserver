@@ -54,7 +54,7 @@ var masslineChart = new Chart(linechart, {
         // },
         legend: {
             display: true,
-            position: 'right',
+            position: 'top',
             labels: {
                 fontColor: '#000000'
 
