@@ -69,9 +69,12 @@ module.exports.checkAccount = async function(req, res, next) {
         timestamp: token,
         email: req.body.a_email,
         password: hash,
-        sensorsline : ["mask1","mask2","mask3","mask4","mask5","mask6","mask7","mask8","mask9","mask10"],
-        sensorsbar : ["mask11","mask12","mask13","mask14","mask15","mask16","mask17","mask18","mask19","mask20"],
-        mask : mask_init,
+        sensors: [
+        {name: "sensor_1",mask: "mask1",type:0},{name: "sensor_2",mask: "mask2",type:0},{name: "sensor_3",mask: "mask3",type:0},{name: "sensor_4",mask: "mask4",type:0},{name: "sensor_5",mask: "mask5",type:0},
+        {name: "sensor_6",mask: "mask6",type:0},{name: "sensor_7",mask: "mask7",type:0},{name: "sensor_8",mask: "mask8",type:0},{name: "sensor_9",mask: "mask9",type:0},{name: "sensor_10",mask: "mask10",type:0},
+        {name: "sensor_11",mask: "mask11",type:1},{name: "sensor_12",mask: "mask12",type:1},{name: "sensor_13",mask: "mask13",type:1},{name: "sensor_14",mask: "mask14",type:1},{name: "sensor_15",mask: "mask15",type:1},
+        {name: "sensor_16",mask: "mask16",type:1},{name: "sensor_17",mask: "mask17",type:1},{name: "sensor_18",mask: "mask18",type:1},{name: "sensor_19",mask: "mask19",type:1},{name: "sensor_20",mask: "mask20",type:1}
+        ],
         status: 0,
     }, function(err, result) {
         if (err) {

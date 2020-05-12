@@ -5,9 +5,7 @@ var userSchema = new mongoose.Schema({
     timestamp: Number,
     email: String,
     password: String,
-    sensorsline: Array,
-    sensorsbar : Array,
-    mask: Object, /** for user named sensor  */
+    sensors: Array,
     status: Number
 });
 
