@@ -11,15 +11,14 @@ async function init_data()
         headers:{
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
-        }
+        },
+        body : {message:"init"}
     });
     let datum= await response.json();
 
     console.log(datum);
     //datum =JSON.parse(datum);
 }
-
-init_data();
 
 var mychart = document.getElementById("myLineChart").getContext('2d');
 
