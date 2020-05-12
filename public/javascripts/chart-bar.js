@@ -114,10 +114,13 @@ async function getData() {
     let datum = await response.json();
     console.log(datum.data);
     let i = 0;
-
+    let j=0;
     massbarChart.data.labels = [datum.label];
     massbarChart.data.datasets.forEach((dataset) => {
-        dataset.data = [datum.data[i]];
+        if(i=temp_index[j]){
+            dataset.data = [datum.data[i]];
+            j++;
+        }
         i++;
     });
     massbarChart.update();
