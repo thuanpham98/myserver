@@ -69,8 +69,8 @@ module.exports.checkAccount = async function(req, res, next) {
         timestamp: token,
         email: req.body.a_email,
         password: hash,
-        sensorsline : ["s1","s2","s3","s4","s5","s6","s7","s8","s9","s10"],
-        sensorsbar : ["s11","s12","s13","s14","s15","s16","s17","s18","s19","s20"],
+        sensorsline : ["mask1","mask2","mask3","mask4","mask5","mask6","mask7","mask8","mask9","mask10"],
+        sensorsbar : ["mask11","mask12","mask13","mask14","mask15","mask16","mask17","mask18","mask19","mask20"],
         mask : mask_init,
         status: 0,
     }, function(err, result) {

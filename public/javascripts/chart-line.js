@@ -3,6 +3,24 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
+async function init_data()
+{
+    let response= await fetch('https://iot-server-365.herokuapp.com/user/display/getdata',{
+        method: 'get',
+        mode: 'cors',
+        headers:{
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        }
+    });
+    let datum= await response.json();
+
+    console.log(datum);
+    //datum =JSON.parse(datum);
+}
+
+init_data();
+
 var mychart = document.getElementById("myLineChart").getContext('2d');
 
 var massPopChart =new Chart(mychart, {

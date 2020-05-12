@@ -20,7 +20,7 @@ var jwt = require('jsonwebtoken');
 
 //-------------display----------//
 router.get('/', async function(req, res) {
-
+    
     res.render('charts',{title :"Display Page"});
 
 });
@@ -39,6 +39,11 @@ router.get('/getdata', async function(req, res) {
         if((account!==undefined) && (account!=="no data")){
             await Data.find({ ID: account.timestamp, device : 1}, function(err, result) {
                 assert.equal(null, err);
+
+                let m_num_line= account.sensorsline;
+                let m_num_bar = account.sensorsbar;
+                let m_mask = account.mask;
+
                 //console.log(result);
                 if (!result.length) {
                     console.log("no data");
@@ -46,7 +51,7 @@ router.get('/getdata', async function(req, res) {
                     let m_data=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
                     let m_label= new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
                     
-                    let resAPI={label: m_label,data: m_data};
+                    let resAPI={label: m_label,data: m_data,line:m_num_line,bar : m_num_bar, mask : m_mask};
                     //resAPI=JSON.stringify(resAPI);
                     res.json(resAPI);
                 }
@@ -65,8 +70,7 @@ router.get('/getdata', async function(req, res) {
                                 data[0].form.sensor_17.toFixed(2),data[0].form.sensor_18.toFixed(2),
                                 data[0].form.sensor_19.toFixed(2),data[0].form.sensor_20.toFixed(2)
                             ];
-
-                    let resAPI={label: m_label,data: m_data};
+                    let resAPI={label: m_label,data: m_data,line:m_num_line,bar : m_num_bar, mask : m_mask};
                     //console.log(resAPI);
                     //resAPI=JSON.stringify(resAPI);
                     //console.log(resAPI);
