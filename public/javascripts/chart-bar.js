@@ -4,15 +4,15 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-var temp_index = [];
-var temp_dataset = [];
-var temp_color = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
-async function init_data() {
-    let mess = { message: "init" };
-    mess = JSON.stringify(mess);
+var temp_index_bar = [];
+var temp_dataset_bar = [];
+var temp_color_bar = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
+async function init_data_bar() {
+    let mess_bar = { message: "init" };
+    mess_bar = JSON.stringify(mess_bar);
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
         method: "POST",
-        body: mess,
+        body: mess_bar,
         mode: "cors",
         headers: { "Content-type": "application/json;charset=utf-8" }
     });
@@ -21,21 +21,21 @@ async function init_data() {
     console.log(datum.init);
     for (let i = 0; i < datum.init.length; i++) {
         if (!datum.init[i].type) {
-            temp_dataset.push({
+            temp_dataset_bar.push({
                 fill: false,
                 label: datum.init[i].mask,
                 data: [],
-                backgroundColor: temp_color[i],
-                borderColor: temp_color[i],
+                backgroundColor: temp_color_bar[i],
+                borderColor: temp_color_bar[i],
                 borderWidth: 2,
                 hidden: true
             });
-            temp_index.push(i);
+            temp_index_bar.push(i);
         }
     }
-    console.log(temp_index);
+    console.log(temp_index_bar);
 }
-init_data();
+init_data_bar();
 
 var barchart = document.getElementById("myBarChart").getContext('2d');
 
@@ -43,7 +43,7 @@ var massbarChart = new Chart(barchart, {
     type: 'bar',
     data: {
         labels: [],
-        datasets: temp_dataset
+        datasets: temp_dataset_bar
     },
     options: {
         showScale: false,
@@ -102,7 +102,7 @@ var massbarChart = new Chart(barchart, {
     }
 });
 
-async function getData() {
+async function getData_bar() {
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
         method: 'get',
         mode: 'cors',
@@ -118,10 +118,10 @@ async function getData() {
     let i = 0;
     massbarChart.data.labels = [datum.label];
     massbarChart.data.datasets.forEach((dataset) => {
-        dataset.data = [datum.data[temp_index[i]]];
+        dataset.data = [datum.data[temp_index_bar[i]]];
         i++;
     });
     massbarChart.update();
 }
 
-setInterval(getData, 1000);
+setInterval(getData_bar, 1000);
