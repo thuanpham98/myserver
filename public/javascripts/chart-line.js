@@ -44,8 +44,8 @@ var masslineChart = new Chart(linechart, {
     },
     options: {
         // showScale: false,
-        responsive: true,
-        maintainAspectRatio: false,
+        // responsive: true,
+        // maintainAspectRatio: false,
         animation: { duration: 0 },
         // title:{
         //     display:true,
@@ -59,14 +59,14 @@ var masslineChart = new Chart(linechart, {
                 fontColor: '#000000'
             }
         },
-        layout: {
-            padding: {
-                left: 50,
-                right: 0,
-                bottom: 0,
-                top: 0
-            }
-        },
+        // layout: {
+        //     padding: {
+        //         left: 50,
+        //         right: 0,
+        //         bottom: 0,
+        //         top: 0
+        //     }
+        // },
         scales: {
             xAxes: [{
                 display: true,
