@@ -19,7 +19,7 @@ async function init_data() {
 
     console.log(datum.init);
     for (let i = 0; i < datum.init.length; i++) {
-        if (datum.init[i].type)
+        if (datum.init[i].type) {
             temp_dataset.push({
                 fill: false,
                 label: datum.init[i].mask,
@@ -29,6 +29,7 @@ async function init_data() {
                 borderWidth: 2,
                 hidden: true
             });
+        }
     }
 }
 
