@@ -1,10 +1,11 @@
 "use strict"
+
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 var temp_dataset = [];
-var temp_color = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d','#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
+var temp_color = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
 async function init_data() {
     let mess = { message: "init" };
     mess = JSON.stringify(mess);
@@ -33,8 +34,8 @@ async function init_data() {
 
 init_data();
 
-var mychart = document.getElementById("myLineChart").getContext('2d');
-var massPopChart = new Chart(mychart, {
+var linechart = document.getElementById("myLineChart").getContext('2d');
+var masslineChart = new Chart(linechart, {
     type: 'line',
     data: {
         labels: [],
@@ -118,31 +119,28 @@ async function getData() {
         }
     });
     let datum = await response.json();
-    //console.log(response);
-    //console.log(datum);
-    //datum =JSON.parse(datum);
 
     let i = 0;
-    massPopChart.data.labels.push(datum.label);
-    massPopChart.data.datasets.forEach((dataset) => {
+    masslineChart.data.labels.push(datum.label);
+    masslineChart.data.datasets.forEach((dataset) => {
         dataset.data.push(datum.data[i]);
         i++;
     });
-    massPopChart.update();
+    masslineChart.update();
     k = k + 1;
 }
 function removeData() {
     if (k >= 10) {
-       //let j = 0;
+        //let j = 0;
 
-        massPopChart.clear();
+        masslineChart.clear();
 
-        massPopChart.data.labels = [];
-        massPopChart.data.datasets.forEach((dataset) => {
+        masslineChart.data.labels = [];
+        masslineChart.data.datasets.forEach((dataset) => {
             dataset.data = [];
             //j++;
         });
-        massPopChart.update();
+        masslineChart.update();
         k = 0;
     }
 }
