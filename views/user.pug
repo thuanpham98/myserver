@@ -53,10 +53,11 @@ block content
 
         .card.mb-auto
             .card-header
-                i.fas.fa-chart-area.mr-1
+                i.fas.fa-chart-line.mr-1
                 | Area Chart
             .card-body
                 canvas#myLineChart(width='300', height='300')
+            .card-footer
         
         .card.mb-auto
             .card-header
@@ -64,6 +65,7 @@ block content
                 | Bar Chart
             .card-body
                 canvas#myBarChart(width='300', height='300')
+            .card-footer
         
         .card.mb-4
             .card-header
