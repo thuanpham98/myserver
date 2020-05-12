@@ -45,9 +45,9 @@ var masslineChart = new Chart(linechart, {
         datasets: temp_dataset
     },
     options: {
-        // showScale: false,
-        // responsive: true,
-        // maintainAspectRatio: false,
+        showScale: false,
+        responsive: true,
+        maintainAspectRatio: false,
         animation: { duration: 0 },
         // title:{
         //     display:true,
@@ -56,7 +56,7 @@ var masslineChart = new Chart(linechart, {
         // },
         legend: {
             display: true,
-            position: 'right',
+            position: 'left',
             labels: {
                 fontColor: '#000000'
             }
@@ -130,6 +130,7 @@ async function getData() {
     });
     masslineChart.update();
     k = k + 1;
+    console.log(masslineChart.data.datasets);
 }
 function removeData() {
     if (k >= 10) {
