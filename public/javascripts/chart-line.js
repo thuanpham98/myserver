@@ -18,7 +18,7 @@ async function init_data() {
     });
     let datum = await response.json();
 
-    console.log(datum.init);
+    //console.log(datum.init);
     for (let i = 0; i < datum.init.length; i++) {
         if (datum.init[i].type) {
             temp_dataset.push({
@@ -56,7 +56,7 @@ var masslineChart = new Chart(linechart, {
         // },
         legend: {
             display: true,
-            position: 'left',
+            position: 'right',
             labels: {
                 fontColor: '#000000'
             }
