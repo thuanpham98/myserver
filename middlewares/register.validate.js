@@ -62,9 +62,7 @@ module.exports.checkAccount = async function(req, res, next) {
     let hash = await bcrypt.hash(req.body.a_pass, 10);
     console.log("end hash");
     console.log(hash);;
-    let mask_init= {sensor_1:"mask1",sensor_2:"mask2",sensor_3:"mask3",sensor_4:"mask4",sensor_5:"mask5",sensor_6:"mask6",sensor_7:"mask7",sensor_8:"mask8",sensor_9:"mask9",sensor_10:"mask10",
-                    sensor_11:"mask11",sensor_12:"mask12",sensor_13:"mask13",sensor_14:"mask14",sensor_15:"mask15",sensor_16:"mask16",sensor_17:"mask17",sensor_18:"mask18",sensor_19:"mask19",sensor_20:"mask20"
-    };
+    
     await User.create({
         timestamp: token,
         email: req.body.a_email,
