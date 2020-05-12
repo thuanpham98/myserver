@@ -109,6 +109,7 @@ async function getData() {
     });
 
     let datum = await response.json();
+    console.log(datum.data);
     let i = 0;
 
     massbarChart.data.labels = [datum.label];
