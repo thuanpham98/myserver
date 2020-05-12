@@ -54,7 +54,7 @@ var massbarChart = new Chart(barchart, {
             display: true,
             position: 'right',
             labels: {
-                fontColor: '	#000000'
+                fontColor: '#000000'
 
             }
         },
