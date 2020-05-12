@@ -29,7 +29,6 @@ async function init_data() {
                 hidden: true
             });
     }
-    //datum =JSON.parse(datum);
 }
 
 init_data();
