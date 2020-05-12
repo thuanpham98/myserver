@@ -217,5 +217,5 @@ function removeData(){
     }
 }
 
-setInterval(getData, 1000);
-setInterval(removeData, 1000);
+setInterval(init_data, 1000);
+// setInterval(removeData, 1000);
