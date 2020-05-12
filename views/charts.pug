@@ -11,22 +11,22 @@ block content
         .card.mb-4
             .card-body.
                 IoT Server 365 suport line chart and bar chart, in future, we will support muilti chart
-        .row
-            .card.mb-4
-                .card-header
-                    i.fas.fa-chart-line.mr-1
-                    | Line Chart
-                .card-body
-                    canvas#myLineChart(width='400%', height='400%')
-                .card-footer.small.text-muted Updated just now
-        .row
-            .card.mb-4
-                .card-header
-                    i.fas.fa-chart-bar.mr-1
-                    | Bar Chart 
-                .card-body
-                    canvas#myBarChart(width='400', height='400')
-                .card-footer.small.text-muted Updated just now
+        
+        .card.mb-4
+            .card-header
+                i.fas.fa-chart-line.mr-1
+                | Line Chart
+            .card-body
+                canvas#myLineChart(width='400', height='400')
+            .card-footer.small.text-muted Updated just now
+    
+        .card.mb-4
+            .card-header
+                i.fas.fa-chart-bar.mr-1
+                | Bar Chart 
+            .card-body
+                canvas#myBarChart(width='400', height='400')
+            .card-footer.small.text-muted Updated just now
 
 append scripts
     script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js', crossorigin='anonymous')
