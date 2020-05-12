@@ -3,150 +3,83 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-async function init_data()
-{
-    let mess={message:"init"};
-    mess=JSON.stringify(mess);
-    let response= await fetch('https://iot-server-365.herokuapp.com/user/display/getdata',{
+var temp_dataset = [];
+var temp_color = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
+async function init_data() {
+    let mess = { message: "init" };
+    mess = JSON.stringify(mess);
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
         method: "POST",
-        body:mess,
-        mode:"cors",
-        headers: {"Content-type":"application/json;charset=utf-8"}
+        body: mess,
+        mode: "cors",
+        headers: { "Content-type": "application/json;charset=utf-8" }
     });
-    let datum= await response.json();
+    let datum = await response.json();
 
     console.log(datum.init);
+    for (let i = 0; i < datum.init.length; i++) {
+        if (!datum.init[i].type)
+            temp_dataset.push({
+                fill: false,
+                label: datum.init[i].mask,
+                data: [],
+                backgroundColor: temp_color[i],
+                borderColor: temp_color[i],
+                borderWidth: 2,
+                hidden: true
+            });
+    }
     //datum =JSON.parse(datum);
 }
 
-var mychart = document.getElementById("myLineChart").getContext('2d');
+init_data();
 
-var massPopChart =new Chart(mychart, {
-    type:'line', 
-    data:{
+var mychart = document.getElementById("myLineChart").getContext('2d');
+var massPopChart = new Chart(mychart, {
+    type: 'line',
+    data: {
         labels: [],
-        datasets:[{
-            fill:false,
-            label:"Temperature",
-            data: [],
-            backgroundColor:'#FC0000',
-            borderColor:'#FC0000',
-            borderWidth: 2,
-            hidden: true
-        },{
-            fill:false,
-            label:"Humidity",
-            data: [],
-            backgroundColor:'#1f78b4',
-            borderColor:'#1f78b4',
-            borderWidth: 2,
-            hidden: true
-        },{
-            fill:false,
-            label:"Humidity",
-            data: [],
-            backgroundColor:'#4dfd00',
-            borderColor:'#4dfd00',
-            borderWidth: 2,
-            hidden: true
-        },{
-            fill:false,
-            label:"Humidity",
-            data: [],
-            backgroundColor:'#220ffd',
-            borderColor:'#220ffd',
-            borderWidth: 2,
-            hidden: true
-        },{
-            fill:false,
-            label:"Humidity",
-            data: [],
-            backgroundColor:'#ff9dcb',
-            borderColor:'#ff9dcb',
-            borderWidth: 2,
-            hidden: true
-        },{
-            fill:false,
-            label:"Humidity",
-            data: [],
-            backgroundColor:'#f7e92d',
-            borderColor:'#f7e92d',
-            borderWidth: 2,
-            hidden: true
-        },{
-            fill:false,
-            label:"Humidity",
-            data: [],
-            backgroundColor:'#fa9041',
-            borderColor:'#fa9041',
-            borderWidth: 2,
-            hidden: true
-        },{
-            fill:false,
-            label:"Humidity",
-            data: [],
-            backgroundColor:'#050904',
-            borderColor:'#050904',
-            borderWidth: 2,
-            hidden: true
-        },{
-            fill:false,
-            label:"Humidity",
-            data: [],
-            backgroundColor:'#6d6f04',
-            borderColor:'#6d6f04',
-            borderWidth: 2,
-            hidden: true
-        },{
-            fill:false,
-            label:"Humidity",
-            data: [],
-            backgroundColor:'#a0522d',
-            borderColor:'#a0522d',
-            borderWidth: 2,
-            hidden: true
-        }
-        ]
+        datasets: temp_dataset
     },
-    options:{
+    options: {
         // showScale: false,
         responsive: true,
         maintainAspectRatio: false,
-        animation:{duration:0},
+        animation: { duration: 0 },
         // title:{
         //     display:true,
         //     text:'Chart flow time',
         //     fontSize:25
         // },
-        legend:{
-            display:true,
-            position:'right',
-            labels:{
-                fontColor:'	#000000'
+        legend: {
+            display: true,
+            position: 'right',
+            labels: {
+                fontColor: '	#000000'
 
             }
         },
-        layout:{
-            padding:{
-                left:50,
-                right:0,
-                bottom:0,
-                top:0
+        layout: {
+            padding: {
+                left: 50,
+                right: 0,
+                bottom: 0,
+                top: 0
             }
         },
         scales: {
             xAxes: [{
                 display: true,
                 scaleLabel: {
-                        display: true,
-                        labelString: 'Time',
-                        fontSize : 24
-                        
+                    display: true,
+                    labelString: 'Time',
+                    fontSize: 24
+
                 },
                 ticks: {
                     min: 0,
                     max: 10,
-              
+
                     // forces step size to be 5 units
                     stepSize: 1 // <----- This prop sets the stepSize
                 }
@@ -154,66 +87,66 @@ var massPopChart =new Chart(mychart, {
             yAxes: [{
                 display: true,
                 scaleLabel: {
-                        display: true,
-                        labelString: 'Value (%)',
-                        fontSize : 24
+                    display: true,
+                    labelString: 'Value (%)',
+                    fontSize: 24
                 },
                 ticks: {
                     min: 0,
                     max: 100,
-              
+
                     // forces step size to be 5 units
                     stepSize: 1 // <----- This prop sets the stepSize
                 }
             }]
         },
-        tooltips:{
-            enabled:true
+        tooltips: {
+            enabled: true
         }
     }
 });
 
 //--this post id drives the example data
-var k=0;
+var k = 0;
 
-async function getData(){
-    let response= await fetch('https://iot-server-365.herokuapp.com/user/display/getdata',{
+async function getData() {
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
         method: 'get',
         mode: 'cors',
-        headers:{
+        headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
         }
     });
-    let datum= await response.json();
+    let datum = await response.json();
     //console.log(response);
     //console.log(datum);
     //datum =JSON.parse(datum);
 
-    let i=0;
+    let i = 0;
     massPopChart.data.labels.push(datum.label);
     massPopChart.data.datasets.forEach((dataset) => {
         dataset.data.push(datum.data[i]);
-        i ++;
+        i++;
     });
     massPopChart.update();
-    k=k+1;
+    k = k + 1;
 }
-function removeData(){
-    if(k===1000){
-        let j=0;
+function removeData() {
+    if (k === 1000) {
+       //let j = 0;
 
         massPopChart.clear();
 
-        massPopChart.data.labels=[];
+        massPopChart.data.labels = [];
         massPopChart.data.datasets.forEach((dataset) => {
-            dataset.data=[];
-            j++;
+            dataset.data = [];
+            //j++;
         });
         massPopChart.update();
-        k=0;
+        k = 0;
     }
 }
 
-setInterval(init_data, 1000);
-// setInterval(removeData, 1000);
+setInterval(getData, 1000);
+setInterval(removeData, 1000);
