@@ -117,7 +117,7 @@ async function getData() {
     let j=0;
     massbarChart.data.labels = [datum.label];
     massbarChart.data.datasets.forEach((dataset) => {
-        if(i=temp_index[j]){
+        if(i==temp_index[j]){
             dataset.data = [datum.data[i]];
             j++;
         }

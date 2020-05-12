@@ -4,6 +4,7 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
+var temp_index=[];
 var temp_dataset = [];
 var temp_color = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
 async function init_data() {
@@ -29,6 +30,7 @@ async function init_data() {
                 borderWidth: 2,
                 hidden: true
             });
+            temp_index.push(i);
         }
     }
 }
@@ -123,7 +125,7 @@ async function getData() {
     let i = 0;
     masslineChart.data.labels.push(datum.label);
     masslineChart.data.datasets.forEach((dataset) => {
-        dataset.data.push(datum.data[i]);
+        dataset.data.push(datum.data[temp_index[i]]);
         i++;
     });
     masslineChart.update();
