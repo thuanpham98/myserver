@@ -5,6 +5,8 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 
 async function init_data()
 {
+    let mess={message:"init"};
+    mess=JSON.stringify(mess);
     let response= await fetch('https://iot-server-365.herokuapp.com/user/display/getdata',{
         method: 'get',
         mode: 'cors',
@@ -12,7 +14,7 @@ async function init_data()
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
         },
-        body : {message:"init"}
+        body : mess
     });
     let datum= await response.json();
 
