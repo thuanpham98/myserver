@@ -15,7 +15,7 @@ async function init_data()
     });
     let datum= await response.json();
 
-    console.log(datum);
+    console.log(datum.init);
     //datum =JSON.parse(datum);
 }
 

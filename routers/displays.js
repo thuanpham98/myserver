@@ -97,7 +97,7 @@ router.post('/getdata', async function (req, res) {
 
         if ((account !== undefined) && (account !== "no data")) {
             if (req.body.message == "init") {
-                let resAPI = { data: account.sensors };
+                let resAPI = { init: account.sensors };
                 res.json(resAPI);
             }
             else{
