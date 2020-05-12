@@ -4,7 +4,7 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-var temp_index=[];
+var temp_index = [];
 var temp_dataset = [];
 var temp_color = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
 async function init_data() {
@@ -46,6 +46,7 @@ var massbarChart = new Chart(barchart, {
         datasets: temp_dataset
     },
     options: {
+        showScale: false,
         responsive: true,
         maintainAspectRatio: false,
         animation: { duration: 0 },
@@ -56,20 +57,20 @@ var massbarChart = new Chart(barchart, {
         //   },
         legend: {
             display: true,
-            position: 'top',
+            position: 'right',
             labels: {
                 fontColor: '#000000'
 
             }
         },
-        layout: {
-            padding: {
-                left: 50,
-                right: 0,
-                bottom: 0,
-                top: 0
-            }
-        },
+        // layout: {
+        //     padding: {
+        //         left: 50,
+        //         right: 0,
+        //         bottom: 0,
+        //         top: 0
+        //     }
+        // },
         scales: {
             xAxes: [{
                 display: true,
@@ -113,14 +114,11 @@ async function getData() {
 
     let datum = await response.json();
     console.log(datum.data);
+
     let i = 0;
-    let j=0;
     massbarChart.data.labels = [datum.label];
     massbarChart.data.datasets.forEach((dataset) => {
-        if(i==temp_index[j]){
-            dataset.data = [datum.data[i]];
-            j++;
-        }
+        dataset.data = [datum.data[temp_index[i]]];
         i++;
     });
     massbarChart.update();
