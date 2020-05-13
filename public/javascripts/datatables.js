@@ -1,6 +1,8 @@
 "use strict"
 
 // Call the dataTables jQuery plugin
+
+var temp_mask = [];
 var data = [
   {
     "name": "temperature",
@@ -45,17 +47,25 @@ $(document).ready(function () {
 });
 
 async function init_data_table() {
-    let mess_table = { message: "init" };
-    mess_table = JSON.stringify(mess_table);
-    let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
-        method: "POST",
-        body: mess_table,
-        mode: "cors",
-        headers: { "Content-type": "application/json;charset=utf-8" }
-    });
-    let datum = await response.json();
+  let mess_table = { message: "init" };
+  mess_table = JSON.stringify(mess_table);
+  let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
+    method: "POST",
+    body: mess_table,
+    mode: "cors",
+    headers: { "Content-type": "application/json;charset=utf-8" }
+  });
+  let datum = await response.json();
 
-    console.log(datum.init);
+  console.log(datum.init);
+
+  for (let i = 0; i < datum.init.length; i++) {
+    if (datum.init[i].type) {
+
+      temp_mask.push(datum.init[i].mask);
+    }
+  }
+  console.log(temp_mask);
 }
 init_data_table();
 
