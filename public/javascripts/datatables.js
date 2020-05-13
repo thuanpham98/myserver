@@ -31,6 +31,7 @@ async function init_data_table() {
   console.log(dataTables);
 }
 init_data_table();
+dataTables=["mask1","29","today","172893"];
 
 function init_table(){
   $(document).ready(function () {
