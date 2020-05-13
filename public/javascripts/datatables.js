@@ -3,63 +3,69 @@
 // Call the dataTables jQuery plugin
 
 var temp_mask = [];
-var data_frame=[];
-var data = [];
+var data_frame={};
+var dataTables = [
+  {
+    "name": "temperature",
+    "value": "23",
+    "datetime": "2011/04/25",
+    "timestamp": "5421"
+  },
+  {
+    "name": "humanality",
+    "value": "12",
+    "datetime": "2011/07/25",
+    "timestamp": "8422"
+  },
+  {
+    "name": "báo cháy",
+    "value": "123",
+    "datetime": "2011/07/25",
+    "timestamp": "8422"
+  }
+];
 
-// async function init_data_table() {
-//   let mess_table = { message: "init" };
-//   mess_table = JSON.stringify(mess_table);
-//   let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
-//     method: "POST",
-//     body: mess_table,
-//     mode: "cors",
-//     headers: { "Content-type": "application/json;charset=utf-8" }
-//   });
-//   let datum = await response.json();
-
-  
-
-//   for (let i = 0; i < datum.init.length; i++) {
-//       temp_mask.push(datum.init[i].mask);
-//       data_frame.push(datum.init[i].mask);
-//       data_frame.push("29");
-//       data_frame.push("today");
-//       data_frame.push("172893");
-//       dataTables.push((data_frame));
-//       data_frame=[];
-//   }
-//   console.log(dataTables);
-// }
-// init_data_table();
-// dataTables=["mask1","29","today","172893"];
-data=["mask1","29","23/4/1998","172893"];
-function init_table(){
-  $(document).ready(function () {
-    
-    $('#dataTable').DataTable({
-      dom: 'Bfrtip',
-      buttons: {
-        buttons: [
-          { extend: 'copy', className: 'copyButton' },
-          { extend: 'excel', className: 'excelButton' },
-          { extend: 'csv', className: 'csvButton' },
-          { extend: 'pdf', className: 'pdfButton' },
-          { extend: 'print', className: 'printButton' }
-        ]
-      },
-      data: data,
-      columns: [
-        { title: 'name' },
-        { title: 'value' },
-        { title: 'datetime' },
-        { title: 'timestamp' }
+$(document).ready(function () {
+  $('#dataTable').DataTable({
+    dom: 'Bfrtip',
+    buttons: {
+      buttons: [
+        { extend: 'copy', className: 'copyButton' },
+        { extend: 'excel', className: 'excelButton' },
+        { extend: 'csv', className: 'csvButton' },
+        { extend: 'pdf', className: 'pdfButton' },
+        { extend: 'print', className: 'printButton' }
       ]
-    });
+    },
+    data: dataTables,
+    columns: [
+      { data: 'name' },
+      { data: 'value' },
+      { data: 'datetime' },
+      { data: 'timestamp' }
+    ]
   });
+});
+
+async function init_data_table() {
+  let mess_table = { message: "init" };
+  mess_table = JSON.stringify(mess_table);
+  let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
+    method: "POST",
+    body: mess_table,
+    mode: "cors",
+    headers: { "Content-type": "application/json;charset=utf-8" }
+  });
+  let datum = await response.json();
+
+  console.log(datum.init);
+
+  for (let i = 0; i < datum.init.length; i++) {
+      temp_mask.push(datum.init[i].mask);
+  }
+  console.log(temp_mask);
 }
-init_table();
-
-
+init_data_table();
 
 
 // async function getData_table() {
