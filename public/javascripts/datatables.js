@@ -35,6 +35,7 @@ dataTables=["mask1","29","today","172893"];
 
 function init_table(){
   $(document).ready(function () {
+    dataTables=["mask1","29","today","172893"];
     $('#dataTable').DataTable({
       dom: 'Bfrtip',
       buttons: {
