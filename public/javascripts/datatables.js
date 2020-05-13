@@ -4,7 +4,7 @@
 
 var temp_mask = [];
 var data_frame=[];
-var dataTables = [];
+var data = [];
 
 // async function init_data_table() {
 //   let mess_table = { message: "init" };
@@ -32,10 +32,10 @@ var dataTables = [];
 // }
 // init_data_table();
 // dataTables=["mask1","29","today","172893"];
-
+data=["mask1","29","23/4/1998","172893"];
 function init_table(){
   $(document).ready(function () {
-    dataTables=["mask1","29","today","172893"];
+    
     $('#dataTable').DataTable({
       dom: 'Bfrtip',
       buttons: {
@@ -47,7 +47,7 @@ function init_table(){
           { extend: 'print', className: 'printButton' }
         ]
       },
-      data: dataTables,
+      data: data,
       columns: [
         { title: 'name' },
         { title: 'value' },
