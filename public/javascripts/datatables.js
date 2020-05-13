@@ -48,10 +48,10 @@ function init_table(){
       },
       data: dataTables,
       columns: [
-        { data: 'name' },
-        { data: 'value' },
-        { data: 'datetime' },
-        { data: 'timestamp' }
+        { title: 'name' },
+        { title: 'value' },
+        { title: 'datetime' },
+        { title: 'timestamp' }
       ]
     });
   });
