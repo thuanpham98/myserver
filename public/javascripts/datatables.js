@@ -42,10 +42,10 @@ $(document).ready(function () {
     },
     data: dataTables,
     columns: [
-      { data: 'name' },
-      { data: 'value' },
-      { data: 'datetime' },
-      { data: 'timestamp' }
+      { dataTables: 'name' },
+      { dataTables: 'value' },
+      { dataTables: 'datetime' },
+      { dataTables: 'timestamp' }
     ]
   });
 });
