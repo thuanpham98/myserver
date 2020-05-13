@@ -3,7 +3,7 @@
 // Call the dataTables jQuery plugin
 
 var temp_mask = [];
-var data_frame={name : "thuan",value : "22", datetime: "1998/10/05",timestamp: "907567107"};
+var data_frame={"name" : "thuan","value" : "22", "datetime": "1998/10/05","timestamp": "907567107"};
 var dataTables = [];
 
 async function init_data_table() {
