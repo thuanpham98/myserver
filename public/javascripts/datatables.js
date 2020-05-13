@@ -60,10 +60,7 @@ async function init_data_table() {
   console.log(datum.init);
 
   for (let i = 0; i < datum.init.length; i++) {
-    if (datum.init[i].type) {
-
       temp_mask.push(datum.init[i].mask);
-    }
   }
   console.log(temp_mask);
 }
