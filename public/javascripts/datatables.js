@@ -46,10 +46,10 @@ $(document).ready(function () {
     },
     data: dataTables,
     columns: [
-      { title: 'name' },
-      { title: 'value' },
-      { title: 'datetime' },
-      { title: 'timestamp' }
+      { data: 'name' },
+      { data: 'value' },
+      { data: 'datetime' },
+      { data: 'timestamp' }
     ]
   });
 });
