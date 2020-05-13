@@ -32,27 +32,30 @@ async function init_data_table() {
 }
 init_data_table();
 
-$(document).ready(function () {
-  $('#dataTable').DataTable({
-    dom: 'Bfrtip',
-    buttons: {
-      buttons: [
-        { extend: 'copy', className: 'copyButton' },
-        { extend: 'excel', className: 'excelButton' },
-        { extend: 'csv', className: 'csvButton' },
-        { extend: 'pdf', className: 'pdfButton' },
-        { extend: 'print', className: 'printButton' }
+function init_table(){
+  $(document).ready(function () {
+    $('#dataTable').DataTable({
+      dom: 'Bfrtip',
+      buttons: {
+        buttons: [
+          { extend: 'copy', className: 'copyButton' },
+          { extend: 'excel', className: 'excelButton' },
+          { extend: 'csv', className: 'csvButton' },
+          { extend: 'pdf', className: 'pdfButton' },
+          { extend: 'print', className: 'printButton' }
+        ]
+      },
+      data: dataTables,
+      columns: [
+        { data: 'name' },
+        { data: 'value' },
+        { data: 'datetime' },
+        { data: 'timestamp' }
       ]
-    },
-    data: dataTables,
-    columns: [
-      { data: 'name' },
-      { data: 'value' },
-      { data: 'datetime' },
-      { data: 'timestamp' }
-    ]
+    });
   });
-});
+}
+init_table();
 
 
 
