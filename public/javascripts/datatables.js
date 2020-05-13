@@ -17,13 +17,14 @@ async function init_data_table() {
   });
   let datum = await response.json();
 
-  console.log(datum.init);
+  
 
   for (let i = 0; i < datum.init.length; i++) {
       temp_mask.push(datum.init[i].mask);
       data_frame.name=datum.init[i].mask;
       dataTables.push(JSON.stringify(data_frame));
   }
+  console.log(dataTables);
 }
 init_data_table();
 
