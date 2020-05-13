@@ -26,6 +26,7 @@ async function init_data_table() {
       data_frame.push("today");
       data_frame.push("172893");
       dataTables.push((data_frame));
+      data_frame=[];
   }
   console.log(dataTables);
 }
