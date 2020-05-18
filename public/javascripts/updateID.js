@@ -27,16 +27,15 @@ async function postData_ID() {
     let datum = await response.json();
     console.log(datum);
     if (datum.ID.length) {
-        window.location.replace('/user/update');
-        status_ID="update ID Success : " + datum.ID;
+        //window.location.replace('/user/update');
+        document.getElementById("statusID").innerHTML="update ID Success : " + datum.ID;
     }
     else {
         //window.location.replace( "/login");
         console.log("error");
-        status_ID="email or pass is incorrect";
+        document.getElementById("statusID").innerHTML="email or pass is incorrect";
 
     }
-    document.getElementById("statusID").innerHTML =status_ID;
     updateID=0;
 }
 
