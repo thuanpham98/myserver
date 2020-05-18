@@ -2,7 +2,7 @@
 
 var frame, email, o_pass, n_pass,updatePass;
 
-async function postData() {
+async function postData_pass() {
 
     email = document.getElementById("email").value;
     o_pass = document.getElementById("o_pass").value;
@@ -41,5 +41,5 @@ async function postData() {
 
 document.getElementById("updatePass").addEventListener("click", function () {
     console.log("button");
-    postData();
+    postData_pass();
 });
