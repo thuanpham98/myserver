@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0,user-scalable=yes")
+        title  #{title}
+        //---add icon---///
+        link(rel="icon" , type="image/png", href="/images/icon.png")
+        //--add a css file--//
+        link(rel="stylesheet" ,href="/stylesheets/style.css")
+        link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        //--add js file---//
+
+    body(style="background-color:lightblue;")
+        h2(class="center") #{status}
+        div
+            h1(class="center") Updata Password
+            form(action='/user/update', method='post')
+                input(type="email" name="email" placeholder="Your email..")
+                input(type="password" name="o_pass" placeholder="Your old password..")
+                input(type="password" name="n_pass" placeholder="Your new password..")
+                input(type='submit', value='Agreee',name="changePass")
+        br
+        div
+            h1(class="center") Receive new ID
+            form(action='/user/update', method='post')
+                input(type="email" name="email" placeholder="Your email..")
+                input(type="password" name="o_pass" placeholder="Your password..")
+                input(type='submit', value='Agreee',name="changeID")
+        br
+        
+
+    form(action='/user', method='get')
+        br
+        hr
+        input(type='submit', value='    Return    ',style="width: auto;background-color: red")

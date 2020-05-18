@@ -11,7 +11,7 @@ module.exports.get = function(req, res) {
     });
 };
 module.exports.post = async function(req, res) {
-    if(req.body.changePass==='Agreee'){
+    if(req.body.updatePass){
         let hash = await bcrypt.hash(req.body.n_pass, 10);
 
         User.find({ email: req.body.email }, function(err, doc) {
@@ -20,18 +20,18 @@ module.exports.post = async function(req, res) {
         });
 
         console.log("done");
-        res.render('success', {
+        res.render('update', {
             title: "Update page",
             status: "Update sucessful, log out to check or return user"
         });
     }
-    else if(req.body.changeID==='Agreee'){
+    else if(req.body.updateID){
         User.find({ email: req.body.email }, function(err, doc) {
             doc[0].timestamp = Date.now();
             doc[0].save();
         });
         console.log("done");
-        res.render('success', {
+        res.render('update', {
             title: "Update page",
             status: "Update sucessful, log out to check or return user"
         });
