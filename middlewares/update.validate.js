@@ -34,11 +34,9 @@ module.exports.checkFilled = function(req, res, next) {
 
 module.exports.checkAccount = async function(req, res, next) {
 
-    console.log(req.body.changeID);
+    
     let account;
-    console.log(req.body.email);
-    console.log("start check");
-
+    
     /* test email exist */
     await User.find({ email: req.body.email }, function(err, result) {
         assert.equal(null, err);

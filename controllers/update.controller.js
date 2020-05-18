@@ -29,7 +29,15 @@ module.exports.post = async function(req, res) {
             doc[0].timestamp = token;
             doc[0].save();
         });
-        res.json({ID : token.toString()});
+
+        console.log("start send mail");
+        Email.form.to = req.body.email;
+        Email.form.text = "your token: " + token.toString();
+        Email.mailServer.sendMail(Email.form, function(err, info) {
+            // assert.equal(null, err);
+        }); /*!> follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799 */
+        console.log("done send mail");
+        res.redirect('/user');
 
     }
 };
