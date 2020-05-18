@@ -5,6 +5,10 @@ var bcrypt = require('bcrypt');
 /* modal User */
 var User = require('../models/user');
 
+/* module email to check ID */
+var Email = require('../models/email');
+var nodemailer = require('nodemailer');
+
 //---------------------------------------------------------------------//
 module.exports.get = function(req, res) {
     res.render('update', {
