@@ -26,8 +26,9 @@ block content
                     .card-footer
                         | iot server 365
                     //- 
+                    br
                     .card-header
-                        h3.text-center.font-weight-light.my-4 Login
+                        h3.text-center.font-weight-light.my-4 Update ID
                         h6(id="status",style="color: red;")
                     .card-body
                         form
@@ -35,8 +36,8 @@ block content
                                 label.small.mb-1(for='email') Email
                                 input#email.form-control.py-4(type='email', placeholder='Enter email address')
                             .form-group
-                                label.small.mb-1(for='pass') Password
-                                input#pass.form-control.py-4(type='password', placeholder='Enter password')
+                                label.small.mb-1(for='o_pass') Password
+                                input#o_pass.form-control.py-4(type='password', placeholder='Enter password')
                             .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
                                 a.btn.btn-primary(type='submit',id="updateID",name="updateID") Agree
 
