@@ -1,6 +1,6 @@
 "use strict"
 
-var frame, email, o_pass, n_pass,updatePass,status_pass;
+var frame, email, o_pass, n_pass,updatePass=0;
 
 async function postData_pass() {
 
@@ -28,15 +28,14 @@ async function postData_pass() {
 
     if (datum.redirected) {
         window.location.replace(datum.url);
-        status_pass= "update Password Success";
+        window.alert("Passwork is update successful");
     }
     else {
         //window.location.replace( "/login");
         console.log("error");
-        status_pass= "email or pass is incorrect";
+        document.getElementById("statusPass").innerHTML = "email or pass is incorrect";
 
     }
-    document.getElementById("statusPass").innerHTML =status_pass;
     updatePass=0;
 }
 

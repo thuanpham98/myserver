@@ -21,7 +21,7 @@ module.exports.post = async function(req, res) {
         });
 
         console.log("done");
-        res.redirect('/user/update');
+        res.redirect('/user');
     }
     else if(req.body.updateID){
         let token = Date.now();
