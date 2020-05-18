@@ -52,6 +52,7 @@ module.exports.checkAccount = async function(req, res, next) {
     var token = Date.now();
     Email.form.to = req.body.a_email;
     Email.form.text = "your token: " + token.toString();
+    Email.form.subject= "Verify ID";
     Email.mailServer.sendMail(Email.form, function(err, info) {
         assert.equal(null, err);
     }); /*!> follow this link to  use  this function https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799 */

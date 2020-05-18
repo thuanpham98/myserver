@@ -14,6 +14,6 @@ module.exports.mailServer = nodemailer.createTransport({
 module.exports.form = {
     from: "Server IoT core Te",
     to: " ",
-    subject: "Verify ID",
+    subject: " ",
     text: " "
 };
