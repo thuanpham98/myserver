@@ -28,12 +28,12 @@ async function postData_pass() {
 
     if (datum.redirected) {
         window.location.replace(datum.url);
-        document.getElementById("status").innerHTML = "update Password Success";
+        document.getElementById("statusPass").innerHTML = "update Password Success";
     }
     else {
         //window.location.replace( "/login");
         console.log("error");
-        document.getElementById("status").innerHTML = "email or pass is incorrect";
+        document.getElementById("statusPass").innerHTML = "email or pass is incorrect";
 
     }
     updatePass=0;

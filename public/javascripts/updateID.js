@@ -28,12 +28,12 @@ async function postData_ID() {
     console.log(datum);
     if (datum.ID.length) {
         window.location.replace('/user/update');
-        document.getElementById("status").innerHTML = "update ID Success : " + datum.ID;
+        document.getElementById("statusID").innerHTML = "update ID Success : " + datum.ID;
     }
     else {
         //window.location.replace( "/login");
         console.log("error");
-        document.getElementById("status").innerHTML = "email or pass is incorrect";
+        document.getElementById("statusID").innerHTML = "email or pass is incorrect";
 
     }
     updateID=0;
