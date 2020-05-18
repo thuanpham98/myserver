@@ -19,11 +19,11 @@ module.exports.checkFilled = function(req, res, next) {
     if (!req.body.o_pass) {
         error.push('old pass is not fill');
     }
-    if(req.body.changeID===undefined){
-        if (!req.body.n_pass) {
-            error.push('new pass is not fill');
-        }
-    }
+    // if(req.body.changeID===undefined){
+    //     if (!req.body.n_pass) {
+    //         error.push('new pass is not fill');
+    //     }
+    // }
     if (error.length) {
         res.render('update', { title: 'Update Page', status: error });
         return;
