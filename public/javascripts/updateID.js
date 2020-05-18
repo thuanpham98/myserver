@@ -38,7 +38,7 @@ async function postData() {
     updateID=0;
 }
 
-document.getElementById("updatePass").addEventListener("click", function () {
+document.getElementById("updateID").addEventListener("click", function () {
     console.log("button");
     postData();
 });
