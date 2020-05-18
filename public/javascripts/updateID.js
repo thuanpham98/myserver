@@ -13,7 +13,7 @@ async function postData() {
     updateID=1;
     frame = { email: email, o_pass: o_pass, updateID : updateID};
 
-    let response = await fetch('https://iot-server-365.herokuapp.com/login', {
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/update', {
         method: 'post',
         mode: 'cors',
         headers: {
