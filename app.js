@@ -50,6 +50,7 @@ var test = require('./routers/test');
 var display = require('./routers/displays');
 var gui = require('./routers/guis');
 var forgetpass =require("./routers/forgetpass");
+var config = require("./routers/config");
 /* set view engine */
 app.set('view engine', 'pug');
 app.set('views', './views'); /*!> view folder if equaltion with app.js and public folder */
@@ -65,6 +66,7 @@ app.use('/test', test);
 app.use('/user', Auth.requireAuth, user);
 app.use('/user/display', display);
 app.use('/user/gui', gui);
+app.use('/user/config',config);
 
 /** redict https and http because android >=8 use https  */
 // app.use(function (req, res, next) {
