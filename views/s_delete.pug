@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0,user-scalable=yes")
+        title  #{title}
+        //---add icon---///
+        link(rel="icon" , type="image/png", href="/images/icon.png")
+        //--add a css file--//
+        link(rel="stylesheet" ,href="/stylesheets/style.css")
+        link(rel="stylesheet" ,href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        //--add js file---//
+
+    body(style="background-color:lightblue;")
+        h2(class="center") #{status}
+        div
+            h1(class="center") Delete
+            form(action='/user/delete', method='post')
+                input(type="email" name="email" placeholder="Your email..")
+                input(type="password" name="pass" placeholder="Your password..")
+                input(type='submit', value='Agree')
+        br
+        hr
+        h2(class="center") Understanding what are you doing, or return and thinking
+    form(action='/user', method='get')
+        br
+        hr
+        input(type='submit', value='    Return    ',style="width: auto;background-color: red")
