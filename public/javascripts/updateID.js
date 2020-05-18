@@ -1,6 +1,6 @@
 "use strict"
 
-var frame, email, o_pass,updateID;
+var frame, email, o_pass,updateID,status_ID;
 
 async function postData_ID() {
 
@@ -28,14 +28,15 @@ async function postData_ID() {
     console.log(datum);
     if (datum.ID.length) {
         window.location.replace('/user/update');
-        document.getElementById("statusID").innerHTML = "update ID Success : " + datum.ID;
+        status_ID="update ID Success : " + datum.ID;
     }
     else {
         //window.location.replace( "/login");
         console.log("error");
-        document.getElementById("statusID").innerHTML = "email or pass is incorrect";
+        status_ID="email or pass is incorrect";
 
     }
+    document.getElementById("statusID").innerHTML =status_ID;
     updateID=0;
 }
 
