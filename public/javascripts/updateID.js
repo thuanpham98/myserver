@@ -9,7 +9,7 @@ async function postData_ID() {
 
     email = email.toString();
     o_pass = o_pass.toString();
-
+    console.log(o_pass);
     updateID = 1;
     frame = { email: email, o_pass: o_pass, updateID: updateID };
 
