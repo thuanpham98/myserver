@@ -5,6 +5,11 @@ var bcrypt = require('bcrypt');
 /* modal User */
 var User = require('../models/user');
 
+/* module email to check ID */
+var Email = require('../models/email');
+var nodemailer = require('nodemailer');
+
+//---------------------------------------------------------------------//
 module.exports.get = function(req, res) {
     res.render('update', {
         title: "Update page"
@@ -20,21 +25,15 @@ module.exports.post = async function(req, res) {
         });
 
         console.log("done");
-        res.render('update', {
-            title: "Update page",
-            status: "Update sucessful, log out to check or return user"
-        });
+        res.redirect('/user/update');
     }
     else if(req.body.updateID){
+        let token = Date.now();
         User.find({ email: req.body.email }, function(err, doc) {
-            doc[0].timestamp = Date.now();
+            doc[0].timestamp = token;
             doc[0].save();
         });
-        console.log("done");
-        res.render('update', {
-            title: "Update page",
-            status: "Update sucessful, log out to check or return user"
-        });
+        res.json({ID : token.toString()});
 
     }
 };

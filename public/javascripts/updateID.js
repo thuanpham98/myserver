@@ -23,11 +23,12 @@ async function postData_ID() {
         body: JSON.stringify(frame)
     });
 
-    let datum = await response;
-
-    if (datum.redirected) {
-        window.location.replace(datum.url);
-        document.getElementById("status").innerHTML = "update ID Success";
+    //let datum = await response;
+    let datum = await response.json();
+    console.log(datum);
+    if (datum.ID.length) {
+        window.location.replace('/user/update');
+        document.getElementById("status").innerHTML = "update ID Success : " + datum.ID;
     }
     else {
         //window.location.replace( "/login");
