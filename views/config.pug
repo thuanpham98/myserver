@@ -12,7 +12,7 @@ block content
                         form
                             .form-group
                                 label.small.mb-1(for='dev') Device
-                                input#dev.form-control.py-4(type='text', placeholder='Enter number of dev you use')
+                                input#dev.form-control.py-4(type='text', placeholder='Enter index of dev you use')
                             .form-group
                                 label.small.mb-1(for='mask') Mask of device
                                 input#mask.form-control.py-4(type='text', placeholder='Enter name of dev you want')
@@ -23,25 +23,6 @@ block content
                                 .col-6
                                     .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
                                     a.btn.btn-primary(type='submit',id="removeDev",name="remove",style="background-color: red") Remove
-                        script(src="/javascripts/updatePass.js")
-                    .card-footer
-                        | iot server 365
-            .col-lg-5
-                .card.shadow-lg.border-0.rounded-lg.mt-5
-                    .card-header
-                        h3.text-center.font-weight-light.my-4 Add/Remove sensor
-                        h6(id="statusID",style="color: red;")
-                    .card-body
-                        form
-                            .form-group
-                                label.small.mb-1(for='email') Email
-                                input#email.form-control.py-4(type='email', placeholder='Enter email address')
-                            .form-group
-                                label.small.mb-1(for='o_pass') Password
-                                input#o_pass.form-control.py-4(type='password', placeholder='Enter password')
-                            .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
-                                a.btn.btn-primary(type='submit',id="updateID",name="updateID") Agree
-
-                        script(src="/javascripts/updateID.js")
+                        script(src="/javascripts/configDev.js")
                     .card-footer
                         | iot server 365
