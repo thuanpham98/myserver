@@ -36,6 +36,7 @@ module.exports.checkAccount = async function(req, res, next) {
 
     
     let account;
+    console.log(req.body.o_pass);
     
     /* test email exist */
     await User.find({ email: req.body.email }, function(err, result) {
