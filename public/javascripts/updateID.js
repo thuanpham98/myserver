@@ -24,7 +24,7 @@ async function postData_ID() {
     });
 
     let datum = await response;
-
+    console.log(datum);
     if (datum.redirected) {
         window.location.replace(datum.url);
         window.alert("ID is update successful, see in your email, if not , try again");
