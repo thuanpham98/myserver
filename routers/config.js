@@ -21,6 +21,9 @@ router.get('/sensors',function(req,res){
     res.render('sensors', { title: "Sensor Page" , dev: device});
 });
 
+router.get('/sensors/:id',function(req,res){
+    res.json({id : req.params.id});
+});
 
 /* export user/GUI */ 
 module.exports = router
