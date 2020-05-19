@@ -16,7 +16,7 @@ block content
                             br
                             each devi in dev
                                 ul
-                                    a(class="list-group-item list-group-item-action",href="/user/config/sensors/#{dev.type}",role="tab",data-toggle="list")= devi.mask
+                                    a(class="list-group-item list-group-item-action",href="/user/config/sensors/#{devi.type}",role="tab",data-toggle="list")= devi.mask
                         script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
                         .small
