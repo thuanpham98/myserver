@@ -17,7 +17,8 @@ router.get('/',function(req,res){
 
 /** sensors config */
 router.get('/sensors',function(req,res){
-    res.render('sensors', { title: "Sensor Page" });
+    let device =[{mask: "thuan", type : 0},{mask:"thao",type : 1}]
+    res.render('sensors', { title: "Sensor Page" , dev: device});
 });
 
 
