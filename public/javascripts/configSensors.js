@@ -2,6 +2,8 @@
 
 var frame,email,pass ;
 
+console.log(document.getElementById("devi.mask").innerHTML);
+
 async function postData(){
 
     email =document.getElementById("email").value;
