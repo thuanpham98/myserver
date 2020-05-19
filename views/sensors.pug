@@ -18,7 +18,7 @@ block content
                                 a(href="#" class="list-group-item list-group-item-action") your dev
                                     each devi in dev
                                         a(href="/user/config/sensors/#{devi.type}" ,class="list-group-item list-group-item-action list-group-item-success")= devi.mask
-                                        this.href="/user"
+                                            this.href="/user"
                         script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
                         .small
