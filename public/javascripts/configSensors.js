@@ -35,7 +35,7 @@ async function postData(){
     }
 }
 
-document.getElementById("login").addEventListener("click", function(){
-    console.log("button");
-    postData();
-});
+// document.getElementById("login").addEventListener("click", function(){
+//     console.log("button");
+//     postData();
+// });
