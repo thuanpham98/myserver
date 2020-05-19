@@ -2,7 +2,7 @@
 
 var frame,email,pass ;
 
-console.log(document.getElementById("devi.mask"));
+console.log(document.getElementById("0"));
 
 async function postData(){
 
