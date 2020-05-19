@@ -14,12 +14,13 @@ block content
                                 input#s1(type="checkbox", data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="100",data-on="senor1", data-off="sensor1")
 
                             br
+                            //- user deivec after add/remove
                             .form-group(class="list-group")
-                                a(href="#" class="list-group-item list-group-item-action") your dev
+                                a(href="#" class="list-group-item list-group-item-action") All device Post
                                     each devi in dev
                                         - var url = '/user/config/sensors/'+ devi.type;
-                                        a(href=url ,class="list-group-item list-group-item-action list-group-item-success")= devi.mask
-                        script(src="/javascripts/configSensors.js")
+                                        a(href=url ,class="list-group-item list-group-item-action list-group-item-success")= devi.mask + " " + "(" +devi.type + ")"
+                        //- script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
                         .row
                             .col-6
