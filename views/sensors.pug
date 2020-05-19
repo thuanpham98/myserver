@@ -10,19 +10,11 @@ block content
                         h6(id="statusPass",style="color: red;")
                     .card-body
                         form
-                            .form-group
-                                label.small.mb-1(for='dev') Device
-                                input#dev.form-control.py-4(type='text', placeholder='Enter index of dev you use')
-                            .form-group
-                                label.small.mb-1(for='mask') Mask of device
-                                input#mask.form-control.py-4(type='text', placeholder='Enter name of dev you want')
-                            .row
-                                .col-6
-                                    .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
-                                    a.btn.btn-primary(type='submit',id="addDev",name="add") Add
-                                .col-6
-                                    .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
-                                    a.btn.btn-primary(type='submit',id="removeDev",name="remove",style="background-color: red") Remove
+                        .form-group
+                            label.small.mb-1(for='s1',class="switch") sensor 1
+                            input#s1.form-control.py-4(type='checkbox')
+                            
+                        link(rel="stylesheet", href="/stylesheets/toggleButton.css")
                         script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
                         .small
