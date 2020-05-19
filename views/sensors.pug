@@ -5,17 +5,17 @@ block content
         .row.justify-content-center
             .col-lg-5
                 .card.shadow-lg.border-0.rounded-lg.mt-5
-                    .card-header(style="background-color:white")
+                    .card-header
                         h3.text-center.font-weight-light.my-4 Add/Remove Device
                         h6(id="statusPass",style="color: red;")
-                    .card-body(style="background-color:white")
+                    .card-body
                         form
                             .form-group(class="checkbox")       
                                 label.small.mb-1(for='s1') sensor 1
                                 input#s1(type="checkbox", data-toggle="toggle",style="background-color:gray")
 
                         script(src="/javascripts/configSensors.js")
-                    .card-footer.text-center(style="background-color:white")
+                    .card-footer.text-center
                         .small
                             a(href='/user/config') Return config Dev
                         .small
