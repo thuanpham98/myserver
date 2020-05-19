@@ -10,11 +10,12 @@ block content
                         h6(id="statusPass",style="color: red;")
                     .card-body
                         form
-                        .form-group
-                                label.small.mb-1(for='s1',class="switch")
-                            input#s1.form-control.py-4(type='checkbox')
-                            div(class = "slider round")
-                        link(rel="stylesheet", href="/stylesheets/toggleButton.css")
+                        .form-group(class="checkbox")       
+                            <label>
+                                <input type="checkbox" data-toggle="toggle">
+                                Option one is enabled
+                            </label>
+                        
                         script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
                         .small
