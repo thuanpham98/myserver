@@ -14,9 +14,10 @@ block content
                                 input#s1(type="checkbox", data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="100",data-on="senor1", data-off="sensor1")
 
                             br
-                            ul
-                                each devi in dev
-                                    a(class="list-group-item list-group-item-action",href="/user/config/sensors/#{devi.type}",role="tab",data-toggle="list")= devi.mask
+                            .form-group(class="list-group")
+                                a(href="#" class="list-group-item list-group-item-action") your dev
+                                    each devi in dev
+                                        a(href="/user/config/sensors/:#{devi.type}" class="list-group-item list-group-item-action list-group-item-primary")= devi.mask
                         script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
                         .small
