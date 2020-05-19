@@ -16,7 +16,8 @@ block content
                             br
                             each devi in dev
                                 ul
-                                    li(class="list-group-item list-group-item-action",role="tab", id="#{devi.mask}" ,data-toggle="list")= devi.mask
+                                    a=devi.type
+                                    li(class="list-group-item list-group-item-action",role="tab", id=a ,data-toggle="list")= devi.mask
                         script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
                         .small
