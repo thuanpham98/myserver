@@ -17,8 +17,8 @@ block content
                             .form-group(class="list-group")
                                 a(href="#" class="list-group-item list-group-item-action") your dev
                                     each devi in dev
-                                    - var url = '/user/config/sensors/'+ devi.type.toString();
-                                    a(href=url ,class="list-group-item list-group-item-action list-group-item-success")= devi.mask
+                                        - var url = '/user/config/sensors/'+ devi.type;
+                                        a(href=url ,class="list-group-item list-group-item-action list-group-item-success")= devi.mask
                         script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
                         .small
