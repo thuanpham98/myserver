@@ -1,5 +1,5 @@
 extends layouts/authentication.pug
-
+link(rel="stylesheet", href="/stylesheets/toggleButton.css")
 block content
     .container
         .row.justify-content-center
@@ -14,7 +14,7 @@ block content
                             label.small.mb-1(for='s1',class="switch") sensor 1
                             input#s1.form-control.py-4(type='checkbox')
                             
-                        link(rel="stylesheet", href="/stylesheets/toggleButton.css")
+                        
                         script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
                         .small
