@@ -21,6 +21,11 @@ router.get('/sensors',function(req,res){
     res.render('sensors', { title: "Sensor Page" , dev: device});
 });
 
+router.get('/equipments',function(req,res){
+    let device =[{mask: "thuan", type : 0},{mask:"thao",type : 1}]
+    res.render('sensors', { title: "Sensor Page" , dev: device});
+})
+
 router.get('/sensors/:id',function(req,res){
     res.json({id : req.params.id});
 });
