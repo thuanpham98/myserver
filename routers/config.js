@@ -93,8 +93,30 @@ router.post('/', async function(req,res){
 
 /** sensors config */
 router.get('/sensors',function(req,res){
-    let device =[{mask: "thuan", type : 0},{mask:"thao",type : 1}]
-    res.render('sensors', { title: "Sensor Page" , dev: device});
+    // let device =[{mask: "thuan", type : 0},{mask:"thao",type : 1}]
+    let account,device;
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    /* check token on database */
+    await User.find({ email: decoded.accessToken }, function(err, result) {
+        assert.equal(null, err);
+        account = result;
+        
+        if (!account.length) {
+            res.json("no user");
+            return;
+        }
+    });
+    await ManageDev.find({ID : account[0].timestamp, type : 1 },async function(errr,result){
+        device = result;
+        if (device.length){
+            res.render('sensors', { title: "Sensor Page" , dev: device});
+        }
+        else{
+            res.render('sensors', { title: "Sensor Page"});
+        }
+    });
+    // res.render('sensors', { title: "Sensor Page" , dev: device});
 });
 router.get('/sensors/:id',function(req,res){
     res.json({id : req.params.id});
