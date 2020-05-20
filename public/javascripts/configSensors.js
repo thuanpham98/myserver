@@ -37,7 +37,7 @@
 //     }
 // }
 
-document.getElementById("s0").addEventListener("toggle", function(event){
+document.getElementById("s0").addEventListener("toggle", function(this,event){
     console.log(event);
     // postData();
 });
