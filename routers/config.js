@@ -139,7 +139,7 @@ router.get('/sensors/:id',async function(req,res){
     await ManageDev.find({ID : account[0].timestamp, dev : req.params.id},function(err,result){
         sensors = result;
         // console.log(device);
-        res.render('sens', { title: "Sensi Page" , sens: sensors[0].child});
+        res.render('sens', { title: "Sensi Page" , name: sensors[0].mask ,sens: sensors[0].child});
         // if (device.length){
         //     res.render('sensors', { title: "Sensor Page" , dev: device});
         // }
