@@ -109,6 +109,7 @@ router.get('/sensors',async function(req,res){
     });
     await ManageDev.find({ID : account[0].timestamp, type : 1 },async function(errr,result){
         device = result;
+        console.log(device);
         res.render('sensors', { title: "Sensor Page" , dev: device});
         // if (device.length){
         //     res.render('sensors', { title: "Sensor Page" , dev: device});
