@@ -136,7 +136,7 @@ router.get('/sensors/:id',async function(req,res){
         }
     });
 
-    await ManageDev.find({ID : account[0].timestamp, dev : req.params.id},async function(errr,result){
+    await ManageDev.find({ID : account[0].timestamp, dev : req.params.id},function(err,result){
         sensors = result;
         // console.log(device);
         res.render('sens', { title: "Sensi Page" , sens: sensors[0].child});
