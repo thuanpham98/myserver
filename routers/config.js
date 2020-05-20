@@ -26,7 +26,7 @@ router.get('/',function(req,res){
 });
 router.post('/', async function(req,res){
     let account,device;
-    var decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     /* check token on database */
     await User.find({ email: decoded.accessToken }, function(err, result) {
@@ -109,7 +109,7 @@ router.get('/sensors',async function(req,res){
     });
     await ManageDev.find({ID : account[0].timestamp, type : 1 },async function(errr,result){
         device = result;
-        console.log(device);
+        // console.log(device);
         res.render('sensors', { title: "Sensor Page" , dev: device});
         // if (device.length){
         //     res.render('sensors', { title: "Sensor Page" , dev: device});
@@ -121,7 +121,32 @@ router.get('/sensors',async function(req,res){
     // res.render('sensors', { title: "Sensor Page" , dev: device});
 });
 router.get('/sensors/:id',function(req,res){
-    res.json({id : req.params.id});
+    //res.json({id : req.params.id});
+    let account,sensors;
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    /* check token on database */
+    await User.find({ email: decoded.accessToken }, function(err, result) {
+        assert.equal(null, err);
+        account = result;
+        
+        if (!account.length) {
+            res.json("no user");
+            return;
+        }
+    });
+
+    await ManageDev.find({ID : account[0].timestamp, dev : req.params.id},async function(errr,result){
+        sensors = result;
+        // console.log(device);
+        res.render('sens', { title: "Sensi Page" , sens: sensors[0].child});
+        // if (device.length){
+        //     res.render('sensors', { title: "Sensor Page" , dev: device});
+        // }
+        // else{
+        //     res.render('sensors', { title: "Sensor Page"});
+        // }
+    });
 });
 
 /** euipments config */

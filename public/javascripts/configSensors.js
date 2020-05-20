@@ -1,43 +1,43 @@
 "use strict"
 
-var frame,email,pass ;
+// var frame,email,pass ;
 
-console.log(document.getElementById("0"));
+// console.log(document.getElementById("0"));
 
-async function postData(){
+// async function postData(){
 
-    email =document.getElementById("email").value;
-    pass =document.getElementById("pass").value;
+//     email =document.getElementById("email").value;
+//     pass =document.getElementById("pass").value;
     
-    email=email.toString();
-    pass=pass.toString();
-    frame={email : email , pass : pass};
+//     email=email.toString();
+//     pass=pass.toString();
+//     frame={email : email , pass : pass};
 
-    let response = await fetch('https://iot-server-365.herokuapp.com/login',{
-        method: 'post',
-        mode: 'cors', 
-        headers:{
-            //'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(frame)
-    });
+//     let response = await fetch('https://iot-server-365.herokuapp.com/login',{
+//         method: 'post',
+//         mode: 'cors', 
+//         headers:{
+//             //'Accept': 'application/json, text/plain, */*',
+//             'Content-Type': 'application/json'
+//         },
+//         body:JSON.stringify(frame)
+//     });
     
-    let datum= await response;
+//     let datum= await response;
     
-    if(datum.redirected)
-    {
-        window.location.replace(datum.url);
-    }
-    else{
-        //window.location.replace( "/login");
-        console.log("error");
-        document.getElementById("status").innerHTML="email or pass is incorrect";
+//     if(datum.redirected)
+//     {
+//         window.location.replace(datum.url);
+//     }
+//     else{
+//         //window.location.replace( "/login");
+//         console.log("error");
+//         document.getElementById("status").innerHTML="email or pass is incorrect";
         
-    }
-}
+//     }
+// }
 
-// document.getElementById("login").addEventListener("click", function(){
-//     console.log("button");
-//     postData();
-// });
+document.getElementById("login").addEventListener("click", function(){
+    console.log("button");
+    postData();
+});
