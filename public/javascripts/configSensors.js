@@ -37,7 +37,7 @@
 //     }
 // }
 
-document.getElementById("s0").addEventListener('checked', function(){
+document.getElementById("s0").addEventListener('CheckboxStateChange', function(e){
     console.log("ok");
     // postData();
 });
