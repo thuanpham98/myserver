@@ -14,7 +14,14 @@ var ManageDev =require('../models/manageDev');
 router.get('/',function(req,res){
     res.render('config', { title: "Config Page" });
 });
+router.post('/',function(req,res){
+    if(req.body.act){
+        res.json("added");
+    }
+    else res.json("removed");
+});
 
+// ---------------------------------------
 /** sensors config */
 router.get('/sensors',function(req,res){
     let device =[{mask: "thuan", type : 0},{mask:"thao",type : 1}]
