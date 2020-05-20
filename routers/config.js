@@ -35,11 +35,12 @@ router.post('/', async function(req,res){
         
         if (!account.length) {
             res.json("no user");
+            return;
         }
     });
 
     if(req.body.act){
-        await ManageDev.find({ID : account[0].ID,dev : req.body.dev},async function(errr,result){
+        await ManageDev.find({ID : account[0].timestamp,dev : req.body.dev},async function(errr,result){
             // assert.equal(null, err);
             device = result;
             
@@ -51,13 +52,14 @@ router.post('/', async function(req,res){
                 result[0].save();
             }
             else {
+                
                 let child =[{mask:"mask1",type: 0},{mask:"mask2",type: 0},{mask:"mask3",type: 0},{mask:"mask4",type: 0},{mask:"mask5",type: 0},
                             {mask:"mask6",type: 0},{mask:"mask7",type: 0},{mask:"mask8",type: 0},{mask:"mask9",type: 0},{mask:"mask10",type: 0},
                             {mask:"mask11",type: 1},{mask:"mask12",type: 1},{mask:"mask13",type: 1},{mask:"mask14",type: 1},{mask:"mask15",type: 1},
                             {mask:"mask16",type: 1},{mask:"mask17",type: 1},{mask:"mask18",type: 1},{mask:"mask19",type: 1},{mask:"mask20",type: 1}
                             ];
                 await ManageDev.create({
-                    ID: account[0].ID,
+                    ID: account[0].timestamp,
                     timestamp:Date.now(),
                     dev : req.body.dev,
                     mask: req.body.mask,
@@ -76,7 +78,7 @@ router.post('/', async function(req,res){
     }
     else {
         console.log("start delete ");
-        await ManageDev.deleteOne({ID: account[0].ID,dev : req.body.dev}, function (err, result) {
+        await ManageDev.deleteOne({ID: account[0].timestamp,dev : req.body.dev}, function (err, result) {
             if (err) {
                 console.log("error query");
             } else {
