@@ -27,12 +27,13 @@ async function postData(){
         
         let datum= await response.json();
 
-        document.getElementById("status").innerHTML=datum;
+    window.location.replace('/user/config');
+    window.alert(datum);
     }
     else{
         document.getElementById("status").innerHTML="fill all the parameter";
     }
-    //window.location.replace('/user/config');
+    
     // if(datum.redirected)
     // {
     //     window.location.replace(datum.url);
