@@ -12,20 +12,27 @@ async function postData(){
     mask=mask.toString();
     type=type.toString();
 
-    frame={dev : dev  ,mask: mask , type : type,act : act};
-    console.log(frame);
-    let response = await fetch('https://iot-server-365.herokuapp.com/user/config',{
-        method: 'post',
-        mode: 'cors', 
-        headers:{
-            //'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(frame)
-    });
+    if((dev!=="") && (mask !=="")&&(type !=="")){
+        frame={dev : dev  ,mask: mask , type : type,act : act};
+        console.log(frame);
+        let response = await fetch('https://iot-server-365.herokuapp.com/user/config',{
+            method: 'post',
+            mode: 'cors', 
+            headers:{
+                //'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(frame)
+        });
+        
+        let datum= await response.json();
+
+        document.getElementById("status").innerHTML=datum;
+    }
+    else{
+        document.getElementById("status").innerHTML="fill all the parameter";
+    }
     
-    let datum= await response.json();
-    console.log(datum);    
     // if(datum.redirected)
     // {
     //     window.location.replace(datum.url);
