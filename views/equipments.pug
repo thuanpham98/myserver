@@ -24,7 +24,7 @@ block content
                             .form-group(class="list-group")
                                 a(href="#" class="list-group-item list-group-item-action") All device Post
                                     each devi in dev
-                                        - var url = '/user/config/sensors/'+ devi.type;
+                                        - var url = '/user/config/equipments/'+ devi.type;
                                         a(href=url ,class="list-group-item list-group-item-action list-group-item-success")= devi.mask + " " + "(" +devi.type + ")"
                         script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
