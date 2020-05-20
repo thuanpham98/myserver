@@ -40,7 +40,7 @@ router.post('/', async function(req,res){
 
     if(req.body.act){
         await ManageDev.find({ID : account[0].ID,dev : req.body.dev},async function(errr,result){
-            assert.equal(null, err);
+            // assert.equal(null, err);
             device = result;
             
             if (device.length) {
@@ -64,10 +64,10 @@ router.post('/', async function(req,res){
                     type : req.body.type,
                     child : child
                 }, function(err2, doc) {
-                    if (err2) {
-                        console.error(err2);
-                        throw err2;
-                    }
+                    // if (err2) {
+                    //     console.error(err2);
+                    //     throw err2;
+                    // }
                     console.log(doc);
                 });
             }

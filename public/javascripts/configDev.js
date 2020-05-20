@@ -32,7 +32,7 @@ async function postData(){
     else{
         document.getElementById("status").innerHTML="fill all the parameter";
     }
-    act=-1;
+    //window.location.replace('/user/config');
     // if(datum.redirected)
     // {
     //     window.location.replace(datum.url);
