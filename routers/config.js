@@ -92,7 +92,7 @@ router.post('/', async function(req,res){
 // ---------------------------------------
 
 /** sensors config */
-router.get('/sensors',function(req,res){
+router.get('/sensors',async function(req,res){
     // let device =[{mask: "thuan", type : 0},{mask:"thao",type : 1}]
     let account,device;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
@@ -109,12 +109,13 @@ router.get('/sensors',function(req,res){
     });
     await ManageDev.find({ID : account[0].timestamp, type : 1 },async function(errr,result){
         device = result;
-        if (device.length){
-            res.render('sensors', { title: "Sensor Page" , dev: device});
-        }
-        else{
-            res.render('sensors', { title: "Sensor Page"});
-        }
+        res.render('sensors', { title: "Sensor Page" , dev: device});
+        // if (device.length){
+        //     res.render('sensors', { title: "Sensor Page" , dev: device});
+        // }
+        // else{
+        //     res.render('sensors', { title: "Sensor Page"});
+        // }
     });
     // res.render('sensors', { title: "Sensor Page" , dev: device});
 });
