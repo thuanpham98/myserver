@@ -13,10 +13,10 @@ block content
                             //- button on off
                             .form-group(class="checkbox")
                             each sensi, index in sens 
-                                -var name = sensi.mask;
+                                -var label = sensi.mask+ "(" + index.toString() + ")";
                                 -var num='s'+ index.toString();
                                 -var act = sensi.act;    
-                                input(type="checkbox",id=num,checked=act, data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="100",data-on=sensi.mask, data-off=sensi.mask)
+                                input(type="checkbox",id=num,checked=act, data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="100",data-on=label, data-off=label)
 
                             br
                             //- search box
