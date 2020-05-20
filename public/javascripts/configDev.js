@@ -13,7 +13,7 @@ async function postData(){
     type=type.toString();
 
     frame={dev : dev  ,mask: mask , type : type,act : act};
-
+    console.log(frame);
     let response = await fetch('https://iot-server-365.herokuapp.com/user/config',{
         method: 'post',
         mode: 'cors', 
