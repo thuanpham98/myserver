@@ -13,7 +13,7 @@ block content
                             //- button on off
                             .form-group(class="checkbox")
                             each sensi, index in sens 
-                                -var label = sensi.mask+ "(" + index.toString() + ")";
+                                -var label = sensi.mask+ "(" + (index+1).toString() + ")";
                                 -var num='s'+ index.toString();
                                 -var act = sensi.act;    
                                 input(type="checkbox",id=num,checked=act, data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)

@@ -36,9 +36,17 @@
         
 //     }
 // }
-console.log("ok");
-document.getElementById("s0").addEventListener('change', function(){
-    console.log(this.prop('checked'));
-    
-    // postData();
-},true);
+// console.log("ok");
+// document.getElementById("s0").addEventListener('change', function(){
+//     console.log(this.prop('checked'));
+
+//     // postData();
+// },true);
+
+$("#s0").change( function(){
+    if( $(this).is(':checked') ) {
+         alert("checked");
+     }else{
+         alert("unchecked");
+    }
+ });
