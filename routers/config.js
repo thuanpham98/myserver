@@ -52,7 +52,7 @@ router.post('/', async function(req,res){
                 result[0].save();
             }
             else {
-                let child =[{mask:"mask1",type: 0},{mask:"mask2",type: 0},{mask:"mask3",type: 0},{mask:"mask4",type: 0},{mask:"mask5",type: 0},
+                let child =[{mask:"mask1",type: 0,act:true},{mask:"mask2",type: 0},{mask:"mask3",type: 0},{mask:"mask4",type: 0},{mask:"mask5",type: 0},
                             {mask:"mask6",type: 0},{mask:"mask7",type: 0},{mask:"mask8",type: 0},{mask:"mask9",type: 0},{mask:"mask10",type: 0},
                             {mask:"mask11",type: 1},{mask:"mask12",type: 1},{mask:"mask13",type: 1},{mask:"mask14",type: 1},{mask:"mask15",type: 1},
                             {mask:"mask16",type: 1},{mask:"mask17",type: 1},{mask:"mask18",type: 1},{mask:"mask19",type: 1},{mask:"mask20",type: 1}
