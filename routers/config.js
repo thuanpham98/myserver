@@ -52,10 +52,10 @@ router.post('/', async function(req,res){
                 result[0].save();
             }
             else {
-                let child =[{mask:"mask1",type: 0,act:true},{mask:"mask2",type: 0},{mask:"mask3",type: 0},{mask:"mask4",type: 0},{mask:"mask5",type: 0},
-                            {mask:"mask6",type: 0},{mask:"mask7",type: 0},{mask:"mask8",type: 0},{mask:"mask9",type: 0},{mask:"mask10",type: 0},
-                            {mask:"mask11",type: 1},{mask:"mask12",type: 1},{mask:"mask13",type: 1},{mask:"mask14",type: 1},{mask:"mask15",type: 1},
-                            {mask:"mask16",type: 1},{mask:"mask17",type: 1},{mask:"mask18",type: 1},{mask:"mask19",type: 1},{mask:"mask20",type: 1}
+                let child =[{mask:"mask1",type: 0,act:true},{mask:"mask2",type: 0,act:true},{mask:"mask3",type: 0,act:true},{mask:"mask4",type: 0,act:true},{mask:"mask5",type: 0,act:true},
+                            {mask:"mask6",type: 0,act:true},{mask:"mask7",type: 0,act:true},{mask:"mask8",type: 0,act:true},{mask:"mask9",type: 0,act:true},{mask:"mask10",type: 0,act:true},
+                            {mask:"mask11",type: 1,act:true},{mask:"mask12",type: 1,act:true},{mask:"mask13",type: 1,act:true},{mask:"mask14",type: 1,act:true},{mask:"mask15",type: 1,act:true},
+                            {mask:"mask16",type: 1,act:true},{mask:"mask17",type: 1,act:true},{mask:"mask18",type: 1,act:true},{mask:"mask19",type: 1,act:true},{mask:"mask20",type: 1,act:true}
                             ];
                 await ManageDev.create({
                     ID: account[0].timestamp,
