@@ -26,7 +26,7 @@ router.get('/',function(req,res){
 });
 router.post('/',function(req,res){
     let account,device;
-    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+    var decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     /* check token on database */
     await User.find({ email: decoded.accessToken }, function(err, result) {
