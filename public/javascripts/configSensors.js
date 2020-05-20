@@ -37,8 +37,8 @@
 //     }
 // }
 console.log("ok");
-document.getElementById("s0").addEventListener('toggle', function(){
-    console.log(e);
-    console.log("ok");
+document.getElementById("s0").addEventListener('change', function(){
+    console.log(this.prop('checked'));
+    
     // postData();
 },true);
