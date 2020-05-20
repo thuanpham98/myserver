@@ -37,8 +37,7 @@
 //     }
 // }
 
-document.getElementById("s0").addEventListener('toggle', function(e){
-    console.log(button);
-    console.log(e);
+document.getElementById("s0").addEventListener('toggle', function(){
+    console.log("ok");
     // postData();
 });
