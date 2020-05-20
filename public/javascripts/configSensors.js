@@ -36,18 +36,10 @@
         
 //     }
 // }
-// console.log("ok");
-// document.getElementById("s0").addEventListener('change', function(){
-//     console.log(this.prop('checked'));
+console.log("ok");
+document.getElementById("s0").addEventListener('change', function(this,e){
+    console.log(this.prop('checked'));
+    console.log(e);
 
-//     // postData();
-// },true);
-$(document).ready(function () {
-    $("#s0").change( function(){
-        if( $(this).is(':checked') ) {
-             alert("checked");
-         }else{
-             alert("unchecked");
-        }
-     });
+    // postData();
 });
