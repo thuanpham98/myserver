@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 var manageDevSchema = new mongoose.Schema({
     ID: String, /** unique Account */
+    timestamp: Number,
     dev : Number,
     mask: String,
     type : Number,
