@@ -42,11 +42,12 @@
 
 //     // postData();
 // },true);
-
-$("#s0").change( function(){
-    if( $(this).is(':checked') ) {
-         alert("checked");
-     }else{
-         alert("unchecked");
-    }
- });
+$(document).ready(function () {
+    $("#s0").change( function(){
+        if( $(this).is(':checked') ) {
+             alert("checked");
+         }else{
+             alert("unchecked");
+        }
+     });
+}
