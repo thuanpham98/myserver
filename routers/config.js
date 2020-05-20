@@ -120,7 +120,7 @@ router.get('/sensors',async function(req,res){
     });
     // res.render('sensors', { title: "Sensor Page" , dev: device});
 });
-router.get('/sensors/:id',function(req,res){
+router.get('/sensors/:id',async function(req,res){
     //res.json({id : req.params.id});
     let account,sensors;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
