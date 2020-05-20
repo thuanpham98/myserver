@@ -37,7 +37,8 @@
 //     }
 // }
 
-document.getElementById("s0").addEventListener("change", function(event){
-    console.log(event);
+document.getElementById("s0").addEventListener('change', function(e){
+    console.log(button);
+    console.log(e);
     // postData();
 });
