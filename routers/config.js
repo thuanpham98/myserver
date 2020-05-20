@@ -24,7 +24,7 @@ var jwt = require('jsonwebtoken');
 router.get('/',function(req,res){
     res.render('config', { title: "Config Page" });
 });
-router.post('/',function(req,res){
+router.post('/', async function(req,res){
     let account,device;
     var decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
