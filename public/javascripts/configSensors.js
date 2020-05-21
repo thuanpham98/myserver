@@ -38,7 +38,7 @@
 // }
 // console.log("ok");
 var the_server = document.querySelector("#sensors");
-the_server.addEventListener("click",to_to,false);
+the_server.addEventListener("change",to_to,false);
 
 function to_to(e){
     if(e.target !== e.currentTarget){
