@@ -13,11 +13,16 @@ block content
                             //- button on off
                             .form-group(class="checkbox",id="sensors")
                                 each sensi, index in sens 
-                                    -var label = sensi.mask+ "(" + (index+1).toString() + ")";
-                                    -var num= index.toString();
-                                    -var act = sensi.act;    
+                                    -let label = sensi.mask+ "(" + (index+1).toString() + ")";
+                                    -let num= index.toString();
+                                    -let act = sensi.act;    
                                     input(type="checkbox",id=num,checked =act ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)
 
+                            .form-group(class="checkbox",id="sensors")
+                                each sensi, index in sens 
+                                    -let num= index.toString();
+                                    -let type = sensi.type;    
+                                    input(type="checkbox",id=num,checked =type ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line", data-off="bar")
                             //- br
                             //- search box
                             //- .form-group(class="wrap")

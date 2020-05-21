@@ -93,6 +93,7 @@ router.post('/', async function(req,res){
 
 /** sensors config */
 router.get('/sensors',async function(req,res){
+
     // let device =[{mask: "thuan", type : 0},{mask:"thao",type : 1}]
     let account,device;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
@@ -109,16 +110,8 @@ router.get('/sensors',async function(req,res){
     });
     await ManageDev.find({ID : account[0].timestamp, type : 1 },async function(errr,result){
         device = result;
-        // console.log(device);
         res.render('sensors', { title: "Sensor Page" , dev: device});
-        // if (device.length){
-        //     res.render('sensors', { title: "Sensor Page" , dev: device});
-        // }
-        // else{
-        //     res.render('sensors', { title: "Sensor Page"});
-        // }
     });
-    // res.render('sensors', { title: "Sensor Page" , dev: device});
 });
 router.get('/sensors/:id',async function(req,res){
     //res.json({id : req.params.id});
@@ -136,16 +129,10 @@ router.get('/sensors/:id',async function(req,res){
         }
     });
 
+    /** check device of user */
     await ManageDev.find({ID : account[0].timestamp, dev : req.params.id},function(err,result){
         sensors = result;
-        // console.log(device);
         res.render('sens', { title: "Sensi Page" , name: sensors[0].mask ,sens: sensors[0].child, dev : sensors[0].dev});
-        // if (device.length){
-        //     res.render('sensors', { title: "Sensor Page" , dev: device});
-        // }
-        // else{
-        //     res.render('sensors', { title: "Sensor Page"});
-        // }
     });
 });
 
