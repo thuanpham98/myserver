@@ -47,8 +47,297 @@ $(function () {
         postData();
     })
 });
+//------------------------------------------------------
 $(function () {
     $('#1').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//------------------------------------------------------
+$(function () {
+    $('#2').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//-----------------------------------------------------------------
+$(function () {
+    $('#3').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//-----------------------------------------------------
+$(function () {
+    $('#4').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//------------------------------------------------------
+$(function () {
+    $('#5').change(function () {
+
+        child_index=0;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//---------------------------------------------------------------
+$(function () {
+    $('#6').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//----------------------------------------------------------------------
+$(function () {
+    $('#7').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//--------------------------------------------------------------
+$(function () {
+    $('#8').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//----------------------------------------------------------------
+$(function () {
+    $('#9').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//----------------------------------------------------
+$(function () {
+    $('#10').change(function () {
+
+        child_index=0;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//--------------------------------------------------------------
+$(function () {
+    $('#11').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//---------------------------------------------------
+$(function () {
+    $('#12').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//------------------------------------------
+$(function () {
+    $('#13').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//----------------------------------------------------------------
+$(function () {
+    $('#14').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//-----------------------------------------------
+$(function () {
+    $('#15').change(function () {
+
+        child_index=0;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//-----------------------------------------------------------------
+$(function () {
+    $('#16').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//--------------------------------------------------
+$(function () {
+    $('#17').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//----------------------------------------------
+$(function () {
+    $('#18').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
+    })
+});
+//----------------------------------------------------------------------------------
+$(function () {
+    $('#19').change(function () {
 
         child_index=1;
         dev_index=document.getElementById("devID").innerHTML;
