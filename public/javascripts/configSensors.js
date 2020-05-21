@@ -1,74 +1,64 @@
 "use strict"
 
-var frame,dev,child,child_index,child_status ;
+var frame,dev_index,dev_name,child_index,child_status ;
 
-// console.log(document.getElementById("0"));
+async function postData(){
 
-// async function postData(){
 
-//     email =document.getElementById("email").value;
-//     pass =document.getElementById("pass").value;
+    frame={dev : dev_index , mask : dev_name, child : {index : child_index,status:child_status}};
+    console.log(frame);
+    // let response = await fetch('https://iot-server-365.herokuapp.com/login',{
+    //     method: 'post',
+    //     mode: 'cors', 
+    //     headers:{
+    //         //'Accept': 'application/json, text/plain, */*',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body:JSON.stringify(frame)
+    // });
 
-//     email=email.toString();
-//     pass=pass.toString();
-//     frame={email : email , pass : pass};
+    // let datum= await response;
 
-//     let response = await fetch('https://iot-server-365.herokuapp.com/login',{
-//         method: 'post',
-//         mode: 'cors', 
-//         headers:{
-//             //'Accept': 'application/json, text/plain, */*',
-//             'Content-Type': 'application/json'
-//         },
-//         body:JSON.stringify(frame)
-//     });
+    // if(datum.redirected)
+    // {
+    //     window.location.replace(datum.url);
+    // }
+    // else{
+    //     //window.location.replace( "/login");
+    //     console.log("error");
+    //     document.getElementById("status").innerHTML="email or pass is incorrect";
 
-//     let datum= await response;
+    // }
+}
 
-//     if(datum.redirected)
-//     {
-//         window.location.replace(datum.url);
-//     }
-//     else{
-//         //window.location.replace( "/login");
-//         console.log("error");
-//         document.getElementById("status").innerHTML="email or pass is incorrect";
-
-//     }
-// }
-// console.log("ok");
-// var the_server = document.querySelector("#sensors");
-// the_server.addEventListener("click",to_to,false);
-
-// function to_to(e){
-//     if(e.target !== e.currentTarget){
-//         var clickItem = e.target.id;
-//         console.log(clickItem);
-//         console.log(e);
-//     }
-//     // e.stopPropagation();
-// }
-
-// function func(){
-//     var sensors=document.getElementsByClassName("sensor");
-//     for(let i =0; i< sensors.length;i++){
-//         if(sensors[i].checked){
-//             console.log("sensor");
-//         }
-//     }
-// };
 
 $(function () {
-    $('#1').change(function () {
+    $('#0').change(function () {
+
+        child_index=0;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            console.log("OK");
-            let a = document.getElementById("devName").innerHTML;
-            let b =document.getElementById("devID").innerHTML;
-            console.log(a);
-            console.log(b);
+            child_status=true;
         }
         else {
-
+            child_status=false;
         }
+        postData();
+    })
+});
+$(function () {
+    $('#1').change(function () {
+
+        child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postData();
     })
 });
