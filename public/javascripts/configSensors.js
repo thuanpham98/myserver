@@ -44,6 +44,7 @@ function to_to(e){
     if(e.target !== e.currentTarget){
         var clickItem = e.target.id;
         console.log(clickItem);
+        console.log(e);
     }
     e.stopPropagation();
 }
