@@ -37,7 +37,7 @@
 //     }
 // }
 // console.log("ok");
-document.getElementById("s0").addEventListener('select', function(){
+document.getElementById("s0").addEventListener('change', function(){
     
     console.log("ok");
 
