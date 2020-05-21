@@ -9,23 +9,26 @@ block content
                         h3(id="devName").text-center.font-weight-light.my-4 #{name} 
                         h3(id="devID").text-center.font-weight-light.my-4 #{dev} 
                     .card-body
-                        form
-                            //- button on off
-                            .form-group(class="checkbox",id="sensors")
-                                each sensi, index in sens 
-                                    -let label = sensi.mask+ "(" + (index+1).toString() + ")";
-                                    -let num= index.toString();
-                                    -let act = sensi.act;    
-                                    input(type="checkbox",id=num,checked =act ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)
-
-                            .form-group(class="checkbox",id="sensors")
-                                each sensi, index in sens 
-                                    -let num= index.toString();
-                                    -let type = sensi.type;
-                                    -if(type ===1)
-                                        input(type="checkbox",id=num,checked ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line " +num, data-off="bar "+num)  
-                                    -else
-                                        input(type="checkbox",id=num,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line "+num, data-off="bar "+num)
+                        .row
+                            .col-2
+                                form
+                                    //- button on off
+                                    .form-group(class="checkbox",id="sensors")
+                                        each sensi, index in sens 
+                                            -let label = sensi.mask+ "(" + (index+1).toString() + ")";
+                                            -let num= index.toString();
+                                            -let act = sensi.act;    
+                                            input(type="checkbox",id=num,checked =act ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)
+                            .col-2
+                                form
+                                    .form-group(class="checkbox",id="sensors")
+                                        each sensi, index in sens 
+                                            -let num= index.toString();
+                                            -let type = sensi.type;
+                                            -if(type ===1)
+                                                input(type="checkbox",id=num,checked ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line " +num, data-off="bar "+num)  
+                                            -else
+                                                input(type="checkbox",id=num,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line "+num, data-off="bar "+num)
                                     
                             //- br
                             //- search box
