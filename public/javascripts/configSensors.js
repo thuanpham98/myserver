@@ -37,8 +37,8 @@
 //     }
 // }
 console.log("ok");
-document.getElementById("s0").addEventListener('change', function( point,e){
-    console.log(point.prop('checked'));
+document.getElementById("s0").addEventListener('onClick', function( point,e){
+    
     console.log(e);
 
     // postData();
