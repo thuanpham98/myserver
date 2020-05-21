@@ -16,7 +16,7 @@ block content
                                     -let label = sensi.mask+ "(" + (index+1).toString() + ")";
                                     -let num= index.toString();
                                     -let act = sensi.act;    
-                                    input(type="checkbox",id=num,checked =act ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)
+                                    input(type="checkbox",id=num,checked =act ,style="text-align:center; vertical-align:middle;",data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
                         script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
@@ -32,7 +32,7 @@ block content
                     .card-header
                         h3(id="devName").text-center.font-weight-light.my-4 #{name} 
                         h3(id="devID").text-center.font-weight-light.my-4 #{dev} 
-                    .card-body.center
+                    .card-body
                         form
                             .form-group(class="checkbox",id="sensors")
                                 each sensi, index in sens 
