@@ -37,12 +37,16 @@
 //     }
 // }
 // console.log("ok");
-document.getElementById("s0").addEventListener('checked', function(){
-    
-    console.log("ok");
+var the_server = document.querySelector("#sensors");
+the_server.addEventListener("click",to_to,false);
 
-    // postData();
-});
+function to_do(e){
+    if(e.target !== e.currentTarget){
+        var clickItem = e.target.id;
+        alert("hello"+ clickItem);
+    }
+    e.stopPropagation();
+}
 
 // function func(){
 //     var sensors=document.getElementsByClassName("sensor");

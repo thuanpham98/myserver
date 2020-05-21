@@ -11,7 +11,7 @@ block content
                     .card-body
                         form
                             //- button on off
-                            .form-group(class="checkbox")
+                            .form-group(class="checkbox",id="sensors")
                                 each sensi, index in sens 
                                     -var label = sensi.mask+ "(" + (index+1).toString() + ")";
                                     -var num='s'+ index.toString();
