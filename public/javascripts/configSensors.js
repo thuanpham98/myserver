@@ -61,7 +61,7 @@
 $(function () {
     $('#s1').change(function () {
         if($(this).prop('checked')){
-            console.log("OK"+);
+            console.log("OK");
         }
     })
 });
