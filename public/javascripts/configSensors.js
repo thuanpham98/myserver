@@ -60,6 +60,6 @@
 
 $(function () {
     $('#s1').change(function () {
-        console.log("OK");
+        console.log("OK"+ $(this).prop('checked'));
     })
 });
