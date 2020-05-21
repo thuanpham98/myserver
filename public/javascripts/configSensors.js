@@ -37,17 +37,17 @@
 //     }
 // }
 // console.log("ok");
-var the_server = document.querySelector("#sensors");
-the_server.addEventListener("toggle",to_to,false);
+// var the_server = document.querySelector("#sensors");
+// the_server.addEventListener("click",to_to,false);
 
-function to_to(e){
-    if(e.target !== e.currentTarget){
-        var clickItem = e.target.id;
-        console.log(clickItem);
-        console.log(e);
-    }
-    // e.stopPropagation();
-}
+// function to_to(e){
+//     if(e.target !== e.currentTarget){
+//         var clickItem = e.target.id;
+//         console.log(clickItem);
+//         console.log(e);
+//     }
+//     // e.stopPropagation();
+// }
 
 // function func(){
 //     var sensors=document.getElementsByClassName("sensor");
@@ -57,3 +57,9 @@ function to_to(e){
 //         }
 //     }
 // };
+
+$(function() {
+    $('#s1').change(function() {
+      console.log("OK");
+    })
+  })
