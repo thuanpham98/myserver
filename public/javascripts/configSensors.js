@@ -1,6 +1,6 @@
 "use strict"
 
-// var frame,email,pass ;
+var frame,dev,child,child_index,child_status ;
 
 // console.log(document.getElementById("0"));
 
@@ -62,6 +62,13 @@ $(function () {
     $('#s1').change(function () {
         if($(this).prop('checked')){
             console.log("OK");
+            let a = document.getElementById("devName").innerHTML;
+            let b =document.getElementById("devID").innerHTML;
+            console.log(a);
+            console.log(b);
+        }
+        else {
+
         }
     })
 });
