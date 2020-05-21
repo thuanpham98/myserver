@@ -37,7 +37,7 @@
 //     }
 // }
 // console.log("ok");
-document.getElementById("s0").addEventListener('change', function(){
+document.getElementById("s0").addEventListener('click', function(){
     
     console.log("ok");
 
