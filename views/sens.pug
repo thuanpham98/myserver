@@ -23,10 +23,10 @@ block content
                                     -let num= index.toString();
                                     -let type = sensi.type;
                                     -if(type ===1)
-                                        type = true;  
+                                        input(type="checkbox",id=num,checked ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line", data-off="bar")  
                                     -else
-                                        type = false;
-                                    input(type="checkbox",id=num,checked =type ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line", data-off="bar")
+                                        input(type="checkbox",id=num,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line", data-off="bar")
+                                    
                             //- br
                             //- search box
                             //- .form-group(class="wrap")
