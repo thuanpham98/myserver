@@ -39,7 +39,7 @@
 // console.log("ok");
 document.getElementById("s0").addEventListener('change', function(){
     
-    console.log(e);
+    console.log("ok");
 
     // postData();
 });
