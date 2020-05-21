@@ -22,12 +22,10 @@ block content
                                 each sensi, index in sens 
                                     -let num= index.toString();
                                     -let type = sensi.type;
-                                    if(type){
-                                        type = true;
-                                    }    
-                                    else{
+                                    if type ===1
+                                        type = true;  
+                                    else
                                         type = false;
-                                    }
                                     input(type="checkbox",id=num,checked =type ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line", data-off="bar")
                             //- br
                             //- search box
