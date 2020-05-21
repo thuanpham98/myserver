@@ -37,18 +37,18 @@
 //     }
 // }
 // console.log("ok");
-// document.getElementById("s0").addEventListener('onClick', function( point,e){
+document.getElementById("s0").addEventListener('change', function(){
     
-//     console.log(e);
+    console.log(e);
 
-//     // postData();
-// });
+    // postData();
+});
 
-function func(){
-    var sensors=document.getElementsByClassName("sensor");
-    for(let i =0; i< sensors.length;i++){
-        if(sensors[i].checked){
-            console.log("sensor");
-        }
-    }
-};
+// function func(){
+//     var sensors=document.getElementsByClassName("sensor");
+//     for(let i =0; i< sensors.length;i++){
+//         if(sensors[i].checked){
+//             console.log("sensor");
+//         }
+//     }
+// };
