@@ -12,13 +12,13 @@ block content
                         form
                             //- button on off
                             .form-group(class="checkbox")
-                            each sensi, index in sens 
-                                -var label = sensi.mask+ "(" + (index+1).toString() + ")";
-                                -var num='s'+ index.toString();
-                                -var act = sensi.act;    
-                                input(type="checkbox",class ="sensor",onclick = "func();",checked=act, data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)
+                                each sensi, index in sens 
+                                    -var label = sensi.mask+ "(" + (index+1).toString() + ")";
+                                    -var num='s'+ index.toString();
+                                    -var act = sensi.act;    
+                                    input(type="checkbox",class ="sensor",onclick = "func();",checked=act, data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)
 
-                            br
+                            //- br
                             //- search box
                             //- .form-group(class="wrap")
                             //-     .form-group(class="search")
