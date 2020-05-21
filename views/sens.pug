@@ -52,3 +52,27 @@ block content
                             .col-6    
                                 .small
                                     a(href='/user') Return your page
+            .col-lg-5
+                .card.shadow-lg.border-0.rounded-lg.mt-5
+                    .card-header
+                        h3(id="devName").text-center.font-weight-light.my-4 #{name} 
+                        h3(id="devID").text-center.font-weight-light.my-4 #{dev} 
+                    .card-body
+                        form
+                            //- button on off
+                            .form-group(class="checkbox",id="sensors")
+                                each sensi, index in sens 
+                                    -let label = sensi.mask+ "(" + (index+1).toString() + ")";
+                                    -let num= index.toString();
+                                    -let act = sensi.act; 
+                                    input(type="text",id=num,placeholder=label)
+                        script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
+                        script(src="/javascripts/configSensors.js")
+                    .card-footer.text-center
+                        .row
+                            .col-6
+                                .small
+                                    a(href='/user/config') Return config Dev
+                            .col-6    
+                                .small
+                                    a(href='/user') Return your page
