@@ -40,7 +40,7 @@
 var the_server = document.querySelector("#sensors");
 the_server.addEventListener("click",to_to,false);
 
-function to_do(e){
+function to_to(e){
     if(e.target !== e.currentTarget){
         var clickItem = e.target.id;
         alert("hello"+ clickItem);
