@@ -152,7 +152,7 @@ router.post('/sensors',async function(req,res){
                 break;
         }
         console.log("ok save");
-        await result.save();
+        await result[0].save();
     });
 
     res.json({name: "ok user"});
