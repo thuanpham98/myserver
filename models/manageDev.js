@@ -7,7 +7,7 @@ var manageDevSchema = new mongoose.Schema({
     dev : Number,
     mask: String,
     type : Number,
-    child : Array
+    child : [Object]
 
 },{ versionKey: false});
 
