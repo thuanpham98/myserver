@@ -147,8 +147,14 @@ router.post('/sensors', async function (req, res) {
             
             console.log(result[0].child[ind].act);
             await result[0].save();
+            console.log(result[0].child[ind].act);
         });
     }
+
+    await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
+            
+        console.log(result[0].child[ind].act);
+    });
 
 
     res.json({ name: "ok user" });
