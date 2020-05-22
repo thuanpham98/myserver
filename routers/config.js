@@ -134,7 +134,6 @@ router.post('/sensors',async function(req,res){
     // update sensors
 
     let ind= parseInt(frame.child.index,10);
-    console.log(result[0]);
     console.log(frame.action);
     switch(parseInt(frame.action,10)){
         case 0 :
