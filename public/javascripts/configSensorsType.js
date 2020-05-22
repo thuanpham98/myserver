@@ -2,304 +2,353 @@
 
 var frame,dev_index,dev_name,child_index,child_status,action=-1 ;
 
-async function postConfigSensi(){
+async function postData(){
 
     dev_index=document.getElementById("devID").innerHTML;
     dev_name= document.getElementById("devName").innerHTML;
 
     frame={dev : dev_index , mask : dev_name, child : {index : child_index,status:child_status}};
     console.log(frame);
-    let response = await fetch('https://iot-server-365.herokuapp.com/user/config/sensors',{
-        method: 'post',
-        mode: 'cors', 
-        headers:{
-            //'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(frame)
-    });
+    // let response = await fetch('https://iot-server-365.herokuapp.com/login',{
+    //     method: 'post',
+    //     mode: 'cors', 
+    //     headers:{
+    //         //'Accept': 'application/json, text/plain, */*',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body:JSON.stringify(frame)
+    // });
 
-    let datum= await response.json();
-    console.log(datum);
+    // let datum= await response;
+
+    // if(datum.redirected)
+    // {
+    //     window.location.replace(datum.url);
+    // }
+    // else{
+    //     //window.location.replace( "/login");
+    //     console.log("error");
+    //     document.getElementById("status").innerHTML="email or pass is incorrect";
+
+    // }
 }
 
 
 $(function () {
-    $('#s0').change(function () {
+    $('#0').change(function () {
 
         child_index=0;
+        
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //------------------------------------------------------
 $(function () {
-    $('#s1').change(function () {
+    $('#1').change(function () {
 
         child_index=1;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //------------------------------------------------------
 $(function () {
-    $('#s2').change(function () {
+    $('#2').change(function () {
 
         child_index=2;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //-----------------------------------------------------------------
 $(function () {
-    $('#s3').change(function () {
+    $('#3').change(function () {
 
         child_index=3;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //-----------------------------------------------------
 $(function () {
-    $('#s4').change(function () {
+    $('#4').change(function () {
 
         child_index=4;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //------------------------------------------------------
 $(function () {
-    $('#s5').change(function () {
+    $('#5').change(function () {
 
         child_index=5;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //---------------------------------------------------------------
 $(function () {
-    $('#s6').change(function () {
+    $('#6').change(function () {
 
-        child_index=6;
+        child_index=6
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //----------------------------------------------------------------------
 $(function () {
-    $('#s7').change(function () {
+    $('#7').change(function () {
 
         child_index=7;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //--------------------------------------------------------------
 $(function () {
-    $('#s8').change(function () {
+    $('#8').change(function () {
 
         child_index=8;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //----------------------------------------------------------------
 $(function () {
-    $('#s9').change(function () {
+    $('#9').change(function () {
 
         child_index=9;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //----------------------------------------------------
 $(function () {
-    $('#s10').change(function () {
+    $('#10').change(function () {
 
         child_index=10;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //--------------------------------------------------------------
 $(function () {
-    $('#s11').change(function () {
+    $('#11').change(function () {
 
         child_index=11;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //---------------------------------------------------
 $(function () {
-    $('#s12').change(function () {
+    $('#12').change(function () {
 
         child_index=12;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //------------------------------------------
 $(function () {
-    $('#s13').change(function () {
+    $('#13').change(function () {
 
         child_index=13;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //----------------------------------------------------------------
 $(function () {
-    $('#s14').change(function () {
+    $('#14').change(function () {
 
         child_index=14;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //-----------------------------------------------
 $(function () {
-    $('#s15').change(function () {
+    $('#15').change(function () {
 
         child_index=15;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //-----------------------------------------------------------------
 $(function () {
-    $('#s16').change(function () {
+    $('#16').change(function () {
 
         child_index=16;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //--------------------------------------------------
 $(function () {
-    $('#s17').change(function () {
+    $('#17').change(function () {
 
         child_index=17;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi()
+        postData();
     })
 });
 //----------------------------------------------
 $(function () {
-    $('#s18').change(function () {
+    $('#18').change(function () {
 
         child_index=18;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });
 //----------------------------------------------------------------------------------
 $(function () {
-    $('#s19').change(function () {
+    $('#19').change(function () {
 
         child_index=19;
+        dev_index=document.getElementById("devID").innerHTML;
+        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
             child_status=true;
         }
         else {
             child_status=false;
         }
-        postConfigSensi();
+        postData();
     })
 });

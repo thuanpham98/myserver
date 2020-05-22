@@ -14,7 +14,7 @@ block content
                             .form-group(class="checkbox",id="sensors")
                                 each sensi, index in sens 
                                     -let label = sensi.mask+ "(" + (index+1).toString() + ")";
-                                    -let num= index.toString();
+                                    -let num= 's'+index.toString();
                                     -let act = sensi.act;    
                                     input(type="checkbox",id=num,checked =act,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
@@ -36,14 +36,14 @@ block content
                         form
                             .form-group(class="checkbox",id="sensors")
                                 each sensi, index in sens 
-                                    -let num= index.toString();
+                                    -let num= 't'+index.toString();
                                     -let type = sensi.type;
                                     -if(type ===1)
                                         input(type="checkbox",id=num,checked ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line " +num, data-off="bar "+num)  
                                     -else
                                         input(type="checkbox",id=num,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line "+num, data-off="bar "+num)
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
-                        script(src="/javascripts/configSensors.js")
+                        script(src="/javascripts/configSensorsType.js")
                     .card-footer.text-center
                         .row
                             .col-6
@@ -63,13 +63,13 @@ block content
                             .form-group(class="checkbox",id="sensors")
                                 each sensi, index in sens 
                                     -let label = sensi.mask+ "(" + (index+1).toString() + ")";
-                                    -let num= index.toString();
+                                    -let num='m'+ index.toString();
                                     -let act = sensi.act; 
                                     input(type="text",id=num,placeholder=label)
                             .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
                                 a.btn.btn-primary(type='submit',id="updateMask") Change Mask
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
-                        script(src="/javascripts/configSensors.js")
+                        script(src="/javascripts/configSensorsMask.js")
                     .card-footer.text-center
                         .row
                             .col-6

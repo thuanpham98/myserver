@@ -113,6 +113,10 @@ router.get('/sensors',async function(req,res){
         res.render('sensors', { title: "Sensor Page" , dev: device});
     });
 });
+router.post('/sensors',async function(req,res){
+    console.log(req.body);
+    res.json({name: "thuan"});
+});
 router.get('/sensors/:id',async function(req,res){
     //res.json({id : req.params.id});
     let account,sensors;
@@ -135,6 +139,7 @@ router.get('/sensors/:id',async function(req,res){
         res.render('sens', { title: "Sensi Page" , name: sensors[0].mask ,sens: sensors[0].child, dev : sensors[0].dev});
     });
 });
+
 
 /** euipments config */
 router.get('/equipments',function(req,res){
