@@ -142,6 +142,7 @@ router.post('/sensors',async function(req,res){
                 console.log(frame.child.status);
                 console.log(result[0].child[ind].act);
                 result[0].child[ind].act = frame.child.status;
+                break;
                 
             case 1 : 
                 console.log("ok");
@@ -150,6 +151,7 @@ router.post('/sensors',async function(req,res){
                 console.log("ok");
                 break;
         }
+        console.log("ok save");
         result[0].save();
     });
 
