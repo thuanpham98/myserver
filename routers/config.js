@@ -145,7 +145,7 @@ router.post('/sensors', async function (req, res) {
             
             child.act = frame.child.status;
             
-            console.log(result[0].child[ind].act);
+            result[0].child.set(ind,child);
             await result[0].save();
             console.log(result[0].child[ind].act);
         });
