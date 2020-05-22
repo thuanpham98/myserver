@@ -152,6 +152,8 @@ router.post('/sensors',async function(req,res){
                 break;
         }
         console.log("ok save");
+        console.log(result[0].child[ind].act);
+
         await result[0].save();
     });
 
