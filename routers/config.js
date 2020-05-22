@@ -132,9 +132,10 @@ router.post('/sensors',async function(req,res){
     let frame = req.body;
     console.log(frame);
     // update sensors
-    ManageDev.find({ID : account[0].timestamp, dev : parseInt(frame.dev, 10), mask : frame.mask },function(err,result){
+    await ManageDev.find({ID : account[0].timestamp, dev : parseInt(frame.dev, 10), mask : frame.mask },function(err,result){
         let ind= parseInt(frame.child.index);
-        console.log(result[0]);
+        console.log(result[0].child);
+        console.log(frame.action);
         switch(frame.action){
             case 0 :
                 result[0].child[ind].act= frame.child.status;
