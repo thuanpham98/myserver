@@ -134,7 +134,7 @@ router.post('/sensors',async function(req,res){
     // update sensors
     await ManageDev.find({ID : account[0].timestamp, dev : parseInt(frame.dev, 10), mask : frame.mask },async function(err,result){
         let ind= parseInt(frame.child.index,10);
-        console.log(result[0].child);
+        console.log(result[0]);
         console.log(frame.action);
         switch(parseInt(frame.action,10)){
             case 0 :
@@ -152,7 +152,7 @@ router.post('/sensors',async function(req,res){
                 break;
         }
         console.log("ok save");
-        await result[0].save();
+        await result.save();
     });
 
     res.json({name: "ok user"});
