@@ -141,10 +141,10 @@ router.post('/sensors', async function (req, res) {
         console.log("status 0");
         await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
             
-            let child =result[0].child;
+            let child =result[0].child.act;
             
-            child[ind].act = frame.child.status;
-            result[0].child=child;
+            child[ind] = frame.child.status;
+            
             console.log(result[0].child[ind].act);
             result[0].save();
         });
