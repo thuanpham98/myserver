@@ -30,7 +30,7 @@ async function postConfigSensi_mask(){
     });
 
     let datum= await response.json();
-    let url = "/user/config/sensors/" +dev_index.toString();
+    // let url = "/user/config/sensors/" +dev_index.toString();
     // window.location.replace(url);
     window.alert(datum);
 }

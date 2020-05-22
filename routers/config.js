@@ -108,14 +108,47 @@ router.get('/sensors',async function(req,res){
             return;
         }
     });
-    await ManageDev.find({ID : account[0].timestamp, type : 1 },async function(errr,result){
+    await ManageDev.find({ID : account[0].timestamp, type : 1 },function(errr,result){
         device = result;
         res.render('sensors', { title: "Sensor Page" , dev: device});
     });
 });
 router.post('/sensors',async function(req,res){
-    console.log(req.body);
-    res.json({name: "thuan"});
+
+    let account,device;
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    /* check token on database */
+    await User.find({ email: decoded.accessToken }, function(err, result) {
+        assert.equal(null, err);
+        account = result;
+        
+        if (!account.length) {
+            res.json("no user");
+            return;
+        }
+    });
+
+    let frame = req.body;
+    // update sensors
+    await ManageDev.find({ID : account[0].timestamp, type : 1 },function(errr,result){
+        device = result;
+
+        switch(frame){
+            case 0 :
+                result[0].child[frame.child.child_index].act= frame.child.child_status;
+                result[0].save();
+                break;
+            case 1 : 
+                console.log("ok");
+                break;
+            case 2: 
+                console.log("ok");
+                break;
+        }
+    });
+
+    res.json({name: "ok user"});
 });
 router.get('/sensors/:id',async function(req,res){
     //res.json({id : req.params.id});
