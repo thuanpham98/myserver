@@ -138,7 +138,7 @@ router.post('/sensors', async function (req, res) {
     console.log(frame.action);
     if (parseInt(frame.action, 10) === 0) {
         console.log("status 0");
-        await ManageDev.find({ ID: account[0].timestamp, dev: dev_num, mask: frame.mask }, function (err, result) {
+        await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, function (err, result) {
             result[0].child[ind].act = JSON.parse(frame.child.status);
             result[0].save();
         });
