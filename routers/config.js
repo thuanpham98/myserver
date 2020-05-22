@@ -142,21 +142,11 @@ router.post('/sensors', async function (req, res) {
         await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
             
             let child =result[0].child[ind];
-            
             child.act = frame.child.status;
-            
             result[0].child.set(ind,child);
             await result[0].save();
-            console.log(result[0].child[ind].act);
         });
     }
-
-    await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
-            
-        console.log(result[0].child[ind].act);
-    });
-
-
     res.json({ name: "ok user" });
 });
 router.get('/sensors/:id', async function (req, res) {
