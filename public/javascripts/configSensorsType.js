@@ -1,354 +1,307 @@
 "use strict"
 
-var frame,dev_index,dev_name,child_index,child_status,action=-1 ;
+var frame,dev_index,dev_name,child_index,child_type;
 
-async function postData(){
+async function postConfigSensi_type(){
 
     dev_index=document.getElementById("devID").innerHTML;
     dev_name= document.getElementById("devName").innerHTML;
 
-    frame={dev : dev_index , mask : dev_name, child : {index : child_index,status:child_status}};
+    frame={dev : dev_index , mask : dev_name, child : {index : child_index, type:child_type},action : 1};
     console.log(frame);
-    // let response = await fetch('https://iot-server-365.herokuapp.com/login',{
-    //     method: 'post',
-    //     mode: 'cors', 
-    //     headers:{
-    //         //'Accept': 'application/json, text/plain, */*',
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body:JSON.stringify(frame)
-    // });
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/config/sensors',{
+        method: 'post',
+        mode: 'cors', 
+        headers:{
+            //'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(frame)
+    });
 
-    // let datum= await response;
-
-    // if(datum.redirected)
-    // {
-    //     window.location.replace(datum.url);
-    // }
-    // else{
-    //     //window.location.replace( "/login");
-    //     console.log("error");
-    //     document.getElementById("status").innerHTML="email or pass is incorrect";
-
-    // }
+    let datum= await response.json();  
+    console.log(datum);
 }
 
 
 $(function () {
-    $('#0').change(function () {
+    $('#t0').change(function () {
 
         child_index=0;
         
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //------------------------------------------------------
 $(function () {
-    $('#1').change(function () {
+    $('#t1').change(function () {
 
         child_index=1;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
+        
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //------------------------------------------------------
 $(function () {
-    $('#2').change(function () {
+    $('#t2').change(function () {
 
         child_index=2;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //-----------------------------------------------------------------
 $(function () {
-    $('#3').change(function () {
+    $('#t3').change(function () {
 
         child_index=3;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //-----------------------------------------------------
 $(function () {
-    $('#4').change(function () {
+    $('#t4').change(function () {
 
         child_index=4;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //------------------------------------------------------
 $(function () {
-    $('#5').change(function () {
+    $('#t5').change(function () {
 
         child_index=5;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //---------------------------------------------------------------
 $(function () {
-    $('#6').change(function () {
+    $('#t6').change(function () {
 
         child_index=6
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //----------------------------------------------------------------------
 $(function () {
-    $('#7').change(function () {
+    $('#t7').change(function () {
 
         child_index=7;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //--------------------------------------------------------------
 $(function () {
-    $('#8').change(function () {
+    $('#t8').change(function () {
 
         child_index=8;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //----------------------------------------------------------------
 $(function () {
-    $('#9').change(function () {
+    $('#t9').change(function () {
 
         child_index=9;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //----------------------------------------------------
 $(function () {
-    $('#10').change(function () {
+    $('#t10').change(function () {
 
         child_index=10;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //--------------------------------------------------------------
 $(function () {
-    $('#11').change(function () {
+    $('#t11').change(function () {
 
         child_index=11;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //---------------------------------------------------
 $(function () {
-    $('#12').change(function () {
+    $('#t12').change(function () {
 
         child_index=12;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //------------------------------------------
 $(function () {
-    $('#13').change(function () {
+    $('#t13').change(function () {
 
         child_index=13;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //----------------------------------------------------------------
 $(function () {
-    $('#14').change(function () {
+    $('#t14').change(function () {
 
         child_index=14;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //-----------------------------------------------
 $(function () {
-    $('#15').change(function () {
+    $('#t15').change(function () {
 
         child_index=15;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //-----------------------------------------------------------------
 $(function () {
-    $('#16').change(function () {
+    $('#t16').change(function () {
 
         child_index=16;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //--------------------------------------------------
 $(function () {
-    $('#17').change(function () {
+    $('#t17').change(function () {
 
         child_index=17;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //----------------------------------------------
 $(function () {
-    $('#18').change(function () {
+    $('#t18').change(function () {
 
         child_index=18;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
 //----------------------------------------------------------------------------------
 $(function () {
-    $('#19').change(function () {
+    $('#t19').change(function () {
 
         child_index=19;
-        dev_index=document.getElementById("devID").innerHTML;
-        dev_name= document.getElementById("devName").innerHTML;
         if($(this).prop('checked')){
-            child_status=true;
+            child_type=1;
         }
         else {
-            child_status=false;
+            child_type=0;
         }
-        postData();
+        postConfigSensi_type();
     })
 });
