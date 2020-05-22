@@ -132,30 +132,26 @@ router.post('/sensors',async function(req,res){
     let frame = req.body;
     console.log(frame);
     // update sensors
-    await ManageDev.find({ID : account[0].timestamp, dev : parseInt(frame.dev, 10), mask : frame.mask },async function(err,result){
-        let ind= parseInt(frame.child.index,10);
-        console.log(result[0]);
-        console.log(frame.action);
-        switch(parseInt(frame.action,10)){
-            case 0 :
-                console.log("status 0");
-                console.log(frame.child.status);
-                console.log(result[0].child[ind].act);
-                result[0].child[ind].act = frame.child.status;
-                break;
-                
-            case 1 : 
-                console.log("ok");
-                break;
-            case 2: 
-                console.log("ok");
-                break;
-        }
-        console.log("ok save");
-        console.log(result[0].child[ind].act);
 
-        await result[0].save();
-    });
+    let ind= parseInt(frame.child.index,10);
+    console.log(result[0]);
+    console.log(frame.action);
+    switch(parseInt(frame.action,10)){
+        case 0 :
+            console.log("status 0");
+            await ManageDev.find({ID : account[0].timestamp, dev : parseInt(frame.dev, 10), mask : frame.mask },async function(err,result){
+                result[0].child[ind].act = frame.child.status;
+                result[0].save();
+            });
+            break;
+            
+        case 1 : 
+            console.log("ok");
+            break;
+        case 2: 
+            console.log("ok");
+            break;
+    }
 
     res.json({name: "ok user"});
 });
