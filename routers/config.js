@@ -130,6 +130,7 @@ router.post('/sensors',async function(req,res){
     });
 
     let frame = req.body;
+    console.log(frame);
     // update sensors
     await ManageDev.find({ID : account[0].timestamp, type : 1 },function(errr,result){
         device = result;
