@@ -135,7 +135,7 @@ router.post('/sensors',async function(req,res){
     await ManageDev.find({ID : account[0].timestamp, type : 1 },function(errr,result){
         device = result;
 
-        switch(frame){
+        switch(frame.action){
             case 0 :
                 result[0].child[frame.child.index].act= frame.child.status;
                 result[0].save();
