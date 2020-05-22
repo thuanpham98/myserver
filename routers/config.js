@@ -115,7 +115,7 @@ router.get('/sensors',async function(req,res){
 });
 router.post('/sensors',async function(req,res){
 
-    let account,device;
+    let account;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     /* check token on database */
@@ -132,8 +132,7 @@ router.post('/sensors',async function(req,res){
     let frame = req.body;
     console.log(frame);
     // update sensors
-    await ManageDev.find({ID : account[0].timestamp, dev : parseInt(frame.dev, 10), mask : frame.mask },function(errr,result){
-        device = result;
+    await ManageDev.find({ID : account[0].timestamp, dev : parseInt(frame.dev, 10), mask : frame.mask },function(err,result){
         let ind= parseInt(frame.child.index);
         switch(frame.action){
             case 0 :
