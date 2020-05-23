@@ -64,7 +64,7 @@ router.post('/', async function (req, res) {
                     // let child =result[0].child;
                     for(let i =result[0].child.length ; i > req.body.num ;i--){
 
-                        result[0].child.$pop();
+                        result[0].child.pop();
                     }
                     result[0].save();
                 }
