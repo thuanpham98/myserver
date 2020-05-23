@@ -20,3 +20,8 @@ async function searchDev(){
 
     window.location.replace(datum.url);
 }
+
+document.getElementById("search").addEventListener("click", function(){
+    console.log("button");
+    searchDev();
+});
