@@ -260,7 +260,7 @@ router.get('/sensors/:id', async function (req, res) {
 
 
 /** euipments config */
-router.get('/equipments', function (req, res) {
+router.get('/equipments', async function (req, res) {
         // let device =[{mask: "thuan", type : 0},{mask:"thao",type : 1}]
         let account, device;
         let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
