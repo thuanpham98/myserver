@@ -135,9 +135,10 @@ router.post('/sensors', async function (req, res) {
 
     switch (parseInt(frame.action,10)) {
         case 0:
-            let ind = parseInt(frame.child.index, 10);
+            
             await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
             
+                let ind = parseInt(frame.child.index, 10);
                 let child =result[0].child[ind];
                 child.act = frame.child.status;
                 result[0].child.set(ind,child);
@@ -146,9 +147,10 @@ router.post('/sensors', async function (req, res) {
             break;
 
         case 1 : 
-            let ind = parseInt(frame.child.index, 10);
+            
             await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
                 
+                let ind = parseInt(frame.child.index, 10);
                 let child =result[0].child[ind];
                 child.type = frame.child.type;
                 result[0].child.set(ind,child);
@@ -158,10 +160,10 @@ router.post('/sensors', async function (req, res) {
 
         case 2: 
             await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
-                
+                let ind = frame.child[i].index;
                 let child =result[0].child;
                 for(let i =0;i < frame.child.length;i++){
-                    let ind = frame.child[i].index;
+                    
                     child[ind].mask= frame.child[i].mask;
                     result[0].child.set(ind,child);
                 }
