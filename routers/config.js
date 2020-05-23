@@ -215,7 +215,7 @@ router.post('/sensors', async function (req, res) {
     res.json({ name: "ok user" });
 });
 router.post('/sensors/search', async function (req, res) {
-    // let device =[{mask: "thuan", type : 0},{mask:"thao",type : 1}]
+    
     let account, sensors;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
@@ -288,6 +288,33 @@ router.get('/equipments', async function (req, res) {
             res.render('equipments', { title: "Equipment Page", dev: device });
         });
 })
+router.post('/equipments/search' ,async function (req, res) {
+    
+    let account, equipments;
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    /* check token on database */
+    await User.find({ email: decoded.accessToken }, function (err, result) {
+        assert.equal(null, err);
+        account = result;
+
+        if (!account.length) {
+            res.json("no user");
+            return;
+        }
+    });
+    /** check device of user */
+    let frame = req.body;
+    await ManageDev.find({ ID: account[0].timestamp, mask: frame.mask }, function (err, result) {
+        equipments = result;
+        if (equipments.length) {
+
+            res.json({ pathDev: equipments[0].dev.toString() })
+        }
+        else {
+            res.json({ pathDev: '' });
+        }
+    });)
 router.get('/equipments/:id', async function (req, res) {
         //res.json({id : req.params.id});
         let account,equipments ;

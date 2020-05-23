@@ -21,7 +21,7 @@ block content
                                     each devi in dev
                                         - var url = '/user/config/equipments/'+ devi.dev;
                                         a(href=url ,class="list-group-item list-group-item-action list-group-item-success")= devi.mask + " " + "(" + devi.dev + ")"
-                        //- script(src="/javascripts/configSensors.js")
+                        script(src="/javascripts/configEquipmentsTable.js")
                     .card-footer.text-center
                         .row
                             .col-6
