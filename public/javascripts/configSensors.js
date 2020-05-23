@@ -306,7 +306,6 @@
 
 
 var theParent = document.querySelector('sensors');
-theParent.addEventListener("click",dosomething,false);
 function dosomething(e){
     if(e.target!==e.currentTarget){
         var clickeditem = e.target.id;
@@ -314,3 +313,4 @@ function dosomething(e){
     }
     // e.stopPropagation();
 }
+theParent.addEventListener("click",dosomething,false);
