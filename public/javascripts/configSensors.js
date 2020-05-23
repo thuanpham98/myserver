@@ -310,6 +310,7 @@ $(document).ready(function () {
     $(".icon").change(function (){
         var id = $(this).attr("id");
         alert(id);
+        console.log($(this).prop('checked'));
     });
 
 
