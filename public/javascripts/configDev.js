@@ -1,6 +1,6 @@
 "use strict"
 
-var frame, dev, mask, type, act = -1;
+var frame, dev, mask, type,num, act = -1;
 
 async function postData() {
 
