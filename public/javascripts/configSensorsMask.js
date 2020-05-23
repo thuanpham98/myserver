@@ -19,15 +19,15 @@ async function postConfigSensi_mask(){
 
     frame={dev : dev_index , mask : dev_name, child : sub_frame, action : 2};
     console.log(frame);
-    let response = await fetch('https://iot-server-365.herokuapp.com/user/config/sensors',{
-        method: 'post',
-        mode: 'cors', 
-        headers:{
-            //'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(frame)
-    });
+    // let response = await fetch('https://iot-server-365.herokuapp.com/user/config/sensors',{
+    //     method: 'post',
+    //     mode: 'cors', 
+    //     headers:{
+    //         //'Accept': 'application/json, text/plain, */*',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body:JSON.stringify(frame)
+    // });
 
     let datum= await response.json();
     // let url = "/user/config/sensors/" +dev_index.toString();
