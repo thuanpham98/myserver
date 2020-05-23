@@ -288,7 +288,7 @@ router.get('/equipments', async function (req, res) {
             res.render('equipments', { title: "Equipment Page", dev: device });
         });
 })
-router.get('/equipments/:id', function (req, res) {
+router.get('/equipments/:id', async function (req, res) {
         //res.json({id : req.params.id});
         let account, sensors;
         let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
