@@ -8,9 +8,10 @@ async function postConfigSensi_mask(){
     dev_name= document.getElementById("devName").innerHTML;
     sub_frame=[];
     let num_sensi = document.getElementById("numSensi").innerHTML;
+    num_sensi=parseInt(num_sensi,10);
     console.log(num_sensi);
     let temp;
-    for(let i = 0;i<20;i++){
+    for(let i = 0;i<num_sensi;i++){
         let id = 'm' + i.toString();
         temp = document.getElementById(id).value;
         temp=temp.toString();
