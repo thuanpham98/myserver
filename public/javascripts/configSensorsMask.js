@@ -33,6 +33,7 @@ async function postConfigSensi_mask(){
     // let url = "/user/config/sensors/" +dev_index.toString();
     // window.location.replace(url);
     window.alert(datum);
+    sub_frame=[];
 }
 
 document.getElementById("updateMask").addEventListener("click", function(){
