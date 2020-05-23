@@ -23,6 +23,21 @@ async function postConfigSensi(){
     console.log(datum);
 }
 
+$(document).ready(function () {
+
+    $(".sensinum").change(function (){
+        var id = $(this).attr("id");
+
+        child_index=parseInt(id.slice(1));
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postConfigSensi();
+    });
+});
 
 // $(function () {
 //     $('#s0').change(function () {
@@ -303,20 +318,3 @@ async function postConfigSensi(){
 //         postConfigSensi();
 //     })
 // });
-
-
-$(document).ready(function () {
-
-    $(".sensinum").change(function (){
-        var id = $(this).attr("id");
-
-        child_index=parseInt(id.slice(1));
-        if($(this).prop('checked')){
-            child_status=true;
-        }
-        else {
-            child_status=false;
-        }
-        postConfigSensi();
-    });
-});
