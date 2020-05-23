@@ -18,7 +18,7 @@ block content
                                     -let label = sensi.mask+ "(" + index.toString() + ")";
                                     -let num= 's'+index.toString();
                                     -let act = sensi.act;    
-                                    input(type="checkbox",id=num,class="sensimask",checked =act,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)
+                                    input(type="checkbox",id=num,class="sensinum",checked =act,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
                         script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
@@ -46,9 +46,9 @@ block content
                                     -let num= 't'+index.toString();
                                     -let type = sensi.type;
                                     -if(type ===1)
-                                        input(type="checkbox",id=num,checked ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line " +num, data-off="bar "+num)  
+                                        input(type="checkbox",id=num,checked,class="sensitype" ,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line " +num, data-off="bar "+num)  
                                     -else
-                                        input(type="checkbox",id=num,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line "+num, data-off="bar "+num)
+                                        input(type="checkbox",id=num,class="sensitype",data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="line "+num, data-off="bar "+num)
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
                         script(src="/javascripts/configSensorsType.js")
                     .card-footer.text-center

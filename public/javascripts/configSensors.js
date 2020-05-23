@@ -307,7 +307,7 @@ async function postConfigSensi(){
 
 $(document).ready(function () {
 
-    $(".sensimask").change(function (){
+    $(".sensinum").change(function (){
         var id = $(this).attr("id");
 
         child_index=parseInt(id.slice(1));
@@ -319,7 +319,4 @@ $(document).ready(function () {
         }
         postConfigSensi();
     });
-
-
-
 });
