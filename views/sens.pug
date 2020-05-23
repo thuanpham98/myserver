@@ -9,6 +9,7 @@ block content
                         h3(id="devName",style="text-align:center").text-center.font-weight-light.my-4 #{name}
                         h5(style="text-align:center") (Choose sensors you use)
                         h3(id="devID",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
+                        h3(id="numSensi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numSensi}
                     .card-body
                         form
                             //- button on off
@@ -36,7 +37,8 @@ block content
                     .card-header
                         h3(id="devName",style="text-align:center").text-center.font-weight-light.my-4 #{name}
                         h5(style="text-align:center") (Choose type of Chart you want)
-                        h3(id="devID",style="text-align:center").text-center.font-weight-light.my-4 #{dev}
+                        h3(id="devID",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
+                        h3(id="numSensi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numSensi}
                     .card-body
                         form
                             .form-group(class="checkbox",id="sensors")
@@ -65,7 +67,8 @@ block content
                     .card-header
                         h3(id="devName",style="text-align:center").text-center.font-weight-light.my-4 #{name}
                         h5(style="text-align:center") (Update mask for sensors to using easily)
-                        h3(id="devID",style="text-align:center").text-center.font-weight-light.my-4 #{dev}
+                        h3(id="devID",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
+                        h3(id="numSensi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numSensi}
                     .card-body.text-md-center
                         form
                             //- button on off

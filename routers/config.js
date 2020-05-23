@@ -249,7 +249,7 @@ router.get('/sensors/:id', async function (req, res) {
     let devi = parseInt(req.params.id, 10);
     await ManageDev.find({ ID: account[0].timestamp, dev: devi }, function (err, result) {
         sensors = result;
-        res.render('sens', { title: "Sensi Page", name: sensors[0].mask, sens: sensors[0].child, dev: sensors[0].dev });
+        res.render('sens', { title: "Sensi Page", name: sensors[0].mask, sens: sensors[0].child, dev: sensors[0].dev , numSensi : sensors[0].child.length});
     });
 });
 

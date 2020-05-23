@@ -7,6 +7,8 @@ async function postConfigSensi_mask(){
     dev_index=document.getElementById("devID").innerHTML;
     dev_name= document.getElementById("devName").innerHTML;
     sub_frame=[];
+    let num_sensi = document.getElementById("numSensi").innerHTML;
+    console.log(num_sensi);
     let temp;
     for(let i = 0;i<20;i++){
         let id = 'm' + i.toString();
