@@ -16,9 +16,11 @@ async function searchDev(){
         body:JSON.stringify(frame)
     });
     
-    let datum= await response;
-    console.log(datum.url);
-    window.location.replace(datum.url);
+    let datum= await response.json();
+    console.log(datum.pathDev);
+    let url='/user/config/sensors' + datum.pathDev;
+    console.log(url);
+    window.location.replace(url);
 }
 
 document.getElementById("search").addEventListener("click", function(){

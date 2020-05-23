@@ -197,13 +197,11 @@ router.post('/sensors/search',async function(req,res){
         await ManageDev.find({ ID: account[0].timestamp, mask: frame.mask }, function (err, result) {
             sensors = result;
             if(sensors.length){
-                console.log(sensors[0].mask);
-                let url = "/" +(sensors[0].dev).toString();
-                console.log(url);
-                res.redirect(url);
+
+                res.json({pathDev: sensors[0].dev.toString()})
             }
             else{
-                res.redirect("/");
+                res.json({pathDev : '/'});
             }
         });
 })
