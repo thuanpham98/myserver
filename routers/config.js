@@ -314,7 +314,8 @@ router.post('/equipments/search' ,async function (req, res) {
         else {
             res.json({ pathDev: '' });
         }
-    });)
+    });
+});
 router.get('/equipments/:id', async function (req, res) {
         //res.json({id : req.params.id});
         let account,equipments ;
