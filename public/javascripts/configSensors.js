@@ -305,14 +305,7 @@
 // });
 
 
-var theParent = document.querySelector('#sensors');
-function dosomething(e){
-
-    if(e.target!==e.currentTarget){
-        let clickeditem = $(event.target).attr('id');
-        alert("hello "+ clickeditem);
-        console.log(e);
-    }
-    // e.stopPropagation();
-}
-theParent.addEventListener("click",dosomething,false);
+$(".tom").on('click', function(event){
+    var id = $(event.target).attr('id');
+    console.log(id);
+  });
