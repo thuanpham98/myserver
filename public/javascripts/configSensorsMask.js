@@ -6,6 +6,7 @@ async function postConfigSensi_mask(){
 
     dev_index=document.getElementById("devID").innerHTML;
     dev_name= document.getElementById("devName").innerHTML;
+    sub_frame=[];
     let temp;
     for(let i = 0;i<20;i++){
         let id = 'm' + i.toString();
@@ -33,7 +34,7 @@ async function postConfigSensi_mask(){
     // let url = "/user/config/sensors/" +dev_index.toString();
     // window.location.replace(url);
     window.alert(datum);
-    sub_frame=[];
+    
 }
 
 document.getElementById("updateMask").addEventListener("click", function(){
