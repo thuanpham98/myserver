@@ -199,6 +199,7 @@ router.post('/sensors/search',async function(req,res){
             if(sensors.length){
                 console.log(sensors[0].mask);
                 let url = "/user/config/sensors/" +(sensors[0].dev).toString();
+                console.log(url);
                 res.redirect(url);
             }
             else{
