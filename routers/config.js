@@ -50,10 +50,20 @@ router.post('/', async function (req, res) {
                 result[0].mask = req.body.mask;
                 result[0].type = req.body.type;
                 if (req.body.num > result[0].child.length) {
-                    for (let i = result[0].child.length; i < req.body.num; i++) {
-                        result[0].child.push({ mask: ("mask" + i.toString()), type: 0, act: false });
+                    if (parseInt(req.body.type, 10) === 1) {
+                        for (let i = result[0].child.length; i < req.body.num; i++) {
+                            result[0].child.push({ mask: ("mask" + i.toString()), type: 0, act: false });
+                        }
+                        result[0].save();
                     }
-                    result[0].save();
+                    if (parseInt(req.body.type, 10) === 0) {
+                        for (let i = result[0].child.length; i < req.body.num; i++) {
+                            result[0].child.push({ mask: ("mask" + i.toString()), maskport: "maskPortx", type: 0, value: 0, port: 0, pin: i, act: false });
+                        }
+                        result[0].save();
+                    }
+
+                    
                 }
                 else if (req.body.num < result[0].child.length) {
                     for (let i = result[0].child.length; i > req.body.num; i--) {
