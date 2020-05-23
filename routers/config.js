@@ -160,16 +160,16 @@ router.post('/sensors', async function (req, res) {
 
         case 2: 
             console.log(frame.child.length);
-            // await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
+            await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
                 
-            //     let child =result[0].child;
-            //     for(let i =0;i < frame.child.length;i++){
-            //         let ind = frame.child[i].index;
-            //         child[ind].mask= frame.child[i].mask;
-            //         result[0].child.set(ind,child);
-            //     }
-            //     await result[0].save();
-            // });
+                let child =result[0].child;
+                for(let i =0;i < frame.child.length;i++){
+                    let ind = frame.child[i].index;
+                    child[ind].mask= frame.child[i].mask;
+                    result[0].child.set(ind,child);
+                }
+                await result[0].save();
+            });
             break;
     
         default:
