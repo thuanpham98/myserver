@@ -18,7 +18,7 @@ async function searchDev(){
     
     let datum= await response;
     console.log(datum.url);
-    //window.location.replace(datum.url);
+    window.location.replace(datum.url);
 }
 
 document.getElementById("search").addEventListener("click", function(){
