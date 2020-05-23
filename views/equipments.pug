@@ -10,11 +10,11 @@ block content
                         h6(id="statusPass",style="color: red;")
                     .card-body
                         form
-                            //- button on off
-                            .form-group(class="checkbox")       
-                                input#s1(type="checkbox", data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="100",data-on="senor1", data-off="sensor1")
+                            //- //- button on off
+                            //- .form-group(class="checkbox")       
+                            //-     input#s1(type="checkbox", data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="100",data-on="senor1", data-off="sensor1")
 
-                            br
+                            //- br
                             //- search box
                             .form-group(class="wrap")
                                 .form-group(class="search")
@@ -24,9 +24,9 @@ block content
                             .form-group(class="list-group")
                                 a(href="#" class="list-group-item list-group-item-action") All device Post
                                     each devi in dev
-                                        - var url = '/user/config/equipments/'+ devi.type;
-                                        a(href=url ,class="list-group-item list-group-item-action list-group-item-success")= devi.mask + " " + "(" +devi.type + ")"
-                        script(src="/javascripts/configSensors.js")
+                                        - var url = '/user/config/sensors/'+ devi.dev;
+                                        a(href=url ,class="list-group-item list-group-item-action list-group-item-success")= devi.mask + " " + "(" + devi.dev + ")"
+                        //- script(src="/javascripts/configSensors.js")
                     .card-footer.text-center
                         .row
                             .col-6

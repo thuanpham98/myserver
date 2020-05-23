@@ -28,5 +28,14 @@ block content
                                     a.btn.btn-primary(type='submit',id="removeDev",name="remove",style="background-color: red") Remove
                         script(src="/javascripts/configDev.js")
                     .card-footer.text-center
-                        .small
-                            a(href='/user/config/sensors') Go to config sensor
+                        .row
+                            .col-6
+                                .small
+                                    a(href='/user') Return to your Dashboard
+                            .col-6    
+                                .small
+                                    a(href='/user/config/equipments') Go to Equipments table
+                        .row 
+                            .col-12 
+                                .small
+                                    a(href='/user/config/sensors') Go to Sensors table
