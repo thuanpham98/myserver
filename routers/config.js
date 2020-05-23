@@ -201,7 +201,7 @@ router.post('/sensors/search',async function(req,res){
                 res.json({pathDev: sensors[0].dev.toString()})
             }
             else{
-                res.json({pathDev : '/'});
+                res.json({pathDev : ''});
             }
         });
 })
