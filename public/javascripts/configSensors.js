@@ -310,6 +310,7 @@ function dosomething(e){
     if(e.target!==e.currentTarget){
         var clickeditem = e.target.id;
         alert("hello"+clickeditem);
+        console.log(e);
     }
     // e.stopPropagation();
 }
