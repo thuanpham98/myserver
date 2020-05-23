@@ -305,11 +305,11 @@
 // });
 
 
-var theParent = document.querySelector('#sensors');
+var theParent = document.querySelector('#s.');
 function dosomething(e){
     if(e.target!==e.currentTarget){
-        var clickeditem = $(this).attr("id");
-        alert("hello"+clickeditem);
+        var clickeditem = $('input').prop('id');
+        alert("hello "+clickeditem);
         console.log(e);
     }
     // e.stopPropagation();
