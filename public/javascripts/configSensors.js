@@ -305,7 +305,9 @@
 // });
 
 
-$(".tom").on('click', function(event){
-    var id = $(event.target).attr('id');
-    console.log(id);
-  });
+$(function () {
+    $(".tom").on('click', function (event) {
+        var id = $(this).attr("id");
+        console.log(id);
+    });
+});
