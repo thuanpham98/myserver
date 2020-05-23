@@ -55,11 +55,8 @@ router.post('/', async function (req, res) {
                         // let ind = frame.child[i].index;
                         // child.push({ mask: ("mask"+i.toString()), type: 0, act: false });
                         // result[0].child.set(i,child[i]);
-
-                        result[0].child.push({
-                            $each: [{ mask: ("mask"+i.toString()), type: 0, act: false }],
-                            $position: i
-                        });
+                        console.log(i);
+                        result[0].child.push({ mask: ("mask"+i.toString()), type: 0, act: false });
                     }
                     result[0].save();
                 }
