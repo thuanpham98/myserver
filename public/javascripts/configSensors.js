@@ -305,12 +305,12 @@
 // });
 
 
-var theParent = document.querySelector('#sensors');
+var theParent = document.querySelector('sensors');
 theParent.addEventListener("click",dosomething,false);
 function dosomething(e){
     if(e.target!==e.currentTarget){
         var clickeditem = e.target.id;
-        alert("hello"+clickeditem.toString());
+        alert("hello"+clickeditem);
     }
-    e.stopPropagation();
+    // e.stopPropagation();
 }
