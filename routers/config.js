@@ -129,24 +129,60 @@ router.post('/sensors', async function (req, res) {
         }
     });
 
-    let frame = req.body;
-    console.log(frame);
     // update sensors
-
-    let ind = parseInt(frame.child.index, 10);
+    let frame = req.body;
     let dev_num = parseInt(frame.dev, 10);
-    console.log(frame.action);
 
-    if (parseInt(frame.action, 10) === 0) {
-        console.log("status 0");
-        await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
+    switch (parseInt(frame.action,10)) {
+        case 0:
+            let ind = parseInt(frame.child.index, 10);
+            await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
             
-            let child =result[0].child[ind];
-            child.act = frame.child.status;
-            result[0].child.set(ind,child);
-            await result[0].save();
-        });
+                let child =result[0].child[ind];
+                child.act = frame.child.status;
+                result[0].child.set(ind,child);
+                await result[0].save();
+            });
+            break;
+
+        case 1 : 
+            let ind = parseInt(frame.child.index, 10);
+            await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
+                
+                let child =result[0].child[ind];
+                child.type = frame.child.type;
+                result[0].child.set(ind,child);
+                await result[0].save();
+            });
+            break;
+
+        case 2: 
+            await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
+                
+                let child =result[0].child;
+                for(let i =0;i < frame.child.length;i++){
+                    let ind = frame.child[i].index;
+                    child[ind].mask= frame.child[i].mask;
+                    result[0].child.set(ind,child);
+                }
+                await result[0].save();
+            });
+            break;
+    
+        default:
+            break;
     }
+
+    // if (parseInt(frame.action, 10) === 0) {
+    //     console.log("status 0");
+        // await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
+            
+        //     let child =result[0].child[ind];
+        //     child.act = frame.child.status;
+        //     result[0].child.set(ind,child);
+        //     await result[0].save();
+        // });
+    // }
     res.json({ name: "ok user" });
 });
 router.get('/sensors/:id', async function (req, res) {
