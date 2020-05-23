@@ -305,9 +305,17 @@
 // });
 
 
-$(function () {
-    $(".tom").on('click', function (event) {
-        var id = $(this).attr("id");
-        console.log(id);
+$(document).ready(function () {
+
+    $(".icon").on('click', function (event) {
+        console.log($(this).attr("id"));
+        console.log(event.target.id);
     });
+
+
+    $(".icon").click(function (event) {
+        console.log(event.target.id);
+        console.log(this.id);
+    });
+
 });
