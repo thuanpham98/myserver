@@ -159,7 +159,7 @@ router.post('/sensors', async function (req, res) {
             break;
 
         case 2: 
-            console.log(frame);
+            console.log(frame.child.length);
             // await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
                 
             //     let child =result[0].child;
