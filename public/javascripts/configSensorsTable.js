@@ -18,7 +18,7 @@ async function searchDev(){
     
     let datum= await response.json();
     console.log(datum.pathDev);
-    let url='/user/config/sensors' + datum.pathDev;
+    let url='/user/config/sensors/' + datum.pathDev;
     console.log(url);
     window.location.replace(url);
 }
