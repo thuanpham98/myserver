@@ -307,15 +307,11 @@
 
 $(document).ready(function () {
 
-    $(".icon").on('click', function (event) {
-        console.log($(this).attr("id"));
-        console.log(event.target.id);
+    $(".icon").change(function (){
+        var id = $(this).attr("id");
+        alert(id);
     });
 
 
-    $(".icon").click(function (event) {
-        console.log(event.target.id);
-        console.log(this.id);
-    });
 
 });
