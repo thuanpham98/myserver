@@ -49,7 +49,29 @@ router.post('/', async function (req, res) {
                 result[0].dev = req.body.dev;
                 result[0].mask = req.body.mask;
                 result[0].type = req.body.type;
-                result[0].save();
+                if(req.body.num > result[0].child.length){
+                    // let child =result[0].child;
+                    for(let i =result[0].child.length ; i < req.body.num ;i++){
+                        // let ind = frame.child[i].index;
+                        // child.push({ mask: ("mask"+i.toString()), type: 0, act: false });
+                        // result[0].child.set(i,child[i]);
+
+                        result[0].child.push({
+                            $each: [{ mask: ("mask"+i.toString()), type: 0, act: false }],
+                            $position: i
+                        });
+                    }
+                    result[0].save();
+                }
+                else if(req.body.num < result[0].child.length){
+                    // let child =result[0].child;
+                    for(let i =result[0].child.length ; i > req.body.num ;i--){
+
+                        result[0].child.$pop();
+                    }
+                    result[0].save();
+                }
+                
             }
             else {
                 if(req.body.type){
