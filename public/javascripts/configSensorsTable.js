@@ -3,7 +3,7 @@ var search,frame ;
 
 async function searchDev(){
 
-    search=document.getElementById("search").value;
+    search=document.getElementById("searchData").value;
     frame = {mask : search};
 
     let response = await fetch('https://iot-server-365.herokuapp.com/user/config//sensors/search',{
@@ -17,8 +17,8 @@ async function searchDev(){
     });
     
     let datum= await response;
-
-    window.location.replace(datum.url);
+    console.log(datum.url);
+    //window.location.replace(datum.url);
 }
 
 document.getElementById("search").addEventListener("click", function(){
