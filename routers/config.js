@@ -160,10 +160,10 @@ router.post('/sensors', async function (req, res) {
 
         case 2: 
             await ManageDev.find({ ID: account[0].timestamp, dev: dev_num}, async function (err, result) {
-                let ind = frame.child[i].index;
+                
                 let child =result[0].child;
                 for(let i =0;i < frame.child.length;i++){
-                    
+                    let ind = frame.child[i].index;
                     child[ind].mask= frame.child[i].mask;
                     result[0].child.set(ind,child);
                 }
