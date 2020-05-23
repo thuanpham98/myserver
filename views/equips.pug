@@ -9,18 +9,18 @@ block content
                         h3(id="devName",style="text-align:center").text-center.font-weight-light.my-4 #{name}
                         h5(style="text-align:center") (Choose equipments you use)
                         h3(id="devID",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
-                        h3(id="numSensi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numSensi}
+                        h3(id="numEquipi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numEquipi}
                     .card-body
                         form
                             //- button on off
-                            .form-group(class="checkbox",id="sensors")
-                                each sensi, index in sens 
-                                    -let label = sensi.mask+ "(" + index.toString() + ")";
+                            .form-group(class="checkbox",id="equipments")
+                                each equipi, index in equips 
+                                    -let label = equipi.mask+ "(" + index.toString() + ")";
                                     -let num= 's'+index.toString();
-                                    -let act = sensi.act;    
+                                    -let act = equipi.act;    
                                     input(type="checkbox",id=num,checked =act,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on=label, data-off=label)
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
-                        script(src="/javascripts/configSensors.js")
+                        script(src="/javascripts/configEquipments.js")
                     .card-footer.text-center
                         .row
                             .col-6 
@@ -28,7 +28,7 @@ block content
                                     a(href='/user') Return Dashoard
                             .col-6
                                 .small
-                                    a(href='/user/config/sensors') Return Sensors table
+                                    a(href='/user/config/equipments') Return Equipments table
                             .col-6    
                                 .small
                                     a(href='/user/config') Return config device
@@ -36,9 +36,9 @@ block content
                 .card.shadow-lg.border-0.rounded-lg.mt-5
                     .card-header
                         h3(id="devName",style="text-align:center").text-center.font-weight-light.my-4 #{name}
-                        h5(style="text-align:center") (Choose type of Chart you want)
+                        h5(style="text-align:center") (Choose type of Equipment you want)
                         h3(id="devID",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
-                        h3(id="numSensi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numSensi}
+                        h3(id="numEquipi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numEquipi}
                     .card-body
                         form
                             .form-group(class="checkbox",id="sensors")
@@ -62,13 +62,108 @@ block content
                             .col-6    
                                 .small
                                     a(href='/user/config') Return config device
+        .row.justify-content-center
             .col-lg-5
                 .card.shadow-lg.border-0.rounded-lg.mt-5
                     .card-header
                         h3(id="devName",style="text-align:center").text-center.font-weight-light.my-4 #{name}
-                        h5(style="text-align:center") (Update mask for sensors to using easily)
+                        h5(style="text-align:center") (Update mask for Equiptments to using easily)
                         h3(id="devID",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
-                        h3(id="numSensi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numSensi}
+                        h3(id="numEquipi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numEquipi}
+                    .card-body.text-md-center
+                        form
+                            //- button on off
+                            .form-group(class="checkbox",id="sensors")
+                                each sensi, index in sens 
+                                    -let label = sensi.mask+ "(" + (index).toString() + ")";
+                                    -let num='m'+ index.toString();
+                                    -let act = sensi.act; 
+                                    input(type="text",id=num,placeholder=label)
+                            .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
+                                a.btn.btn-primary(type='submit',id="updateMask") Change Mask
+                        script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
+                        script(src="/javascripts/configSensorsMask.js")
+                    .card-footer.text-center
+                        .row
+                            .col-6 
+                                .small
+                                    a(href='/user') Return Dashoard
+                            .col-6
+                                .small
+                                    a(href='/user/config/sensors') Return Sensors table
+                            .col-6    
+                                .small
+                                    a(href='/user/config') Return config device
+            .col-lg-5
+                .card.shadow-lg.border-0.rounded-lg.mt-5
+                    .card-header
+                        h3(id="devName",style="text-align:center").text-center.font-weight-light.my-4 #{name}
+                        h5(style="text-align:center") (Update mask for Equiptments to using easily)
+                        h3(id="devID",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
+                        h3(id="numEquipi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numEquipi}
+                    .card-body.text-md-center
+                        form
+                            //- button on off
+                            .form-group(class="checkbox",id="sensors")
+                                each sensi, index in sens 
+                                    -let label = sensi.mask+ "(" + (index).toString() + ")";
+                                    -let num='m'+ index.toString();
+                                    -let act = sensi.act; 
+                                    input(type="text",id=num,placeholder=label)
+                            .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
+                                a.btn.btn-primary(type='submit',id="updateMask") Change Mask
+                        script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
+                        script(src="/javascripts/configSensorsMask.js")
+                    .card-footer.text-center
+                        .row
+                            .col-6 
+                                .small
+                                    a(href='/user') Return Dashoard
+                            .col-6
+                                .small
+                                    a(href='/user/config/sensors') Return Sensors table
+                            .col-6    
+                                .small
+                                    a(href='/user/config') Return config device
+        .row.justify-content-center
+            .col-lg-5
+                .card.shadow-lg.border-0.rounded-lg.mt-5
+                    .card-header
+                        h3(id="devName",style="text-align:center").text-center.font-weight-light.my-4 #{name}
+                        h5(style="text-align:center") (Update mask for Equiptments to using easily)
+                        h3(id="devID",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
+                        h3(id="numEquipi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numEquipi}
+                    .card-body.text-md-center
+                        form
+                            //- button on off
+                            .form-group(class="checkbox",id="sensors")
+                                each sensi, index in sens 
+                                    -let label = sensi.mask+ "(" + (index).toString() + ")";
+                                    -let num='m'+ index.toString();
+                                    -let act = sensi.act; 
+                                    input(type="text",id=num,placeholder=label)
+                            .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
+                                a.btn.btn-primary(type='submit',id="updateMask") Change Mask
+                        script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
+                        script(src="/javascripts/configSensorsMask.js")
+                    .card-footer.text-center
+                        .row
+                            .col-6 
+                                .small
+                                    a(href='/user') Return Dashoard
+                            .col-6
+                                .small
+                                    a(href='/user/config/sensors') Return Sensors table
+                            .col-6    
+                                .small
+                                    a(href='/user/config') Return config device
+            .col-lg-5
+                .card.shadow-lg.border-0.rounded-lg.mt-5
+                    .card-header
+                        h3(id="devName",style="text-align:center").text-center.font-weight-light.my-4 #{name}
+                        h5(style="text-align:center") (Update mask for Equiptments to using easily)
+                        h3(id="devID",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
+                        h3(id="numEquipi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numEquipi}
                     .card-body.text-md-center
                         form
                             //- button on off

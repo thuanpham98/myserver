@@ -308,7 +308,7 @@ router.get('/equipments/:id', async function (req, res) {
         let devi = parseInt(req.params.id, 10);
         await ManageDev.find({ ID: account[0].timestamp, dev: devi }, function (err, result) {
             equipments = result;
-            res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equipi: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
+            res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
         });
 })
 
