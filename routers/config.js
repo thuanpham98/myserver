@@ -290,7 +290,7 @@ router.get('/equipments', async function (req, res) {
 })
 router.get('/equipments/:id', async function (req, res) {
         //res.json({id : req.params.id});
-        let account, sensors;
+        let account,equipments ;
         let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     
         /* check token on database */
@@ -306,6 +306,7 @@ router.get('/equipments/:id', async function (req, res) {
     
         /** check device of user */
         let devi = parseInt(req.params.id, 10);
+        console
         await ManageDev.find({ ID: account[0].timestamp, dev: devi }, function (err, result) {
             equipments = result;
             res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
