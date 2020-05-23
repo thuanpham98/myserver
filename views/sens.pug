@@ -11,9 +11,9 @@ block content
                         h3(id="devID",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
                         h3(id="numSensi",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{numSensi}
                     .card-body
-                        form(id="sensors")
+                        form
                             //- button on off
-                            .form-group(class="checkbox")
+                            .form-group(class="checkbox",id="sensors")
                                 each sensi, index in sens 
                                     -let label = sensi.mask+ "(" + index.toString() + ")";
                                     -let num= 's'+index.toString();
