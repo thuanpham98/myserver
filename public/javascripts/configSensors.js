@@ -307,8 +307,9 @@
 
 var theParent = document.querySelector('#sensors');
 function dosomething(e){
+    console.log(e.currentTarget)
     if(e.target!==e.currentTarget){
-        var clickeditem = $('input').prop('checked');
+        let clickeditem = $('input').prop('checked');
         alert("hello "+ clickeditem);
         console.log(e);
     }
