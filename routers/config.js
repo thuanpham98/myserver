@@ -40,7 +40,7 @@ router.post('/', async function (req, res) {
     });
 
     if (req.body.act) {
-        await ManageDev.find({ ID: account[0].timestamp, dev: req.body.dev }, async function (errr, result) {
+        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev,10) }, async function (errr, result) {
             // assert.equal(null, err);
             device = result;
 
