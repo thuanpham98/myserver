@@ -35,6 +35,7 @@ $(document).ready(function () {
         else {
             child_type=0;
         }
+        console.log("button");
         postConfigSensi_type();
     });
 });
