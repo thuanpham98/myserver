@@ -21,6 +21,10 @@ async function postConfigEquipi_Port(){
         }
     }
 
+    if(!sub_frame.length){
+        return;
+    }
+
     frame={dev : dev_index , mask : dev_name, child : sub_frame, action : 4};
     console.log(frame);
     let response = await fetch('https://iot-server-365.herokuapp.com/user/config/equipments',{
