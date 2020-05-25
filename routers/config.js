@@ -394,18 +394,7 @@ router.post('/equipments', async function (req, res) {
         default:
             break;
     }
-
-    await ManageDev.find({ ID: account[0].timestamp,type : 0, 'child.type': 1}, async function (err, doc) {
-        let ret = doc;
-        if(ret.length){
-            for(let i =0; i < ret.length;i++){
-                console.log(ret[i]);
-                console.log("-----------");
-                console.log(ret[i].child);
-            }
-        }
-    });
-
+    
     res.json({ name: "ok user" });
 });
 router.post('/equipments/search' ,async function (req, res) {

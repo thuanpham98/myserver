@@ -38,6 +38,7 @@ router.post('/', async function (req, res) {
             return;
         }
     });
+    console.log(req.body);
     await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev, 10) , "child.type" :-1 }, async function (errr, result) {
         device=result;
         console.log(result);
