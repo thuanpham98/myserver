@@ -305,7 +305,7 @@ router.post('/equipments', async function (req, res) {
     });
 
     // update sensors
-    let frame = JSON.parse(req.body);
+    let frame = req.body;
     console.log(frame);
     let dev_num = parseInt(frame.dev, 10);
 
@@ -367,7 +367,7 @@ router.post('/equipments', async function (req, res) {
                 let child = result[0].child;
                 for (let i = 0; i < frame.child.length; i++) {
                     let ind = frame.child[i].index;
-                    child[ind].port = frame.child[i].port;
+                    child[ind].port = parseInt(frame.child[i].port,10);
                     result[0].child.set(ind, child[ind]);
                 }
                 await result[0].save();
@@ -380,7 +380,7 @@ router.post('/equipments', async function (req, res) {
                 let child = result[0].child;
                 for (let i = 0; i < frame.child.length; i++) {
                     let ind = frame.child[i].index;
-                    child[ind].pin = frame.child[i].pin;
+                    child[ind].pin = parseInt(frame.child[i].pin,10);
                     result[0].child.set(ind, child[ind]);
                 }
                 await result[0].save();
