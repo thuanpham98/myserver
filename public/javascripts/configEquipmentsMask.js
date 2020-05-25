@@ -1,6 +1,6 @@
 "use strict"
 
-var frame,sub_frame=[],dev_index,dev_name,child_index,child_mask,action;
+var frame,sub_frame=[],dev_index,dev_name,child_index,action;
 
 async function postConfigEquipi_mask(){
 

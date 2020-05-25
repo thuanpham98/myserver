@@ -140,7 +140,7 @@ block content
                             .form-group(class="checkbox",id="equipments")
                                 each equipi, index in equips 
                                     -let label = equipi.port+ "(" + (index).toString() + ")";
-                                    -let num='m'+ index.toString();
+                                    -let num='po'+ index.toString();
                                     
                                     input(type="text",id=num,placeholder=label)
                             .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
@@ -171,7 +171,7 @@ block content
                             .form-group(class="checkbox",id="equipments")
                                 each equipi, index in equips 
                                     -let label = equipi.pin+ "(" + (index).toString() + ")";
-                                    -let num='mp'+ index.toString();
+                                    -let num='pi'+ index.toString();
                                      
                                     input(type="text",id=num,placeholder=label)
                             .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
