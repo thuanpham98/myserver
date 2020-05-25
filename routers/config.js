@@ -306,6 +306,7 @@ router.post('/equipments', async function (req, res) {
 
     // update sensors
     let frame = JSON.parse(req.body);
+    console.log(frame);
     let dev_num = parseInt(frame.dev, 10);
 
     switch (parseInt(frame.action, 10)) {
