@@ -26,7 +26,7 @@ async function postConfigSensi_type(){
 $(document).ready(function () {
 
     $(".equipitype").change(function (){
-        var id = $(this).attr("id");
+        let id = $(this).attr("id");
 
         child_index=parseInt(id.slice(1));
         if($(this).prop('checked')){
