@@ -40,7 +40,7 @@ async function postConfigEquipi_Port(){
     let datum= await response.json();
     // let url = "/user/config/sensors/" +dev_index.toString();
     // window.location.replace(url);
-    window.alert("update name Sucess");
+    window.alert("update Port Sucess");
     
 }
 

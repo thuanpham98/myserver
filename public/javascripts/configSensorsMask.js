@@ -20,6 +20,9 @@ async function postConfigSensi_mask(){
             sub_frame.push({index : i, mask:temp});
         }
     }
+    if(!sub_frame.length){
+        return;
+    }
 
     frame={dev : dev_index , mask : dev_name, child : sub_frame, action : 2};
     console.log(frame);
@@ -36,7 +39,7 @@ async function postConfigSensi_mask(){
     let datum= await response.json();
     // let url = "/user/config/sensors/" +dev_index.toString();
     // window.location.replace(url);
-    window.alert("update name Sucess");
+    window.alert("update Mask Sucess");
     
 }
 
