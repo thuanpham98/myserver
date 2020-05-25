@@ -288,6 +288,72 @@ router.get('/equipments', async function (req, res) {
             res.render('equipments', { title: "Equipment Page", dev: device });
         });
 })
+router.post('/equipments', async function (req, res) {
+
+    // let account;
+    // let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    // /* check token on database */
+    // await User.find({ email: decoded.accessToken }, function (err, result) {
+    //     assert.equal(null, err);
+    //     account = result;
+
+    //     if (!account.length) {
+    //         res.json("no user");
+    //         return;
+    //     }
+    // });
+
+    // // update sensors
+    // let frame = req.body;
+    // let dev_num = parseInt(frame.dev, 10);
+
+    // switch (parseInt(frame.action, 10)) {
+    //     case 0:
+
+    //         await ManageDev.find({ ID: account[0].timestamp, dev: dev_num }, async function (err, result) {
+
+    //             let ind = parseInt(frame.child.index, 10);
+    //             let child = result[0].child[ind];
+    //             child.act = frame.child.status;
+    //             result[0].child.set(ind, child);
+    //             await result[0].save();
+    //         });
+    //         break;
+
+    //     case 1:
+
+    //         await ManageDev.find({ ID: account[0].timestamp, dev: dev_num }, async function (err, result) {
+
+    //             let ind = parseInt(frame.child.index, 10);
+    //             let child = result[0].child[ind];
+    //             child.type = frame.child.type;
+    //             result[0].child.set(ind, child);
+    //             await result[0].save();
+    //         });
+    //         break;
+
+    //     case 2:
+
+    //         await ManageDev.find({ ID: account[0].timestamp, dev: dev_num }, async function (err, result) {
+
+    //             let child = result[0].child;
+    //             for (let i = 0; i < frame.child.length; i++) {
+    //                 let ind = frame.child[i].index;
+    //                 child[ind].mask = frame.child[i].mask;
+    //                 result[0].child.set(ind, child[ind]);
+    //             }
+    //             await result[0].save();
+    //         });
+    //         break;
+
+    //     default:
+    //         break;
+    // }
+
+    console.log(req.body);
+    res.json({ name: "ok user" });
+});
 router.post('/equipments/search' ,async function (req, res) {
     
     let account, equipments;
