@@ -9,7 +9,7 @@ async function postConfigEquipi(){
 
     frame={dev : dev_index , mask : dev_name, child : {index : child_index,status:child_status},action : 0};
     console.log(frame);
-    let response = await fetch('https://iot-server-365.herokuapp.com/user/config/equiptments',{
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/config/equipments',{
         method: 'post',
         mode: 'cors', 
         headers:{
@@ -20,7 +20,7 @@ async function postConfigEquipi(){
     });
 
     let datum= await response.json();
-    console.log(datum);
+    console.log(datum.name);
 }
 
 $(document).ready(function () {
