@@ -17,7 +17,7 @@ async function postConfigEquipi_Port(){
         temp=temp.toString();
         console.log(temp);
         if((temp!=="") && !(isNaN(temp))){
-            sub_frame.push({index : i, mask:temp});
+            sub_frame.push({index : i, port :parseInt(temp,10)});
         }
     }
 
