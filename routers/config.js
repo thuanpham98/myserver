@@ -58,7 +58,7 @@ router.post('/', async function (req, res) {
                     }
                     if (parseInt(req.body.type, 10) === 0) {
                         for (let i = result[0].child.length; i < req.body.num; i++) {
-                            result[0].child.push({ mask: ("mask" + i.toString()), maskport: "maskPortx", type: 0, value: 0, port: 0, pin: i, act: false });
+                            result[0].child.push({ mask: ("mask" + i.toString()), maskport: "maskPortx", type: 0, value: 0, port: -1, pin: i, act: false });
                         }
                         result[0].save();
                     }
@@ -94,7 +94,7 @@ router.post('/', async function (req, res) {
 
                     let child = [];
                     for (let i = 0; i < parseInt(req.body.num, 10); i++) {
-                        child.push({ mask: ("mask" + i.toString()), maskport: "maskPortx", type: 0, value: 0, port: 0, pin: i, act: false });
+                        child.push({ mask: ("mask" + i.toString()), maskport: "maskPortx", type: 0, value: 0, port: -1, pin: i, act: false });
                     }
                     await ManageDev.create({
                         ID: account[0].timestamp,

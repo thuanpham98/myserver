@@ -150,6 +150,57 @@ router.get('/blocks', async function (req, res) {
         res.render('blocks', { title: "Block Page", dev: device });
     });
 });
+router.post('/blocks/search' ,async function (req, res) {
+    
+    let account, equipments;
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
+    /* check token on database */
+    await User.find({ email: decoded.accessToken }, function (err, result) {
+        assert.equal(null, err);
+        account = result;
+
+        if (!account.length) {
+            res.json("no user");
+            return;
+        }
+    });
+    /** check device of user */
+    let frame = req.body;
+    await ManageDev.find({ ID: account[0].timestamp, mask: frame.mask }, function (err, result) {
+        equipments = result;
+        if (equipments.length) {
+
+            res.json({ pathDev: equipments[0].dev.toString() })
+        }
+        else {
+            res.json({ pathDev: '' });
+        }
+    });
+});
+router.get('/blocks/:id', async function (req, res) {
+    //res.json({id : req.params.id});
+    let account,equipments ;
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    /* check token on database */
+    await User.find({ email: decoded.accessToken }, function (err, result) {
+        assert.equal(null, err);
+        account = result;
+
+        if (!account.length) {
+            res.json("no user");
+            return;
+        }
+    });
+
+    /** check device of user */
+    let devi = parseInt(req.params.id, 10);
+    console
+    await ManageDev.find({ ID: account[0].timestamp, dev: devi }, function (err, result) {
+        equipments = result;
+        res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
+    });
+})
 /* export home */
 module.exports = router

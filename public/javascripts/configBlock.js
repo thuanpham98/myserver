@@ -1,23 +1,23 @@
 "use strict"
 
-var frame, block, mask, type,num, act = -1;
+var frame, block, mask, dev,num, act = -1;
 
 async function postData() {
 
     block = document.getElementById("block").value;
     mask = document.getElementById("mask").value;
-    type = document.getElementById("type").value;
+    dev = document.getElementById("dev").value;
     num = document.getElementById("num").value;
 
     block = block.toString();
     mask = mask.toString();
-    type = type.toString();
+    dev = dev.toString();
     num = num.toString();
 
     if ((block !== "") && (mask !== "") && (type !== "") && (num !== "")) {
         frame = { block: block, mask: mask, type: type, num: num, act: act };
         console.log(frame);
-        // let response = await fetch('https://iot-server-365.herokuapp.com/user/config', {
+        // let response = await fetch('https://iot-server-365.herokuapp.com/user/gui', {
         //     method: 'post',
         //     mode: 'cors',
         //     headers: {
