@@ -298,7 +298,7 @@ router.post('/equipments', async function (req, res) {
         assert.equal(null, err);
         account = result;
 
-        if (!account.length) {
+        if (account.length===0) {
             res.json("no user");
             return;
         }
@@ -308,7 +308,7 @@ router.post('/equipments', async function (req, res) {
     let frame = req.body;
     console.log(frame);
 
-    let dev_num = frame.dev;
+    let dev_num =parseInt(frame.dev,10);
 
     switch (parseInt(frame.action, 10)) {
         case 0:
