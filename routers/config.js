@@ -307,7 +307,7 @@ router.post('/equipments', async function (req, res) {
     // update sensors
     let frame = req.body;
     console.log(frame);
-    let dev_num = parseInt(frame.dev, 10);
+    let dev_num = frame.dev;
 
     switch (parseInt(frame.action, 10)) {
         case 0:
@@ -321,6 +321,7 @@ router.post('/equipments', async function (req, res) {
                 await result[0].save();
             });
             break;
+
         case 1:
 
             await ManageDev.find({ ID: account[0].timestamp, dev: dev_num }, async function (err, result) {
@@ -332,6 +333,7 @@ router.post('/equipments', async function (req, res) {
                 await result[0].save();
             });
             break;
+
         case 2:
 
             await ManageDev.find({ ID: account[0].timestamp, dev: dev_num }, async function (err, result) {
@@ -345,6 +347,7 @@ router.post('/equipments', async function (req, res) {
                 await result[0].save();
             });
             break;
+
         case 3:
 
             await ManageDev.find({ ID: account[0].timestamp, dev: dev_num }, async function (err, result) {
@@ -358,6 +361,7 @@ router.post('/equipments', async function (req, res) {
                 await result[0].save();
             });
             break;
+
         case 4:
 
             await ManageDev.find({ ID: account[0].timestamp, dev: dev_num }, async function (err, result) {
@@ -371,6 +375,7 @@ router.post('/equipments', async function (req, res) {
                 await result[0].save();
             });
             break;
+
         case 5:
 
             await ManageDev.find({ ID: account[0].timestamp, dev: dev_num }, async function (err, result) {
