@@ -391,7 +391,7 @@ router.post('/equipments', async function (req, res) {
 
     await ManageDev.find({ ID: account[0].timestamp,'child.type' : 1 },function (err, result) {
         let doc =result;
-        if(!doc.length){
+        if(doc.length){
             for(let i = 0 ; i < doc.length;i++){
                 console.log(doc.mask);
                 console.log(doc.child);
