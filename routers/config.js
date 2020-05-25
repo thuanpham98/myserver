@@ -390,7 +390,8 @@ router.post('/equipments', async function (req, res) {
     }
 
     await ManageDev.find({ ID: account[0].timestamp,'child.type' :1 },function (err, result) {
-        console.log(result);
+        let doc =result;
+        console.log(doc);
     });
 
     res.json({ name: "ok user" });
