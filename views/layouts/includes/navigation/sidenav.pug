@@ -41,7 +41,7 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                     #pagesCollapseAuth.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordionPages')
                         nav.sb-sidenav-menu-nested.nav
                             a.nav-link(href='#') Message 
-                            a.nav-link(href='#') Data Clone
+                            a.nav-link(href='/user/clone') Data Clone
                             a.nav-link(href='/user/update') Update
                             a.nav-link(href='/user/delete') Delete
                             a.nav-link(href='/forgetpass') Forgot Password
@@ -64,6 +64,11 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                 .sb-nav-link-icon
                     i.fas.fa-table
                 | Tables
+
+            a.nav-link(href='/user/config')
+                .sb-nav-link-icon
+                    i.fas.fa-table
+                | Config
                         
     .sb-sidenav-footer
         
