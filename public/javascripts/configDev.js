@@ -14,7 +14,7 @@ async function postData() {
     type = type.toString();
     num = num.toString();
 
-    if ((dev !== "") && (mask !== "") && (type !== "") && (num !== "")) {
+    if ((dev !== "") && (!isNaN(dev)) &&(mask !== "") && (type !== "") && (!isNaN(type)) && (num !== "")&& (!isNaN(num))) {
         frame = { dev: dev, mask: mask, type: type, num: num, act: act };
         console.log(frame);
         let response = await fetch('https://iot-server-365.herokuapp.com/user/config', {

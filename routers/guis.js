@@ -38,93 +38,96 @@ router.post('/', async function (req, res) {
             return;
         }
     });
+    await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev, 10) , "child.type" :-1 }, async function (errr, result) {
+        device=result;
+        console.log(result);
+    });
+    // if (req.body.act) {
+    //     await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev, 10) }, async function (errr, result) {
+    //         // assert.equal(null, err);
+    //         device = result;
 
-    if (req.body.act) {
-        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev, 10) }, async function (errr, result) {
-            // assert.equal(null, err);
-            device = result;
+    //         if (device.length) {
+    //             result[0].timestamp = Date.now();
+    //             result[0].dev = req.body.dev;
+    //             result[0].mask = req.body.mask;
+    //             result[0].type = req.body.type;
+    //             if (req.body.num > result[0].child.length) {
+    //                 if (parseInt(req.body.type, 10) === 1) {
+    //                     for (let i = result[0].child.length; i < req.body.num; i++) {
+    //                         result[0].child.push({ mask: ("mask" + i.toString()), type: 0, act: false });
+    //                     }
+    //                     result[0].save();
+    //                 }
+    //                 if (parseInt(req.body.type, 10) === 0) {
+    //                     for (let i = result[0].child.length; i < req.body.num; i++) {
+    //                         result[0].child.push({ mask: ("mask" + i.toString()), maskport: "maskPortx", type: 0, value: 0, port: 0, pin: i, act: false });
+    //                     }
+    //                     result[0].save();
+    //                 }
+    //             }
+    //             else if (req.body.num < result[0].child.length) {
+    //                 for (let i = result[0].child.length; i > req.body.num; i--) {
 
-            if (device.length) {
-                result[0].timestamp = Date.now();
-                result[0].dev = req.body.dev;
-                result[0].mask = req.body.mask;
-                result[0].type = req.body.type;
-                if (req.body.num > result[0].child.length) {
-                    if (parseInt(req.body.type, 10) === 1) {
-                        for (let i = result[0].child.length; i < req.body.num; i++) {
-                            result[0].child.push({ mask: ("mask" + i.toString()), type: 0, act: false });
-                        }
-                        result[0].save();
-                    }
-                    if (parseInt(req.body.type, 10) === 0) {
-                        for (let i = result[0].child.length; i < req.body.num; i++) {
-                            result[0].child.push({ mask: ("mask" + i.toString()), maskport: "maskPortx", type: 0, value: 0, port: 0, pin: i, act: false });
-                        }
-                        result[0].save();
-                    }
-                }
-                else if (req.body.num < result[0].child.length) {
-                    for (let i = result[0].child.length; i > req.body.num; i--) {
+    //                     result[0].child.pop();
+    //                 }
+    //                 result[0].save();
+    //             }
 
-                        result[0].child.pop();
-                    }
-                    result[0].save();
-                }
+    //         }
+    //         else {
+    //             if (parseInt(req.body.type, 10) === 1) {
 
-            }
-            else {
-                if (parseInt(req.body.type, 10) === 1) {
+    //                 let child = [];
+    //                 for (let i = 0; i < parseInt(req.body.num, 10); i++) {
+    //                     child.push({ mask: ("mask" + i.toString()), type: 0, act: false });
+    //                 }
+    //                 await ManageDev.create({
+    //                     ID: account[0].timestamp,
+    //                     timestamp: Date.now(),
+    //                     dev: req.body.dev,
+    //                     mask: req.body.mask,
+    //                     type: req.body.type,
+    //                     child: child
+    //                 }, function (err2, doc) {
+    //                     console.log(doc);
+    //                 });
+    //             }
+    //             else if (parseInt(req.body.type, 10) === 0) {
 
-                    let child = [];
-                    for (let i = 0; i < parseInt(req.body.num, 10); i++) {
-                        child.push({ mask: ("mask" + i.toString()), type: 0, act: false });
-                    }
-                    await ManageDev.create({
-                        ID: account[0].timestamp,
-                        timestamp: Date.now(),
-                        dev: req.body.dev,
-                        mask: req.body.mask,
-                        type: req.body.type,
-                        child: child
-                    }, function (err2, doc) {
-                        console.log(doc);
-                    });
-                }
-                else if (parseInt(req.body.type, 10) === 0) {
+    //                 let child = [];
+    //                 for (let i = 0; i < parseInt(req.body.num, 10); i++) {
+    //                     child.push({ mask: ("mask" + i.toString()), maskport: "maskPortx", type: 0, value: 0, port: 0, pin: i, act: false });
+    //                 }
+    //                 await ManageDev.create({
+    //                     ID: account[0].timestamp,
+    //                     timestamp: Date.now(),
+    //                     dev: req.body.dev,
+    //                     mask: req.body.mask,
+    //                     type: req.body.type,
+    //                     child: child
+    //                 }, function (err2, doc) {
+    //                     console.log(doc);
+    //                 });
+    //             }
 
-                    let child = [];
-                    for (let i = 0; i < parseInt(req.body.num, 10); i++) {
-                        child.push({ mask: ("mask" + i.toString()), maskport: "maskPortx", type: 0, value: 0, port: 0, pin: i, act: false });
-                    }
-                    await ManageDev.create({
-                        ID: account[0].timestamp,
-                        timestamp: Date.now(),
-                        dev: req.body.dev,
-                        mask: req.body.mask,
-                        type: req.body.type,
-                        child: child
-                    }, function (err2, doc) {
-                        console.log(doc);
-                    });
-                }
+    //         }
+    //     });
+    //     res.json("added");
+    // }
+    // else {
+    //     console.log("start delete ");
+    //     await ManageDev.deleteOne({ ID: account[0].timestamp, dev: req.body.dev }, function (err, result) {
+    //         if (err) {
+    //             console.log("error query");
+    //         } else {
 
-            }
-        });
-        res.json("added");
-    }
-    else {
-        console.log("start delete ");
-        await ManageDev.deleteOne({ ID: account[0].timestamp, dev: req.body.dev }, function (err, result) {
-            if (err) {
-                console.log("error query");
-            } else {
-
-                console.log(result);
-            }
-        }).sort({ _id: -1 }).limit(1);
-        console.log("end deleta");
-        res.json("removed");
-    }
+    //             console.log(result);
+    //         }
+    //     }).sort({ _id: -1 }).limit(1);
+    //     console.log("end deleta");
+    //     res.json("removed");
+    // }
 });
 
 /** manager block */
