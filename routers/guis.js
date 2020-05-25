@@ -147,6 +147,6 @@ router.get('/blocks', async function (req, res) {
     });
     await ManageDev.find({ ID: account[0].timestamp, type: 1 }, function (errr, result) {
         device = result;
-        res.render('sensors', { title: "Sensor Page", dev: device });
+        res.render('blocks', { title: "Block Page", dev: device });
     });
 });
