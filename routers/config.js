@@ -400,6 +400,7 @@ router.post('/equipments', async function (req, res) {
         if(ret.length){
             for(let i =0; i < ret.length;i++){
                 console.log(ret[i]);
+                console.log("-----------");
                 console.log(ret[i].child);
             }
         }
