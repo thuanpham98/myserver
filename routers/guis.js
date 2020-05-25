@@ -150,3 +150,6 @@ router.get('/blocks', async function (req, res) {
         res.render('blocks', { title: "Block Page", dev: device });
     });
 });
+
+/* export home */
+module.exports = router
