@@ -395,7 +395,7 @@ router.post('/equipments', async function (req, res) {
             break;
     }
 
-    await ManageDev.find({ ID: account[0].timestamp, 'child.type': 1}, async function (err, doc) {
+    await ManageDev.find({ ID: account[0].timestamp,type : 0, 'child.type': 1}, async function (err, doc) {
         let ret = doc;
         if(ret.length){
             for(let i =0; i < ret.length;i++){
