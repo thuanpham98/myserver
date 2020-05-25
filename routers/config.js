@@ -321,7 +321,6 @@ router.post('/equipments', async function (req, res) {
                 await result[0].save();
             });
             break;
-
         case 1:
 
             await ManageDev.find({ ID: account[0].timestamp, dev: dev_num }, async function (err, result) {
@@ -333,7 +332,6 @@ router.post('/equipments', async function (req, res) {
                 await result[0].save();
             });
             break;
-
         case 2:
 
             await ManageDev.find({ ID: account[0].timestamp, dev: dev_num }, async function (err, result) {
@@ -390,6 +388,11 @@ router.post('/equipments', async function (req, res) {
         default:
             break;
     }
+
+    await ManageDev.find({ 'child.type' :1 }, async function (err, result) {
+        console.log(result);
+    });
+
     res.json({ name: "ok user" });
 });
 router.post('/equipments/search' ,async function (req, res) {

@@ -6,7 +6,7 @@ var dataSchema = new mongoose.Schema({
     device: Number, /** unique device, odd for post/display, even for get/gui */
     datetime : String, /** for display/save realtime */
     timestamp: Number, /** for caulator realtime */
-    form: Object /** data from device */
+    form: [Object] /** data from device */
 },{ versionKey: false});
 
 var Data = mongoose.model('Data', dataSchema, 'data');
