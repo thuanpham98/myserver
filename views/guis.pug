@@ -1,86 +1,46 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0,user-scalable=yes")
-        title  #{title}
+extends layouts/authentication.pug
 
-        //--!> add link srouce here
-        link(rel="icon" , type="image/png", href="/images/icon.png")
-        link(rel="stylesheet" ,href="/stylesheets/style.css")
-    style.
-        .btn-group button {
-        background-color: #4CAF50; /* Green background */
-        border: 1px solid green; /* Green border */
-        color: white; /* White text */
-        padding: 10px 24px; /* Some padding */
-        cursor: pointer; /* Pointer/hand icon */
-        width: 50%; /* Set a width if needed */
-        display: block; /* Make the buttons appear below each other */
-        }
+block content
+    .container
+        .row.justify-content-center
+            .col-lg-5
+                .card.shadow-lg.border-0.rounded-lg.mt-5
+                    .card-header
+                        h3.text-center.font-weight-light.my-4 Add/Remove Device
+                        h6(id="status",style="color: red;")
+                    .card-body
+                        form
+                            .form-group
+                                label.small.mb-1(for='dev') Block
+                                input#block.form-control.py-4(type='text', placeholder='Enter index of dev you use')
+                            .form-group
+                                label.small.mb-1(for='mask') Mask of Block
+                                input#mask.form-control.py-4(type='text', placeholder='Enter name of dev you want')
+                            .form-group
+                                label.small.mb-1(for='type') Type of Block
+                                input#type.form-control.py-4(type='text', placeholder='Enter name of dev you want')
+                            .form-group
+                                label.small.mb-1(for='num') Number Equipment/Sensors
+                                input#num.form-control.py-4(type='text', placeholder='Enter number Equips or Sens you want ')
+                            .row
+                                .col-6
+                                    .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
+                                    a.btn.btn-primary(type='submit',id="addDev",name="add") Add
+                                .col-6
+                                    .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
+                                    a.btn.btn-primary(type='submit',id="removeDev",name="remove",style="background-color: red") Remove
+                        script(src="/javascripts/configDev.js")
+                    .card-footer.text-center
+                        .row
+                            .col-6
+                                .small
+                                    a(href='/user') Return to your Dashboard
+                            .col-6    
+                                .small
+                                    a(href='/user/config/equipments') Go to Equipments table
+                        .row 
+                            .col-6
 
-        .btn-group button:not(:last-child) {
-        border-bottom: none; /* Prevent double borders */
-        }
-
-        /* Add a background color on hover */
-        .btn-group button:hover {
-        background-color: #3e8e41;
-        }
-    body(style="background-color:lightblue;")
-        div(class="btn-group", style="width:auto;background-color:lightblue;")
-            form(action='/user/GUI/livingroom', method='get')
-                button(style="width:60%;background-color:black;color:white;",class="center") 
-                    p living room
-                br
-            form(action='/user/GUI/badroom', method='get')
-                button(style="width:60%;background-color:black;color:white;",class="center") 
-                    p badroom
-                br
-            form(action='/user/GUI/kitchen', method='get')
-                button(style="width:60%;background-color:black;color:white;",class="center") 
-                    p kitchen
-                br
-            form(action='/user/GUI/bathroom', method='get')
-                button(style="width:60%;background-color:black;color:white;",class="center") 
-                    p bathroom
-                br
-            form(action='/user/GUI/toilet', method='get')
-                button(style="width:60%;background-color:black;color:white;",class="center") 
-                    p toilet
-        br
-        hr
-        div(class="center",style="width:auto;color: black;background-color:lightblue;")
-            h2(class="center")  Controll PWM VS DAC
-            
-            input(type="hidden",name ="device",value="0",id="dev")
-
-            input(type="radio" id="pwm0" name="io" value="32")
-            label(for="pwm0",id="lp0") PWM HS Channel 0 : #{dataPWM0}
-            br
-            input(type="radio" id="pwm1" name="io" value="33")
-            label(for="pwm1",id="lp1") PWM HS Channel 1 : #{dataPWM1}
-            br
-            input(type="radio" id="dac0" name="io" value="25")
-            label(for="dac0",id="ld0") DAC Channel 0    : #{dataDAC0}
-            br
-            input(type="radio" id="dac1" name="io" value="26")
-            label(for="dac1",id="ld1") DAC Channel 1    : #{dataDAC1}
-        div(class="slidecontainer",style="width:auto;color:black;background-color:lightblue;")
-            input(type="range", min="0" ,max="255" ,value='0' ,class="slider" ,id="duty", name="value")
-            span(id="display")
-            
-            script. 
-                var slider = document.getElementById("duty");
-                var output = document.getElementById("display");
-                output.innerHTML = slider.value;
-
-                slider.oninput = function() {
-                output.innerHTML = this.value;
-                }
-
-        hr
-        script(src="/javascripts/control.js")
-
-        form(action='/user', method='get')
-            input(type='submit', value='    Return    ',style="width: auto;background-color: red;border-radius: 50%;",class="center")
+                            .col-6
+                                .small
+                                    a(href='/user/config/sensors') Go to Sensors table

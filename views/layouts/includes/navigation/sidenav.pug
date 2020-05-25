@@ -45,13 +45,14 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                             a.nav-link(href='/user/update') Update
                             a.nav-link(href='/user/delete') Delete
                             a.nav-link(href='/forgetpass') Forgot Password
-                    a.nav-link.collapsed(href='#', data-toggle='collapse' data-target='#pagesCollapseError' aria-expanded='false' aria-controls='pagesCollapseError')
-                        | Rooms
+                    a.nav-link.collapsed(href='#', data-toggle='collapse' data-target='#pagesCollapseAuth' aria-expanded='false' aria-controls='pagesCollapseAuth')
+                        | Block
                         .sb-sidenav-collapse-arrow
                             i.fas.fa-angle-down
-                    #pagesCollapseError.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordionPages')
+                    #pagesCollapseAuth.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordionPages')
                         nav.sb-sidenav-menu-nested.nav
-                            a.nav-link(href='user/gui/livingroom') Room 1 
+                            a.nav-link(href='/user/gui') Config 
+                            a.nav-link(href='/user/gui/blocks') Manager
             .sb-sidenav-menu-heading
                 | Addons
             
