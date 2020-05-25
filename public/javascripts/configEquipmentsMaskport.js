@@ -17,7 +17,7 @@ async function postConfigEquipi_maskPort(){
         temp=temp.toString();
         console.log(temp);
         if(temp!==""){
-            sub_frame.push({index : i, mask:temp});
+            sub_frame.push({index : i, maskport:temp});
         }
     }
     if(!sub_frame.length){
