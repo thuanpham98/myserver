@@ -14,8 +14,8 @@ async function postData() {
     dev = dev.toString();
     num = num.toString();
 
-    if ((block !== "") && (mask !== "") && (type !== "") && (num !== "")) {
-        frame = { block: block, mask: mask, type: type, num: num, act: act };
+    if ((block !== "") && (mask !== "") && (dev !== "") && (num !== "")) {
+        frame = { block: block, mask: mask, dev: dev, num: num, act: act };
         console.log(frame);
         // let response = await fetch('https://iot-server-365.herokuapp.com/user/gui', {
         //     method: 'post',
