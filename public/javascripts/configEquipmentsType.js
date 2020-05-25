@@ -20,7 +20,7 @@ async function postConfigSensi_type(){
     });
 
     let datum= await response.json();  
-    console.log(datum);
+    console.log(datum.name);
 }
 
 $(document).ready(function () {
