@@ -328,7 +328,7 @@ router.post('/equipments', async function (req, res) {
 
                 let ind = parseInt(frame.child.index, 10);
                 let child = result[0].child[ind];
-                child.type = parseInt(frame.child.type,10);
+                child.type = frame.child.type;
                 result[0].child.set(ind, child);
                 await result[0].save();
             });
