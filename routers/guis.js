@@ -78,7 +78,7 @@ router.post('/', async function (req, res) {
                 for (let i = 0; i < temp; i++) {
                     let ind = index_free[i];
 
-                    child[ind].port = frame.port;
+                    child[ind].port = frame.block;
                     child[ind].maskport = frame.mask; 
 
                     doc[0].child.set(ind, child[ind]);
