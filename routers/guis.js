@@ -45,7 +45,7 @@ router.post('/', async function (req, res) {
     //     console.log(result);
     // });
 
-    if(frame.act==1){
+    if(frame.act===1){
         await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10)}, async function(err,doc){
             let result = doc; 
             let count=0;
@@ -98,7 +98,7 @@ router.post('/', async function (req, res) {
             }
         })
     }
-    else if(frame.act==0){
+    else if(frame.act===0){
         await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10),type : 0}, async function(err,result){
             let child = result[0].child;
             for(let i = 0 ; i < result[0].child.length; i++){
