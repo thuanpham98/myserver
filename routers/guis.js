@@ -78,62 +78,62 @@ router.post('/', async function (req, res) {
             console.log("-------");
             console.log(index_used);
             sta = " mask is update";
-            // if (parseInt(frame.num,10) > pin_used)
-            //     if ((parseInt(frame.num,10) - pin_used) > pin_free) {
+            if (parseInt(frame.num,10) > pin_used)
+                if ((parseInt(frame.num,10) - pin_used) > pin_free) {
                     
-            //         console.log("TH1a");
-            //         let child = result[0].child;
-            //         temp = pin_free;
-            //         console.log(temp);
-            //         /** expanse more pin */
-            //         for (let i = 0; i < temp; i++) {
-            //             let ind = index_free[i];
+                    console.log("TH1a");
+                    let child = result[0].child;
+                    temp = pin_free;
+                    console.log(temp);
+                    /** expanse more pin */
+                    for (let i = 0; i < temp; i++) {
+                        let ind = index_free[i];
 
-            //             child[ind].port = frame.block;
-            //             child[ind].maskport = frame.mask;
+                        child[ind].port = frame.block;
+                        child[ind].maskport = frame.mask;
 
-            //             doc[0].child.set(ind, child[ind]);
-            //         }
-            //         /** syn mask again */
-            //         for (let i = 0; i < index_used.length -1 ; i++) {
-            //             let ind = index_used[i];
+                        doc[0].child.set(ind, child[ind]);
+                    }
+                    /** syn mask again */
+                    for (let i = 0; i < index_used.length -1 ; i++) {
+                        let ind = index_used[i];
 
-            //             child[ind].port = frame.block;
-            //             child[ind].maskport = frame.mask;
+                        child[ind].port = frame.block;
+                        child[ind].maskport = frame.mask;
 
-            //             doc[0].child.set(ind, child[ind]);
-            //         }
+                        doc[0].child.set(ind, child[ind]);
+                    }
 
-            //         doc[0].save();
-            //         sta = "done, but only have " + temp.toString();
-            //     }
-            //     else if ((parseInt(frame.num,10) - pin_used) < pin_free) {
-            //         console.log("TH1b");
-            //         let child = result[0].child;
-            //         temp = frame.num - pin_used;
-            //         console.log(temp);
-            //         /** expanse */
-            //         for (let i = 0; i < temp; i++) {
-            //             let ind = index_free[i];
+                    doc[0].save();
+                    sta = "done, but only have " + temp.toString();
+                }
+                else if ((parseInt(frame.num,10) - pin_used) < pin_free) {
+                    console.log("TH1b");
+                    let child = result[0].child;
+                    temp = frame.num - pin_used;
+                    console.log(temp);
+                    /** expanse */
+                    for (let i = 0; i < temp; i++) {
+                        let ind = index_free[i];
 
-            //             child[ind].port = frame.block;
-            //             child[ind].maskport = frame.mask;
+                        child[ind].port = frame.block;
+                        child[ind].maskport = frame.mask;
 
-            //             doc[0].child.set(ind, child[ind]);
-            //         }
-            //         /** syn mask */
-            //         for (let i = 0; i < index_used.length -1 ; i++) {
-            //             let ind = index_used[i];
+                        doc[0].child.set(ind, child[ind]);
+                    }
+                    /** syn mask */
+                    for (let i = 0; i < index_used.length -1 ; i++) {
+                        let ind = index_used[i];
 
-            //             child[ind].port = frame.block;
-            //             child[ind].maskport = frame.mask;
+                        child[ind].port = frame.block;
+                        child[ind].maskport = frame.mask;
 
-            //             doc[0].child.set(ind, child[ind]);
-            //         }
-            //         doc[0].save();
+                        doc[0].child.set(ind, child[ind]);
+                    }
+                    doc[0].save();
 
-            //         sta = "done expanse pin";
-            //     }
+                    sta = "done expanse pin";
+                }
             // else if (parseInt(frame.num,10) <  pin_used) {
             //     console.log("TH2");
             //     temp = pin_used - frame.num;
