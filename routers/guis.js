@@ -156,7 +156,7 @@ router.post('/', async function (req, res) {
     //     console.log("end deleta");
     //     res.json("removed");
     // }
-    res.json({name:"removed"});
+    res.json({name:"done r nha"});
 });
 
 /** manager block */

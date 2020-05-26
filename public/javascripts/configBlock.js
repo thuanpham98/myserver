@@ -30,7 +30,7 @@ async function postData() {
         let datum = await response.json();
 
         window.location.replace('/user/gui');
-        window.alert(datum);
+        window.alert(datum.name);
     }
     else {
         document.getElementById("status").innerHTML = "fill all the parameter";
