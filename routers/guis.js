@@ -60,15 +60,14 @@ router.post('/', async function (req, res) {
                 if (result[0].child[i].port === -1) {
                     pin_free = pin_free + 1;
                     index_free.push(i);
-                    console.log(i);
                 }
                 else {
                     if(result[0].child[i].port === parseInt(frame.block, 10)){
                         pin_used = pin_used + 1;
                         index_used.push(i);
                         result[0].child[i].maskport = frame.mask;
+                        console.log(pin_used);
                     }
-                    console.log(i);
                 }
                 doc[0].child.set(i, result[0].child[i]);
             }
@@ -76,6 +75,7 @@ router.post('/', async function (req, res) {
             // doc[0].save();
 
             console.log(index_free);
+            console.log("-------");
             console.log(index_used);
             sta = " mask is update";
             // if (parseInt(frame.num,10) > pin_used)
