@@ -46,7 +46,7 @@ router.post('/', async function (req, res) {
     // });
 
     if(frame.act==1){
-        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10),type : 0}, async function(err,doc){
+        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10)}, async function(err,doc){
             let result = doc; 
             let count=0;
             let num_pin=0;
