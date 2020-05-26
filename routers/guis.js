@@ -160,17 +160,18 @@ router.post('/', async function (req, res) {
     // Free Block 
     else if (frame.act === 0) {
         console.log(frame.block);
-        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, async function (err, result) {
+        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, function (err, result) {
             let child = result[0].child;
-            console.log(child);
+            
             for (let i = 0; i < child.length; i++) {
                 if (child[i].port === frame.block) {
                     child[i].maskport = "maskPort";
                     child[i].port = -1;
                 }
+                console.log(child[i].port);
                 result[0].child.set(i, child[i]);
             }
-            await result[0].save();
+            result[0].save();
         });
 
         sta = "done remove block";
