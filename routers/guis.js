@@ -59,14 +59,13 @@ router.post('/', async function (req, res) {
                     pin_free = pin_free + 1;
                     index_free.push(i);
                 }
-                if (result[0].child[i].port === parseInt(frame.block, 10)) {
+                if ((result[0].child[i].port === parseInt(frame.block, 10))&&( result[0].child[i].maskport=== parseInt(frame.mask,10))) {
                     pin_used = pin_used + 1;
-                    result[0].child[i].maskport = frame.mask;
                     index_used.push(i);
                 }
-                doc[0].child.set(i, result[0].child[i]);
+                // doc[0].child.set(i, result[0].child[i]);
             }
-            await doc[0].save();
+            // await doc[0].save();
 
             console.log(pin_used);
             console.log(pin_free);
