@@ -105,7 +105,7 @@ router.post('/', async function (req, res) {
             console.log(child);
             for(let i = 0 ; i < result[0].child.length; i++){
                 // if(result[0].child[i].port=== parseInt(frame.block,10)){
-                child[i].maskport = "maskPort"+ "("+ i.toString() +")";
+                child[i].maskport = "maskPort";
                 child[i].port = -1;
                 result[0].child.set(i, child[i]);
                 // }
