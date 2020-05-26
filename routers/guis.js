@@ -69,7 +69,7 @@ router.post('/', async function (req, res) {
                 }
                 doc[0].child.set(i, result[0].child[i]);
             }
-            await doc[0].save();
+            doc[0].save();
 
             console.log(index_used);
             console.log(pin_free);
