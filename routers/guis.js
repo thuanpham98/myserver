@@ -103,7 +103,8 @@ router.post('/', async function (req, res) {
                     sta = "done expanse pin";
                 }
             else if (frame.num < pin_used) {
-                temp = pin_used - frame.num ;
+                temp = pin_used - frame.num;
+                console.log(temp)
                 let child = result[0].child;
 
                 for (let i = 0; i < temp; i++) {
