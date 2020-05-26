@@ -160,6 +160,7 @@ router.post('/', async function (req, res) {
     // Free Block 
     else if (frame.act === 0) {
         console.log(frame.block);
+        console.log(typeof(frame.block))
 
         await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, function (err, result) {
             let child = result[0].child;
