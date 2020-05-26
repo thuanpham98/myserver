@@ -106,23 +106,23 @@ router.post('/', async function (req, res) {
                     await doc[0].save();
                     sta = "done expanse pin";
                 }
-            else if (parseInt(frame.num,10) <  pin_used) {
-                console.log("TH2");
-                temp = pin_used - frame.num;
-                console.log(temp)
-                let child = result[0].child;
+            // else if (parseInt(frame.num,10) <  pin_used) {
+            //     console.log("TH2");
+            //     temp = pin_used - frame.num;
+            //     console.log(temp)
+            //     let child = result[0].child;
 
-                for (let i = 0; i < temp; i++) {
-                    let ind = index_used[index_used.length-1 -i];
+            //     for (let i = 0; i < temp; i++) {
+            //         let ind = index_used[index_used.length-1 -i];
 
-                    child[ind].maskport = "maskPort";
-                    child[ind].port = -1;
+            //         child[ind].maskport = "maskPort";
+            //         child[ind].port = -1;
 
-                    doc[0].child.set(ind, child[ind]);
-                }
-                await doc[0].save();
-                sta = "done";
-            }
+            //         doc[0].child.set(ind, child[ind]);
+            //     }
+            //     await doc[0].save();
+            //     sta = "done";
+            // }
         })
     }
     // Free Block 
