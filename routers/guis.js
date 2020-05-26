@@ -58,12 +58,14 @@ router.post('/', async function (req, res) {
                 if (result[0].child[i].port === -1) {
                     pin_free = pin_free + 1;
                     index_free.push(i);
+                    console.log(i);
                 }
                 else {
                     if(result[0].child[i].port === parseInt(frame.block, 10)){
                         pin_used = pin_used + 1;
                         index_used.push(i);
                     }
+                    console.log(i);
                 }
                 doc[0].child.set(i, result[0].child[i]);
             }

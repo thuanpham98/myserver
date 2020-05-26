@@ -28,9 +28,10 @@ async function postData() {
         });
 
         let datum = await response.json();
-
-        window.location.replace('/user/gui');
+        console.log(datum);
         window.alert(datum.name);
+        window.location.replace('/user/gui');
+        
     }
     else {
         document.getElementById("status").innerHTML = "fill all the parameter";
