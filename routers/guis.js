@@ -45,6 +45,7 @@ router.post('/', async function (req, res) {
     //     console.log(result);
     // });
 
+    // Make Block
     if(frame.act===1){
         await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10)}, async function(err,doc){
             let result = doc; 
@@ -62,42 +63,42 @@ router.post('/', async function (req, res) {
                     num_pin=num_pin+1;
                     result[0].child[i].maskport = frame.mask;
                     index.push(i);
-                    doc[0].child.set(i, result[0].child[i]);
                 }
-                
+                doc[0].child.set(i, result[0].child[i]);
             }
             await doc[0].save();
-            console.log(count);
-            if(frame.num >= num_pin){
-                if((frame.num - num_pin ) >= count){
-                    temp=count;
-                    sta = "just only have $(temp) pin" ;
-                }
-                else {
-                    temp=frame.num - num_pin;
-                }
-                let child = result[0].child;
-                for (let i = 0; i < temp; i++) {
-                    let ind = index_count[i];
-                    child[ind].port = parseInt(frame.port,10);
-                    child[ind].maskport = frame.mask; 
-                    doc[0].child.set(ind, child[ind]);
-                }
-                await doc[0].save();
-                sta= " expanded block"
-            }
-            else if(frame.num < num_pin){
-                let child = result[0].child;
-                for(let i =0 ; i < (frame.num - num_pin);i++){
-                    let ind = index[index.length -1 -i ];
-                    child[ind].port= -1;
-                    doc[0].child.set(ind, child[ind]);
-                }
-                await doc[0].save();
-                sta = "shorted Block";
-            }
+
+            // if(frame.num >= num_pin){
+            //     if((frame.num - num_pin ) >= count){
+            //         temp=count;
+            //         sta = "just only have $(temp) pin" ;
+            //     }
+            //     else {
+            //         temp=frame.num - num_pin;
+            //     }
+            //     let child = result[0].child;
+            //     for (let i = 0; i < temp; i++) {
+            //         let ind = index_count[i];
+            //         child[ind].port = parseInt(frame.port,10);
+            //         child[ind].maskport = frame.mask; 
+            //         doc[0].child.set(ind, child[ind]);
+            //     }
+            //     await doc[0].save();
+            //     sta= " expanded block"
+            // }
+            // else if(frame.num < num_pin){
+            //     let child = result[0].child;
+            //     for(let i =0 ; i < (frame.num - num_pin);i++){
+            //         let ind = index[index.length -1 -i ];
+            //         child[ind].port= -1;
+            //         doc[0].child.set(ind, child[ind]);
+            //     }
+            //     await doc[0].save();
+            //     sta = "shorted Block";
+            // }
         })
     }
+    // Free Block 
     else if(frame.act===0){
         console.log(frame.block);
         await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10)}, function(err,result){
@@ -115,92 +116,8 @@ router.post('/', async function (req, res) {
         });
         sta = "done remove block"
     }
-    // if (req.body.act) {
-    //     await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev, 10) }, async function (errr, result) {
-    //         // assert.equal(null, err);
-    //         device = result;
 
-    //         if (device.length) {
-    //             result[0].timestamp = Date.now();
-    //             result[0].dev = req.body.dev;
-    //             result[0].mask = req.body.mask;
-    //             result[0].type = req.body.type;
-    //             if (req.body.num > result[0].child.length) {
-    //                 if (parseInt(req.body.type, 10) === 1) {
-    //                     for (let i = result[0].child.length; i < req.body.num; i++) {
-    //                         result[0].child.push({ mask: ("mask" + i.toString()), type: 0, act: false });
-    //                     }
-    //                     result[0].save();
-    //                 }
-    //                 if (parseInt(req.body.type, 10) === 0) {
-    //                     for (let i = result[0].child.length; i < req.body.num; i++) {
-    //                         result[0].child.push({ mask: ("mask" + i.toString()), maskport: "maskPortx", type: 0, value: 0, port: 0, pin: i, act: false });
-    //                     }
-    //                     result[0].save();
-    //                 }
-    //             }
-    //             else if (req.body.num < result[0].child.length) {
-    //                 for (let i = result[0].child.length; i > req.body.num; i--) {
-
-    //                     result[0].child.pop();
-    //                 }
-    //                 result[0].save();
-    //             }
-
-    //         }
-    //         else {
-    //             if (parseInt(req.body.type, 10) === 1) {
-
-    //                 let child = [];
-    //                 for (let i = 0; i < parseInt(req.body.num, 10); i++) {
-    //                     child.push({ mask: ("mask" + i.toString()), type: 0, act: false });
-    //                 }
-    //                 await ManageDev.create({
-    //                     ID: account[0].timestamp,
-    //                     timestamp: Date.now(),
-    //                     dev: req.body.dev,
-    //                     mask: req.body.mask,
-    //                     type: req.body.type,
-    //                     child: child
-    //                 }, function (err2, doc) {
-    //                     console.log(doc);
-    //                 });
-    //             }
-    //             else if (parseInt(req.body.type, 10) === 0) {
-
-    //                 let child = [];
-    //                 for (let i = 0; i < parseInt(req.body.num, 10); i++) {
-    //                     child.push({ mask: ("mask" + i.toString()), maskport: "maskPortx", type: 0, value: 0, port: 0, pin: i, act: false });
-    //                 }
-    //                 await ManageDev.create({
-    //                     ID: account[0].timestamp,
-    //                     timestamp: Date.now(),
-    //                     dev: req.body.dev,
-    //                     mask: req.body.mask,
-    //                     type: req.body.type,
-    //                     child: child
-    //                 }, function (err2, doc) {
-    //                     console.log(doc);
-    //                 });
-    //             }
-
-    //         }
-    //     });
-    //     res.json("added");
-    // }
-    // else {
-    //     console.log("start delete ");
-    //     await ManageDev.deleteOne({ ID: account[0].timestamp, dev: req.body.dev }, function (err, result) {
-    //         if (err) {
-    //             console.log("error query");
-    //         } else {
-
-    //             console.log(result);
-    //         }
-    //     }).sort({ _id: -1 }).limit(1);
-    //     console.log("end deleta");
-    //     res.json("removed");
-    // }
+    // return Client
     res.json({name:sta});
 });
 
