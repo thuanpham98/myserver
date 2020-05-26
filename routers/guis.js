@@ -46,7 +46,7 @@ router.post('/', async function (req, res) {
     // });
 
     if(frame.act==1){
-        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10),type : 0}, async function(err,result){
+        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10),type : 0}, async function(err,doc){
             let result = doc; 
             let count=0;
             let num_pin=0;
@@ -79,9 +79,9 @@ router.post('/', async function (req, res) {
                     let ind = index_count[i];
                     child[ind].port = frame.port;
                     child[ind].maskport = frame.mask; 
-                    result[0].child.set(ind, child[ind]);
+                    doc[0].child.set(ind, child[ind]);
                 }
-                await result[0].save();
+                await doc[0].save();
                 sta= " expanded block"
             }
             else if(frame.num < num_pin){
@@ -89,9 +89,9 @@ router.post('/', async function (req, res) {
                 for(let i =0 ; i < (frame.num - num_pin);i++){
                     let ind = index[index.length -1 -i ];
                     child[ind].port= -1;
-                    result[0].child.set(ind, child[ind]);
+                    doc[0].child.set(ind, child[ind]);
                 }
-                await result[0].save();
+                await doc[0].save();
                 sta = "shorted Block";
             }
         })
