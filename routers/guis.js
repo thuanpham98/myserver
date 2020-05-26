@@ -69,6 +69,7 @@ router.post('/', async function (req, res) {
             await doc[0].save();
             console.log(num_pin);
             console.log(count);
+            console.log(index_count);
             // if(frame.num >= num_pin){
             //     if((frame.num - num_pin ) >= count){
             //         temp=count;
