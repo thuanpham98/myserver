@@ -68,14 +68,16 @@ router.post('/', async function (req, res) {
             }
             await doc[0].save();
 
+            console.log(pin_used);
+            console.log(pin_free);
             if((frame.num - pin_used) > pin_free){
 
                 let child = result[0].child;
                 temp=pin_free;
-                
+                console.log(temp);
                 for (let i = 0; i < temp; i++) {
                     let ind = index_free[i];
-                    
+
                     child[ind].port = parseInt(frame.port,10);
                     child[ind].maskport = frame.mask; 
 
