@@ -49,45 +49,42 @@ router.post('/', async function (req, res) {
     if(frame.act===1){
         await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10)}, async function(err,doc){
             let result = doc; 
-            let count=0;
-            let num_pin=0;
+            let pin_free=0; /** so chan free cua dev */
+            let pin_used=0; /** so chan free cua dev */
             let temp =0;
-            let index = [];
-            let index_count=[];
+            let index_used = [];
+            let index_free=[];
             for(let i = 0 ; i < result[0].child.length; i++){
                 if(result[0].child[i].port===-1){
-                    count=count+1;
-                    index_count.push(i);
+                    pin_free=pin_free+1;
+                    index_free.push(i);
                 }
                 if(result[0].child[i].port===parseInt(frame.block,10)){
-                    num_pin=num_pin+1;
+                    pin_used=pin_used+1;
                     result[0].child[i].maskport = frame.mask;
-                    index.push(i);
+                    index_used.push(i);
                 }
                 doc[0].child.set(i, result[0].child[i]);
             }
             await doc[0].save();
-            console.log(num_pin);
-            console.log(count);
-            console.log(index_count);
-            // if(frame.num >= num_pin){
-            //     if((frame.num - num_pin ) >= count){
-            //         temp=count;
-            //         sta = "just only have $(temp) pin" ;
-            //     }
-            //     else {
-            //         temp=frame.num - num_pin;
-            //     }
-            //     let child = result[0].child;
-            //     for (let i = 0; i < temp; i++) {
-            //         let ind = index_count[i];
-            //         child[ind].port = parseInt(frame.port,10);
-            //         child[ind].maskport = frame.mask; 
-            //         doc[0].child.set(ind, child[ind]);
-            //     }
-            //     await doc[0].save();
-            //     sta= " expanded block"
-            // }
+
+            if((frame.num - pin_used) > pin_free){
+
+                let child = result[0].child;
+                temp=pin_free;
+                
+                for (let i = 0; i < temp; i++) {
+                    let ind = index_free[i];
+                    
+                    child[ind].port = parseInt(frame.port,10);
+                    child[ind].maskport = frame.mask; 
+
+                    doc[0].child.set(ind, child[ind]);
+                }
+                await doc[0].save();
+                sta = "just only have $(temp) pin" ;
+            }
+            
             // else if(frame.num < num_pin){
             //     let child = result[0].child;
             //     for(let i =0 ; i < (frame.num - num_pin);i++){
