@@ -28,7 +28,7 @@ router.post('/', async function (req, res) {
     let account, device;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     let frame = req.body;
-    let sta ;
+    let sta;
     /* check token on database */
     await User.find({ email: decoded.accessToken }, function (err, result) {
         assert.equal(null, err);
@@ -46,21 +46,21 @@ router.post('/', async function (req, res) {
     // });
 
     // Make Block
-    if(frame.act===1){
-        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10)}, async function(err,doc){
-            let result = doc; 
-            let pin_free=0; /** so chan free cua dev */
-            let pin_used=0; /** so chan free cua dev */
-            let temp =0;
+    if (frame.act === 1) {
+        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, async function (err, doc) {
+            let result = doc;
+            let pin_free = 0; /** so chan free cua dev */
+            let pin_used = 0; /** so chan free cua dev */
+            let temp = 0;
             let index_used = [];
-            let index_free=[];
-            for(let i = 0 ; i < result[0].child.length; i++){
-                if(result[0].child[i].port===-1){
-                    pin_free=pin_free+1;
+            let index_free = [];
+            for (let i = 0; i < result[0].child.length; i++) {
+                if (result[0].child[i].port === -1) {
+                    pin_free = pin_free + 1;
                     index_free.push(i);
                 }
-                if(result[0].child[i].port===parseInt(frame.block,10)){
-                    pin_used=pin_used+1;
+                if (result[0].child[i].port === parseInt(frame.block, 10)) {
+                    pin_used = pin_used + 1;
                     result[0].child[i].maskport = frame.mask;
                     index_used.push(i);
                 }
@@ -70,45 +70,65 @@ router.post('/', async function (req, res) {
 
             console.log(pin_used);
             console.log(pin_free);
-            if((frame.num - pin_used) > pin_free){
+            if (frame.num > pin_used)
+                if ((frame.num - pin_used) > pin_free) {
 
+                    let child = result[0].child;
+                    temp = pin_free;
+                    console.log(temp);
+                    for (let i = 0; i < temp; i++) {
+                        let ind = index_free[i];
+
+                        child[ind].port = frame.block;
+                        child[ind].maskport = frame.mask;
+
+                        doc[0].child.set(ind, child[ind]);
+                    }
+                    await doc[0].save();
+                    sta = "done, but only have " + temp.toString();
+                }
+                else if ((frame.num - pin_used) < pin_free) {
+                    let child = result[0].child;
+                    temp = frame.num - pin_used;
+                    console.log(temp);
+                    for (let i = 0; i < temp; i++) {
+                        let ind = index_free[i];
+
+                        child[ind].port = frame.block;
+                        child[ind].maskport = frame.mask;
+
+                        doc[0].child.set(ind, child[ind]);
+                    }
+                    await doc[0].save();
+                    sta = "done expanse pin";
+                }
+            else if (frame.num < pin_used) {
+                temp = pin_used - frame.num ;
                 let child = result[0].child;
-                temp=pin_free;
-                console.log(temp);
-                for (let i = 0; i < temp; i++) {
-                    let ind = index_free[i];
 
-                    child[ind].port = frame.block;
-                    child[ind].maskport = frame.mask; 
+                for (let i = 0; i < temp; i++) {
+                    let ind = index_used[index_used.length-1 -i];
+
+                    child[ind].maskport = "maskPort";
+                    child[ind].port = -1;
 
                     doc[0].child.set(ind, child[ind]);
                 }
                 await doc[0].save();
-                sta = "just only have $(temp) pin" ;
+                sta = "done";
             }
-            
-            // else if(frame.num < num_pin){
-            //     let child = result[0].child;
-            //     for(let i =0 ; i < (frame.num - num_pin);i++){
-            //         let ind = index[index.length -1 -i ];
-            //         child[ind].port= -1;
-            //         doc[0].child.set(ind, child[ind]);
-            //     }
-            //     await doc[0].save();
-            //     sta = "shorted Block";
-            // }
         })
     }
     // Free Block 
-    else if(frame.act===0){
+    else if (frame.act === 0) {
         console.log(frame.block);
-        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10)}, function(err,result){
+        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, function (err, result) {
             let child = result[0].child;
             console.log(child);
-            for(let i = 0 ; i < result[0].child.length; i++){
+            for (let i = 0; i < result[0].child.length; i++) {
                 // if(result[0].child[i].port=== parseInt(frame.block,10)){
-                    console.log(child[i].maskport);
-                child[i].maskport="maskPort";
+                console.log(child[i].maskport);
+                child[i].maskport = "maskPort";
                 child[i].port = -1;
                 // }
                 result[0].child.set(i, child[i]);
@@ -119,14 +139,14 @@ router.post('/', async function (req, res) {
     }
 
     // return Client
-    res.json({name:sta});
+    res.json({ name: sta });
 });
 
 /** manager block */
 /** sensors config */
 router.get('/blocks', async function (req, res) {
 
-    
+
     let account, device;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
@@ -145,8 +165,8 @@ router.get('/blocks', async function (req, res) {
         res.render('blocks', { title: "Block Page", dev: device });
     });
 });
-router.post('/blocks/search' ,async function (req, res) {
-    
+router.post('/blocks/search', async function (req, res) {
+
     let account, equipments;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
@@ -175,7 +195,7 @@ router.post('/blocks/search' ,async function (req, res) {
 });
 router.get('/blocks/:id', async function (req, res) {
     //res.json({id : req.params.id});
-    let account,equipments ;
+    let account, equipments;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     /* check token on database */
