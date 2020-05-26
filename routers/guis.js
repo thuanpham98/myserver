@@ -59,7 +59,7 @@ router.post('/', async function (req, res) {
                     pin_free = pin_free + 1;
                     index_free.push(i);
                 }
-                if ((result[0].child[i].port === parseInt(frame.block, 10))&&( result[0].child[i].maskport=== parseInt(frame.mask,10))) {
+                if ((result[0].child[i].port === parseInt(frame.block, 10))&&( result[0].child[i].maskport=== frame.mask)) {
                     pin_used = pin_used + 1;
                     index_used.push(i);
                 }
@@ -143,7 +143,7 @@ router.post('/', async function (req, res) {
     }
 
     // return Client
-    res.json({ name: sta });
+    res.json({ name: sta.toString() });
 });
 
 /** manager block */
