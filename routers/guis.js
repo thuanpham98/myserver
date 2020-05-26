@@ -166,7 +166,7 @@ router.post('/', async function (req, res) {
             let child = result[0].child;
             
             for (let i = 0; i < child.length; i++) {
-                if (child[i].port === frame.block) {
+                if (child[i].port === parseInt(frame.block,10) ) {
                     child[i].maskport = "maskPort";
                     child[i].port = -1;
                     console.log(child[i].port);
