@@ -102,9 +102,7 @@ router.post('/', async function (req, res) {
         await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10)}, async function(err,result){
             let child = result[0].child;
             for(let i = 0 ; i < result[0].child.length; i++){
-
-                if(result[0].child[i].port==frame.block){
-                    num_pin=num_pin+1;
+                if(result[0].child[i].port=== parseInt(frame.block,10)){
                     child[i].maskport = "maskPort"+ "("+ i.toString() +")";
                     child[i].port = -1;
                     result[0].child.set(i, child[i]);
