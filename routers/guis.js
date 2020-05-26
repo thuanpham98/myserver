@@ -105,7 +105,7 @@ router.post('/', async function (req, res) {
                     await doc[0].save();
                     sta = "done expanse pin";
                 }
-            else if (parseInt(frame.num,10)< pin_used) {
+            else if (parseInt(frame.num,10) <  pin_used) {
                 console.log("TH2");
                 temp = pin_used - frame.num;
                 console.log(temp)
