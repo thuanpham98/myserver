@@ -70,6 +70,7 @@ router.post('/', async function (req, res) {
 
             console.log(pin_used);
             console.log(pin_free);
+            console.log(frame);
             if (frame.num > pin_used)
                 if ((frame.num - pin_used) > pin_free) {
 
