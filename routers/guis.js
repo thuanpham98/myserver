@@ -27,7 +27,8 @@ router.get('/', function (req, res) {
 router.post('/', async function (req, res) {
     let account, device;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
-
+    let frame = req.body;
+    let sta ;
     /* check token on database */
     await User.find({ email: decoded.accessToken }, function (err, result) {
         assert.equal(null, err);
@@ -44,31 +45,72 @@ router.post('/', async function (req, res) {
     //     console.log(result);
     // });
 
-    if(req.body.act){
-        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(req.body.dev,10),type : 0}, async function(err,doc){
+    if(frame.act==1){
+        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10),type : 0}, async function(err,result){
             let result = doc; 
             let count=0;
             let num_pin=0;
             let temp =0;
+            let index = [];
+            let index_count=[];
             for(let i = 0 ; i < result[0].child.length; i++){
                 if(result[0].child[i].port===-1){
                     count=count+1;
+                    index_count.push(i);
                 }
-                if(result[0].child[i].port==req.body.block){
+                if(result[0].child[i].port==frame.block){
                     num_pin=num_pin+1;
+                    result[0].child[i].maskport = frame.mask;
+                    index.push(i);
                 }
+                
             }
             console.log(count);
-
-            if((req.body.num - num_pin ) > count){
-                temp=count;
+            if(frame.num > num_pin){
+                if((frame.num - num_pin ) > count){
+                    temp=count;
+                    sta = "just only have $(temp) pin" ;
+                }
+                else {
+                    temp=frame.num - num_pin;
+                }
+                let child = result[0].child;
+                for (let i = 0; i < temp; i++) {
+                    let ind = index_count[i];
+                    child[ind].port = frame.port;
+                    child[ind].maskport = frame.mask; 
+                    result[0].child.set(ind, child[ind]);
+                }
+                await result[0].save();
+                sta= " expanded block"
             }
-            else {
-                temp=req.body.num - num_pin;
+            else if(frame.num < num_pin){
+                let child = result[0].child;
+                for(let i =0 ; i < (frame.num - num_pin);i++){
+                    let ind = index[index.length -1 -i ];
+                    child[ind].port= -1;
+                    result[0].child.set(ind, child[ind]);
+                }
+                await result[0].save();
+                sta = "shorted Block";
             }
-
-            console.log(temp);
         })
+    }
+    else if(frame.act==0){
+        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(frame.dev,10),type : 0}, async function(err,result){
+            let child = result[0].child;
+            for(let i = 0 ; i < result[0].child.length; i++){
+
+                if(result[0].child[i].port==frame.block){
+                    num_pin=num_pin+1;
+                    child[i].maskport = "maskPort"+ "("+ i.toString() +")";
+                    child[i].port = -1;
+                    result[0].child.set(i, child[i]);
+                }
+            }
+            await result[0].save();
+        });
+        sta = "done remove block"
     }
     // if (req.body.act) {
     //     await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev, 10) }, async function (errr, result) {
@@ -156,7 +198,7 @@ router.post('/', async function (req, res) {
     //     console.log("end deleta");
     //     res.json("removed");
     // }
-    res.json({name:"done r nha"});
+    res.json({name:sta});
 });
 
 /** manager block */
