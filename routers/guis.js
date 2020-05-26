@@ -45,9 +45,29 @@ router.post('/', async function (req, res) {
     // });
 
     if(req.body.act){
-        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(req.body.dev,10),type : 0 , "child.port" : -1}, async function(err,doc){
+        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(req.body.dev,10),type : 0}, async function(err,doc){
             let result = doc; 
-            console.log(doc);
+            let count=0;
+            let num_pin=0;
+            let temp =0;
+            for(let i = 0 ; i < result[0].child.length; i++){
+                if(result[0].child[i].port===-1){
+                    count=count+1;
+                }
+                if(result[0].child[i].port==req.body.block){
+                    num_pin=num_pin+1;
+                }
+            }
+            console.log(count);
+
+            if((req.body.num - num_pin ) > count){
+                temp=count;
+            }
+            else {
+                temp=req.body.num - num_pin;
+            }
+
+            console.log(temp);
         })
     }
     // if (req.body.act) {
