@@ -47,7 +47,7 @@ router.post('/', async function (req, res) {
 
     // Make Block
     if (frame.act === 1) {
-        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, function (err, doc) {
+        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, async function (err, doc) {
             let result = doc;
             let pin_free = 0; /** so chan free cua dev */
             let pin_used = 0; /** so chan free cua dev */
@@ -61,7 +61,7 @@ router.post('/', async function (req, res) {
                     pin_free = pin_free + 1;
                     index_free.push(i);
                 }
-                console.log(parseInt(frame.block, 10));
+                
                 if (result[0].child[i].port === frame.block) {
                     pin_used = pin_used + 1;
                     index_used.push(i);
@@ -72,7 +72,7 @@ router.post('/', async function (req, res) {
                 doc[0].child.set(i, result[0].child[i]);
             }
             console.log("end filter");
-            doc[0].save();
+            await doc[0].save();
 
             console.log(index_free);
             console.log("-------");
@@ -104,7 +104,7 @@ router.post('/', async function (req, res) {
                         doc[0].child.set(ind, child[ind]);
                     }
 
-                    doc[0].save();
+                    await doc[0].save();
                     sta = "done, but only have " + temp.toString();
                 }
                 else if ((parseInt(frame.num, 10) - pin_used) < pin_free) {
@@ -130,7 +130,7 @@ router.post('/', async function (req, res) {
 
                         doc[0].child.set(ind, child[ind]);
                     }
-                    doc[0].save();
+                    await doc[0].save();
 
                     sta = "done expanse pin";
                 }
