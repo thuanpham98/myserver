@@ -38,11 +38,18 @@ router.post('/', async function (req, res) {
             return;
         }
     });
-    console.log(req.body);
-    await ManageDev.find({ ID: account[0].timestamp, "child.port" : 2 }, async function (errr, result) {
-        device=result;
-        console.log(result);
-    });
+    // console.log(req.body);
+    // await ManageDev.find({ ID: account[0].timestamp, "child.port" : 2 }, async function (errr, result) {
+    //     device=result;
+    //     console.log(result);
+    // });
+
+    if(req.body.act){
+        await ManageDev.find({ID: account[0].timestamp, dev : parseInt(req.body.dev,10),type : 0 , "child.port" : -1}, async function(err,doc){
+            let result = doc; 
+            console.log(doc);
+        })
+    }
     // if (req.body.act) {
     //     await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev, 10) }, async function (errr, result) {
     //         // assert.equal(null, err);
