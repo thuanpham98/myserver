@@ -185,7 +185,6 @@ router.post('/', async function (req, res) {
 });
 
 /** manager block */
-/** sensors config */
 router.get('/blocks', async function (req, res) {
 
 
@@ -202,9 +201,20 @@ router.get('/blocks', async function (req, res) {
             return;
         }
     });
-    await ManageDev.find({ ID: account[0].timestamp, type: 1 }, function (errr, result) {
+    await ManageDev.find({ ID: account[0].timestamp, type: 0 }, function (errr, result) {
         device = result;
-        res.render('blocks', { title: "Block Page", dev: device });
+        let block=[];
+        if(device.length){
+            for(let i =0 ; i < device.length -1 ; i++){
+                for(let j =0 ; j < device[i].child.length;j++){
+                    if(device[i].child[j].port !== -1){
+                        block.push({dev:device[i].dev,block : device[i].child[j].port});
+                    }
+                }
+            }
+        }
+        res.send(block);
+        //res.render('blocks', { title: "Block Page", dev: device });
     });
 });
 router.post('/blocks/search', async function (req, res) {
