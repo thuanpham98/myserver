@@ -72,7 +72,7 @@ router.post('/', async function (req, res) {
                 doc[0].child.set(i, result[0].child[i]);
             }
             console.log("end filter");
-            // doc[0].save();
+            doc[0].save();
 
             console.log(index_free);
             console.log("-------");
