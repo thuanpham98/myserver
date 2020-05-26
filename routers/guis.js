@@ -47,7 +47,7 @@ router.post('/', async function (req, res) {
 
     // Make Block
     if (frame.act === 1) {
-        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, async function (err, doc) {
+        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, function (err, doc) {
             let result = doc;
             let pin_free = 0; /** so chan free cua dev */
             let pin_used = 0; /** so chan free cua dev */
