@@ -61,25 +61,26 @@ router.post('/', async function (req, res) {
                     pin_free = pin_free + 1;
                     index_free.push(i);
                 }
-                
+
                 if (result[0].child[i].port === frame.block) {
                     pin_used = pin_used + 1;
                     index_used.push(i);
                     result[0].child[i].maskport = frame.mask;
                     console.log(pin_used);
-                    
+
                 }
                 doc[0].child.set(i, result[0].child[i]);
             }
             console.log("end filter");
+            sta = "mask is update";
             await doc[0].save();
 
-            sta = "mask is update";
+
             console.log(index_free);
             console.log("-------");
             console.log(index_used);
 
-            if (parseInt(frame.num, 10) > pin_used){
+            if (parseInt(frame.num, 10) > pin_used) {
                 if ((parseInt(frame.num, 10) - pin_used) > pin_free) {
 
                     console.log("TH1a");
@@ -105,8 +106,9 @@ router.post('/', async function (req, res) {
                         doc[0].child.set(ind, child[ind]);
                     }
 
-                    await doc[0].save();
                     sta = "done, but only have " + temp.toString();
+                    await doc[0].save();
+
                 }
                 else if ((parseInt(frame.num, 10) - pin_used) < pin_free) {
                     console.log("TH1b");
@@ -132,8 +134,6 @@ router.post('/', async function (req, res) {
                         doc[0].child.set(ind, child[ind]);
                     }
                     await doc[0].save();
-
-                    sta = "done expanse pin";
                 }
             }
             else if (parseInt(frame.num, 10) < pin_used) {
@@ -152,26 +152,27 @@ router.post('/', async function (req, res) {
                     doc[0].child.set(ind, child[ind]);
                 }
                 doc[0].save();
-                sta = "done";
             }
         })
+
+        sta = "mask is expanded";
     }
     // Free Block 
     else if (frame.act === 0) {
         console.log(frame.block);
-        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, function (err, result) {
+        await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, async function (err, result) {
             let child = result[0].child;
             console.log(child);
             for (let i = 0; i < result[0].child.length; i++) {
-                // if(result[0].child[i].port=== parseInt(frame.block,10)){
-                console.log(child[i].maskport);
-                child[i].maskport = "maskPort";
-                child[i].port = -1;
-                // }
+                if (result[0].child[i].port === frame.block) {
+                    child[i].maskport = "maskPort";
+                    child[i].port = -1;
+                }
                 result[0].child.set(i, child[i]);
             }
-            result[0].save();
+            await result[0].save();
         });
+
         sta = "done remove block";
     }
 
