@@ -25,7 +25,7 @@ router.get('/', function (req, res) {
     res.render('guis', { title: "Gui Page" });
 });
 router.post('/', async function (req, res) {
-    let account, device;
+    let account;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     let frame = req.body;
     let sta;
@@ -160,6 +160,7 @@ router.post('/', async function (req, res) {
     // Free Block 
     else if (frame.act === 0) {
         console.log(frame.block);
+
         await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) }, function (err, result) {
             let child = result[0].child;
             
@@ -167,8 +168,9 @@ router.post('/', async function (req, res) {
                 if (child[i].port === frame.block) {
                     child[i].maskport = "maskPort";
                     child[i].port = -1;
+                    console.log(child[i].port);
                 }
-                console.log(child[i].port);
+                
                 result[0].child.set(i, child[i]);
             }
             result[0].save();
