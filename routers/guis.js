@@ -54,6 +54,8 @@ router.post('/', async function (req, res) {
             let temp = 0;
             let index_used = [];
             let index_free = [];
+
+            console.log("start filter");
             for (let i = 0; i < result[0].child.length; i++) {
                 if (result[0].child[i].port === -1) {
                     pin_free = pin_free + 1;
@@ -67,13 +69,13 @@ router.post('/', async function (req, res) {
                     }
                     console.log(i);
                 }
-                doc[0].child.set(i, result[0].child[i]);
+                // doc[0].child.set(i, result[0].child[i]);
             }
-            doc[0].save();
-
+            console.log("end filter");
+            // doc[0].save();
+            console.log(index_free);
             console.log(index_used);
-            console.log(pin_free);
-            console.log(frame);
+
             if (parseInt(frame.num,10) > pin_used)
                 if ((parseInt(frame.num,10) - pin_used) > pin_free) {
                     
@@ -89,7 +91,7 @@ router.post('/', async function (req, res) {
 
                         doc[0].child.set(ind, child[ind]);
                     }
-                    await doc[0].save();
+                    doc[0].save();
                     sta = "done, but only have " + temp.toString();
                 }
                 else if ((parseInt(frame.num,10) - pin_used) < pin_free) {
@@ -105,7 +107,7 @@ router.post('/', async function (req, res) {
 
                         doc[0].child.set(ind, child[ind]);
                     }
-                    await doc[0].save();
+                    doc[0].save();
                     sta = "done expanse pin";
                 }
             // else if (parseInt(frame.num,10) <  pin_used) {
