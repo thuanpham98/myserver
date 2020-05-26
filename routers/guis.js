@@ -139,11 +139,11 @@ router.post('/', async function (req, res) {
             }
             result[0].save();
         });
-        sta = "done remove block"
+        sta = "done remove block";
     }
 
     // return Client
-    res.json({ name: sta.toString() });
+    res.json({ name: sta});
 });
 
 /** manager block */
