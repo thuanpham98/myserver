@@ -54,7 +54,7 @@ router.post('/', async function (req, res) {
             let temp = 0;
             let index_used = [];
             let index_free = [];
-
+            console.log(result[0].child.length);
             console.log("start filter");
             for (let i = 0; i < result[0].child.length; i++) {
                 if (result[0].child[i].port === -1) {
