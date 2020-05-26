@@ -104,11 +104,12 @@ router.post('/', async function (req, res) {
             let child = result[0].child;
             console.log(child);
             for(let i = 0 ; i < result[0].child.length; i++){
-                // if(result[0].child[i].port=== parseInt(frame.block,10)){
-                child[i].maskport = "maskPort";
-                child[i].port = -1;
+                if(result[0].child[i].port=== parseInt(frame.block,10)){
+                    console.log(child[i].maskport);
+                    child[i].maskport="maskPort";
+                    child[i].port = -1;
+                }
                 result[0].child.set(i, child[i]);
-                // }
             }
             result[0].save();
         });
