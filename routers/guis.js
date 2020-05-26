@@ -73,7 +73,8 @@ router.post('/', async function (req, res) {
             console.log(frame);
             if (parseInt(frame.num,10) > pin_used)
                 if ((parseInt(frame.num,10) - pin_used) > pin_free) {
-
+                    
+                    console.log("TH1a");
                     let child = result[0].child;
                     temp = pin_free;
                     console.log(temp);
@@ -89,6 +90,7 @@ router.post('/', async function (req, res) {
                     sta = "done, but only have " + temp.toString();
                 }
                 else if ((parseInt(frame.num,10) - pin_used) < pin_free) {
+                    console.log("TH1b");
                     let child = result[0].child;
                     temp = frame.num - pin_used;
                     console.log(temp);
@@ -104,6 +106,7 @@ router.post('/', async function (req, res) {
                     sta = "done expanse pin";
                 }
             else if (parseInt(frame.num,10)< pin_used) {
+                console.log("TH2");
                 temp = pin_used - frame.num;
                 console.log(temp)
                 let child = result[0].child;
