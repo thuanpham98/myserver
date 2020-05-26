@@ -59,7 +59,7 @@ router.post('/', async function (req, res) {
                     pin_free = pin_free + 1;
                     index_free.push(i);
                 }
-                if ((result[0].child[i].port === parseInt(frame.block, 10))&&( result[0].child[i].maskport=== frame.mask)) {
+                if ((result[0].child[i].port === parseInt(frame.block, 10))&&( result[0].child[i].maskport == frame.mask)) {
                     pin_used = pin_used + 1;
                     index_used.push(i);
                 }
@@ -67,7 +67,7 @@ router.post('/', async function (req, res) {
             }
             // await doc[0].save();
 
-            console.log(pin_used);
+            console.log(index_used);
             console.log(pin_free);
             console.log(frame);
             if (parseInt(frame.num,10) > pin_used)
