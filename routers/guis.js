@@ -66,16 +66,18 @@ router.post('/', async function (req, res) {
                     if(result[0].child[i].port === parseInt(frame.block, 10)){
                         pin_used = pin_used + 1;
                         index_used.push(i);
+                        result[0].child[i].maskport = frame.mask;
                     }
                     console.log(i);
                 }
-                // doc[0].child.set(i, result[0].child[i]);
+                doc[0].child.set(i, result[0].child[i]);
             }
             console.log("end filter");
             // doc[0].save();
+
             console.log(index_free);
             console.log(index_used);
-
+            sta = " mask is update";
             if (parseInt(frame.num,10) > pin_used)
                 if ((parseInt(frame.num,10) - pin_used) > pin_free) {
                     
@@ -83,6 +85,7 @@ router.post('/', async function (req, res) {
                     let child = result[0].child;
                     temp = pin_free;
                     console.log(temp);
+                    /** expanse more pin */
                     for (let i = 0; i < temp; i++) {
                         let ind = index_free[i];
 
@@ -91,6 +94,16 @@ router.post('/', async function (req, res) {
 
                         doc[0].child.set(ind, child[ind]);
                     }
+                    /** syn mask again */
+                    for (let i = 0; i < index_used.length -1 ; i++) {
+                        let ind = index_used[i];
+
+                        child[ind].port = frame.block;
+                        child[ind].maskport = frame.mask;
+
+                        doc[0].child.set(ind, child[ind]);
+                    }
+
                     doc[0].save();
                     sta = "done, but only have " + temp.toString();
                 }
@@ -99,6 +112,7 @@ router.post('/', async function (req, res) {
                     let child = result[0].child;
                     temp = frame.num - pin_used;
                     console.log(temp);
+                    /** expanse */
                     for (let i = 0; i < temp; i++) {
                         let ind = index_free[i];
 
@@ -107,26 +121,37 @@ router.post('/', async function (req, res) {
 
                         doc[0].child.set(ind, child[ind]);
                     }
+                    /** syn mask */
+                    for (let i = 0; i < index_used.length -1 ; i++) {
+                        let ind = index_used[i];
+
+                        child[ind].port = frame.block;
+                        child[ind].maskport = frame.mask;
+
+                        doc[0].child.set(ind, child[ind]);
+                    }
                     doc[0].save();
+
                     sta = "done expanse pin";
                 }
-            // else if (parseInt(frame.num,10) <  pin_used) {
-            //     console.log("TH2");
-            //     temp = pin_used - frame.num;
-            //     console.log(temp)
-            //     let child = result[0].child;
+            else if (parseInt(frame.num,10) <  pin_used) {
+                console.log("TH2");
+                temp = pin_used - frame.num;
+                console.log(temp)
+                let child = result[0].child;
 
-            //     for (let i = 0; i < temp; i++) {
-            //         let ind = index_used[index_used.length-1 -i];
+                for (let i = 0; i < temp; i++) {
+                    let ind = index_used[index_used.length-1 -i];
 
-            //         child[ind].maskport = "maskPort";
-            //         child[ind].port = -1;
+                    child[ind].maskport = "maskPort";
+                    child[ind].port = -1;
+                    child[ind].pin = ind;
 
-            //         doc[0].child.set(ind, child[ind]);
-            //     }
-            //     await doc[0].save();
-            //     sta = "done";
-            // }
+                    doc[0].child.set(ind, child[ind]);
+                }
+                doc[0].save();
+                sta = "done";
+            }
         })
     }
     // Free Block 
