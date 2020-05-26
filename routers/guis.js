@@ -58,16 +58,18 @@ router.post('/', async function (req, res) {
                     count=count+1;
                     index_count.push(i);
                 }
-                if(result[0].child[i].port==frame.block){
+                if(result[0].child[i].port===parseInt(frame.block,10)){
                     num_pin=num_pin+1;
                     result[0].child[i].maskport = frame.mask;
                     index.push(i);
+                    doc[0].child.set(i, result[0].child[i]);
                 }
                 
             }
+            await doc[0].save();
             console.log(count);
-            if(frame.num > num_pin){
-                if((frame.num - num_pin ) > count){
+            if(frame.num >= num_pin){
+                if((frame.num - num_pin ) >= count){
                     temp=count;
                     sta = "just only have $(temp) pin" ;
                 }
@@ -77,7 +79,7 @@ router.post('/', async function (req, res) {
                 let child = result[0].child;
                 for (let i = 0; i < temp; i++) {
                     let ind = index_count[i];
-                    child[ind].port = frame.port;
+                    child[ind].port = parseInt(frame.port,10);
                     child[ind].maskport = frame.mask; 
                     doc[0].child.set(ind, child[ind]);
                 }
