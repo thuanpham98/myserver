@@ -204,25 +204,33 @@ router.get('/blocks', async function (req, res) {
     await ManageDev.find({ ID: account[0].timestamp, type : 0 }, function (errr, result) {
         device = result;
         let block=[];
+        let name_block=[];
         if(device.length){
             for(let i =0 ; i < device.length; i++){
                 for(let j =0 ; j < device[i].child.length;j++){
                     if(device[i].child[j].port !== -1){
                         block.push(device[i].child[j].port);
+                        name_block.push(device[i].child[j].maskport);
+
                     }
                 }
             }
         }
         
-        let arr_block = block.reduce(function(obj,item){
-            obj[item]= (obj[item] ||0) +1;
+        let arr_block  = block.reduce(function(obj,item){
+            obj[item]= (obj[item] || 0) +1;
+            return obj;
+        },{});
+        name_block = name_block.reduce(function(obj,item){
+            obj[item]= (obj[item] || 0) +1;
             return obj;
         },{});
 
-        console.log(typeof(arr_block));
+        let item_block=Object.keys(arr_block);
+        let number_block = Object.values(arr_block);
+        name_block = Object.keys(name_block);
 
-        res.send("ok");
-        // res.render('blocks', { title: "Block Page", block : arr_block });
+        res.render('blocks', { title: "Block Page", block_item : item_block , block_number : number_block, block_name : name_block});
     });
 });
 router.post('/blocks/search', async function (req, res) {
