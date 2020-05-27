@@ -219,7 +219,8 @@ router.get('/blocks', async function (req, res) {
             return obj;
         },{});
 
-        console(typeof(arr_block));
+        console.log(typeof(arr_block));
+
         res.send("ok");
         // res.render('blocks', { title: "Block Page", block : arr_block });
     });
