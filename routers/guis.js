@@ -97,7 +97,7 @@ router.post('/', async function (req, res) {
                         doc[0].child.set(ind, child[ind]);
                     }
                     /** syn mask again */
-                    for (let i = 0; i < index_used.length - 1; i++) {
+                    for (let i = 0; i < index_used.length ; i++) {
                         let ind = index_used[i];
 
                         child[ind].port = frame.block;
@@ -125,7 +125,7 @@ router.post('/', async function (req, res) {
                         doc[0].child.set(ind, child[ind]);
                     }
                     /** syn mask */
-                    for (let i = 0; i < index_used.length - 1; i++) {
+                    for (let i = 0; i < index_used.length ; i++) {
                         let ind = index_used[i];
 
                         child[ind].port = frame.block;
@@ -205,7 +205,7 @@ router.get('/blocks', async function (req, res) {
         device = result;
         let block=[];
         if(device.length){
-            for(let i =0 ; i < device.length -1 ; i++){
+            for(let i =0 ; i < device.length; i++){
                 for(let j =0 ; j < device[i].child.length;j++){
                     if(device[i].child[j].port !== -1){
                         block.push({dev:device[i].dev,block : device[i].child[j].port});
@@ -213,7 +213,12 @@ router.get('/blocks', async function (req, res) {
                 }
             }
         }
-        res.send(block);
+        let arr_block = block.reduce(function(obj,item){
+            obj[item]= (obj[item] ||0) +1;
+            return obj;
+        });
+        res.send(arr_block);
+
         //res.render('blocks', { title: "Block Page", dev: device });
     });
 });
