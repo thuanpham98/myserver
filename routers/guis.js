@@ -217,7 +217,7 @@ router.get('/blocks', async function (req, res) {
         let arr_block = block.reduce(function(obj,item){
             obj[item]= (obj[item] ||0) +1;
             return obj;
-        });
+        },{});
         console.log(arr_block);
         res.send(block);
 
