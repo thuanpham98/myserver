@@ -220,8 +220,8 @@ router.get('/blocks', async function (req, res) {
         },{});
 
         console(typeof(arr_block));
-
-        res.render('blocks', { title: "Block Page", block : arr_block });
+        res.send("ok");
+        // res.render('blocks', { title: "Block Page", block : arr_block });
     });
 });
 router.post('/blocks/search', async function (req, res) {
