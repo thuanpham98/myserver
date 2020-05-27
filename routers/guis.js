@@ -235,7 +235,7 @@ router.get('/blocks', async function (req, res) {
 });
 router.post('/blocks/search', async function (req, res) {
 
-    let account, equipments;
+    let account, blocks;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     /* check token on database */
@@ -250,11 +250,11 @@ router.post('/blocks/search', async function (req, res) {
     });
     /** check device of user */
     let frame = req.body;
-    await ManageDev.find({ ID: account[0].timestamp, mask: frame.mask }, function (err, result) {
-        equipments = result;
+    await ManageDev.find({ ID: account[0].timestamp, 'child.maskport': frame.mask }, function (err, result) {
+        blocks = result;
         if (equipments.length) {
 
-            res.json({ pathDev: equipments[0].dev.toString() })
+            res.json({ pathDev: blocks[0].child.port.toString() })
         }
         else {
             res.json({ pathDev: '' });
