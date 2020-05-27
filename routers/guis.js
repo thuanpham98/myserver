@@ -81,7 +81,7 @@ router.post('/', async function (req, res) {
             console.log(index_used);
 
             if (parseInt(frame.num, 10) > pin_used) {
-                if ((parseInt(frame.num, 10) - pin_used) > pin_free) {
+                if ((parseInt(frame.num, 10) - pin_used) >= pin_free) {
 
                     console.log("TH1a");
                     let child = result[0].child;
@@ -201,7 +201,7 @@ router.get('/blocks', async function (req, res) {
             return;
         }
     });
-    await ManageDev.find({ ID: account[0].timestamp, type: 0 }, function (errr, result) {
+    await ManageDev.find({ ID: account[0].timestamp, type : 0 }, function (errr, result) {
         device = result;
         let block=[];
         if(device.length){
@@ -218,10 +218,10 @@ router.get('/blocks', async function (req, res) {
             obj[item]= (obj[item] ||0) +1;
             return obj;
         },{});
-        console.log(arr_block);
-        res.send(block);
 
-        //res.render('blocks', { title: "Block Page", dev: device });
+        console(typeof(arr_block));
+
+        res.render('blocks', { title: "Block Page", block : arr_block });
     });
 });
 router.post('/blocks/search', async function (req, res) {
