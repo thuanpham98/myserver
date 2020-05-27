@@ -208,7 +208,7 @@ router.get('/blocks', async function (req, res) {
             for(let i =0 ; i < device.length; i++){
                 for(let j =0 ; j < device[i].child.length;j++){
                     if(device[i].child[j].port !== -1){
-                        block.push({dev:device[i].dev,block : device[i].child[j].port});
+                        block.push(device[i].child[j].port);
                     }
                 }
             }
