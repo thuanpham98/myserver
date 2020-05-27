@@ -250,12 +250,20 @@ router.post('/blocks/search', async function (req, res) {
     });
     /** check device of user */
     let frame = req.body;
-    console.log(frame);
+
     await ManageDev.find({ ID: account[0].timestamp, type : 0 ,"child.maskport": frame.mask }, function (err, result) {
         blocks = result;
+        let res_search;
         if (blocks.length) {
 
-            res.json({ pathDev: blocks[0].child.port.toString() })
+            for(let i =0; i < blocks[0].child.length;i++){
+                if(blocks[0].child[i].maskport == frame.mask){
+                    res_search = blocks[0].child[i].port;
+                    console.log(res_search);
+                    break
+                }
+            }
+            res.json({ pathDev: res_search})
         }
         else {
             res.json({ pathDev: '' });
