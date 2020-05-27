@@ -252,6 +252,7 @@ router.post('/blocks/search', async function (req, res) {
     let frame = req.body;
     await ManageDev.find({ ID: account[0].timestamp, 'child.maskport': frame.mask }, function (err, result) {
         blocks = result;
+        console.log(bloc)
         if (equipments.length) {
 
             res.json({ pathDev: blocks[0].child.port.toString() })
