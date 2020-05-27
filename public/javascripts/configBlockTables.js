@@ -6,6 +6,8 @@ async function searchDev(){
     search=document.getElementById("searchData").value;
     frame = {mask : search};
     
+    console.log(frame);
+
     let response = await fetch('https://iot-server-365.herokuapp.com/user/gui/blocks/search',{
         method: 'post',
         mode: 'cors', 

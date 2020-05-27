@@ -250,6 +250,7 @@ router.post('/blocks/search', async function (req, res) {
     });
     /** check device of user */
     let frame = req.body;
+    console.log(frame);
     await ManageDev.find({ ID: account[0].timestamp, type : 0 ,"child.maskport": frame.mask }, function (err, result) {
         blocks = result;
         if (blocks.length) {
