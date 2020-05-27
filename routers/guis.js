@@ -213,11 +213,12 @@ router.get('/blocks', async function (req, res) {
                 }
             }
         }
-        let arr_block = block.reduce(function(obj,item){
-            obj[item]= (obj[item] ||0) +1;
-            return obj;
-        });
-        res.send(arr_block);
+        
+        // let arr_block = block.reduce(function(obj,item){
+        //     obj[item]= (obj[item] ||0) +1;
+        //     return obj;
+        // });
+        res.send(block);
 
         //res.render('blocks', { title: "Block Page", dev: device });
     });
