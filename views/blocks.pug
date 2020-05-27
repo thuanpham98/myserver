@@ -6,7 +6,7 @@ block content
             .col-lg-5
                 .card.shadow-lg.border-0.rounded-lg.mt-5
                     .card-header
-                        h3.text-center.font-weight-light.my-4 Control your Equipments
+                        h3.text-center.font-weight-light.my-4 Control your Block
                         h6(id="statusPass",style="color: red;")
                     .card-body
                         form
@@ -21,12 +21,12 @@ block content
                                     each blocki, index in block_item
                                         - var url = '/user/gui/blocks/' + blocki.toString();
                                         a(href=url ,class="list-group-item list-group-item-action list-group-item-success")= block_name[index]+ " " + "(" + block_number[index] + ")"
-                        script(src="/javascripts/configEquipmentsTable.js")
+                        script(src="/javascripts/configBlockTables.js")
                     .card-footer.text-center
                         .row
                             .col-6
                                 .small
-                                    a(href='/user/config') Return config Block
+                                    a(href='/user/gui') Return config Block
                             .col-6    
                                 .small
                                     a(href='/user') Return your page
