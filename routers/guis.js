@@ -288,13 +288,11 @@ router.get('/blocks/:id', async function (req, res) {
 
     /** check Block of user */
     let indexBlock = req.params.id;
-    console.log(indexBlock);
     await ManageDev.find({ ID: account[0].timestamp,type : 0 , 'child.port' : indexBlock}, function (errr, result) {
         // equipments = result;
         // res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
 
         blocks = result;
-        console.log(blocks);
         if(blocks.length){
             for( let i =0 ; i < blocks.length;i++){
                 for(let j = 0  ; j < blocks[i].child.length; j++){
