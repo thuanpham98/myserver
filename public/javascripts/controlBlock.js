@@ -9,7 +9,7 @@ async function postConfigEquipi(){
 
     frame={dev : dev_index , mask : dev_name, child : {index : child_index,status:child_status},action : 0};
     console.log(frame);
-    let response = await fetch('https://iot-server-365.herokuapp.com/user/config/equipments',{
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/gui/blocks',{
         method: 'post',
         mode: 'cors', 
         headers:{
