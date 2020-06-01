@@ -296,19 +296,19 @@ router.get('/blocks/:id', async function (req, res) {
 
         blocks = result;
         console.log(blocks);
-        // if(blocks.length){
-        //     for( let i =0 ; i < blocks.length;i++){
-        //         for(let j = 0  ; j < blocks[i].child.length; j++){
-        //             if(blocks[i].child[j].port === indexBlock){
-        //                 blockManager.push({dev: blocks[i].dev, mask : blocks[i].mask , block : blocks[i].child[j]});
-        //             }
-        //         }
-        //     }
-        // }
+        if(blocks.length){
+            for( let i =0 ; i < blocks.length;i++){
+                for(let j = 0  ; j < blocks[i].child.length; j++){
+                    if(blocks[i].child[j].port === indexBlock){
+                        blockManager.push({dev: blocks[i].dev, mask : blocks[i].mask , block : blocks[i].child[j]});
+                    }
+                }
+            }
+        }
     
     });
 
-    res.send(blocks);
+    res.send(blockManager);
 })
 /* export home */
 module.exports = router
