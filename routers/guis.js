@@ -294,7 +294,7 @@ router.get('/blocks/:id', async function (req, res) {
     //     res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
     // });
 
-    res.send("hello " + account[0].email);
+    res.send("hello block " + req.params.id);
 })
 /* export home */
 module.exports = router
