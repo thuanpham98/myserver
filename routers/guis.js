@@ -294,6 +294,7 @@ router.get('/blocks/:id', async function (req, res) {
         // res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
         
         blocks = result;
+        console.log(blocks);
         if(blocks.length){
             for( let i =0 ; i < blocks.length;i++){
                 for(let j = 0  ; j < blocks[i].child.length; j++){
