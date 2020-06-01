@@ -41,13 +41,12 @@ block content
                         h3(id="numBlock",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{port}
                     .card-body
                         form
-                            .form-group(class="checkbox",id="equipments")
-                                each blocki, index in blocks 
-                                    -let num= 'b'+index.toString();
-                                    -let act = blocki.block.act;
-                                    -let type = blocki.block.type;
-                                    -if(type === 0)    
-                                        .e-slider(priority='primary',id = num)
+                            each blocki, index in blocks 
+                                -let num= 'b'+index.toString();
+                                -let act = blocki.block.act;
+                                -let type = blocki.block.type;
+                                -if(type === 0)    
+                                    e-slider(priority='primary',id = num)
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
                         script(src="/javascripts/controlBlock.js")
                     .card-footer.text-center
