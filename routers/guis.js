@@ -290,10 +290,10 @@ router.get('/blocks/:id', async function (req, res) {
     let indexBlock = parseInt(req.params.id, 10);
     console.log(indexBlock);
 
-    await ManageDev.find({ ID: account[0].timestamp, "child.port" : indexBlock }, function (err, result) {
+    await ManageDev.find({ ID: account[0].timestamp, "child.port" : indexBlock }, async function (errr, result) {
         // equipments = result;
         // res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
-        
+
         blocks = result;
         console.log(blocks);
         if(blocks.length){
