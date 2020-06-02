@@ -23,13 +23,15 @@ async function portBlockCommand_vol(){
     console.log(datum.status);
 }
 
-$(document).ready(function () {
+// $(document).ready(function () {
 
-    // let a= $(".blocki_vol").change(function (){
+//     // let a= $(".blocki_vol").change(function (){
 
-    //     console.log("ok");
-    // });
-    var $elt = $('input').tagsinput('input');
-    console.log($elt);
+//     //     console.log("ok");
+//     // });
+    
 
+// });
+document.addEventListener("selectionchange",function(){
+    console.log($(this).value);
 });
