@@ -72,10 +72,15 @@ block content
                                 -let val = blocki.block.value.toString();
                                 -if(type === 0)    
                                     -if(act)
-                                        e-slider(priority='mobile_click_through',min-label='Minimum', max-label='Maximum',value =val)
+                                        e-slider(priority='mobile_click_through',id=num,min-label='Minimum(%)', max-label='Maximum(%)',value =val)
+                                        label(for=num) #{mask}
+                                        br
+                                        hr
                                     -else
-                                        e-slider(priority='primary',min-label='Minimum', max-label='Maximum',disabled='true',value =val)
-                            
+                                        e-slider(priority='primary',id=num ,min-label='Minimum(%)', max-label='Maximum(%)',disabled='true',value =val)
+                                        label(for=num) #{mask}
+                                        br
+                                        hr
                                     
                         link(href='https://assets.emarsys.net/ui/14.620.2/css/app.css', rel="stylesheet")
                         script(src='https://assets.emarsys.net/ui/14.620.2/js/app.js')
