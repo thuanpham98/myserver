@@ -32,20 +32,19 @@ async function portBlockCommand_vol(){
     
 
 // });
-// document.addEventListener("click",function(e){
-//     let num = e.path[1].id;
-//     num = num.toString();
-//     console.log(e.path[1].id);
-//     let val = document.getElementById(num).e-tt__content;
-//     let te= document.getElementsByClassName("e-tt__content");
-//     console.log(val);
-//     console.log(te);
+document.addEventListener("click",function(e){
+    let num = e.path[1].id;
+    num = "#" + num.toString();
+    console.log(e.path[1].id);
+    let a = $(num).update();
+    
+   console.log(a);
 
-// });
-let te = document.getElementsByClassName("blocki_vol");
-te.addEventListener("update",function(ret){
-    console.log(ret);
-})
+});
+// let te = document.getElementsByClassName("blocki_vol");
+// te.addEventListener("update",function(ret){
+//     console.log(ret);
+// })
 // $(document).ready(function () {
 
 //     $(".blocki_vol").onchange(function (e){
