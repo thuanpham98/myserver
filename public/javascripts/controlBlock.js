@@ -23,18 +23,18 @@
 //     console.log(datum.status);
 // }
 
-// $(document).ready(function () {
+$(document).ready(function () {
 
-//     $(".blocki").change(function (){
-//         let id = $(this).attr("id");
+    $(".blocki").change(function (){
+        let id = $(this).attr("id");
 
-//         child_index=parseInt(id.slice(1));
-//         if($(this).prop('checked')){
-//             child_status=true;
-//         }
-//         else {
-//             child_status=false;
-//         }
-//         postConfigEquipi();
-//     });
-// });
+        child_index=parseInt(id.slice(1));
+        if($(this).prop('checked')){
+            child_status=true;
+        }
+        else {
+            child_status=false;
+        }
+        postConfigEquipi();
+    });
+});
