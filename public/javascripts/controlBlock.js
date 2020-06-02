@@ -35,8 +35,11 @@ $(document).ready(function () {
         else {
             pin_val=0;
         }
-        let te = $(this).prop('update');
-        // portBlockCommand();
-        console.log(te);
+        // let te = $(this).prop('update');
+        portBlockCommand();
+    });
+
+    $(".blocki_vol").update(function(ret){
+        console.log(ret);
     });
 });
