@@ -42,7 +42,7 @@ document.addEventListener("click",function(e){
 
 });
 let te = document.getElementsByClassName("e-tt__content");
-
+console.log(te);
 // $(document).ready(function () {
 
 //     $(".blocki_vol").onchange(function (e){
