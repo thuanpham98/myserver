@@ -71,16 +71,7 @@ block content
                                 -let type = blocki.block.type;
                                 -let val = blocki.block.value.toString();
                                 -if(type === 0)    
-                                    -if(act)
-                                        label(for=num) #{mask}
-                                        br
-                                        e-slider(priority='mobile_click_through',id=num,value=val)
-                                        br
-                                    //- -else
-                                    //-     label(for=num) #{mask}
-                                    //-     br
-                                    //-     e-slider(priority='primary',id=num,disabled,value=val)
-                                    //-     br
+                                    e-slider(priority='mobile_click_through',id=num,value=val)
 
                         link(href='https://assets.emarsys.net/ui/14.620.2/css/app.css', rel="stylesheet")
                         script(src='https://assets.emarsys.net/ui/14.620.2/js/app.js', crossorigin='anonymous')
