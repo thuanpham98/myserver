@@ -40,16 +40,7 @@ document.addEventListener("click",function(e){
         let test = document.getElementById(num).value;
         console.log(test);
 
-        $("#"+num).slider({
-            animate: true,
-            value:1,
-            min: 0,
-            max: 100,
-            step: 10,
-            slide: function(event, ui) {
-                update(1,ui.value); //changed
-            }
-        });
+        console.log($(this).value);
     }
 
 });
