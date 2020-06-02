@@ -71,7 +71,10 @@ block content
                                 -let type = blocki.block.type;
                                 -let val = blocki.block.value.toString();
                                 -if(type === 0)    
-                                    e-slider(priority='primary')
+                                    e-slider(priority='mobile_click_through',min-label='Minimum', max-label='Maximum')
+                                -else
+                                    e-slider(priority='primary',min-label='Minimum', max-label='Maximum',disabled='true')
+                            
                                     
                         link(href='https://assets.emarsys.net/ui/14.620.2/css/app.css', rel="stylesheet")
                         script(src='https://assets.emarsys.net/ui/14.620.2/js/app.js')
