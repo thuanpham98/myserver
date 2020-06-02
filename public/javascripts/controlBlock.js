@@ -35,12 +35,7 @@ $(document).ready(function () {
         else {
             pin_val=0;
         }
+        portBlockCommand();
+        console.log(pin_index + "is" + pin_val.toString());
     });
-    portBlockCommand();
 });
-
-// $(document).ready(function () {
-//     $(".blocki_vol").change(function(){
-//         let id = $(this).attr("id");
-//     });
-// });
