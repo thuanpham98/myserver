@@ -37,10 +37,7 @@ document.addEventListener("click",function(e){
     num = num.toString();
     if(num.length){
         console.log(e.path[1].id);
-        let test = document.getElementById(num).className("e-tt__content");
-        console.log(test);
-
-        
+        console.log(e);
     }
 
 });
