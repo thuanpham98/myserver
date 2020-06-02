@@ -23,6 +23,11 @@ async function portBlockCommand(){
     console.log(datum.status);
 }
 
+document.getElementById("login").addEventListener("click", function(){
+    console.log("button");
+    postData();
+});
+
 $(document).ready(function () {
 
     $(".blocki").change(function (){
