@@ -68,7 +68,7 @@ block content
                         h5(style="text-align:center") (Control Voltag ouput)
                         h3(id="numBlock",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{port}
                     .card-body
-                        form(id="block_voltage")
+                        form(id="block_voltage",class="range-slider")
                             each blocki, index in blocks 
                                 -let num= 'b'+blocki.block.pin.toString();
                                 -let act = blocki.block.act;
@@ -80,8 +80,8 @@ block content
                                         label(for=num) #{mask}
                                         e-icon(icon='e-android')
                                         br
-                                        input(type="range" ,id=num,name="quantity" ,min="1", max="100")
-                                        output(for="quantity", onforminput="value = quantity.valueAsNumber;")
+                                        input(class="range-slider__range" ,type="range" ,value=val, min="0", max="500")
+                                        span(class="range-slider__value")
                                         br
                                         hr
                                     -else
@@ -96,6 +96,7 @@ block content
                         script(src='https://assets.emarsys.net/ui/14.620.2/js/app.js')
                     
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
+                        link(href='/stylesheets/rangeSlider.scss', rel="stylesheet")
                         script(src="/javascripts/controlBlock_Vol.js")
                     .card-footer.text-center
                         .row
