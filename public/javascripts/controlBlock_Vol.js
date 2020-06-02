@@ -40,7 +40,7 @@ document.addEventListener("click",function(e){
         let test = document.getElementById(num).value;
         console.log(test);
 
-        $(num).slider({
+        $("#"+num).slider({
             animate: true,
             value:1,
             min: 0,
