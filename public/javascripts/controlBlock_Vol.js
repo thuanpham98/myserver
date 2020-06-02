@@ -33,5 +33,5 @@ async function portBlockCommand_vol(){
 
 // });
 document.addEventListener("click",function(e){
-    console.log(e);
+    console.log(e.path[1].id);
 });
