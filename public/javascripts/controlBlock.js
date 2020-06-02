@@ -35,11 +35,8 @@ $(document).ready(function () {
         else {
             pin_val=0;
         }
-
-        portBlockCommand();
     });
-
-
+    portBlockCommand();
 });
 
 // $(document).ready(function () {
