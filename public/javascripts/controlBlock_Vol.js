@@ -31,7 +31,7 @@ $(document).ready(function () {
     // });
 
     $(".blocki_vol").change(function () {
-        var city = $(this).text();
+        var city = $(this).value;
         console.log(city);
     })
     console.log("ok");
