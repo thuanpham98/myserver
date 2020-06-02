@@ -39,7 +39,10 @@ $(document).ready(function () {
         portBlockCommand();
     });
 
-    $(".blocki_vol").update(function(ret){
-        console.log(ret);
+
+});
+$(document).ready(function () {
+    $(".blocki_vol").change(function(){
+        let id = $(this).attr("id");
     });
 });
