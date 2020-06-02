@@ -29,8 +29,7 @@ $(document).ready(function () {
 
     //     console.log("ok");
     // });
-
-    $(".blocki_vol").change(function () {
+    $(".e-slider").change(function () {
         var city = $(this).value;
         console.log(city);
     })
