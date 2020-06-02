@@ -2,7 +2,7 @@
 
 var frame,block_name,block_index,pin_index,pin_val;
 
-async function portBlockCommand(){
+async function portBlockCommand_Digi(){
 
     block_index=document.getElementById("numBlock").innerHTML;
     block_name= document.getElementById("blockName").innerHTML;
@@ -35,7 +35,7 @@ $(document).ready(function () {
         else {
             pin_val=0;
         }
-        portBlockCommand();
+        portBlockCommand_Digi();
         console.log(pin_index + "is" + pin_val.toString());
     });
 });
