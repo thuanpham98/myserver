@@ -73,12 +73,14 @@ block content
                                 -if(type === 0)    
                                     -if(act)
                                         label(for=num) #{mask}
+                                        e-icon(icon='e-android')
                                         br
-                                        e-slider(icon ="e-android",priority='mobile_click_through',id=num,min-label='Minimum(%)', max-label='Maximum(%)',value =val)
+                                        e-slider(priority='mobile_click_through',id=num,min-label='Minimum(%)', max-label='Maximum(%)',value =val)
                                         br
                                         hr
                                     -else
                                         label(for=num) #{mask}
+                                        e-icon(icon='e-apple')
                                         br
                                         e-slider(priority='primary',id=num ,min-label='Minimum(%)', max-label='Maximum(%)',disabled='true',value =val)
                                         br
