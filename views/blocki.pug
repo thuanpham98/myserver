@@ -26,6 +26,7 @@ block content
                                             -else 
                                                 -temp = true;
                                             label(for=num) #{mask}
+                                            e-icon(icon='e-android')
                                             br
                                             input(type="checkbox",id=num,class="blocki",checked =temp,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="ON", data-off= "OFF")
                                             br
@@ -37,11 +38,14 @@ block content
                                             -else 
                                                 -temp = true;
                                             label(for=num) #{mask}
+                                            e-icon(icon='e-apple')
                                             br
                                             input(type="checkbox",id=num,class="blocki",checked =temp,disabled,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="ON", data-off= "OFF")
                                             br
                                             br
                                             hr
+                        link(href='https://assets.emarsys.net/ui/14.620.2/css/app.css', rel="stylesheet")
+                        script(src='https://assets.emarsys.net/ui/14.620.2/js/app.js')
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
                         script(src="/javascripts/controlBlock.js")
                     .card-footer.text-center
@@ -66,7 +70,7 @@ block content
                     .card-body
                         form
                             each blocki, index in blocks 
-                                -let num= 'b'+index.toString();
+                                -let num= 'b'+blocki.block.pin.toString();
                                 -let act = blocki.block.act;
                                 -let type = blocki.block.type;
                                 -let val = blocki.block.value.toString();
