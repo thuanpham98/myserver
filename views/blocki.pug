@@ -16,7 +16,9 @@ block content
                                     -let num= 'b'+index.toString();
                                     -let act = blocki.block.act;
                                     -let type = blocki.block.type;
+                                    -let mask = blocki.block.mask
                                     -if(type ===1)    
+                                        label(for=num) #{mask}
                                         input(type="checkbox",id=num,class="blocki",checked =act,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="ON", data-off= "OFF")
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
                         script(src="/javascripts/controlBlock.js")
@@ -47,6 +49,8 @@ block content
                                 -let type = blocki.block.type;
                                 -let val = blocki.block.value.toString();
                                 -if(type === 0)    
+                                    //- <label for=num>Example range</label>
+                                    //- <input type="range" class="custom-range" id="customRange1">
                                     input(type="text" ,class="span2" , data-slider-min="0" ,data-slider-max="100" ,data-slider-step="1" ,data-slider-value=val, id=num,  data-slider-handle="square")
 
                         //- link(href="https://redirector.eservice.emarsys.net/ui/latest/css/app.css" rel="stylesheet")
