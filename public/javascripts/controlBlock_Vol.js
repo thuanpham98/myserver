@@ -30,8 +30,8 @@ $(document).ready(function () {
     //     console.log("ok");
     // });
 
-    $(".blocki_vol").onchange("input", function(e) {
-        console.log(e);
-         
-    });
+    a = $(".blocki_vol").update(function(){
+        console.log("ok");
+    })
+    console.log(a);
 });
