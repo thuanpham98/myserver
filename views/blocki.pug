@@ -82,9 +82,9 @@ block content
                                             e-icon(icon='e-android')
                                             br
                                             span(id="rs-bullet" class="rs-label")
-                                            input(id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="200")
-                                        div(class="container")
-                                            <span>0</span><span>100</span>
+                                            input(id="rs-range-line" class="rs-range" type="range" value=val min="0" max="100")
+                                            br
+                                            hr
                                     //- -else
                                     //-     label(for=num) #{mask}
                                     //-     e-icon(icon='e-apple')
@@ -98,7 +98,7 @@ block content
                     
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
 
-                        link(href='/stylesheets/rangeSlider.scss', rel="stylesheet")
+                        link(href='/stylesheets/rangeSlider.scss')
                         script(src="/javascripts/controlBlock_Vol.js")
                     .card-footer.text-center
                         .row
