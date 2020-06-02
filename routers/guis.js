@@ -234,6 +234,7 @@ router.get('/blocks', async function (req, res) {
     });
 });
 router.post('/blocks', async function (req, res){
+    console.log(req.body);
     res.json({status:"ok thuan dep trai"});
 });
 router.post('/blocks/search', async function (req, res) {

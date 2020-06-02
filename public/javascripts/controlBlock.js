@@ -2,26 +2,26 @@
 
 var frame,block_name,block_index,pin_index,pin_val;
 
-// async function postConfigEquipi(){
+async function portBlockCommand(){
 
-//     dev_index=document.getElementById("devID").innerHTML;
-//     dev_name= document.getElementById("devName").innerHTML;
+    block_index=document.getElementById("numBlock").innerHTML;
+    block_name= document.getElementById("blockName").innerHTML;
 
-//     frame={dev : dev_index , mask : dev_name, child : {index : child_index,status:child_status},action : 0};
-//     console.log(frame);
-//     let response = await fetch('https://iot-server-365.herokuapp.com/user/gui/blocks',{
-//         method: 'post',
-//         mode: 'cors', 
-//         headers:{
-//             //'Accept': 'application/json, text/plain, */*',
-//             'Content-Type': 'application/json'
-//         },
-//         body:JSON.stringify(frame)
-//     });
+    frame={port : block_index , maskport : block_name,pin : pin_index, value : pin_val};
+    console.log(frame);
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/gui/blocks',{
+        method: 'post',
+        mode: 'cors', 
+        headers:{
+            //'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(frame)
+    });
 
-//     let datum= await response.json();
-//     console.log(datum.status);
-// }
+    let datum= await response.json();
+    console.log(datum.status);
+}
 
 $(document).ready(function () {
 
@@ -35,7 +35,7 @@ $(document).ready(function () {
         else {
             pin_val=0;
         }
-        // postConfigEquipi();
+        portBlockCommand();
         console.log(pin_index + "is" + pin_val.toString());
     });
 });
