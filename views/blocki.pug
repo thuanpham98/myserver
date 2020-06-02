@@ -77,14 +77,13 @@ block content
                                 -let val = blocki.block.value.toString();
                                 -if(type === 0)    
                                     -if(act)
-                                        .form-group(class="container")
+                                        div(class="container")
                                             label(for=num) #{mask}
                                             e-icon(icon='e-android')
                                             br
                                             span(id="rs-bullet" class="rs-label")
                                             input(id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="200")
-                                            br
-                                        .form-group(class="container")
+                                        div(class="container")
                                             <span>0</span><span>100</span>
                                     -else
                                         label(for=num) #{mask}
