@@ -32,20 +32,20 @@ async function portBlockCommand_vol(){
     
 
 // });
-// document.addEventListener("change",function(e){
-//     // console.log(e.path[1].id);
-//     console.log(e);
-// });
-
-
-$(document).ready(function () {
-
-    $(".blocki_vol").onchange(function (e){
-        let id = $(this).attr("id");
-
-        pin_index=parseInt(id.slice(1));
-        let a= $(this).value;
-
-        console.log(e);
-    });
+document.getElementsByClassName("blocki_vol").addEventListener("change",function(e){
+    console.log(e.path[1].id);
+    console.log(e);
 });
+
+
+// $(document).ready(function () {
+
+//     $(".blocki_vol").onchange(function (e){
+//         let id = $(this).attr("id");
+
+//         pin_index=parseInt(id.slice(1));
+//         let a= $(this).value;
+
+//         console.log(e);
+//     });
+// });
