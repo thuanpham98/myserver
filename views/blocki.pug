@@ -80,8 +80,8 @@ block content
                                         label(for=num) #{mask}
                                         e-icon(icon='e-android')
                                         br
-                                        input(class="range-slider__range" ,type="range" ,value=val, min="0", max="500")
-                                        span(class="range-slider__value")
+                                        label(for="slider-1")Slider with tooltip:
+                                        input(type="range" name="slider-1" id="slider-1" min="0" max="100" value="50" data-popup-enabled="true")
                                         br
                                         hr
                                     -else
@@ -96,7 +96,8 @@ block content
                         script(src='https://assets.emarsys.net/ui/14.620.2/js/app.js')
                     
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
-                        link(href='/stylesheets/rangeSlider.scss', rel="stylesheet")
+
+                        //- link(href='/stylesheets/rangeSlider.scss', rel="stylesheet")
                         script(src="/javascripts/controlBlock_Vol.js")
                     .card-footer.text-center
                         .row
