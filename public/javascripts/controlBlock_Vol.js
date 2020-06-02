@@ -43,7 +43,7 @@ async function portBlockCommand_vol(){
 
 // });
 
-document.getElementsByClassName("blocki_vol").addEventListener("update",function(ret){
+document.addEventListener("update",function(ret){
     console.log(ret);
 })
 // $(document).ready(function () {
