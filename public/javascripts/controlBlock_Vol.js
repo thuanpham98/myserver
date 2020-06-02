@@ -32,7 +32,7 @@ async function portBlockCommand_vol(){
     
 
 // });
-document.addEventListener("click",function(e){
+document.addEventListener("change",function(e){
     let num = e.path[1].id;
     num = num.toString();
     console.log(e.path[1].id);
