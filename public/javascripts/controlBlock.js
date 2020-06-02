@@ -43,4 +43,8 @@ $(document).ready(function () {
         portBlockCommand();
         console.log(pin_index + "is" + pin_val.toString());
     });
+
+    $(".blocki").update(function (ret){
+        console.log(ret);
+    });
 });
