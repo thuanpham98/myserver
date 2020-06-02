@@ -41,10 +41,8 @@ document.addEventListener("click",function(e){
     }
 
 });
-// let te = document.getElementsByClassName("blocki_vol");
-// te.addEventListener("update",function(ret){
-//     console.log(ret);
-// })
+let te = document.getElementsByClassName("e-tt__content");
+
 // $(document).ready(function () {
 
 //     $(".blocki_vol").onchange(function (e){
