@@ -36,7 +36,7 @@ document.addEventListener("click",function(e){
     let num = e.path[1].id;
     num = num.toString();
     console.log(e.path[1].id);
-    let test = document.getElementById(num).querySelector(".blocki_vol");
+    let test = document.getElementById(num);
     console.log(test);
 });
 // let te = document.getElementsByClassName("blocki_vol");
