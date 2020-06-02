@@ -33,8 +33,11 @@ async function portBlockCommand_vol(){
 
 // });
 document.addEventListener("click",function(e){
+    let ID = e.path[1].id;
     console.log(e.path[1].id);
-    console.log(e);
+    let val = document.getElementById(ID).value;
+    console.log(val);
+
 });
 
 
