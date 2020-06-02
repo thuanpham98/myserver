@@ -29,9 +29,9 @@ $(document).ready(function () {
 
     //     console.log("ok");
     // });
-    $(".e-slider").change(function () {
+    let ret = $(".e-slider").change(function () {
         var city = $(this).e-slider__fill;
         console.log(city);
     })
-    console.log("ok");
+    console.log(ret);
 });
