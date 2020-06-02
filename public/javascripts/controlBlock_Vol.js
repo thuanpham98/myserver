@@ -55,17 +55,13 @@ async function portBlockCommand_vol() {
 //     });
 // });
 
-$(function () {
-    $("#slider-range-min").slider({
-        range: "min",
-        value: 50,
-        min: 0,
-        max: 100,
-        slide: function (event, ui) {
-            $("#amount").val("$" + ui.value + ",000");
-            $(".a, .b, .c, .d").width(ui.value + "%");
-        }
-    });
-    $(".ui-slider-handle").text("<>");
-    $("#amount").val("$" + $("#slider-range-min").slider("value") + ",000");
-});
+var rangeSlider = document.getElementById("rs-range-line");
+var rangeBullet = document.getElementById("rs-bullet");
+
+rangeSlider.addEventListener("input", showSliderValue, false);
+
+function showSliderValue() {
+  rangeBullet.innerHTML = rangeSlider.value;
+  var bulletPosition = (rangeSlider.value /rangeSlider.max);
+  rangeBullet.style.left = (bulletPosition * 578) + "px";
+}
