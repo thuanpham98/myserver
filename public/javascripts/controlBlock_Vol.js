@@ -1,25 +1,25 @@
 "use strict"
 
-var frame,block_name,block_index,pin_index,pin_val;
+var frame, block_name, block_index, pin_index, pin_val;
 
-async function portBlockCommand_vol(){
+async function portBlockCommand_vol() {
 
-    block_index=document.getElementById("numBlock").innerHTML;
-    block_name= document.getElementById("blockName").innerHTML;
+    block_index = document.getElementById("numBlock").innerHTML;
+    block_name = document.getElementById("blockName").innerHTML;
 
-    frame={port : block_index , maskport : block_name,pin : pin_index, value : pin_val};
+    frame = { port: block_index, maskport: block_name, pin: pin_index, value: pin_val };
     console.log(frame);
-    let response = await fetch('https://iot-server-365.herokuapp.com/user/gui/blocks',{
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/gui/blocks', {
         method: 'post',
-        mode: 'cors', 
-        headers:{
+        mode: 'cors',
+        headers: {
             //'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
         },
-        body:JSON.stringify(frame)
+        body: JSON.stringify(frame)
     });
 
-    let datum= await response.json();
+    let datum = await response.json();
     console.log(datum.status);
 }
 
@@ -29,7 +29,7 @@ async function portBlockCommand_vol(){
 
 //     //     console.log("ok");
 //     // });
-    
+
 
 // });
 // document.addEventListener("click",function(e){
@@ -55,22 +55,17 @@ async function portBlockCommand_vol(){
 //     });
 // });
 
-var rangeSlider = function(){
-    var slider = $('.range-slider'),
-        range = $('.range-slider__range'),
-        value = $('.range-slider__value');
-      
-    slider.each(function(){
-  
-      value.each(function(){
-        var value = $(this).prev().attr('value');
-        $(this).html(value);
-      });
-  
-      range.on('input', function(){
-        $(this).next(value).html(this.value);
-      });
+$(function () {
+    $("#slider-range-min").slider({
+        range: "min",
+        value: 50,
+        min: 0,
+        max: 100,
+        slide: function (event, ui) {
+            $("#amount").val("$" + ui.value + ",000");
+            $(".a, .b, .c, .d").width(ui.value + "%");
+        }
     });
-  };
-  
-rangeSlider();
+    $(".ui-slider-handle").text("<>");
+    $("#amount").val("$" + $("#slider-range-min").slider("value") + ",000");
+});

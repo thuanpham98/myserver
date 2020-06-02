@@ -80,8 +80,14 @@ block content
                                         label(for=num) #{mask}
                                         e-icon(icon='e-android')
                                         br
-                                        label(for="slider-1") Slider with tooltip:
-                                        input(type="range" name="slider-1" id="slider-1" min="0" max="100" value="50" data-popup-enabled="true")
+                                        <div class="cube">
+                                            <div class="a"></div>
+                                            <div class="b"></div>
+                                            <div class="c"></div>
+                                            <div class="d"></div>
+                                            <div id="slider-range-min"></div>
+                                        </div>
+                                        <input type="text" id="amount" />
                                         br
                                         hr
                                     -else
@@ -97,7 +103,7 @@ block content
                     
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
 
-                        //- link(href='/stylesheets/rangeSlider.scss', rel="stylesheet")
+                        link(href='/stylesheets/rangeSlider.scss', rel="stylesheet")
                         script(src="/javascripts/controlBlock_Vol.js")
                     .card-footer.text-center
                         .row
