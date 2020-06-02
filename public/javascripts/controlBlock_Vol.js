@@ -30,7 +30,7 @@ $(document).ready(function () {
     //     console.log("ok");
     // });
 
-    $(".blocki_vol").on("input", function(e) {
+    $(".blocki_vol").change("input", function(e) {
         console.log(e);
          
     });
