@@ -20,7 +20,7 @@ var frame,dev_index,dev_name,child_index,child_status;
 //     });
 
 //     let datum= await response.json();
-//     console.log(datum.name);
+//     console.log(datum.status);
 // }
 
 $(document).ready(function () {

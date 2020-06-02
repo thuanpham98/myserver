@@ -233,6 +233,9 @@ router.get('/blocks', async function (req, res) {
         res.render('blocks', { title: "Block Page", block_item : item_block , block_number : number_block, block_name : name_block});
     });
 });
+router.post('/blocks', async function (req, res){
+    res.json({status:"ok thuan dep trai"});
+});
 router.post('/blocks/search', async function (req, res) {
 
     let account, blocks;
