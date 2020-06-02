@@ -72,13 +72,15 @@ block content
                                 -let val = blocki.block.value.toString();
                                 -if(type === 0)    
                                     -if(act)
-                                        e-slider(priority='mobile_click_through',id=num,min-label='Minimum(%)', max-label='Maximum(%)',value =val)
                                         label(for=num) #{mask}
+                                        br
+                                        e-slider(priority='mobile_click_through',id=num,min-label='Minimum(%)', max-label='Maximum(%)',value =val)
                                         br
                                         hr
                                     -else
-                                        e-slider(priority='primary',id=num ,min-label='Minimum(%)', max-label='Maximum(%)',disabled='true',value =val)
                                         label(for=num) #{mask}
+                                        br
+                                        e-slider(priority='primary',id=num ,min-label='Minimum(%)', max-label='Maximum(%)',disabled='true',value =val)
                                         br
                                         hr
                                     
