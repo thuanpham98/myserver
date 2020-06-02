@@ -32,12 +32,15 @@ async function portBlockCommand_vol(){
     
 
 // });
-document.addEventListener("change",function(e){
+document.addEventListener("click",function(e){
     let num = e.path[1].id;
     num = num.toString();
-    console.log(e.path[1].id);
-    let test = document.getElementById(num).value;
-    console.log(test);
+    if(num.length){
+        console.log(e.path[1].id);
+        let test = document.getElementById(num).value;
+        console.log(test);
+    }
+
 });
 // let te = document.getElementsByClassName("blocki_vol");
 // te.addEventListener("update",function(ret){
