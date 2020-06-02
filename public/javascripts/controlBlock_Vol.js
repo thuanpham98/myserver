@@ -30,8 +30,9 @@ $(document).ready(function () {
     //     console.log("ok");
     // });
 
-    a = $(".blocki_vol").update(function(){
-        console.log("ok");
+    $(".blocki_vol").change(function () {
+        var city = $(this).text();
+        console.log(city);
     })
-    console.log(a);
+    console.log("ok");
 });
