@@ -35,14 +35,15 @@ $(document).ready(function () {
         else {
             pin_val=0;
         }
-        // let te = $(this).prop('update');
+
         portBlockCommand();
     });
 
 
 });
-$(document).ready(function () {
-    $(".blocki_vol").change(function(){
-        let id = $(this).attr("id");
-    });
-});
+
+// $(document).ready(function () {
+//     $(".blocki_vol").change(function(){
+//         let id = $(this).attr("id");
+//     });
+// });
