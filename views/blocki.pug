@@ -80,7 +80,7 @@ block content
                                         label(for=num) #{mask}
                                         e-icon(icon='e-android')
                                         br
-                                        e-slider(priority='mobile_click_through',class = "blocki_vol",id=num,min-label='Minimum(%)', max-label='Maximum(%)',value =val)
+                                        input(type="range" ,id=num,name="quantity" ,min="1", max="100")
                                         br
                                         hr
                                     -else
