@@ -37,7 +37,9 @@ document.addEventListener("click",function(e){
     num = num.toString();
     console.log(e.path[1].id);
     let val = document.getElementById(num);
+    let te= document.getElementsByClassName("e-tt__content").innerHTML;
     console.log(val);
+    console.log(te);
 
 });
 
