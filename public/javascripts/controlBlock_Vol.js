@@ -29,9 +29,7 @@ $(document).ready(function () {
 
     //     console.log("ok");
     // });
-    $("input.e-slider").change(function () {
-        let id = $(this).attr("id");
-        console.log(id);
-    })
+    var $elt = $('input').tagsinput('input');
+    console.log($elt);
 
 });
