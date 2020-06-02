@@ -25,7 +25,7 @@ async function portBlockCommand_Digi(){
 
 $(document).ready(function () {
 
-    $(".blocki").change(function (){
+    $(".blocki_digi").change(function (){
         let id = $(this).attr("id");
 
         pin_index=parseInt(id.slice(1));

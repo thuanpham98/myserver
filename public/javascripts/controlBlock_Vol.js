@@ -25,9 +25,8 @@ async function portBlockCommand_vol(){
 
 $(document).ready(function () {
 
-    $(".blocki_vol").change(function (){
-        let id = $(this).attr("id");
-
-        console.log(id);
+    let a= $(".blocki_vol").change(function (){
+        console.log("ok");
     });
+    console.log(a);
 });
