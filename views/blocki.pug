@@ -80,14 +80,13 @@ block content
                                         label(for=num) #{mask}
                                         e-icon(icon='e-android')
                                         br
-                                        <div class="cube">
-                                            <div class="a"></div>
-                                            <div class="b"></div>
-                                            <div class="c"></div>
-                                            <div class="d"></div>
-                                            <div id="slider-range-min"></div>
-                                        </div>
-                                        <input type="text" id="amount" />
+                                        .form-box(class="cube")
+                                            .form-box(class="a")
+                                            .form-box(class="b")
+                                            .form-box(class="c")
+                                            .form-box(class="d")
+                                            .form-box(id="slider-range-min")
+                                        input(type="text" ,id="amount")
                                         br
                                         hr
                                     -else
