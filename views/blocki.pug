@@ -70,12 +70,13 @@ block content
                                 -let act = blocki.block.act;
                                 -let type = blocki.block.type;
                                 -let val = blocki.block.value.toString();
-                                -let temp;
                                 -if(type === 0)    
                                     -if(act)
                                         e-slider(priority='primary',min=0,max=100,step=1,value=val,min-label='Minimum', max-label='Maximum')
+                                        br
                                     -else
                                         e-slider(priority='primary',disabled,min=0,max=100,step=1,value=val,min-label='Minimum', max-label='Maximum')
+                                        br
 
                         link(href="https://redirector.eservice.emarsys.net/ui/latest/css/app.css" rel="stylesheet")
                         script(src='https://redirector.eservice.emarsys.net/ui/latest/js/app.js', crossorigin='anonymous')
