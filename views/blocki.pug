@@ -11,7 +11,7 @@ block content
                         h3(id="numBlock",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{port}
                     .card-body
                         form
-                            .form-group(class="checkbox",id="equipments")
+                            .form-group(class="checkbox",id="block_digital")
                                 each blocki, index in blocks 
                                     -let num= 'b'+blocki.block.pin.toString();
                                     -let act = blocki.block.act;
@@ -68,7 +68,7 @@ block content
                         h5(style="text-align:center") (Control Voltag ouput)
                         h3(id="numBlock",style="text-align:center",hidden).text-center.font-weight-light.my-4 #{port}
                     .card-body
-                        form
+                        form(id="block_voltage")
                             each blocki, index in blocks 
                                 -let num= 'b'+blocki.block.pin.toString();
                                 -let act = blocki.block.act;
