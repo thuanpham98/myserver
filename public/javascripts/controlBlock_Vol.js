@@ -34,12 +34,10 @@ async function portBlockCommand_vol(){
 // });
 document.addEventListener("click",function(e){
     let num = e.path[1].id;
-    num = "#" + num.toString();
+    num = num.toString();
     console.log(e.path[1].id);
-    let a = $(num).update();
-    
-   console.log(a);
-
+    let test = document.getElementById(num).className;
+    console.log(test);
 });
 // let te = document.getElementsByClassName("blocki_vol");
 // te.addEventListener("update",function(ret){
