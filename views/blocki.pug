@@ -18,15 +18,24 @@ block content
                                     -let type = blocki.block.type;
                                     -let mask = blocki.block.mask;
                                     -let val = blocki.block.value;
+                                    -let temp;
                                     -if(type ===1)    
                                         -if(act)
+                                            -if(val===0)
+                                                -temp = false;
+                                            -else 
+                                                -temp = true;
                                             label(for=num) #{mask}
                                             br
-                                            input(type="checkbox",id=num,class="blocki",checked =val,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="ON", data-off= "OFF")
+                                            input(type="checkbox",id=num,class="blocki",checked =temp,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="ON", data-off= "OFF")
                                             br
                                             br
                                             hr
                                         -else
+                                            -if(val===0)
+                                                -temp = false;
+                                            -else 
+                                                -temp = true;
                                             label(for=num) #{mask}
                                             br
                                             input(type="checkbox",id=num,class="blocki",checked =val,disabled,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="ON", data-off= "OFF")
