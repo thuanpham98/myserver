@@ -25,7 +25,7 @@ async function portBlockCommand_vol(){
 
 $(document).ready(function () {
 
-    let a= $(".blocki_vol").change(function (){
+    let a= $(".e-slider").change(function (){
         console.log("ok");
     });
     console.log(a);
