@@ -40,12 +40,12 @@ async function portBlockCommand_vol(){
 
 $(document).ready(function () {
 
-    $(".blocki_vol").change(function (){
+    $(".blocki_vol").change(function (e){
         let id = $(this).attr("id");
 
         pin_index=parseInt(id.slice(1));
         let a= $(this).value;
 
-        console.log(a);
+        console.log(e);
     });
 });
