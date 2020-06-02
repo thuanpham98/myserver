@@ -73,9 +73,9 @@ block content
                                 -let temp;
                                 -if(type === 0)    
                                     -if(act)
-                                        e-slider(priority='primary')
+                                        e-slider(priority='primary',min=0,max=100,step=1,value=val,min-label="0%",max-label="100%")
                                     -else
-                                        e-slider(priority='primary',disabled)
+                                        e-slider(priority='primary',disabled,min=0,max=100,step=1,value=val,min-label="0%",max-label="100%")
 
                         link(href="https://redirector.eservice.emarsys.net/ui/latest/css/app.css" rel="stylesheet")
                         script(src='https://redirector.eservice.emarsys.net/ui/latest/js/app.js', crossorigin='anonymous')
