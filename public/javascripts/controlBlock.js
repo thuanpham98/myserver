@@ -23,11 +23,6 @@ async function portBlockCommand(){
     console.log(datum.status);
 }
 
-document.getElementById("login").addEventListener("click", function(){
-    console.log("button");
-    postData();
-});
-
 $(document).ready(function () {
 
     $(".blocki").change(function (){
@@ -40,11 +35,8 @@ $(document).ready(function () {
         else {
             pin_val=0;
         }
-        portBlockCommand();
-        console.log(pin_index + "is" + pin_val.toString());
-    });
-
-    $(".blocki").update(function (ret){
-        console.log(ret);
+        let te = $(this).prop('update');
+        // portBlockCommand();
+        console.log(te);
     });
 });
