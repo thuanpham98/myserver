@@ -32,6 +32,6 @@ async function portBlockCommand_vol(){
     
 
 // });
-document.addEventListener("click",function(){
-    console.log($(this).value);
+document.addEventListener("click",function(e){
+    console.log(e);
 });
