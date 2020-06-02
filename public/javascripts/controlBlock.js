@@ -1,6 +1,6 @@
-// "use strict"
+"use strict"
 
-// var frame,dev_index,dev_name,child_index,child_status;
+var frame,block_name,block_index,pin_index,pin_val;
 
 // async function postConfigEquipi(){
 
@@ -28,13 +28,14 @@ $(document).ready(function () {
     $(".blocki").change(function (){
         let id = $(this).attr("id");
 
-        child_index=parseInt(id.slice(1));
+        pin_index=parseInt(id.slice(1));
         if($(this).prop('checked')){
-            child_status=true;
+            pin_val=1;
         }
         else {
-            child_status=false;
+            pin_val=0;
         }
-        postConfigEquipi();
+        // postConfigEquipi();
+        console.log(pin_index + "is" + pin_val.toString());
     });
 });
