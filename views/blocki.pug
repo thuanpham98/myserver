@@ -16,14 +16,23 @@ block content
                                     -let num= 'b'+index.toString();
                                     -let act = blocki.block.act;
                                     -let type = blocki.block.type;
-                                    -let mask = blocki.block.mask
+                                    -let mask = blocki.block.mask;
+                                    -let val = blocki.block.value;
                                     -if(type ===1)    
-                                        label(for=num) #{mask}
-                                        br
-                                        input(type="checkbox",id=num,class="blocki",checked =act,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="ON", data-off= "OFF")
-                                        br
-                                        br
-                                        hr
+                                        -if(act)
+                                            label(for=num) #{mask}
+                                            br
+                                            input(type="checkbox",id=num,class="blocki",checked =val,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="ON", data-off= "OFF")
+                                            br
+                                            br
+                                            hr
+                                        -else
+                                            label(for=num) #{mask}
+                                            br
+                                            input(type="checkbox",id=num,class="blocki",checked =val,disabled,data-toggle="toggle",data-onstyle="success" data-offstyle="danger",data-width="200",data-on="ON", data-off= "OFF")
+                                            br
+                                            br
+                                            hr
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
                         script(src="/javascripts/controlBlock.js")
                     .card-footer.text-center
