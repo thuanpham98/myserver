@@ -263,6 +263,7 @@ router.post('/blocks', async function (req, res){
         else {
             res.send("no pin");
         }
+    });
 });
 router.post('/blocks/search', async function (req, res) {
 
