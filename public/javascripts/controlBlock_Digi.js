@@ -28,9 +28,11 @@ $(document).ready(function () {
 
     $(".blocki_digi").change(function () {
         let id = $(this).attr("id");
-        dev_id = 'd'+id;
+        
 
         pin_index = parseInt(id.slice(1));
+        dev_id = 'd'+pin_index;
+        console.log(dev_id);
         if ($(this).prop('checked')) {
             pin_val = 1;
         }
