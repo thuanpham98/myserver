@@ -328,7 +328,7 @@ router.get('/blocks/:id', async function (req, res) {
     let indexBlock = parseInt(req.params.id,10);
 
     /* check token on database */
-    await User.find({ email: decoded.accessToken }, function (err, result) {
+    await User.find({ email: decoded.accessToken }, async function (err, result) {
         assert.equal(null, err);
         account = result;
 
