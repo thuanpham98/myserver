@@ -436,7 +436,7 @@ router.get('/equipments/:id', async function (req, res) {
             account = result;
     
             if (!account.length) {
-                res.json("no user");
+                res.send("no user");
                 return;
             }
         });
