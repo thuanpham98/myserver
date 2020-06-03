@@ -325,41 +325,40 @@ router.get('/blocks/:id', async function (req, res) {
 
     let account, blocks, blockManager = [];
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
-    let indexBlock = parseInt(req.params.id,10);
 
     /* check token on database */
-    await User.find({ email: decoded.accessToken }, async function (err, result) {
+    await User.find({ email: decoded.accessToken }, function (err, result) {
         assert.equal(null, err);
         account = result;
 
-        if (account.length) {
-            /** check Block of user */
-            await ManageDev.find({ ID: account[0].timestamp, type: 0, 'child.port': indexBlock }, function (errr, result) {
-                // equipments = result;
-                // res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
-                blocks = result;
-                console.log(blocks);
-                if (blocks.length) {
-                    for (let i = 0; i < blocks.length; i++) {
-                        for (let j = 0; j < blocks[i].child.length; j++) {
-                            if (blocks[i].child[j].port == indexBlock) {
-                                blockManager.push({ dev: blocks[i].dev, mask: blocks[i].mask, block: blocks[i].child[j] });
-                            }
-                        }
-                    }
-                    res.render('blocki', { title: "Control Block Page", name: blockManager[0].block.maskport, port: indexBlock, blocks: blockManager });
-                }
-                else {
-                    res.send("no data looking");
-                }
-            });
-        }
-        else{
-            res.send("no block fine");
+        if (!account.length) {
+            res.send("no user");
+            return;
         }
     });
 
+    /** check Block of user */
+    let indexBlock = req.params.id;
+    await ManageDev.find({ ID: account[0].timestamp, type: 0, 'child.port': indexBlock }, function (errr, result) {
+        // equipments = result;
+        // res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
 
+        blocks = result;
+        console.log(blocks);
+        if (blocks.length) {
+            for (let i = 0; i < blocks.length; i++) {
+                for (let j = 0; j < blocks[i].child.length; j++) {
+                    if (blocks[i].child[j].port == indexBlock) {
+                        blockManager.push({ dev: blocks[i].dev, mask: blocks[i].mask, block: blocks[i].child[j] });
+                    }
+                }
+            }
+            res.render('blocki', { title: "Control Block Page", name: blockManager[0].block.maskport, port: indexBlock, blocks: blockManager });
+        }
+        else {
+            res.send("no data looking");
+        }
+    });
 
     
 })
