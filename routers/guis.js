@@ -250,18 +250,20 @@ router.post('/blocks', async function (req, res){
     /** check device of user */
     let frame = req.body;
 
-    await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) ,type : 0}, function (err, result) {
+    await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) ,type : 0}, async function (err, result) {
         if(result.length){
+            console.log(result[0].child);
             for(let i =0; i < result[0].child.length;i++){
                 if((result[0].child[i].port === parseInt(frame.port,10))&&(result[0].child[i].maskport ==frame.maskport)&&(result[0].child[i].pin === parseInt(frame.pin,10))){
                     result[0].child[i].value=parseInt(frame.value,10);
                     // result[0].child.set(i,result[0].child[i]);
                 }
             }
-            result[0].save();
+            await result[0].save();
+            res.send({status:"ok"});
         }
         else {
-            res.send("no pin");
+            res.send({status:"no pin"});
         }
     });
 });
