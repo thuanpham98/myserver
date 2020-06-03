@@ -254,7 +254,8 @@ router.post('/blocks', async function (req, res){
         if(result.length){
             console.log(result[0].child);
             for(let i =0; i < result[0].child.length;i++){
-                if((result[0].child[i].port === parseInt(frame.port,10))&&(result[0].child[i].maskport ==frame.maskport)&&(result[0].child[i].pin === parseInt(frame.pin,10))){
+                if((result[0].child[i].port === parseInt(frame.port,10)) && (result[0].child[i].pin === parseInt(frame.pin,10))){
+                    
                     result[0].child[i].value=parseInt(frame.value,10);
                     result[0].child.set(i,result[0].child[i]);
                     console.log("fined it");
