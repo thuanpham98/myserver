@@ -446,10 +446,13 @@ router.get('/equipments/:id', async function (req, res) {
         
         await ManageDev.find({ ID: account[0].timestamp, dev: devi }, function (err, result) {
             equipments = result;
-            
+            if(equipments.length){
+                res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
+            }
+            else {
+                res.send("no quipment fine");
+            }
         });
-
-        res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
 })
 
 

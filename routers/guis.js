@@ -352,10 +352,14 @@ router.get('/blocks/:id', async function (req, res) {
                     }
                 }
             }
+            res.render('blocki', { title: "Control Block Page", name: blockManager[0].block.maskport, port: indexBlock, blocks: blockManager });
+        }
+        else {
+            res.send("no data looking");
         }
     });
 
-    res.render('blocki', { title: "Control Block Page", name: blockManager[0].block.maskport, port: indexBlock, blocks: blockManager });
+    
 })
 /* export home */
 module.exports = router
