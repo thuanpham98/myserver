@@ -337,13 +337,12 @@ router.get('/blocks/:id', async function (req, res) {
             await ManageDev.find({ ID: account[0].timestamp, type: 0, 'child.port': indexBlock }, function (errr, result) {
                 // equipments = result;
                 // res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
-
                 blocks = result;
                 console.log(blocks);
                 if (blocks.length) {
                     for (let i = 0; i < blocks.length; i++) {
                         for (let j = 0; j < blocks[i].child.length; j++) {
-                            if (blocks[i].child[j].port === indexBlock) {
+                            if (blocks[i].child[j].port == indexBlock) {
                                 blockManager.push({ dev: blocks[i].dev, mask: blocks[i].mask, block: blocks[i].child[j] });
                             }
                         }
