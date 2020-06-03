@@ -332,13 +332,8 @@ router.get('/blocks/:id', async function (req, res) {
         assert.equal(null, err);
         account = result;
 
-        if (!account.length) {
-            res.send("no Block ing config");
-            return;
-        }
-        else{
+        if (account.length) {
             /** check Block of user */
-    
             await ManageDev.find({ ID: account[0].timestamp, type: 0, 'child.port': indexBlock }, function (errr, result) {
                 // equipments = result;
                 // res.render('equips', { title: "Equipi Page", name: equipments[0].mask, equips: equipments[0].child, dev: equipments[0].dev, numEquipi: equipments[0].child.length });
@@ -359,6 +354,9 @@ router.get('/blocks/:id', async function (req, res) {
                     res.send("no data looking");
                 }
             });
+        }
+        else{
+            res.send("no block fine");
         }
     });
 
