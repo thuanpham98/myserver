@@ -18,6 +18,8 @@ block content
                                     -let type = blocki.block.type;
                                     -let mask = blocki.block.mask;
                                     -let val = blocki.block.value;
+                                    -let id_dev = 'd'+blocki.block.pin.toString();
+                                    -let dev =blocki.dev;
                                     -let temp;
                                     -if(type ===1)    
                                         -if(act)
@@ -25,6 +27,7 @@ block content
                                                 -temp = false;
                                             -else 
                                                 -temp = true;
+                                            h3(id=id_dev,style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
                                             label(for=num) #{mask}
                                             e-icon(icon='e-android')
                                             br
