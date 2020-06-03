@@ -234,8 +234,35 @@ router.get('/blocks', async function (req, res) {
     });
 });
 router.post('/blocks', async function (req, res){
-    console.log(req.body);
-    res.json({status:"ok thuan dep trai"});
+    let account, comma,device;
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    /* check token on database */
+    await User.find({ email: decoded.accessToken }, function (err, result) {
+        assert.equal(null, err);
+        account = result;
+
+        if (!account.length) {
+            res.json("no user");
+            return;
+        }
+    });
+    /** check device of user */
+    let frame = req.body;
+
+    await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) ,type : 0}, function (err, result) {
+        if(result.length){
+            for(let i =0; i < result[0].child.length;i++){
+                if((result[0].child[i].port === parseInt(frame.port,10))&&(result[0].child[i].port ==frame.maskport)&&(result[0].child[i].pin === parseInt(frame.pin,10))){
+                    result[0].child[i].value=parseInt(frame.value,10);
+                    // result[0].child.set(i,result[0].child[i]);
+                }
+            }
+            result[0].save();
+        }
+        else {
+            res.send("no pin");
+        }
 });
 router.post('/blocks/search', async function (req, res) {
 
