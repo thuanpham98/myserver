@@ -257,12 +257,12 @@ router.post('/blocks', async function (req, res){
             for(let i =0; i < child.length;i++){
                 if((child[i].port == frame.port) && (child[i].pin == frame.pin)){
 
-                    // child[i].value=parseInt(frame.value,10);
-                    // result[0].child.set(i,child[i]);
+                    child[i].value=parseInt(frame.value,10);
+                    result[0].child.set(i,child[i]);
                     console.log("fined it");
                 }
             }
-            // await result[0].save();
+            await result[0].save();
             res.send({status:"ok"});
         }
         else {
