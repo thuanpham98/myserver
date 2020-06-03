@@ -253,11 +253,12 @@ router.post('/blocks', async function (req, res){
     await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(frame.dev, 10) ,type : 0}, async function (err, result) {
         if(result.length){
             console.log(result[0].child);
+            let child =result[0].child;
             for(let i =0; i < result[0].child.length;i++){
-                if((result[0].child[i].port === parseInt(frame.port,10)) && (result[0].child[i].pin === parseInt(frame.pin,10))){
-                    
-                    result[0].child[i].value=parseInt(frame.value,10);
-                    result[0].child.set(i,result[0].child[i]);
+                if((child[i].port === parseInt(frame.port,10)) && (child[i].pin === parseInt(frame.pin,10))){
+
+                    child[i].value=parseInt(frame.value,10);
+                    result[0].child.set(i,child[i]);
                     console.log("fined it");
                 }
             }
