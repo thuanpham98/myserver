@@ -63,6 +63,7 @@ let b = document.addEventListener("input",function(e){
     console.log(e.target.value);
     pin_val = parseInt(e.target.value,10);
     pin_index = parseInt(the_id.slice(1));
+    dev_id = 'd'+pin_index;
     let id_span="sp" + pin_index;
     document.getElementById(id_span).innerHTML= e.target.value;
 
