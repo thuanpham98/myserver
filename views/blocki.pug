@@ -82,15 +82,14 @@ block content
                                 -let dev =blocki.dev;
                                 -if(type === 0)    
                                     -if(act)
-                                        div(class="container")
-                                            h3(id=id_dev,style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
-                                            label(for=num) #{mask}
-                                            e-icon(icon='e-android')
-                                            br
-                                            input(type="range" ,min="1", max="100", value=val, class="slider", id=num)
-                                            span(id="rs-bullet" class="rs-label")
-                                            br
-                                            hr
+                                        h3(id=id_dev,style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
+                                        label(for=num) #{mask}
+                                        e-icon(icon='e-android')
+                                        br
+                                        input(type="range" ,min="1", max="100", value=val, class="slider", id=num)
+                                        span(id="rs-bullet" class="rs-label")
+                                        br
+                                        hr
                                     -else
                                         label(for=num) #{mask}
                                         e-icon(icon='e-apple')
