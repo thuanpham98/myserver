@@ -56,10 +56,8 @@ async function portBlockCommand_Digi() {
 //     });
 // });
 
-var rangeSlider = document.getElementById("rs-range-line");
-var rangeBullet = document.getElementById("rs-bullet");
-
-document.getElementsByClassName("slider").addEventListener("input", function(e){
+var a =document.getElementsByClassName("slider");
+a.addEventListener("input", function(e){
     console.log(e);
 },false);
 
