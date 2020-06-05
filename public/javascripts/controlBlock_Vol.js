@@ -56,8 +56,12 @@ async function portBlockCommand_Digi() {
 //     });
 // });
 
-var a =document.getElementsByClassName("slider");
-var b = a.addEventListener("input");
+a =document.getElementsByClassName("slider");
+console.log(a);
+
+document.addEventListener(onchange,function(e){
+    console.log(e);
+});
 
 console.log(b);
 // function showSliderValue() {
