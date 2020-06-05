@@ -78,30 +78,34 @@ block content
                                 -let type = blocki.block.type;
                                 -let mask = blocki.block.mask;
                                 -let val = blocki.block.value.toString();
+                                -let id_dev = 'd'+blocki.block.pin.toString();
+                                -let dev =blocki.dev;
                                 -if(type === 0)    
                                     -if(act)
                                         div(class="container")
+                                            h3(id=id_dev,style="text-align:center",hidden).text-center.font-weight-light.my-4 #{dev}
                                             label(for=num) #{mask}
                                             e-icon(icon='e-android')
                                             br
-                                            input(id="rs-range-line" class="rs-range" type="range" value=val min="0" max="100")
+                                            input(type="range" ,min="1", max="100", value=val, class="slider", id=num)
                                             span(id="rs-bullet" class="rs-label")
                                             br
                                             hr
-                                    //- -else
-                                    //-     label(for=num) #{mask}
-                                    //-     e-icon(icon='e-apple')
-                                    //-     br
-                                    //-     e-slider(priority='primary',id=num ,min-label='Minimum(%)', max-label='Maximum(%)',disabled='true',value =val)
-                                    //-     br
-                                    //-     hr
+                                    -else
+                                        label(for=num) #{mask}
+                                        e-icon(icon='e-apple')
+                                        br
+                                        input(type="range" ,min="1" ,max="100" ,value=val ,class="slider" ,id=num)
+                                        span(id="rs-bullet" class="rs-label")
+                                        br
+                                        hr
                                     
-                        //- link(href='https://assets.emarsys.net/ui/14.620.2/css/app.css', rel="stylesheet")
-                        //- script(src='https://assets.emarsys.net/ui/14.620.2/js/app.js')
+                        link(href='https://assets.emarsys.net/ui/14.620.2/css/app.css', rel="stylesheet")
+                        script(src='https://assets.emarsys.net/ui/14.620.2/js/app.js')
                     
                         script(src='https://code.jquery.com/jquery-3.3.1.js', crossorigin='anonymous')
 
-                        link(href='/stylesheets/rangeSlider.scss')
+                        link(href='/stylesheets/rangeSlider.css')
                         script(src="/javascripts/controlBlock_Vol.js")
                     .card-footer.text-center
                         .row

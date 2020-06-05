@@ -1,13 +1,14 @@
 "use strict"
 
-var frame, block_name, block_index, pin_index, pin_val;
+var frame,dev_id ,dev, block_name, block_index, pin_index, pin_val;
 
-async function portBlockCommand_vol() {
+async function portBlockCommand_Digi() {
 
     block_index = document.getElementById("numBlock").innerHTML;
     block_name = document.getElementById("blockName").innerHTML;
+    dev = document.getElementById(dev_id).innerHTML;
 
-    frame = { port: block_index, maskport: block_name, pin: pin_index, value: pin_val };
+    frame = { dev: dev, port: block_index, maskport: block_name, pin: pin_index, value: pin_val };
     console.log(frame);
     let response = await fetch('https://iot-server-365.herokuapp.com/user/gui/blocks', {
         method: 'post',
@@ -58,10 +59,13 @@ async function portBlockCommand_vol() {
 var rangeSlider = document.getElementById("rs-range-line");
 var rangeBullet = document.getElementById("rs-bullet");
 
-rangeSlider.addEventListener("input", showSliderValue, false);
+document.getElementsByClassName("slider").addEventListener("input", function(e){
+    console.log(e);
+},false);
 
-function showSliderValue() {
-  rangeBullet.innerHTML = rangeSlider.value;
-  var bulletPosition = (rangeSlider.value /rangeSlider.max);
-  rangeBullet.style.left = (bulletPosition * 578) + "px";
-}
+
+// function showSliderValue() {
+//   rangeBullet.innerHTML = rangeSlider.value;
+//   var bulletPosition = (rangeSlider.value /rangeSlider.max);
+//   rangeBullet.style.left = (bulletPosition * 578) + "px";
+// }
