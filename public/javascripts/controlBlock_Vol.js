@@ -57,11 +57,9 @@ async function portBlockCommand_Digi() {
 // });
 
 var a =document.getElementsByClassName("slider");
-a.addEventListener("input", function(e){
-    console.log(e);
-},false);
+var b = a.addEventListener("input");
 
-
+console.log(b);
 // function showSliderValue() {
 //   rangeBullet.innerHTML = rangeSlider.value;
 //   var bulletPosition = (rangeSlider.value /rangeSlider.max);
