@@ -61,12 +61,15 @@ let b = document.addEventListener("input",function(e){
     console.log(e.target.id);
     let the_id = e.target.id.toString();
     console.log(e.target.value);
-    let pin_index = parseInt(the_id.slice(1));
+    pin_val = parseInt(e.target.value,10);
+    pin_index = parseInt(the_id.slice(1));
     let id_span="sp" + pin_index;
     document.getElementById(id_span).innerHTML= e.target.value;
+
+    portBlockCommand_Digi();
 });
 
-console.log(b);
+// console.log(b);
 // function showSliderValue() {
 //   rangeBullet.innerHTML = rangeSlider.value;
 //   var bulletPosition = (rangeSlider.value /rangeSlider.max);
