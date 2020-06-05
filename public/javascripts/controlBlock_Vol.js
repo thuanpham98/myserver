@@ -57,7 +57,7 @@ async function portBlockCommand_Digi() {
 // });
 
 
-let b = document.addEventListener("input",function(e){
+document.addEventListener("input",function(e){
     console.log(e.target.id);
     let the_id = e.target.id.toString();
     console.log(e.target.value);
