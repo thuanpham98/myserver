@@ -59,7 +59,9 @@ async function portBlockCommand_Digi() {
 let a =document.getElementsByClassName("slider");
 console.log(a);
 
-let b = document.addEventListener("input");
+let b = document.addEventListener("input",function(e){
+    console.log(e);
+});
 
 console.log(b);
 // function showSliderValue() {
