@@ -56,10 +56,10 @@ async function portBlockCommand_Digi() {
 //     });
 // });
 
-a =document.getElementsByClassName("test");
-// console.log(a);
+let a =document.getElementsByClassName("slider");
+console.log(a);
 
-a.document.addEventListener("onchange",function(e){
+let b= a.document.addEventListener("onchange",function(e){
     console.log(e);
 });
 
