@@ -77,7 +77,8 @@ block content
                                 -let act = blocki.block.act;
                                 -let type = blocki.block.type;
                                 -let mask = blocki.block.mask;
-                                -let val = blocki.block.value.toString();
+                                -let val = parseInt((blocki.block.value)/255,10);
+                                -val =val.toString();
                                 -let id_dev = 'd'+blocki.block.pin.toString();
                                 -let id_span = 'sp'+blocki.block.pin.toString();
                                 -let dev =blocki.dev;
