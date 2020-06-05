@@ -59,7 +59,11 @@ async function portBlockCommand_Digi() {
 
 let b = document.addEventListener("input",function(e){
     console.log(e.target.id);
+    let the_id = e.target.id.toString();
     console.log(e.target.value);
+    let pin_index = parseInt(the_id.slice(1));
+    let id_span="sp" + pin_index;
+    document.getElementById(id_span)= e.target.value;
 });
 
 console.log(b);
