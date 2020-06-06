@@ -266,10 +266,10 @@ router.post('/blocks', async function (req, res) {
                 }
             }
             await result[0].save();
-            res.send({ status: "ok" });
+            res.json({ status: "ok" });
         }
         else {
-            res.send({ status: "no pin" });
+            res.json({ status: "no pin" });
         }
     });
 
