@@ -32,7 +32,10 @@ router.get('/', async function (req, res) {
     //     res.write("who are you");
     //     return;
     // }
-    
+    if((req.headers.id.length < 14)&&(isNaN(req.headers.id))){
+        res.send("who are you");
+        return;
+    }
     let esp_id=req.headers.id.slice(0,13);
     let esp_num = req.headers.id.slice(13,req.headers.id.length);
 
