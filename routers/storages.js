@@ -32,6 +32,7 @@ router.get('/', async function (req, res) {
     //     res.write("who are you");
     //     return;
     // }
+    console.log(req.headers.id);
     if((req.headers.id.length < 14)&&(isNaN(req.headers.id))){
         res.send("who are you");
         return;
