@@ -9,9 +9,9 @@ var assert = require('assert');
 module.exports.checkID = async function(req, res, next) {
 
     let time = new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });//Date().toString();
-    console.log(req.body.ID);
+    
     console.log("start check");
-    if((req.body.ID.length ==undefined) || (req.body.ID.length !=13) ||(isNaN(req.body.ID.length))){\
+    if((req.body.ID.length ==undefined) || (req.body.ID.length !=13) ||(isNaN(req.body.ID.length))){
         res.send("who are you");
         return;
     }
