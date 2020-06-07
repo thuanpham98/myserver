@@ -15,7 +15,7 @@ module.exports.checkID = async function(req, res, next) {
         res.send("who are you");
         return;
     }
-
+    console.log(req.body.ID.length);
     await User.find({ timestamp: req.body.ID }, async function(err, result) {
         assert.equal(null, err);
         if (!result.length) {
