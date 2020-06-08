@@ -43,6 +43,7 @@ router.get('/', async function (req, res) {
             for(let i ; i< device.length;i++){
                 devices.push(device[i].dev)
             }
+            console.log(devices);
             res.render('charts', { title: "Display Page" ,devices : devices});
         }
         else {
