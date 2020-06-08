@@ -1,4 +1,4 @@
-document.getElementById("choosen").addEventListener("click", function(){
+document.getElementById("choosen").addEventListener("submit", function(){
     console.log("button");
     init_data_bar();
     init_data_line();
