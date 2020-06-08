@@ -17,7 +17,7 @@ async function init_data_bar() {
 
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
         method: "POST",
-        body: mess_bar,
+        body: mess,
         mode: "cors",
         headers: { "Content-type": "application/json;charset=utf-8" }
     });
