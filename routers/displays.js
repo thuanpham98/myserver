@@ -130,8 +130,9 @@ router.post('/getdata', async function (req, res) {
             await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev,10) }, function (err, result) {
                 console.log(result)
                 if(result.length){
-                    for(let i =0 ; i < result[0].child;i++){
-                        senonor.push({type : result[0].child[i].type,mask : result[0].child[i].mask});
+                    let child =result[0].child;
+                    for(let i =0 ; i < child.length;i++){
+                        senonor.push({type : child[i].type,mask : child[i].mask});
                     }
                     let resAPI = { init: senonor };
                     console.log(resAPI);
