@@ -10,6 +10,8 @@ var temp_color_line = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#
 
 /** init data for line chart from server */
 async function init_data_line() {
+    temp_index_line=[];
+    temp_dataset_line = [];
     dev=document.getElementById("charts").value;
     let mess = { dev: dev };
     mess = JSON.stringify(mess);

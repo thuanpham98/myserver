@@ -10,6 +10,9 @@ var temp_color_bar = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f
 
 /** init data for bar chart from server */
 async function init_data_bar() {
+
+    temp_index_bar = [];
+    temp_dataset_bar = [];
     dev=document.getElementById("charts").value;
     let mess = { dev: dev };
     mess = JSON.stringify(mess);
