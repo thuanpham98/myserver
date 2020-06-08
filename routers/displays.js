@@ -73,7 +73,7 @@ router.get('/getdata', async function (req, res) {
                     let m_label = data[0].datetime;
                     console.log(data[0].form);
                     let m_data =
-                        [data[0].form.sensor_3.toFixed(2), data[0].form.sensor_2.toFixed(2),
+                        [data[0].form.sensor_1.toFixed(2), data[0].form.sensor_2.toFixed(2),
                         data[0].form.sensor_3.toFixed(2), data[0].form.sensor_4.toFixed(2),
                         data[0].form.sensor_5.toFixed(2), data[0].form.sensor_6.toFixed(2),
                         data[0].form.sensor_7.toFixed(2), data[0].form.sensor_8.toFixed(2),
@@ -90,20 +90,18 @@ router.get('/getdata', async function (req, res) {
                     
                 }
                 else {
-                    console.log("no data");
-
                     let m_data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
                     let m_label = new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
 
                     let resAPI = { label: m_label, data: m_data };
-                    //resAPI=JSON.stringify(resAPI);
                     res.json(resAPI);
                 }
             }).sort({ _id: -1 }).limit(1);
         }
 
         else {
-            res.send("Who are you");
+            let resAPI = { label: 0, data: [] };
+            res.json(resAPI);
         }
     });
 
