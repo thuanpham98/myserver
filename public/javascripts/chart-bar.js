@@ -10,7 +10,7 @@ var temp_color_bar = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f
 
 /** init data for bar chart from server */
 async function init_data_bar() {
-    let dev=document.getElementById("charts").value;
+    dev=document.getElementById("charts").value;
     let mess = { dev: dev };
     mess = JSON.stringify(mess);
     console.log(mess);
@@ -111,7 +111,8 @@ async function getData_bar() {
         mode: 'cors',
         headers: {
             'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            id:dev
         }
     });
 

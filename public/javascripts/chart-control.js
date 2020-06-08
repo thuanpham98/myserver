@@ -1,3 +1,4 @@
+var dev;
 document.getElementById("choosen").addEventListener("click", function(){
     console.log("button");
     init_data_bar();
