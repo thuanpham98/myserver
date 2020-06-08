@@ -17,7 +17,7 @@ block content
                     each device in devices
                         -let dev_id = 'c'+device.dev.toString();
                         -let mask = device.mask.toString();
-                        option(value = mask ,id = dev_id)
+                        option(id = dev_id) #{mask}
         .card.mb-4
             .card-header
                 i.fas.fa-chart-line.mr-1
