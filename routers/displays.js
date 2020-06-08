@@ -70,7 +70,7 @@ router.get('/getdata', async function (req, res) {
             await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id,10) }, function (err, result) {
                 if (result.length) {
                     data = result;
-                    let m_label = data[0].timestamp;
+                    let m_label = data[0].datetime;
                     console.log(data[0].form);
                     let m_data =
                         [data[0].form.sensor_1.toFixed(2), data[0].form.sensor_2.toFixed(2),
