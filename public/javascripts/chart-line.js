@@ -25,8 +25,6 @@ async function init_data_line() {
         return;
     }
     //console.log(datum.init);
-    temp_index_line=[];
-    temp_dataset_line = [];
     for (let i = 0; i < datum.init.length; i++) {
         if (datum.init[i].type) {
             temp_dataset_line.push({
