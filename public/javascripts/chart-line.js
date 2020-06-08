@@ -7,35 +7,37 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 var temp_index=[];
 var temp_dataset = [];
 var temp_color = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
-async function init_data() {
-    let mess = { message: "init" };
+
+/** init data for line chart from server */
+async function init_data_line() {
+    let dev=document.getElementById("charts").value;
+    let mess = { dev: dev };
     mess = JSON.stringify(mess);
-    let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
-        method: "POST",
-        body: mess,
-        mode: "cors",
-        headers: { "Content-type": "application/json;charset=utf-8" }
-    });
-    let datum = await response.json();
+    console.log(mess);
+    // let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
+    //     method: "POST",
+    //     body: mess,
+    //     mode: "cors",
+    //     headers: { "Content-type": "application/json;charset=utf-8" }
+    // });
+    // let datum = await response.json();
 
-    //console.log(datum.init);
-    for (let i = 0; i < datum.init.length; i++) {
-        if (datum.init[i].type) {
-            temp_dataset.push({
-                fill: false,
-                label: datum.init[i].mask,
-                data: [],
-                backgroundColor: temp_color[i],
-                borderColor: temp_color[i],
-                borderWidth: 2,
-                hidden: true
-            });
-            temp_index.push(i);
-        }
-    }
+    // //console.log(datum.init);
+    // for (let i = 0; i < datum.init.length; i++) {
+    //     if (datum.init[i].type) {
+    //         temp_dataset.push({
+    //             fill: false,
+    //             label: datum.init[i].mask,
+    //             data: [],
+    //             backgroundColor: temp_color[i],
+    //             borderColor: temp_color[i],
+    //             borderWidth: 2,
+    //             hidden: true
+    //         });
+    //         temp_index.push(i);
+    //     }
+    // }
 }
-
-init_data();
 
 var linechart = document.getElementById("myLineChart").getContext('2d');
 var masslineChart = new Chart(linechart, {
@@ -111,7 +113,7 @@ var masslineChart = new Chart(linechart, {
 //--this post id drives the example data
 var k = 0;
 
-async function getData() {
+async function getData_line() {
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
         method: 'get',
         mode: 'cors',
@@ -147,6 +149,3 @@ function removeData() {
         k = 0;
     }
 }
-
-// setInterval(getData, 1000);
-// setInterval(removeData, 5000);

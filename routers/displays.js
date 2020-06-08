@@ -40,7 +40,7 @@ router.get('/', async function (req, res) {
         device = result;
         console.log(device.length);
         if(device.length){
-            for(let i =0 ; i< device.length;i++){
+            for(let i=0 ; i< device.length;i++){
                 devices.push({dev:device[i].dev,mask : device[i].mask});
                 console.log(device[i].dev);
             }

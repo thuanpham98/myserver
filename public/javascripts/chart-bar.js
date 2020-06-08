@@ -7,35 +7,39 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 var temp_index_bar = [];
 var temp_dataset_bar = [];
 var temp_color_bar = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
-async function init_data_bar() {
-    let mess_bar = { message: "init" };
-    mess_bar = JSON.stringify(mess_bar);
-    let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
-        method: "POST",
-        body: mess_bar,
-        mode: "cors",
-        headers: { "Content-type": "application/json;charset=utf-8" }
-    });
-    let datum = await response.json();
 
-    console.log(datum.init);
-    for (let i = 0; i < datum.init.length; i++) {
-        if (!datum.init[i].type) {
-            temp_dataset_bar.push({
-                fill: false,
-                label: datum.init[i].mask,
-                data: [],
-                backgroundColor: temp_color_bar[i],
-                borderColor: temp_color_bar[i],
-                borderWidth: 2,
-                hidden: true
-            });
-            temp_index_bar.push(i);
-        }
-    }
-    console.log(temp_index_bar);
+/** init data for bar chart from server */
+async function init_data_bar() {
+    let dev=document.getElementById("charts").value;
+    let mess = { dev: dev };
+    mess = JSON.stringify(mess);
+    console.log(mess);
+
+    // let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
+    //     method: "POST",
+    //     body: mess_bar,
+    //     mode: "cors",
+    //     headers: { "Content-type": "application/json;charset=utf-8" }
+    // });
+    // let datum = await response.json();
+
+    // console.log(datum.init);
+    // for (let i = 0; i < datum.init.length; i++) {
+    //     if (!datum.init[i].type) {
+    //         temp_dataset_bar.push({
+    //             fill: false,
+    //             label: datum.init[i].mask,
+    //             data: [],
+    //             backgroundColor: temp_color_bar[i],
+    //             borderColor: temp_color_bar[i],
+    //             borderWidth: 2,
+    //             hidden: true
+    //         });
+    //         temp_index_bar.push(i);
+    //     }
+    // }
+    // console.log(temp_index_bar);
 }
-init_data_bar();
 
 var barchart = document.getElementById("myBarChart").getContext('2d');
 
@@ -124,4 +128,5 @@ async function getData_bar() {
     massbarChart.update();
 }
 
-// setInterval(getData_bar, 1000);
+
+

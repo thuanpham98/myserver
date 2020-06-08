@@ -12,14 +12,15 @@ block content
             .card-body.
                 IoT Server 365 suport line chart and bar chart, in future, we will support muilti chart
         .card.mb-4
+            .card-header
+            | Choose dev support chart that you have config
             .card-body
                 select(id = "charts",class="custom-select sources")
                     each device in devices
-                        -let dev_id = 'c'+device.dev.toString();
+                        -let dev_id = device.dev.toString();
                         -let mask = device.mask.toString();
                         option(name = dev_id) #{mask}
                 input(type="submit", value="Choose", id = "choosen")
-                
                 link(href='/stylesheets/option_selector.css', rel="stylesheet")
         .card.mb-4
             .card-header
@@ -28,7 +29,6 @@ block content
             .card-body
                 canvas#myLineChart(style="display: block; height: 400px; width: 400px;" width="100%" height="100%")
             .card-footer.small.text-muted Updated just now
-    
         .card.mb-4
             .card-header
                 i.fas.fa-chart-bar.mr-1
