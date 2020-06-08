@@ -24,7 +24,7 @@ async function init_data_line() {
     if(datum.init==null){
         return;
     }
-    //console.log(datum.init);
+    console.log(datum.init);
     for (let i = 0; i < datum.init.length; i++) {
         if (datum.init[i].type) {
             temp_dataset_line.push({

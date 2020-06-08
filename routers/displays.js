@@ -67,27 +67,27 @@ router.get('/getdata', async function (req, res) {
         account = doc;
 
         if (account.length) {
-            await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id,10) }, function (err, result) {
+            await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
                 if (result.length) {
                     data = result;
                     let m_label = data[0].datetime;
                     console.log(data[0].form);
-                    let m_data =[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-                        // [data[0].form.sensor_1.toFixed(2), data[0].form.sensor_2.toFixed(2),
-                        // data[0].form.sensor_3.toFixed(2), data[0].form.sensor_4.toFixed(2),
-                        // data[0].form.sensor_5.toFixed(2), data[0].form.sensor_6.toFixed(2),
-                        // data[0].form.sensor_7.toFixed(2), data[0].form.sensor_8.toFixed(2),
-                        // data[0].form.sensor_9.toFixed(2), data[0].form.sensor_10.toFixed(2),
-                        // data[0].form.sensor_11.toFixed(2), data[0].form.sensor_12.toFixed(2),
-                        // data[0].form.sensor_13.toFixed(2), data[0].form.sensor_14.toFixed(2),
-                        // data[0].form.sensor_15.toFixed(2), data[0].form.sensor_16.toFixed(2),
-                        // data[0].form.sensor_17.toFixed(2), data[0].form.sensor_18.toFixed(2),
-                        // data[0].form.sensor_19.toFixed(2), data[0].form.sensor_20.toFixed(2)
-                        // ];
+                    let m_data = //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+                    [data[0].form.sensor_1.toFixed(2), data[0].form.sensor_2.toFixed(2),
+                    data[0].form.sensor_3.toFixed(2), data[0].form.sensor_4.toFixed(2),
+                    data[0].form.sensor_5.toFixed(2), data[0].form.sensor_6.toFixed(2),
+                    data[0].form.sensor_7.toFixed(2), data[0].form.sensor_8.toFixed(2),
+                    data[0].form.sensor_9.toFixed(2), data[0].form.sensor_10.toFixed(2),
+                    data[0].form.sensor_11.toFixed(2), data[0].form.sensor_12.toFixed(2),
+                    data[0].form.sensor_13.toFixed(2), data[0].form.sensor_14.toFixed(2),
+                    data[0].form.sensor_15.toFixed(2), data[0].form.sensor_16.toFixed(2),
+                    data[0].form.sensor_17.toFixed(2), data[0].form.sensor_18.toFixed(2),
+                    data[0].form.sensor_19.toFixed(2), data[0].form.sensor_20.toFixed(2)
+                    ];
                     let resAPI = { label: m_label, data: m_data };
                     console.log(resAPI);
                     res.json(resAPI);
-                    
+
                 }
                 else {
                     let m_data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
@@ -119,9 +119,9 @@ router.post('/getdata', async function (req, res) {
         account = doc;
 
         if (account.length) {
-            await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev,10) }, function (err, result) {
+            await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev, 10) }, function (err, result) {
                 console.log(result)
-                if ((result.length)&&(result!==undefined)) {
+                if ((result.length) && (result !== undefined)) {
                     let child = result[0].child;
                     for (let i = 0; i < child.length; i++) {
                         if (child[i].act) {
@@ -134,7 +134,7 @@ router.post('/getdata', async function (req, res) {
                     res.json(resAPI);
                 }
                 else {
-                    res.json({ init: null});
+                    res.json({ init: null });
                 }
             });
         }
