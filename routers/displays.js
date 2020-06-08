@@ -137,14 +137,6 @@ router.post('/getdata', async function (req, res) {
                     res.json(null);
                 }
             });
-
-            // if (req.body.message == "init") {
-            //     let resAPI = { init: account.sensors };
-            //     res.json(resAPI);
-            // }
-            // else{
-            //     res.json(null);
-            // }
         }
         else {
             res.send("who are you");
