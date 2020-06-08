@@ -60,7 +60,7 @@ router.get('/getdata', async function (req, res) {
     let account;
     let data;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
-
+    console.log(req.headers.id);
     //check token on database--//
     await User.find({ email: decoded.accessToken }, async function (err, doc) {
         // assert.equal(null, err);
