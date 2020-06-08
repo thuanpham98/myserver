@@ -26,6 +26,8 @@ async function init_data_bar() {
         return;
     }
     console.log(datum.init);
+    temp_index_bar = [];
+    temp_dataset_bar = [];
     for (let i = 0; i < datum.init.length; i++) {
         if (!datum.init[i].type) {
             temp_dataset_bar.push({
