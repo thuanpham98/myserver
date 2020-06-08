@@ -106,6 +106,9 @@ var massbarChart = new Chart(barchart, {
 });
 
 async function getData_bar() {
+    if(start==0){
+        return;
+    }
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
         method: 'get',
         mode: 'cors',

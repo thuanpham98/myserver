@@ -1,8 +1,10 @@
 var dev;
+var start=0;
 document.getElementById("choosen").addEventListener("click", function(){
     console.log("button");
     init_data_bar();
     init_data_line();
+    start=1;
 
 
 });

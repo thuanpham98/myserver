@@ -114,6 +114,9 @@ var masslineChart = new Chart(linechart, {
 var k = 0;
 
 async function getData_line() {
+    if(start==0){
+        return;
+    }
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
         method: 'get',
         mode: 'cors',
@@ -136,6 +139,9 @@ async function getData_line() {
     console.log(masslineChart.data.datasets);
 }
 function removeData() {
+    if(start==0){
+        return;
+    }
     if (k >= 10) {
         //let j = 0;
 
