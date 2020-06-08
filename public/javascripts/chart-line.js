@@ -29,7 +29,7 @@ async function init_data_line() {
                 fill: false,
                 label: datum.init[i].mask,
                 data: [],
-                backgroundColor: temp_color_liner[i],
+                backgroundColor: temp_color_line[i],
                 borderColor: temp_color_line[i],
                 borderWidth: 2,
                 hidden: true
