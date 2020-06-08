@@ -13,7 +13,7 @@ block content
                 IoT Server 365 suport line chart and bar chart, in future, we will support muilti chart
         .card.mb-4
             .card-body
-                select(id = "charts")
+                select(id = "charts",class="custom-select sources")
                     each device in devices
                         -let dev_id = 'c'+device.dev.toString();
                         -let mask = device.mask.toString();
