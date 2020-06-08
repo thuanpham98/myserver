@@ -2,10 +2,10 @@ var dev;
 var start=0;
 document.getElementById("choosen").addEventListener("click", function(){
     // console.log("button");
-    // temp_index_line=[];
-    // temp_dataset_line = [];
-    // temp_index_bar = [];
-    // temp_dataset_bar = [];
+    temp_index_line=[];
+    temp_dataset_line = [];
+    temp_index_bar = [];
+    temp_dataset_bar = [];
 
     init_data_bar();
     init_data_line();
