@@ -117,26 +117,39 @@ router.get('/getdata', async function (req, res) {
 
 router.post('/getdata', async function (req, res) {
 
-    let account;
+    let account,senonor=[];
     //console.log(req.body);
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     //check token on database--//
     await User.find({ email: decoded.accessToken }, async function (err, result) {
-        assert.equal(null, err);
+        // assert.equal(null, err);
         account = result[0];
 
         if ((account !== undefined) && (account !== "no data")) {
-            if (req.body.message == "init") {
-                let resAPI = { init: account.sensors };
-                res.json(resAPI);
-            }
-            else{
-                res.json(null);
-            }
+            await ManageDev.find({ ID: account.timestamp, device: parseInt(req.body.dev,10) }, function (err, result) {
+                if(result.length){
+                    for(let i =0 ; i < result[0].child;i++){
+                        senonor.push({type : result[0].child[i].type,mask : result[0].child[i].mask});
+                    }
+                    let resAPI = { init: senonor };
+                    res.json(resAPI);
+                }
+                else{
+                    res.json(null);
+                }
+            });
+            
+            // if (req.body.message == "init") {
+            //     let resAPI = { init: account.sensors };
+            //     res.json(resAPI);
+            // }
+            // else{
+            //     res.json(null);
+            // }
         }
         else{
-            res.json(null);
+            res.send("who are you");
         }
     });
 

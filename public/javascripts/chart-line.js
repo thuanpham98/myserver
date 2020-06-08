@@ -14,29 +14,29 @@ async function init_data_line() {
     let mess = { dev: dev };
     mess = JSON.stringify(mess);
     console.log(mess);
-    // let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
-    //     method: "POST",
-    //     body: mess,
-    //     mode: "cors",
-    //     headers: { "Content-type": "application/json;charset=utf-8" }
-    // });
-    // let datum = await response.json();
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
+        method: "POST",
+        body: mess,
+        mode: "cors",
+        headers: { "Content-type": "application/json;charset=utf-8" }
+    });
+    let datum = await response.json();
 
-    // //console.log(datum.init);
-    // for (let i = 0; i < datum.init.length; i++) {
-    //     if (datum.init[i].type) {
-    //         temp_dataset.push({
-    //             fill: false,
-    //             label: datum.init[i].mask,
-    //             data: [],
-    //             backgroundColor: temp_color[i],
-    //             borderColor: temp_color[i],
-    //             borderWidth: 2,
-    //             hidden: true
-    //         });
-    //         temp_index.push(i);
-    //     }
-    // }
+    //console.log(datum.init);
+    for (let i = 0; i < datum.init.length; i++) {
+        if (datum.init[i].type) {
+            temp_dataset.push({
+                fill: false,
+                label: datum.init[i].mask,
+                data: [],
+                backgroundColor: temp_color[i],
+                borderColor: temp_color[i],
+                borderWidth: 2,
+                hidden: true
+            });
+            temp_index.push(i);
+        }
+    }
 }
 
 var linechart = document.getElementById("myLineChart").getContext('2d');
