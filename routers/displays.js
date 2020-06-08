@@ -119,7 +119,7 @@ router.post('/getdata', async function (req, res) {
         account = doc;
 
         if (account.length) {
-            await ManageDev.find({ ID: account[0].timestamp, dev: req.body.dev }, function (err, result) {
+            await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev,10) }, function (err, result) {
                 console.log(result)
                 if (result.length) {
                     let child = result[0].child;
