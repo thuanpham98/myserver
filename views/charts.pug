@@ -11,7 +11,11 @@ block content
         .card.mb-4
             .card-body.
                 IoT Server 365 suport line chart and bar chart, in future, we will support muilti chart
-        
+        .card.mb-4
+            .card-body
+                ul
+                    each dev in devices
+                        li = "device " + dev.toString()
         .card.mb-4
             .card-header
                 i.fas.fa-chart-line.mr-1

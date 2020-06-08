@@ -9,6 +9,9 @@ router.use(timestamp);
 // modal Data---//
 var Data = require('../models/data');
 
+/* modal  managedev */
+var ManageDev = require('../models/manageDev');
+
 //---module  user---//
 var User = require('../models/user');
 
@@ -20,8 +23,33 @@ var jwt = require('jsonwebtoken');
 
 //-------------display----------//
 router.get('/', async function (req, res) {
+    let account, device,devices=[];
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
-    res.render('charts', { title: "Display Page" });
+    /* check token on database */
+    await User.find({ email: decoded.accessToken }, function (err, result) {
+        assert.equal(null, err);
+        account = result;
+
+        if (!account.length) {
+            res.json("no user");
+            return;
+        }
+    });
+    await ManageDev.find({ ID: account[0].timestamp, type: 0 }, function (errr, result) {
+        device = result;
+        if(device.length){
+            for(let i ; i< device.length;i++){
+                devices.push(device[i].dev)
+            }
+            res.render('charts', { title: "Display Page" ,devices : devices});
+        }
+        else {
+            devices=[];
+            res.render('charts', { title: "Display Page" ,devices : devices});
+        }
+    });
+    
 
 });
 router.get('/getdata', async function (req, res) {
