@@ -67,7 +67,7 @@ router.get('/getdata', async function (req, res) {
         account = doc;
 
         if (account.length) {
-            await Data.find({ ID: account[0].timestamp, device: 1 }, function (err, result) {
+            await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id,10) }, function (err, result) {
                 // assert.equal(null, err);
 
                 // let m_sensor = account[0].sensors;
