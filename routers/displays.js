@@ -134,7 +134,7 @@ router.post('/getdata', async function (req, res) {
                     res.json(resAPI);
                 }
                 else {
-                    res.json(null);
+                    res.json({ init: null});
                 }
             });
         }

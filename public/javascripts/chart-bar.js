@@ -22,7 +22,9 @@ async function init_data_bar() {
         headers: { "Content-type": "application/json;charset=utf-8" }
     });
     let datum = await response.json();
-
+    if(datum.init==null){
+        return;
+    }
     console.log(datum.init);
     for (let i = 0; i < datum.init.length; i++) {
         if (!datum.init[i].type) {
