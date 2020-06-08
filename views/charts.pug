@@ -19,7 +19,7 @@ block content
                     each device in devices
                         -let dev_id = device.dev.toString();
                         -let mask = device.mask.toString();
-                        option(name = dev_id) #{mask}
+                        option(value = dev_id) #{mask}
                 input(type="submit", value="Choose", id = "choosen")
                 link(href='/stylesheets/option_selector.css', rel="stylesheet")
         .card.mb-4
