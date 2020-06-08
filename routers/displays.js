@@ -36,7 +36,7 @@ router.get('/', async function (req, res) {
             return;
         }
     });
-    await ManageDev.find({ ID: account[0].timestamp, type: 0 }, function (errr, result) {
+    await ManageDev.find({ ID: account[0].timestamp, type: 1 }, function (errr, result) {
         device = result;
         console.log(device);
         if(device.length){
