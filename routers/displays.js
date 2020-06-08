@@ -23,7 +23,7 @@ var jwt = require('jsonwebtoken');
 
 //-------------display----------//
 router.get('/', async function (req, res) {
-    let account, device,devices=[];
+    let account, device, devices = [];
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     /* check token on database */
@@ -39,20 +39,20 @@ router.get('/', async function (req, res) {
     await ManageDev.find({ ID: account[0].timestamp, type: 1 }, function (errr, result) {
         device = result;
         console.log(device.length);
-        if(device.length){
-            for(let i=0 ; i< device.length;i++){
-                devices.push({dev:device[i].dev,mask : device[i].mask});
+        if (device.length) {
+            for (let i = 0; i < device.length; i++) {
+                devices.push({ dev: device[i].dev, mask: device[i].mask });
                 console.log(device[i].dev);
             }
             console.log(devices);
-            res.render('charts', { title: "Display Page" ,devices : devices});
+            res.render('charts', { title: "Display Page", devices: devices });
         }
         else {
-            devices=[];
-            res.render('charts', { title: "Display Page" ,devices : devices});
+            devices = [];
+            res.render('charts', { title: "Display Page", devices: devices });
         }
     });
-    
+
 
 });
 router.get('/getdata', async function (req, res) {
@@ -75,7 +75,7 @@ router.get('/getdata', async function (req, res) {
                 if (!result.length) {
                     console.log("no data");
 
-                    let m_data = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+                    let m_data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
                     let m_label = new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
 
                     let resAPI = { label: m_label, data: m_data };
@@ -85,17 +85,19 @@ router.get('/getdata', async function (req, res) {
                 else {
                     data = result;
                     let m_label = data[0].timestamp;
-                    let m_data = [data[0].form.sensor_1.toFixed(2), data[0].form.sensor_2.toFixed(2),
-                    data[0].form.sensor_3.toFixed(2), data[0].form.sensor_4.toFixed(2),
-                    data[0].form.sensor_5.toFixed(2), data[0].form.sensor_6.toFixed(2),
-                    data[0].form.sensor_7.toFixed(2), data[0].form.sensor_8.toFixed(2),
-                    data[0].form.sensor_9.toFixed(2), data[0].form.sensor_10.toFixed(2),
-                    data[0].form.sensor_11.toFixed(2), data[0].form.sensor_12.toFixed(2),
-                    data[0].form.sensor_13.toFixed(2), data[0].form.sensor_14.toFixed(2),
-                    data[0].form.sensor_15.toFixed(2), data[0].form.sensor_16.toFixed(2),
-                    data[0].form.sensor_17.toFixed(2), data[0].form.sensor_18.toFixed(2),
-                    data[0].form.sensor_19.toFixed(2), data[0].form.sensor_20.toFixed(2)
-                    ];
+                    console.log(data[0].form);
+                    let m_data =
+                        [data[0].form.sensor_1.toFixed(2), data[0].form.sensor_2.toFixed(2),
+                        data[0].form.sensor_3.toFixed(2), data[0].form.sensor_4.toFixed(2),
+                        data[0].form.sensor_5.toFixed(2), data[0].form.sensor_6.toFixed(2),
+                        data[0].form.sensor_7.toFixed(2), data[0].form.sensor_8.toFixed(2),
+                        data[0].form.sensor_9.toFixed(2), data[0].form.sensor_10.toFixed(2),
+                        data[0].form.sensor_11.toFixed(2), data[0].form.sensor_12.toFixed(2),
+                        data[0].form.sensor_13.toFixed(2), data[0].form.sensor_14.toFixed(2),
+                        data[0].form.sensor_15.toFixed(2), data[0].form.sensor_16.toFixed(2),
+                        data[0].form.sensor_17.toFixed(2), data[0].form.sensor_18.toFixed(2),
+                        data[0].form.sensor_19.toFixed(2), data[0].form.sensor_20.toFixed(2)
+                        ];
                     let resAPI = { label: m_label, data: m_data };
                     res.json(resAPI);
                 }
@@ -111,7 +113,7 @@ router.get('/getdata', async function (req, res) {
 
 router.post('/getdata', async function (req, res) {
 
-    let account,senonor=[];
+    let account, senonor = [];
     //console.log(req.body);
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
@@ -121,25 +123,25 @@ router.post('/getdata', async function (req, res) {
         account = doc;
 
         if (account.length) {
-            await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev,10) }, function (err, result) {
+            await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev, 10) }, function (err, result) {
                 console.log(result)
-                if(result.length){
-                    let child =result[0].child;
-                    for(let i =0 ; i < child.length;i++){
-                        if(child[i].act){
-                            senonor.push({type : child[i].type,mask : child[i].mask});
+                if (result.length) {
+                    let child = result[0].child;
+                    for (let i = 0; i < child.length; i++) {
+                        if (child[i].act) {
+                            senonor.push({ type: child[i].type, mask: child[i].mask });
                         }
-                        
+
                     }
                     let resAPI = { init: senonor };
                     console.log(resAPI);
                     res.json(resAPI);
                 }
-                else{
+                else {
                     res.json(null);
                 }
             });
-            
+
             // if (req.body.message == "init") {
             //     let resAPI = { init: account.sensors };
             //     res.json(resAPI);
@@ -148,12 +150,12 @@ router.post('/getdata', async function (req, res) {
             //     res.json(null);
             // }
         }
-        else{
+        else {
             res.send("who are you");
         }
     });
 
-    
+
 });
 
 //----export----/
