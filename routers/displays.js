@@ -72,18 +72,18 @@ router.get('/getdata', async function (req, res) {
                     data = result;
                     let m_label = data[0].datetime;
                     console.log(data[0].form);
-                    let m_data =
-                        [data[0].form.sensor_1.toFixed(2), data[0].form.sensor_2.toFixed(2),
-                        data[0].form.sensor_3.toFixed(2), data[0].form.sensor_4.toFixed(2),
-                        data[0].form.sensor_5.toFixed(2), data[0].form.sensor_6.toFixed(2),
-                        data[0].form.sensor_7.toFixed(2), data[0].form.sensor_8.toFixed(2),
-                        data[0].form.sensor_9.toFixed(2), data[0].form.sensor_10.toFixed(2),
-                        data[0].form.sensor_11.toFixed(2), data[0].form.sensor_12.toFixed(2),
-                        data[0].form.sensor_13.toFixed(2), data[0].form.sensor_14.toFixed(2),
-                        data[0].form.sensor_15.toFixed(2), data[0].form.sensor_16.toFixed(2),
-                        data[0].form.sensor_17.toFixed(2), data[0].form.sensor_18.toFixed(2),
-                        data[0].form.sensor_19.toFixed(2), data[0].form.sensor_20.toFixed(2)
-                        ];
+                    let m_data =[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+                        // [data[0].form.sensor_1.toFixed(2), data[0].form.sensor_2.toFixed(2),
+                        // data[0].form.sensor_3.toFixed(2), data[0].form.sensor_4.toFixed(2),
+                        // data[0].form.sensor_5.toFixed(2), data[0].form.sensor_6.toFixed(2),
+                        // data[0].form.sensor_7.toFixed(2), data[0].form.sensor_8.toFixed(2),
+                        // data[0].form.sensor_9.toFixed(2), data[0].form.sensor_10.toFixed(2),
+                        // data[0].form.sensor_11.toFixed(2), data[0].form.sensor_12.toFixed(2),
+                        // data[0].form.sensor_13.toFixed(2), data[0].form.sensor_14.toFixed(2),
+                        // data[0].form.sensor_15.toFixed(2), data[0].form.sensor_16.toFixed(2),
+                        // data[0].form.sensor_17.toFixed(2), data[0].form.sensor_18.toFixed(2),
+                        // data[0].form.sensor_19.toFixed(2), data[0].form.sensor_20.toFixed(2)
+                        // ];
                     let resAPI = { label: m_label, data: m_data };
                     console.log(resAPI);
                     res.json(resAPI);
