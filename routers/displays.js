@@ -41,7 +41,7 @@ router.get('/', async function (req, res) {
         console.log(device);
         if(device.length){
             for(let i ; i< device.length;i++){
-                devices.push(device[i].dev);
+                devices.push({dev:device[i].dev,mask : device[i].mask});
             }
             console.log(devices);
             res.render('charts', { title: "Display Page" ,devices : devices});
