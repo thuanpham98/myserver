@@ -122,12 +122,13 @@ router.post('/getdata', async function (req, res) {
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     //check token on database--//
-    await User.find({ email: decoded.accessToken }, async function (err, result) {
+    await User.find({ email: decoded.accessToken }, async function (err, doc) {
         // assert.equal(null, err);
-        account = result[0];
+        account = doc;
 
-        if ((account !== undefined) && (account !== "no data")) {
-            await ManageDev.find({ ID: account.timestamp, device: parseInt(req.body.dev,10) }, function (err, result) {
+        if (account.length) {
+            await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev,10) }, function (err, result) {
+                console.log(result)
                 if(result.length){
                     for(let i =0 ; i < result[0].child;i++){
                         senonor.push({type : result[0].child[i].type,mask : result[0].child[i].mask});
