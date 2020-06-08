@@ -124,4 +124,4 @@ async function getData_bar() {
     massbarChart.update();
 }
 
-setInterval(getData_bar, 1000);
+// setInterval(getData_bar, 1000);

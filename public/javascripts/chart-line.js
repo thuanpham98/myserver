@@ -148,5 +148,5 @@ function removeData() {
     }
 }
 
-setInterval(getData, 1000);
-setInterval(removeData, 5000);
+// setInterval(getData, 1000);
+// setInterval(removeData, 5000);
