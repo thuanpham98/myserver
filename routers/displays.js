@@ -73,7 +73,7 @@ router.get('/getdata', async function (req, res) {
                     let m_label = data[0].datetime;
                     console.log(data[0].form);
                     let m_data =
-                        [data[0].form.sensor_1.toFixed(2), data[0].form.sensor_2.toFixed(2),
+                        [data[0].form.sensor_3.toFixed(2), data[0].form.sensor_2.toFixed(2),
                         data[0].form.sensor_3.toFixed(2), data[0].form.sensor_4.toFixed(2),
                         data[0].form.sensor_5.toFixed(2), data[0].form.sensor_6.toFixed(2),
                         data[0].form.sensor_7.toFixed(2), data[0].form.sensor_8.toFixed(2),
