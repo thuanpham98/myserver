@@ -4,9 +4,9 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-var temp_index=[];
-var temp_dataset = [];
-var temp_color = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
+var temp_index_line=[];
+var temp_dataset_line = [];
+var temp_color_line = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
 
 /** init data for line chart from server */
 async function init_data_line() {
@@ -25,16 +25,16 @@ async function init_data_line() {
     //console.log(datum.init);
     for (let i = 0; i < datum.init.length; i++) {
         if (datum.init[i].type) {
-            temp_dataset.push({
+            temp_dataset_line.push({
                 fill: false,
                 label: datum.init[i].mask,
                 data: [],
-                backgroundColor: temp_color[i],
-                borderColor: temp_color[i],
+                backgroundColor: temp_color_liner[i],
+                borderColor: temp_color_line[i],
                 borderWidth: 2,
                 hidden: true
             });
-            temp_index.push(i);
+            temp_index_line.push(i);
         }
     }
 }
@@ -44,7 +44,7 @@ var masslineChart = new Chart(linechart, {
     type: 'line',
     data: {
         labels: [],
-        datasets: temp_dataset
+        datasets: temp_dataset_line
     },
     options: {
         showScale: false,
@@ -127,7 +127,7 @@ async function getData_line() {
     let i = 0;
     masslineChart.data.labels.push(datum.label);
     masslineChart.data.datasets.forEach((dataset) => {
-        dataset.data.push(datum.data[temp_index[i]]);
+        dataset.data.push(datum.data[temp_index_line[i]]);
         i++;
     });
     masslineChart.update();

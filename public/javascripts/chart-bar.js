@@ -38,7 +38,6 @@ async function init_data_bar() {
             temp_index_bar.push(i);
         }
     }
-    console.log(temp_index_bar);
 }
 
 var barchart = document.getElementById("myBarChart").getContext('2d');

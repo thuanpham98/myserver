@@ -59,21 +59,19 @@ router.get('/getdata', async function (req, res) {
 
     let account;
     let data;
-    //console.log(req.body);
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
 
     //check token on database--//
-    await User.find({ email: decoded.accessToken }, async function (err, result) {
-        assert.equal(null, err);
-        account = result[0];
+    await User.find({ email: decoded.accessToken }, async function (err, doc) {
+        // assert.equal(null, err);
+        account = doc;
 
-        if ((account !== undefined) && (account !== "no data")) {
-            await Data.find({ ID: account.timestamp, device: 1 }, function (err, result) {
-                assert.equal(null, err);
+        if (account.length) {
+            await Data.find({ ID: account[0].timestamp, device: 1 }, function (err, result) {
+                // assert.equal(null, err);
 
-                let m_sensor = account.sensors;
+                // let m_sensor = account[0].sensors;
 
-                //console.log(result);
                 if (!result.length) {
                     console.log("no data");
 
@@ -99,17 +97,13 @@ router.get('/getdata', async function (req, res) {
                     data[0].form.sensor_19.toFixed(2), data[0].form.sensor_20.toFixed(2)
                     ];
                     let resAPI = { label: m_label, data: m_data };
-                    //console.log(resAPI);
-                    //resAPI=JSON.stringify(resAPI);
-                    //console.log(resAPI);
                     res.json(resAPI);
                 }
             }).sort({ _id: -1 }).limit(1);
         }
 
         else {
-            console.log("no data");
-            res.send(null);
+            res.send("Who are you");
         }
     });
 
