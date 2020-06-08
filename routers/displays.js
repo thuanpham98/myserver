@@ -133,6 +133,7 @@ router.post('/getdata', async function (req, res) {
                         senonor.push({type : result[0].child[i].type,mask : result[0].child[i].mask});
                     }
                     let resAPI = { init: senonor };
+                    console.log(resAPI);
                     res.json(resAPI);
                 }
                 else{
