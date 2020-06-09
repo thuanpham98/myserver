@@ -53,6 +53,7 @@ async function init_data_table() {
     return;
   }
   console.log(datum.init);
+  
   let dataTable=new Array ( datum.init.length);
   for (let i = 0; i < datum.init.length; i++) {
     temp_mask.push(datum.init[i].mask);
@@ -91,7 +92,7 @@ async function getData_table() {
 
 document.getElementById("add_table").addEventListener("click", function () {
   init_data_table();
-  // getData_table();
+  getData_table();
 });
 
 document.getElementById("clear_table").addEventListener("click", function () {
