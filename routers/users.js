@@ -10,6 +10,7 @@ router.use(timestamp);
 /* modal message for mongodb */
 var User = require('../models/user');
 var History = require('../models/history');
+var ManageDev = require('../models/manageDev');
 
 /* module JWT */
 var jwt = require('jsonwebtoken');
@@ -24,8 +25,37 @@ var deleteController = require('../controllers/delete.controller');
 
 /** /user */
 router.get('/', function(req, res) {
-    res.render('user', {title: 'User Page'});
-    console.log("ok");
+    // res.render('user', {title: 'User Page'});
+    // console.log("ok");
+
+    let account, device, devices = [];
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    /* check token on database */
+    await User.find({ email: decoded.accessToken }, function (err, result) {
+        // assert.equal(null, err);
+        account = result;
+
+        if (!account.length) {
+            res.json("no user");
+            return;
+        }
+    });
+    await ManageDev.find({ ID: account[0].timestamp, type: 1 }, function (errr, result) {
+        device = result;
+        // console.log(device.length);
+        if(device===undefined){
+            return;
+        }
+        if (device.length) {
+            devices.push({ dev: device[0].dev, mask: device[0].mask });
+            res.render('charts', { title: "Display Page", devices: devices });
+        }
+        else {
+            devices = [];
+            res.render('charts', { title: "Display Page", devices: devices });
+        }
+    });
 });
 
 // /* user/active */

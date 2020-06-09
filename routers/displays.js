@@ -55,8 +55,6 @@ router.get('/', async function (req, res) {
             res.render('charts', { title: "Display Page", devices: devices });
         }
     });
-
-
 });
 router.get('/getdata', async function (req, res) {
 

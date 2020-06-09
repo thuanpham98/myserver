@@ -50,7 +50,20 @@ block content
                         .small.text-white
                             i.fas.fa-angle-right
         br
+        .card.mb-4
+            .card-header
+            | Choose dev support chart that you have config
+            .card-body
+                select(id = "charts",class="custom-select sources")
+                    each device in devices
+                        -let dev_id = device.dev.toString();
+                        -let mask = device.mask.toString();
+                        option(value = dev_id) #{mask}
 
+                a.btn.btn-primary(type='submit',id="choosen") Choose
+                link(href='/stylesheets/option_selector.css', rel="stylesheet")
+        .card.mb-4
+        br
         .card.mb-0
             .card-header
                 i.fas.fa-chart-line.mr-1
