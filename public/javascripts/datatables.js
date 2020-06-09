@@ -47,7 +47,7 @@ async function init_data_table() {
     temp_mask.push(datum.init[i].mask);
     dataTables.push({ "name": datum.init[i].mask.toString(), "value": "0", "datetime": "0/0/0" });
   }
-  console.log(temp_mask);
+  console.log(dataTables);
 }
 
 document.getElementById("choosen_table").addEventListener("click", function () {
