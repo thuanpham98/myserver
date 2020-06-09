@@ -53,6 +53,7 @@ $(document).ready(function () {
 
 
 async function init_data_table() {
+  dataTables=[];
   dev = document.getElementById("tables").value;
   let mess_table = { dev: dev };
   mess_table = JSON.stringify(mess_table);
