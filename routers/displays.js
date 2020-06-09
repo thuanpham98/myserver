@@ -94,6 +94,7 @@ router.get('/getdata', async function (req, res) {
         /** choose data */
         if (account.length) {
             await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
+
                 if (result.length) {
                     data = result;
                     
@@ -115,7 +116,12 @@ router.get('/getdata', async function (req, res) {
 
                 }
                 else {
-                    let m_data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+                    let m_data =[];
+                    for(let i = 0 ; i < status_data.length; i++){
+                        if(status_data[i]){
+                            m_data.push(i+1);
+                        }
+                    }
                     let m_label = new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
 
                     let resAPI = { label: m_label, data: m_data };
