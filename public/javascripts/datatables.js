@@ -88,7 +88,7 @@ async function getData_table() {
       data_frame.value = datum.data[i].toString();
       data_frame.datetime = datum.label;
       dataTable[i]=data_frame;
-      $('#dataTable').dataTable().fnAddData(dataTable);
+      $('#dataTable').dataTable().fnAddData(dataTable[i]);
     }
 }
 
