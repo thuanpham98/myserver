@@ -85,8 +85,8 @@ async function init_data_table() {
 document.getElementById("choosen_table").addEventListener("click", function () {
   init_data_table();
 
-  $('#dataTable').dataTable().fnClearTable();
-  $('#dataTable').dataTable().fnAddData(dataTables);
+  // $('#dataTable').dataTable().fnClearTable();
+  // $('#dataTable').dataTable().fnAddData(dataTables);
 
 });
 
