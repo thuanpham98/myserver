@@ -85,7 +85,7 @@ document.getElementById("choosen_table").addEventListener("click", function () {
 
   store.data=dataTables;
   $('#dataTable').dataTable().fnClearTable();
-  $('#dataTable').dataTable().fnAddData(store);
+  $('#dataTable').dataTable().fnAddData(dataTables);
 
 });
 
