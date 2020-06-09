@@ -74,6 +74,10 @@ async function init_data_table() {
 
 document.getElementById("choosen_table").addEventListener("click", function () {
   init_data_table();
+
+  store.data=dataTables;
+  $('#dataTable').DataTable(store);
+
 });
 
 var a =document.getElementById("dataTable");
