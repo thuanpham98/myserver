@@ -64,7 +64,7 @@ async function init_data_table() {
 
 document.getElementById("add_table").addEventListener("click", function () {
   init_data_table();
-  getData_table()
+  getData_table();
 });
 
 document.getElementById("clear_table").addEventListener("click", function () {
@@ -78,7 +78,8 @@ async function getData_table() {
         mode: 'cors',
         headers: {
             'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            id:dev
         }
     });
 
