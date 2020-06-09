@@ -12,6 +12,9 @@ var User = require('../models/user');
 var History = require('../models/history');
 var ManageDev = require('../models/manageDev');
 
+//---module  check error ---//
+var assert = require('assert');
+
 /* module JWT */
 var jwt = require('jsonwebtoken');
 
