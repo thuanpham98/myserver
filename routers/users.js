@@ -33,7 +33,7 @@ router.get('/', function(req, res) {
 
     /* check token on database */
     await User.find({ email: decoded.accessToken }, function (err, result) {
-        // assert.equal(null, err);
+        assert.equal(null, err);
         account = result;
 
         if (!account.length) {
@@ -48,12 +48,16 @@ router.get('/', function(req, res) {
             return;
         }
         if (device.length) {
-            devices.push({ dev: device[0].dev, mask: device[0].mask });
-            res.render('charts', { title: "Display Page", devices: devices });
+            for (let i = 0; i < device.length; i++) {
+                devices.push({ dev: device[i].dev, mask: device[i].mask });
+                console.log(device[i].dev);
+            }
+            console.log(devices);
+            res.render('user', { title: "User Page", devices: devices });
         }
         else {
             devices = [];
-            res.render('charts', { title: "Display Page", devices: devices });
+            res.render('user', { title: "User Page", devices: devices });
         }
     });
 });
