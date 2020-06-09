@@ -46,7 +46,7 @@ $(document).ready(function () {
 // ];
 
 //----------------------------------------------------------------------------------------
-var myTable;
+
 
 async function init_data_table() {
   dev = document.getElementById("tables").value;
@@ -74,9 +74,10 @@ async function init_data_table() {
 
 document.getElementById("choosen_table").addEventListener("click", function () {
   init_data_table();
-
 });
 
+var a =document.getElementById("dataTable");
+console.log(a);
 
 // async function getData_table() {
 //     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
