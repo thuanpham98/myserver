@@ -58,20 +58,10 @@ async function init_data_table() {
     temp_mask.push(datum.init[i].mask);
     data_frame.name=datum.init[i].mask;
     dataTable[i]=data_frame;
-    
+    $('#dataTable').dataTable().fnAddData(dataTable[i]); 
   }
-  $('#dataTable').dataTable().fnAddData(dataTable);
+  
 }
-
-document.getElementById("add_table").addEventListener("click", function () {
-  init_data_table();
-  // getData_table();
-});
-
-document.getElementById("clear_table").addEventListener("click", function () {
-  $('#dataTable').dataTable().fnClearTable();
-});
-
 
 async function getData_table() {
   $('#dataTable').dataTable().fnClearTable();
@@ -98,3 +88,14 @@ async function getData_table() {
       $('#dataTable').dataTable().fnAddData(data_frame);
     }
 }
+
+document.getElementById("add_table").addEventListener("click", function () {
+  init_data_table();
+  // getData_table();
+});
+
+document.getElementById("clear_table").addEventListener("click", function () {
+  $('#dataTable').dataTable().fnClearTable();
+});
+
+
