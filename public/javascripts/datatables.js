@@ -73,6 +73,7 @@ document.getElementById("clear_table").addEventListener("click", function () {
 
 
 async function getData_table() {
+  $('#dataTable').dataTable().fnClearTable();
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
         method: 'get',
         mode: 'cors',
