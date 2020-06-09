@@ -24,7 +24,7 @@ var updateController = require('../controllers/update.controller.js');
 var deleteController = require('../controllers/delete.controller');
 
 /** /user */
-router.get('/', function(req, res) {
+router.get('/', async function(req, res) {
     // res.render('user', {title: 'User Page'});
     // console.log("ok");
 
