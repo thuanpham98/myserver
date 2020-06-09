@@ -38,7 +38,10 @@ router.get('/', async function (req, res) {
     });
     await ManageDev.find({ ID: account[0].timestamp, type: 1 }, function (errr, result) {
         device = result;
-        console.log(device.length);
+        // console.log(device.length);
+        if(device===undefined){
+            return;
+        }
         if (device.length) {
             for (let i = 0; i < device.length; i++) {
                 devices.push({ dev: device[i].dev, mask: device[i].mask });
