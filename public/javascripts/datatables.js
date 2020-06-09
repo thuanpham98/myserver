@@ -74,8 +74,8 @@ async function init_data_table() {
   for (let i = 0; i < datum.init.length; i++) {
     temp_mask.push(datum.init[i].mask);
     data_frame.name=datum.init[i].mask;
-    dataTables.push(data_frame);
-    $('#dataTable').dataTable().fnClearTable();
+
+    // $('#dataTable').dataTable().fnClearTable();
     $('#dataTable').dataTable().fnAddData(data_frame);
   
   }
