@@ -91,7 +91,7 @@ async function getData_table() {
     console.log(datum.data);
     for (let i = 0; i < datum.data.length; i++) {
       data_frame.name=temp_mask[i];
-      data_frame.value = datum.data[i];
+      data_frame.value = datum.data[i].toString();
       data_frame.datetime = datum.label;
       $('#dataTable').dataTable().fnAddData(data_frame);
     }
