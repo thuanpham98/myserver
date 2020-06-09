@@ -4,7 +4,11 @@
 
 var dev;
 var temp_mask = [];
-var data_frame = {};
+var data_frame =  {
+  "name": "temperature",
+  "value": "23",
+  "datetime": "2011/04/25"
+};
 var dataTables = [];
 var store ={
   dom: 'Bfrtip',
@@ -28,11 +32,11 @@ var store ={
 $(document).ready(function () {
   $('#dataTable').DataTable(store);
 });
-//   {
-//     "name": "temperature",
-//     "value": "23",
-//     "datetime": "2011/04/25"
-//   },
+  // {
+  //   "name": "temperature",
+  //   "value": "23",
+  //   "datetime": "2011/04/25"
+  // },
 //   {
 //     "name": "humanality",
 //     "value": "12",
@@ -67,7 +71,9 @@ async function init_data_table() {
 
   for (let i = 0; i < datum.init.length; i++) {
     temp_mask.push(datum.init[i].mask);
-    dataTables.push({ "name": datum.init[i].mask, "value": "0", "datetime": "0/0/0" });
+    data_frame.name=datum.init[i].mask;
+    dataTables.push(data_frame);
+  
   }
   console.log(dataTables);
 }
