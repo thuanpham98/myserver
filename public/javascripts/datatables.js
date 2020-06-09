@@ -11,7 +11,7 @@ var data_frame =  {
 };
 var dataTables = [];
 var store ={
-  retrieve: true,
+  // retrieve: true,
   dom: 'Bfrtip',
   buttons: {
     buttons: [
