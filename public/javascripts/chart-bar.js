@@ -8,6 +8,10 @@ var temp_index_bar = [];
 var temp_dataset_bar = [];
 var temp_color_bar = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
 
+var barchart ;
+
+var massbarChart ;
+
 /** init data for bar chart from server */
 async function init_data_bar() {
 
@@ -44,72 +48,137 @@ async function init_data_bar() {
             temp_index_bar.push(i);
         }
     }
+
+    barchart = document.getElementById("myBarChart").getContext('2d');
+
+    massbarChart = new Chart(barchart, {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: temp_dataset_bar
+        },
+        options: {
+            showScale: false,
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: { duration: 0 },
+            //   title:{
+            //       display:true,
+            //       text:'Chart flow time',
+            //       fontSize:25
+            //   },
+            legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    fontColor: '#000000'
+    
+                }
+            },
+            // layout: {
+            //     padding: {
+            //         left: 50,
+            //         right: 0,
+            //         bottom: 0,
+            //         top: 0
+            //     }
+            // },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Time',
+                        fontSize: 24
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Value (%)',
+                        fontSize: 24
+                    },
+                    ticks: {
+                        min: 0,
+                        max: 100,
+    
+                        // forces step size to be 5 units
+                        stepSize: 1 // <----- This prop sets the stepSize
+                    }
+                }]
+            },
+            tooltips: {
+                enabled: true
+            }
+        }
+    });
 }
 
-var barchart = document.getElementById("myBarChart").getContext('2d');
+// var barchart = document.getElementById("myBarChart").getContext('2d');
 
-var massbarChart = new Chart(barchart, {
-    type: 'bar',
-    data: {
-        labels: [],
-        datasets: temp_dataset_bar
-    },
-    options: {
-        showScale: false,
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: { duration: 0 },
-        //   title:{
-        //       display:true,
-        //       text:'Chart flow time',
-        //       fontSize:25
-        //   },
-        legend: {
-            display: true,
-            position: 'right',
-            labels: {
-                fontColor: '#000000'
+// var massbarChart = new Chart(barchart, {
+//     type: 'bar',
+//     data: {
+//         labels: [],
+//         datasets: temp_dataset_bar
+//     },
+//     options: {
+//         showScale: false,
+//         responsive: true,
+//         maintainAspectRatio: false,
+//         animation: { duration: 0 },
+//         //   title:{
+//         //       display:true,
+//         //       text:'Chart flow time',
+//         //       fontSize:25
+//         //   },
+//         legend: {
+//             display: true,
+//             position: 'right',
+//             labels: {
+//                 fontColor: '#000000'
 
-            }
-        },
-        // layout: {
-        //     padding: {
-        //         left: 50,
-        //         right: 0,
-        //         bottom: 0,
-        //         top: 0
-        //     }
-        // },
-        scales: {
-            xAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Time',
-                    fontSize: 24
-                }
-            }],
-            yAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Value (%)',
-                    fontSize: 24
-                },
-                ticks: {
-                    min: 0,
-                    max: 100,
+//             }
+//         },
+//         // layout: {
+//         //     padding: {
+//         //         left: 50,
+//         //         right: 0,
+//         //         bottom: 0,
+//         //         top: 0
+//         //     }
+//         // },
+//         scales: {
+//             xAxes: [{
+//                 display: true,
+//                 scaleLabel: {
+//                     display: true,
+//                     labelString: 'Time',
+//                     fontSize: 24
+//                 }
+//             }],
+//             yAxes: [{
+//                 display: true,
+//                 scaleLabel: {
+//                     display: true,
+//                     labelString: 'Value (%)',
+//                     fontSize: 24
+//                 },
+//                 ticks: {
+//                     min: 0,
+//                     max: 100,
 
-                    // forces step size to be 5 units
-                    stepSize: 1 // <----- This prop sets the stepSize
-                }
-            }]
-        },
-        tooltips: {
-            enabled: true
-        }
-    }
-});
+//                     // forces step size to be 5 units
+//                     stepSize: 1 // <----- This prop sets the stepSize
+//                 }
+//             }]
+//         },
+//         tooltips: {
+//             enabled: true
+//         }
+//     }
+// });
 
 async function getData_bar() {
     if(start==0){
