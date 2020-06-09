@@ -82,7 +82,7 @@ document.getElementById("choosen_table").addEventListener("click", function () {
   init_data_table();
 
   store.data=dataTables;
-  $('#dataTable').DataTable(store);
+  // $('#dataTable').DataTable(store);
 
 });
 
