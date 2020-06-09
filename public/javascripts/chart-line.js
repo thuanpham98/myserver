@@ -10,8 +10,10 @@ var temp_color_line = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#
 
 /** init data for line chart from server */
 async function init_data_line() {
+
     temp_index_line=[];
     temp_dataset_line = [];
+
     dev=document.getElementById("charts").value;
     let mess = { dev: dev };
     mess = JSON.stringify(mess);
@@ -41,78 +43,150 @@ async function init_data_line() {
             temp_index_line.push(i);
         }
     }
+
+        /** inital chart */
+    var linechart = document.getElementById("myLineChart").getContext('2d');
+    var masslineChart = new Chart(linechart, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: temp_dataset_line
+        },
+        options: {
+            showScale: false,
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: { duration: 0 },
+            // title:{
+            //     display:true,
+            //     text:'Chart flow time',
+            //     fontSize:25
+            // },
+            legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    fontColor: '#000000'
+                }
+            },
+            // layout: {
+            //     padding: {
+            //         left: 50,
+            //         right: 0,
+            //         bottom: 0,
+            //         top: 0
+            //     }
+            // },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Time',
+                        fontSize: 24
+    
+                    },
+                    ticks: {
+                        min: 0,
+                        max: 10,
+    
+                        // forces step size to be 5 units
+                        stepSize: 1 // <----- This prop sets the stepSize
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Value (%)',
+                        fontSize: 24
+                    },
+                    ticks: {
+                        min: 0,
+                        max: 100,
+    
+                        // forces step size to be 5 units
+                        stepSize: 1 // <----- This prop sets the stepSize
+                    }
+                }]
+            },
+            tooltips: {
+                enabled: true
+            }
+        }
+    });
 }
 
-var linechart = document.getElementById("myLineChart").getContext('2d');
-var masslineChart = new Chart(linechart, {
-    type: 'line',
-    data: {
-        labels: [],
-        datasets: temp_dataset_line
-    },
-    options: {
-        showScale: false,
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: { duration: 0 },
-        // title:{
-        //     display:true,
-        //     text:'Chart flow time',
-        //     fontSize:25
-        // },
-        legend: {
-            display: true,
-            position: 'right',
-            labels: {
-                fontColor: '#000000'
-            }
-        },
-        // layout: {
-        //     padding: {
-        //         left: 50,
-        //         right: 0,
-        //         bottom: 0,
-        //         top: 0
-        //     }
-        // },
-        scales: {
-            xAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Time',
-                    fontSize: 24
+// var linechart = document.getElementById("myLineChart").getContext('2d');
+// var masslineChart = new Chart(linechart, {
+//     type: 'line',
+//     data: {
+//         labels: [],
+//         datasets: temp_dataset_line
+//     },
+//     options: {
+//         showScale: false,
+//         responsive: true,
+//         maintainAspectRatio: false,
+//         animation: { duration: 0 },
+//         // title:{
+//         //     display:true,
+//         //     text:'Chart flow time',
+//         //     fontSize:25
+//         // },
+//         legend: {
+//             display: true,
+//             position: 'right',
+//             labels: {
+//                 fontColor: '#000000'
+//             }
+//         },
+//         // layout: {
+//         //     padding: {
+//         //         left: 50,
+//         //         right: 0,
+//         //         bottom: 0,
+//         //         top: 0
+//         //     }
+//         // },
+//         scales: {
+//             xAxes: [{
+//                 display: true,
+//                 scaleLabel: {
+//                     display: true,
+//                     labelString: 'Time',
+//                     fontSize: 24
 
-                },
-                ticks: {
-                    min: 0,
-                    max: 10,
+//                 },
+//                 ticks: {
+//                     min: 0,
+//                     max: 10,
 
-                    // forces step size to be 5 units
-                    stepSize: 1 // <----- This prop sets the stepSize
-                }
-            }],
-            yAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Value (%)',
-                    fontSize: 24
-                },
-                ticks: {
-                    min: 0,
-                    max: 100,
+//                     // forces step size to be 5 units
+//                     stepSize: 1 // <----- This prop sets the stepSize
+//                 }
+//             }],
+//             yAxes: [{
+//                 display: true,
+//                 scaleLabel: {
+//                     display: true,
+//                     labelString: 'Value (%)',
+//                     fontSize: 24
+//                 },
+//                 ticks: {
+//                     min: 0,
+//                     max: 100,
 
-                    // forces step size to be 5 units
-                    stepSize: 1 // <----- This prop sets the stepSize
-                }
-            }]
-        },
-        tooltips: {
-            enabled: true
-        }
-    }
-});
+//                     // forces step size to be 5 units
+//                     stepSize: 1 // <----- This prop sets the stepSize
+//                 }
+//             }]
+//         },
+//         tooltips: {
+//             enabled: true
+//         }
+//     }
+// });
 
 //--this post id drives the example data
 var k = 0;
