@@ -85,7 +85,7 @@ async function getData_table() {
 
     let datum = await response.json();
 
-    if (datum.data == null) {
+    if (datum === null) {
       return;
     }
     console.log(datum.data);
