@@ -82,16 +82,17 @@ async function init_data_table() {
   console.log(dataTables);
 }
 
-document.getElementById("choosen_table").addEventListener("click", function () {
+document.getElementById("add_table").addEventListener("click", function () {
   init_data_table();
 
   // $('#dataTable').dataTable().fnClearTable();
   // $('#dataTable').dataTable().fnAddData(dataTables);
 
 });
+document.getElementById("clear_table").addEventListener("click", function () {
+  $('#dataTable').dataTable().fnClearTable();
+});
 
-var a =document.getElementById("dataTable");
-console.log(a);
 
 // async function getData_table() {
 //     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
