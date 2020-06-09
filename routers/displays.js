@@ -76,7 +76,7 @@ router.get('/getdata', async function (req, res) {
                     let m_label = data[0].datetime;
                     let m_data = Object.values(data_ob);
                     
-                    console.log(m_data);
+                    console.log(m_data[0]);
                     let resAPI = { label: m_label, data: m_data };
                     console.log(resAPI);
                     res.json(resAPI);
