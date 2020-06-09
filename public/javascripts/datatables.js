@@ -53,28 +53,26 @@ async function init_data_table() {
 document.getElementById("choosen_table").addEventListener("click", function () {
   init_data_table();
 
-  myTable=document.getElementById("dataTable");
-  // $(document).ready(function () {
-//   $('#dataTable').DataTable({
-  myTable.DataTable({
-    dom: 'Bfrtip',
-    buttons: {
-      buttons: [
-        { extend: 'copy', className: 'copyButton' },
-        { extend: 'excel', className: 'excelButton' },
-        { extend: 'csv', className: 'csvButton' },
-        { extend: 'pdf', className: 'pdfButton' },
-        { extend: 'print', className: 'printButton' }
+  $(document).ready(function () {
+    $('#dataTable').DataTable({
+      dom: 'Bfrtip',
+      buttons: {
+        buttons: [
+          { extend: 'copy', className: 'copyButton' },
+          { extend: 'excel', className: 'excelButton' },
+          { extend: 'csv', className: 'csvButton' },
+          { extend: 'pdf', className: 'pdfButton' },
+          { extend: 'print', className: 'printButton' }
+        ]
+      },
+      data: dataTables,
+      columns: [
+        { data: 'name' },
+        { data: 'value' },
+        { data: 'datetime' }
       ]
-    },
-    data: dataTables,
-    columns: [
-      { data: 'name' },
-      { data: 'value' },
-      { data: 'datetime' }
-    ]
+    });
   });
-  // });
 });
 
 
