@@ -9,7 +9,7 @@ var data_frame =  {
   "value": "23",
   "datetime": "2011/04/25"
 };
-var dataTables = [];
+
 var store ={
   retrieve: true,
   dom: 'Bfrtip',
@@ -38,7 +38,6 @@ $(document).ready(function () {
 
 
 async function init_data_table() {
-  dataTables=[];
 
   dev=document.getElementById("tables").value;
 
@@ -54,17 +53,19 @@ async function init_data_table() {
     return;
   }
   console.log(datum.init);
-
+  let dataTable=new Array ( datum.init.length);
   for (let i = 0; i < datum.init.length; i++) {
     temp_mask.push(datum.init[i].mask);
     data_frame.name=datum.init[i].mask;
-    $('#dataTable').dataTable().fnAddData(data_frame);
+    dataTable[i]=data_frame;
+    
   }
+  $('#dataTable').dataTable().fnAddData(dataTable);
 }
 
 document.getElementById("add_table").addEventListener("click", function () {
   init_data_table();
-  getData_table();
+  // getData_table();
 });
 
 document.getElementById("clear_table").addEventListener("click", function () {
