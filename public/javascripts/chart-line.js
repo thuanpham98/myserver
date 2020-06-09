@@ -16,6 +16,8 @@ async function init_data_line() {
 
     temp_index_line=[];
     temp_dataset_line = [];
+    linechart="";
+    masslineChart={};
 
     dev=document.getElementById("charts").value;
     let mess = { dev: dev };

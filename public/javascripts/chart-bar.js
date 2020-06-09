@@ -9,7 +9,6 @@ var temp_dataset_bar = [];
 var temp_color_bar = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
 
 var barchart ;
-
 var massbarChart ;
 
 /** init data for bar chart from server */
@@ -17,6 +16,8 @@ async function init_data_bar() {
 
     temp_index_bar = [];
     temp_dataset_bar = [];
+    barchart="" ;
+    massbarChart={} ;
     dev=document.getElementById("charts").value;
     let mess = { dev: dev };
     mess = JSON.stringify(mess);
