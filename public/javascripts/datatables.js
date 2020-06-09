@@ -45,7 +45,7 @@ async function init_data_table() {
 
   for (let i = 0; i < datum.init.length; i++) {
     temp_mask.push(datum.init[i].mask);
-    dataTables.push({ "name": datum.init[i].mask.toString(), "value": "0", "datetime": "0/0/0" });
+    dataTables.push({ "name": datum.init[i].mask, "value": "0", "datetime": "0/0/0" });
   }
   console.log(dataTables);
 }
