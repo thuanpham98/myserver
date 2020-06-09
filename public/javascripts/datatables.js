@@ -39,6 +39,7 @@ $(document).ready(function () {
 
 async function init_data_table() {
   dataTables=[];
+  dev=document.getElementById("tables").value;
 
   let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
     method: "POST",
