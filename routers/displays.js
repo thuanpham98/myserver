@@ -111,8 +111,8 @@ router.post('/getdata', async function (req, res) {
         if (account.length) {
             await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.body.dev, 10) }, function (err, result) {
                 console.log(result);
-                
-                if(result===undefined){
+
+                if (result === undefined) {
                     return;
                 }
 
@@ -137,8 +137,6 @@ router.post('/getdata', async function (req, res) {
             res.send("who are you");
         }
     });
-
-
 });
 
 //----export----/

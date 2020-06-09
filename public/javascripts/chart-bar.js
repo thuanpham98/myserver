@@ -199,7 +199,7 @@ async function getData_bar() {
     console.log(datum.data);
 
     let i = 0;
-    massbarChart.data.labels = [datum.label];
+    massbarChart.data.labels.push(datum.label);
     massbarChart.data.datasets.forEach((dataset) => {
         dataset.data = [datum.data[temp_index_bar[i]]];
         i++;
