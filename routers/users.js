@@ -98,7 +98,40 @@ router.get('/', async function(req, res) {
 
 /** user/clone */
 router.get('/clone',function(req,res){
-    res.render('tables', {title: 'Data Table Page'});
+    // res.render('tables', {title: 'Data Table Page'});
+
+    let account, device, devices = [];
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+
+    /* check token on database */
+    await User.find({ email: decoded.accessToken }, function (err, result) {
+        assert.equal(null, err);
+        account = result;
+
+        if (!account.length) {
+            res.json("no user");
+            return;
+        }
+    });
+    await ManageDev.find({ ID: account[0].timestamp, type: 1 }, function (errr, result) {
+        device = result;
+        // console.log(device.length);
+        if(device===undefined){
+            return;
+        }
+        if (device.length) {
+            for (let i = 0; i < device.length; i++) {
+                devices.push({ dev: device[i].dev, mask: device[i].mask });
+                console.log(device[i].dev);
+            }
+            console.log(devices);
+            res.render('tables', { title: 'Data Table Page', devices: devices });
+        }
+        else {
+            devices = [];
+            res.render('tables', { title: 'Data Table Page', devices: devices });
+        }
+    });
 });
 
 /* user/update */

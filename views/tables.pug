@@ -18,11 +18,11 @@ block content
             .card-header
             | Choose dev support Table that you have config
             .card-body
-                //- select(id = "tables",class="custom-select sources")
-                //-     each device in devices
-                //-         -let dev_id = device.dev.toString();
-                //-         -let mask = device.mask.toString();
-                //-         option(value = dev_id) #{mask}
+                select(id = "tables",class="custom-select sources")
+                    each device in devices
+                        -let dev_id = device.dev.toString();
+                        -let mask = device.mask.toString();
+                        option(value = dev_id) #{mask}
 
                 a.btn.btn-primary(type='submit',id="choosen_table") Choose
                 link(href='/stylesheets/option_selector.css', rel="stylesheet")
