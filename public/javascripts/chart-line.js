@@ -8,6 +8,9 @@ var temp_index_line=[];
 var temp_dataset_line = [];
 var temp_color_line = ['#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d', '#FC0000', '#1f78b4', '#4dfd00', '#220ffd', '#ff9dcb', '#f7e92d', '#fa9041', '#050904', '#6d6f04', '#a0522d'];
 
+var linechart;
+var masslineChart;
+
 /** init data for line chart from server */
 async function init_data_line() {
 
@@ -45,8 +48,8 @@ async function init_data_line() {
     }
 
         /** inital chart */
-    var linechart = document.getElementById("myLineChart").getContext('2d');
-    var masslineChart = new Chart(linechart, {
+    linechart = document.getElementById("myLineChart").getContext('2d');
+    masslineChart = new Chart(linechart, {
         type: 'line',
         data: {
             labels: [],
