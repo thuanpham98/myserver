@@ -97,7 +97,7 @@ router.get('/', async function(req, res) {
 // });
 
 /** user/clone */
-router.get('/clone',function(req,res){
+router.get('/clone', async function(req,res){
     // res.render('tables', {title: 'Data Table Page'});
 
     let account, device, devices = [];
