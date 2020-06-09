@@ -60,23 +60,55 @@ router.get('/getdata', async function (req, res) {
 
     let account;
     let data;
+    let status_data=[];
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     console.log(req.headers.id);
+
     //check token on database--//
     await User.find({ email: decoded.accessToken }, async function (err, doc) {
         // assert.equal(null, err);
         account = doc;
 
         if (account.length) {
+            await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.headers.id, 10) }, function (err, result) {
+
+                if (result === undefined) {
+                    return;
+                }
+
+                if ((result.length) && (result !== undefined)) {
+                    let child = result[0].child;
+                    for (let i = 0; i < child.length; i++) {
+                        status_data.push(child[i].act);
+                    }
+                    console.log(status_data);
+                }
+                else {
+                    res.json({ init: null });
+                }
+            });
+        }
+        else {
+            return;
+        }
+        /** choose data */
+        if (account.length) {
             await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
                 if (result.length) {
                     data = result;
-                    console.log(typeof(data[0].form));
+                    
                     let data_ob =data[0].form[0];
                     let m_label = data[0].datetime;
-                    let m_data = Object.values(data_ob);
-                    
-                    console.log(m_data[0]);
+
+                    let m_data_temp = Object.values(data_ob);
+                    let m_data =[];
+                    for(let i = 0 ; i < m_data_temp.length; i++){
+                        if(status_data[i]){
+                            m_data.push(m_data_temp[i]);
+                        }
+                    }
+                    console.log(m_data);
+
                     let resAPI = { label: m_label, data: m_data };
                     console.log(resAPI);
                     res.json(resAPI);
