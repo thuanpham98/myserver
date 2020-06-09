@@ -72,7 +72,7 @@ router.get('/getdata', async function (req, res) {
                 if (result.length) {
                     data = result;
                     console.log(typeof(data[0].form));
-                    let data_ob =data[0].form;
+                    let data_ob =data[0].form[0];
                     let m_label = data[0].datetime;
                     let m_data = Object.values(data_ob);
                     
