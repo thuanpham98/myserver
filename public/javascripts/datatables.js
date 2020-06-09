@@ -38,7 +38,6 @@ $(document).ready(function () {
 
 
 async function init_data_table() {
-  $('#dataTable').dataTable().fnClearTable();
   dataTables=[];
 
   dev=document.getElementById("tables").value;
@@ -57,6 +56,7 @@ async function init_data_table() {
   console.log(datum.init);
 
   for (let i = 0; i < datum.init.length; i++) {
+    temp_mask.push(datum.init[i].mask);
     data_frame.name=datum.init[i].mask;
     $('#dataTable').dataTable().fnAddData(data_frame);
   }
@@ -64,6 +64,7 @@ async function init_data_table() {
 
 document.getElementById("add_table").addEventListener("click", function () {
   init_data_table();
+  getData_table()
 });
 
 document.getElementById("clear_table").addEventListener("click", function () {
@@ -71,18 +72,26 @@ document.getElementById("clear_table").addEventListener("click", function () {
 });
 
 
-// async function getData_table() {
-//     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
-//         method: 'get',
-//         mode: 'cors',
-//         headers: {
-//             'Accept': 'application/json, text/plain, */*',
-//             'Content-Type': 'application/json'
-//         }
-//     });
+async function getData_table() {
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
+        method: 'get',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        }
+    });
 
-//     let datum = await response.json();
-//     console.log(datum.data);
-// }
+    let datum = await response.json();
 
-// setInterval(getData_table, 1000);
+    if (datum.data == null) {
+      return;
+    }
+    console.log(datum.data);
+    for (let i = 0; i < datum.data.length; i++) {
+      data_frame.name=temp_mask[i];
+      data_frame.value = datum.data[i];
+      data_frame.datetime = datum.label;
+      $('#dataTable').dataTable().fnAddData(data_frame);
+    }
+}
