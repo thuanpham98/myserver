@@ -11,7 +11,7 @@ var data_frame =  {
 };
 var dataTables = [];
 var store ={
-  // retrieve: true,
+  retrieve: true,
   dom: 'Bfrtip',
   buttons: {
     buttons: [
@@ -38,7 +38,9 @@ $(document).ready(function () {
 
 
 async function init_data_table() {
+  $('#dataTable').dataTable().fnClearTable();
   dataTables=[];
+
   dev=document.getElementById("tables").value;
 
   let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
@@ -55,13 +57,9 @@ async function init_data_table() {
   console.log(datum.init);
 
   for (let i = 0; i < datum.init.length; i++) {
-    temp_mask.push(datum.init[i].mask);
     data_frame.name=datum.init[i].mask;
-
     $('#dataTable').dataTable().fnAddData(data_frame);
-  
   }
-  console.log(dataTables);
 }
 
 document.getElementById("add_table").addEventListener("click", function () {
