@@ -53,7 +53,7 @@ async function init_data_table() {
     return;
   }
   console.log(datum.init);
-  
+
   let dataTable=new Array ( datum.init.length);
   for (let i = 0; i < datum.init.length; i++) {
     temp_mask.push(datum.init[i].mask);
@@ -82,11 +82,13 @@ async function getData_table() {
       return;
     }
     console.log(datum.data);
+    let dataTable=new Array ( datum.data.length);
     for (let i = 0; i < datum.data.length; i++) {
       data_frame.name=temp_mask[i];
       data_frame.value = datum.data[i].toString();
       data_frame.datetime = datum.label;
-      $('#dataTable').dataTable().fnAddData(data_frame);
+      dataTable[i]=data_frame;
+      $('#dataTable').dataTable().fnAddData(dataTable);
     }
 }
 
