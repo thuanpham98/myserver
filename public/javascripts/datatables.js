@@ -75,6 +75,8 @@ async function init_data_table() {
     temp_mask.push(datum.init[i].mask);
     data_frame.name=datum.init[i].mask;
     dataTables.push(data_frame);
+    $('#dataTable').dataTable().fnClearTable();
+    $('#dataTable').dataTable().fnAddData(data_frame);
   
   }
   console.log(dataTables);
@@ -83,7 +85,6 @@ async function init_data_table() {
 document.getElementById("choosen_table").addEventListener("click", function () {
   init_data_table();
 
-  store.data=dataTables;
   $('#dataTable').dataTable().fnClearTable();
   $('#dataTable').dataTable().fnAddData(dataTables);
 
