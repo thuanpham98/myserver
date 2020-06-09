@@ -22,7 +22,7 @@ var store ={
       { extend: 'print', className: 'printButton' }
     ]
   },
-  data: dataTables,
+  // data: dataTables,
   columns: [
     { data: 'name' },
     { data: 'value' },
