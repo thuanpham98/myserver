@@ -74,7 +74,7 @@ router.get('/getdata', async function (req, res) {
                     let m_label = data[0].datetime;
                     console.log(data[0].form.length);
                     let m_data = [];
-                    for(let i = 0 ; i < data[0].form.length;i++){
+                    for(let i = 0 ; i < Object.keys(data[0].form).length ;i++){
                         let temp_data="sensor_"+(i+1).toString();
                         console.log(temp_data);
                         m_data.push(data[0].form[temp_data]);
