@@ -71,7 +71,7 @@ router.get('/getdata', async function (req, res) {
             await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
                 if (result.length) {
                     data = result;
-
+                    console.log(Object.values(data[0].form));
                     let m_label = data[0].datetime;
                     let m_data = Object.values(data[0].form);
                     
