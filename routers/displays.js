@@ -72,18 +72,8 @@ router.get('/getdata', async function (req, res) {
                     data = result;
                     let m_label = data[0].datetime;
                     console.log(data[0].form);
-                    let m_data = //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-                    [data[0].form.sensor_1, data[0].form.sensor_2,
-                    data[0].form.sensor_3, data[0].form.sensor_4,
-                    data[0].form.sensor_5, data[0].form.sensor_6,
-                    data[0].form.sensor_7, data[0].form.sensor_8,
-                    data[0].form.sensor_9, data[0].form.sensor_10,
-                    data[0].form.sensor_11, data[0].form.sensor_12,
-                    data[0].form.sensor_13, data[0].form.sensor_14,
-                    data[0].form.sensor_15, data[0].form.sensor_16,
-                    data[0].form.sensor_17, data[0].form.sensor_18,
-                    data[0].form.sensor_19, data[0].form.sensor_20
-                    ];
+                    let m_data = data[0].form//[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+                    console.log(m_data);
                     let resAPI = { label: m_label, data: m_data };
                     console.log(resAPI);
                     res.json(resAPI);
