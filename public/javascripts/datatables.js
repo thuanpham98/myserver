@@ -1,6 +1,6 @@
 "use strict"
 var table;
-var dataForm;
+var dataForm=[];
 // Call the dataTables jQuery plugin
 
 var dev;
@@ -113,15 +113,16 @@ async function init_data_table() {
   for (let i = 0; i < datum.init.length; i++) {
     temp_mask.push(datum.init[i].mask);
     data_frame.name=datum.init[i].mask;
-    dataTable[i]=data_frame;
+    data_Table[i]=data_frame;
      
   }
-  dataForm=data_Table;
+  dataForm = data_Table;
+  console.log(dataForm);
 
 }
 
 async function getData_table() {
-  $('#dataTable').dataTable().fnClearTable();
+  // $('#dataTable').dataTable().fnClearTable();
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
         method: 'get',
         mode: 'cors',
