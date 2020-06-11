@@ -23,11 +23,11 @@
 //     ]
 //   },
 //   data: [],
-//   columns: [
-//     { data: 'name' },
-//     { data: 'value' },
-//     { data: 'datetime' }
-//   ]
+  // columns: [
+  //   { data: 'name' },
+  //   { data: 'value' },
+  //   { data: 'datetime' }
+  // ]
 // };
 
 // $(document).ready(function () {
@@ -61,7 +61,7 @@
 //     dataTable[i]=data_frame;
 //     $('#dataTable').dataTable().fnAddData(dataTable[i]); 
 //   }
-  
+
 // }
 
 // async function getData_table() {
@@ -102,13 +102,48 @@
 // });
 
 
-$(document).ready(function(){
-  $("#list-header").on({
-    mouseenter : function(){
-      $(this).css("background-color","blue");
+var table;
+function initTable() {
+  var data = [
+    {
+      "name": "temperature",
+      "value": "23",
+      "datetime": "2011/04/25"
+    }, {
+      "name": "temperature",
+      "value": "23",
+      "datetime": "2011/04/25"
     },
-    mouseleave: function(){
-      $(this).css("background-color","lightblue");
+    {
+      "name": "temperature",
+      "value": "23",
+      "datetime": "2011/04/25"
+    }
+  ];
+
+  table=$('#dataTable').DataTable({
+    "processing":true,
+    data,
+    columns: [
+      { data: 'name' },
+      { data: 'value' },
+      { data: 'datetime' }
+    ]
+  });
+};
+
+
+
+$(document).ready(function () {
+  initTable();
+  $("#list-header").on({
+    mouseenter: function () {
+      $(this).css("background-color", "blue");
+    },
+    mouseleave: function () {
+      $(this).css("background-color", "lightblue");
     },
   });
 });
+
+
