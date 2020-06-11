@@ -107,7 +107,7 @@ async function init_data_table() {
   if (datum.init == null) {
     return;
   }
-  console.log(datum.init);
+  console.log(datum.init.length);
 
   let data_Table=new Array ( datum.init.length);
   for (let i = 0; i < datum.init.length; i++) {
@@ -149,6 +149,7 @@ async function getData_table() {
       dataForm[i].value= datum.data[i].toString();
       dataForm[i].datetime = datum.label;
     }
+    console.log(dataForm);
 }
 
 // document.getElementById("add_table").addEventListener("click", function () {
@@ -161,10 +162,12 @@ async function getData_table() {
 // });
 
 
-function initTable() {
-  init_data_table();
-  getData_table();
+async function initTable() {
+  await init_data_table();
+  await getData_table();
+
   console.log(dataForm);
+
   table=$('#dataTable').DataTable({
     "processing":true,
     retrieve: true,
