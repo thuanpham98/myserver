@@ -13,6 +13,7 @@ async function getData_table() {
   else if(isNaN(num)){
     return;
   }
+  console.log(num);
   dataForm=[];
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/datatable', {
         method: 'get',
