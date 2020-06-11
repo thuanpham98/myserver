@@ -53,11 +53,6 @@ document.getElementById("add_table").addEventListener("click", async function ()
   await initTable();
 });
 
-// document.getElementById("clear_table").addEventListener("click", function () {
-//   $('#dataTable').dataTable().fnClearTable();
-// });
-
-
 async function initTable() {
 
   await getData_table();
