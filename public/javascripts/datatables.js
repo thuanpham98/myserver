@@ -47,7 +47,9 @@ async function getData_table() {
 
 document.getElementById("add_table").addEventListener("click", async function () {
   // let ret = await $('#dataTable').dataTable().fnClearTable();
-  table.clear().draw();
+  await table.clear().draw();
+  await table.destroy();
+
   await initTable();
 });
 
