@@ -117,8 +117,6 @@ async function init_data_table() {
     console.log(dataForm[i]);
      
   }
-  console.log(dataForm);
-
 }
 
 async function getData_table() {
@@ -166,9 +164,7 @@ async function initTable() {
   await init_data_table();
   await getData_table();
 
-  console.log(dataForm);
-
-  table=$('#dataTable').DataTable({
+  table= await $('#dataTable').DataTable({
     "processing":true,
     retrieve: true,
     dom: 'Bfrtip',
@@ -192,8 +188,8 @@ async function initTable() {
 
 
 
-$(document).ready(function () {
-  initTable();
+$(document).ready(async function () {
+  await initTable();
   $("#list-header").on({
     mouseenter: function () {
       $(this).css("background-color", "blue");
