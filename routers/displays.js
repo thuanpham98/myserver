@@ -276,7 +276,7 @@ router.get('/datatable', async function (req, res) {
                     res.json(null);
                     return;
                 }
-            }).sort({ _id: -1 }).limit(10);
+            }).sort({ _id: -1 }).limit(1000);
         }
         else {
             res.send("who are you");
