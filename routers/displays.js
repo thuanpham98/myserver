@@ -259,7 +259,7 @@ router.get('/datatable',async function(req,res){
                         let value_data =[];
                         for(let i = 0 ; i < value_data_temp.length; i++){
                             if(status_data[i]){
-                                value_data.push(m_data_temp[i]);
+                                value_data.push(value_data_temp[i]);
                             }
                             else{
                                 mask_data.splice(i,1);
