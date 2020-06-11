@@ -163,7 +163,7 @@ async function getData_table() {
 function initTable() {
   init_data_table();
   getData_table();
-
+  console.log(dataTable);
   table=$('#dataTable').DataTable({
     "processing":true,
     retrieve: true,
