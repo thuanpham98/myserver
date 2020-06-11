@@ -258,8 +258,8 @@ router.get('/datatable',async function(req,res){
     
                         let value_data_temp = Object.values(data.form[0]);
                         let value_data =[];
+                        let mask_data_temp = mask_data;
                         for(let i = 0 ; i < value_data_temp.length; i++){
-                            let mask_data_temp=mask_data;
                             if(status_data[i]){
                                 value_data.push(value_data_temp[i]);
                             }
