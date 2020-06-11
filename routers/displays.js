@@ -220,12 +220,12 @@ router.post('/getdata', async function (req, res) {
 router.get('/datatable',async function(req,res){
     let account;
     let status_data=[];
+    let mask_data=[];
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     console.log(req.headers.id);
 
     //check token on database--//
     await User.find({ email: decoded.accessToken }, async function (err, doc) {
-        // assert.equal(null, err);
         account = doc;
         if(account.length){
             await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.headers.id, 10) }, function (err, result0) {
@@ -238,6 +238,7 @@ router.get('/datatable',async function(req,res){
                     let child = result0[0].child;
                     for (let i = 0; i < child.length; i++) {
                         status_data.push(child[i].act);
+                        mask_data.push(child[i].mask);
                     }
                     console.log(status_data);
                 }
@@ -250,19 +251,22 @@ router.get('/datatable',async function(req,res){
                 let data_res=[];
                 if (result.length) {
                     for(let i =0 ; i < result.length;i++){
+
                         let data = result[i];
-                        let data_ob =data.form[0];
-                        let m_label = data.datetime;
+                        let dateTime = data.datetime;
     
-                        let m_data_temp = Object.values(data_ob);
-                        let m_data =[];
-                        for(let i = 0 ; i < m_data_temp.length; i++){
+                        let value_data_temp = Object.values(data.form[0]);
+                        let value_data =[];
+                        for(let i = 0 ; i < value_data_temp.length; i++){
                             if(status_data[i]){
-                                m_data.push(m_data_temp[i]);
+                                value_data.push(m_data_temp[i]);
+                            }
+                            else{
+                                mask_data.splice(i,1);
                             }
                         }
-                        console.log(m_data);
-                        data_res.push({ label: m_label, data: m_data });
+
+                        data_res.push({ time: dateTime, data: value_data ,mask : mask_data});
                     }
                     // let resAPI = { label: m_label, data: m_data };
                     // console.log(resAPI);
