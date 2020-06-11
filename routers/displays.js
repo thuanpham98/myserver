@@ -70,14 +70,14 @@ router.get('/getdata', async function (req, res) {
         account = doc;
 
         if (account.length) {
-            await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.headers.id, 10) }, function (err, result) {
+            await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.headers.id, 10) }, function (err, result0) {
 
-                if (result === undefined) {
+                if (result0 === undefined) {
                     return;
                 }
 
-                if ((result.length) && (result !== undefined)) {
-                    let child = result[0].child;
+                if ((result0.length) && (result0 !== undefined)) {
+                    let child = result0[0].child;
                     for (let i = 0; i < child.length; i++) {
                         status_data.push(child[i].act);
                     }
@@ -87,12 +87,7 @@ router.get('/getdata', async function (req, res) {
                     res.json({ init: null });
                 }
             });
-        }
-        else {
-            return;
-        }
-        /** choose data */
-        if (account.length) {
+
             await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
 
                 if (result.length) {
@@ -129,11 +124,53 @@ router.get('/getdata', async function (req, res) {
                 }
             }).sort({ _id: -1 }).limit(1);
         }
-
         else {
-            let resAPI = { label: 0, data: [] };
-            res.json(resAPI);
+            res.send("who are you");
+            return;
         }
+        /** choose data */
+        // if (account.length) {
+        //     await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
+
+        //         if (result.length) {
+        //             data = result;
+                    
+        //             let data_ob =data[0].form[0];
+        //             let m_label = data[0].datetime;
+
+        //             let m_data_temp = Object.values(data_ob);
+        //             let m_data =[];
+        //             for(let i = 0 ; i < m_data_temp.length; i++){
+        //                 if(status_data[i]){
+        //                     m_data.push(m_data_temp[i]);
+        //                 }
+        //             }
+        //             console.log(m_data);
+
+        //             let resAPI = { label: m_label, data: m_data };
+        //             console.log(resAPI);
+        //             res.json(resAPI);
+
+        //         }
+        //         else {
+        //             let m_data =[];
+        //             for(let i = 0 ; i < status_data.length; i++){
+        //                 if(status_data[i]){
+        //                     m_data.push(i+1);
+        //                 }
+        //             }
+        //             let m_label = new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
+
+        //             let resAPI = { label: m_label, data: m_data };
+        //             res.json(resAPI);
+        //         }
+        //     }).sort({ _id: -1 }).limit(1);
+        // }
+
+        // else {
+        //     let resAPI = { label: 0, data: [] };
+        //     res.json(resAPI);
+        // }
     });
 
 });
@@ -180,5 +217,77 @@ router.post('/getdata', async function (req, res) {
     });
 });
 
+router.get('/datatable',async function(req,res){
+    let account;
+    let status_data=[];
+    let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
+    console.log(req.headers.id);
+
+    //check token on database--//
+    await User.find({ email: decoded.accessToken }, async function (err, doc) {
+        // assert.equal(null, err);
+        account = doc;
+        if(account.length){
+            await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.headers.id, 10) }, function (err, result0) {
+
+                if (result0 === undefined) {
+                    return;
+                }
+
+                if ((result0.length) && (result0 !== undefined)) {
+                    let child = result0[0].child;
+                    for (let i = 0; i < child.length; i++) {
+                        status_data.push(child[i].act);
+                    }
+                    console.log(status_data);
+                }
+                else {
+                    res.json({ init: null });
+                }
+            });
+
+            await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
+                let data_res=[];
+                if (result.length) {
+                    for(let i =0 ; i < result.length;i++){
+                        data = result;
+                        let data_ob =data[0].form[0];
+                        let m_label = data[0].datetime;
+    
+                        let m_data_temp = Object.values(data_ob);
+                        let m_data =[];
+                        for(let i = 0 ; i < m_data_temp.length; i++){
+                            if(status_data[i]){
+                                m_data.push(m_data_temp[i]);
+                            }
+                        }
+                        console.log(m_data);
+                        data_res.push({ label: m_label, data: m_data });
+                    }
+                    // let resAPI = { label: m_label, data: m_data };
+                    // console.log(resAPI);
+                    res.send(data_res);
+
+                }
+                else {
+                    let m_data =[];
+                    for(let i = 0 ; i < status_data.length; i++){
+                        if(status_data[i]){
+                            m_data.push(i+1);
+                        }
+                    }
+                    let m_label = new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
+
+                    let resAPI = { label: m_label, data: m_data };
+                    res.json(resAPI);
+                }
+            }).sort({ _id: -1 }).limit(10);
+        }
+        else{
+            res.send("who are you");
+            return;
+        }
+    });
+})
 //----export----/
 module.exports = router

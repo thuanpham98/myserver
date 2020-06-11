@@ -121,7 +121,7 @@ async function init_data_table() {
 
 async function getData_table() {
   // $('#dataTable').dataTable().fnClearTable();
-    let response = await fetch('https://iot-server-365.herokuapp.com/user/display/getdata', {
+    let response = await fetch('https://iot-server-365.herokuapp.com/user/display/datatable', {
         method: 'get',
         mode: 'cors',
         headers: {
@@ -131,25 +131,25 @@ async function getData_table() {
         }
     });
 
-    let datum = await response.json();
+    let datum = await response;
 
     if (datum === null) {
       return;
     }
-    console.log(datum.data);
+    console.log(datum);
 
-    for (let i = 0; i < datum.data.length; i++) {
-      // data_frame.name=temp_mask[i];
-      // data_frame.value = datum.data[i].toString();
-      // data_frame.datetime = datum.label;
-      // dataTable[i]=data_frame;
+    // for (let i = 0; i < datum.data.length; i++) {
+    //   // data_frame.name=temp_mask[i];
+    //   // data_frame.value = datum.data[i].toString();
+    //   // data_frame.datetime = datum.label;
+    //   // dataTable[i]=data_frame;
       
-      dataForm[i].name= temp_mask[i];
-      dataForm[i].value= (datum.data[i]+i).toString();
-      dataForm[i].datetime = datum.label;
-      console.log(dataForm[i]);
-    }
-    console.log(dataForm[1]);
+    //   dataForm[i].name= temp_mask[i];
+    //   dataForm[i].value= (datum.data[i]+i).toString();
+    //   dataForm[i].datetime = datum.label;
+    //   console.log(dataForm[i]);
+    // }
+    // console.log(dataForm[1]);
 }
 
 // document.getElementById("add_table").addEventListener("click", function () {
@@ -162,44 +162,44 @@ async function getData_table() {
 // });
 
 
-async function initTable() {
-  await init_data_table();
-  await getData_table();
+// async function initTable() {
+//   await init_data_table();
+//   await getData_table();
 
-  table= await $('#dataTable').DataTable({
-    "processing":true,
-    retrieve: true,
-    dom: 'Bfrtip',
-    buttons: {
-      buttons: [
-        { extend: 'copy', className: 'copyButton' },
-        { extend: 'excel', className: 'excelButton' },
-        { extend: 'csv', className: 'csvButton' },
-        { extend: 'pdf', className: 'pdfButton' },
-        { extend: 'print', className: 'printButton' }
-      ]
-    },
-    data : dataForm,
-    columns: [
-      { data: 'name' },
-      { data: 'value' },
-      { data: 'datetime' }
-    ]
-  });
-};
+//   table= await $('#dataTable').DataTable({
+//     "processing":true,
+//     retrieve: true,
+//     dom: 'Bfrtip',
+//     buttons: {
+//       buttons: [
+//         { extend: 'copy', className: 'copyButton' },
+//         { extend: 'excel', className: 'excelButton' },
+//         { extend: 'csv', className: 'csvButton' },
+//         { extend: 'pdf', className: 'pdfButton' },
+//         { extend: 'print', className: 'printButton' }
+//       ]
+//     },
+//     data : dataForm,
+//     columns: [
+//       { data: 'name' },
+//       { data: 'value' },
+//       { data: 'datetime' }
+//     ]
+//   });
+// };
 
 
 
-$(document).ready(async function () {
-  await initTable();
-  $("#list-header").on({
-    mouseenter: function () {
-      $(this).css("background-color", "blue");
-    },
-    mouseleave: function () {
-      $(this).css("background-color", "lightblue");
-    },
-  });
-});
+// $(document).ready(async function () {
+//   await initTable();
+//   $("#list-header").on({
+//     mouseenter: function () {
+//       $(this).css("background-color", "blue");
+//     },
+//     mouseleave: function () {
+//       $(this).css("background-color", "lightblue");
+//     },
+//   });
+// });
 
 
