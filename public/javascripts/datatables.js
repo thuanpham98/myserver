@@ -132,12 +132,12 @@ async function getData_table() {
         }
     });
 
-    let datum = await response.body;
+    let datum = await response;
 
     if (datum === null) {
       return;
     }
-    console.log(datum);
+    console.log(datum.body);
 
     // for (let i = 0; i < datum.data.length; i++) {
     //   // data_frame.name=temp_mask[i];
