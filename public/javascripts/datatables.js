@@ -107,11 +107,11 @@ function initTable() {
   var data = [
     {
       "name": "temperature",
-      "value": "23",
+      "value": "21",
       "datetime": "2011/04/25"
     }, {
       "name": "temperature",
-      "value": "23",
+      "value": "22",
       "datetime": "2011/04/25"
     },
     {
