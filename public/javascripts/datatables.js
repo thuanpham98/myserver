@@ -116,7 +116,7 @@ async function init_data_table() {
     dataForm[i]=data_frame;
     console.log(dataForm[i]);
   }
-  console.log(temp_mask);
+  console.log(dataForm[i]);
 }
 
 async function getData_table() {
@@ -145,7 +145,7 @@ async function getData_table() {
       // dataTable[i]=data_frame;
       
       dataForm[i].name= temp_mask[i];
-      dataForm[i].value= datum.data[i].toString();
+      dataForm[i].value= (datum.data[i]+i).toString();
       dataForm[i].datetime = datum.label;
       console.log(dataForm[i]);
     }
