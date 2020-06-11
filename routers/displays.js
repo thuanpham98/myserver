@@ -221,10 +221,10 @@ router.get('/datatable', async function (req, res) {
     let account;
     let status_data = [];
     let mask_data = [];
-    let num = req.headers.number;
+    let num = req.headers.num;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     console.log(req.headers.id);
-    console.log(req.headers.number);
+    console.log(req.headers.num);
 
     //check token on database--//
     await User.find({ email: decoded.accessToken }, async function (err, doc) {
