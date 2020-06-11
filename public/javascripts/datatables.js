@@ -46,7 +46,7 @@ async function getData_table() {
 }
 
 document.getElementById("add_table").addEventListener("click", async function () {
-  let ret = await $('#dataTable').dataTable().fnClearTable();
+  // let ret = await $('#dataTable').dataTable().fnClearTable();
   await initTable();
 });
 
@@ -80,8 +80,6 @@ async function initTable() {
     ]
   });
 };
-
-
 
 $(document).ready(async function () {
   await initTable();
