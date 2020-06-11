@@ -12,16 +12,16 @@
 
 // var store ={
 //   retrieve: true,
-//   dom: 'Bfrtip',
-//   buttons: {
-//     buttons: [
-//       { extend: 'copy', className: 'copyButton' },
-//       { extend: 'excel', className: 'excelButton' },
-//       { extend: 'csv', className: 'csvButton' },
-//       { extend: 'pdf', className: 'pdfButton' },
-//       { extend: 'print', className: 'printButton' }
-//     ]
-//   },
+  // dom: 'Bfrtip',
+  // buttons: {
+  //   buttons: [
+  //     { extend: 'copy', className: 'copyButton' },
+  //     { extend: 'excel', className: 'excelButton' },
+  //     { extend: 'csv', className: 'csvButton' },
+  //     { extend: 'pdf', className: 'pdfButton' },
+  //     { extend: 'print', className: 'printButton' }
+  //   ]
+  // },
 //   data: [],
   // columns: [
   //   { data: 'name' },
@@ -123,6 +123,16 @@ function initTable() {
 
   table=$('#dataTable').DataTable({
     "processing":true,
+    dom: 'Bfrtip',
+    buttons: {
+      buttons: [
+        { extend: 'copy', className: 'copyButton' },
+        { extend: 'excel', className: 'excelButton' },
+        { extend: 'csv', className: 'csvButton' },
+        { extend: 'pdf', className: 'pdfButton' },
+        { extend: 'print', className: 'printButton' }
+      ]
+    },
     data,
     columns: [
       { data: 'name' },
