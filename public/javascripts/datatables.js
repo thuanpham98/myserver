@@ -177,7 +177,7 @@ function initTable() {
         { extend: 'print', className: 'printButton' }
       ]
     },
-    dataForm,
+    data : dataForm,
     columns: [
       { data: 'name' },
       { data: 'value' },
