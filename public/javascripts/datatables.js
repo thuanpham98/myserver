@@ -112,11 +112,11 @@ async function getData_table() {
     console.log(datum.data);
 
     for (let i = 0; i < datum.data.length; i++) {
-      for(let j =0 ; j < datum.data.mask.length;j++){
+      for(let j =0 ; j < datum.data[i].mask.length;j++){
         let data_frame={
-          "name": datum.data.mask[i],
-          "value": datum.data.value[i],
-          "datetime": datum.data.time
+          "name": datum.data[i].mask[j],
+          "value": datum.data[i].value[j],
+          "datetime": datum.data[i].time
         };
         dataForm.push(data_frame);
       }
