@@ -131,7 +131,7 @@ async function getData_table() {
         }
     });
 
-    let datum = await response;
+    let datum = await response.body;
 
     if (datum === null) {
       return;
@@ -151,6 +151,7 @@ async function getData_table() {
     // }
     // console.log(dataForm[1]);
 }
+getData_table();
 
 // document.getElementById("add_table").addEventListener("click", function () {
 //   init_data_table();
