@@ -1,6 +1,6 @@
 "use strict"
 var table;
-var dataForm=[];
+var dataForm;
 // Call the dataTables jQuery plugin
 
 var dev;
@@ -143,11 +143,13 @@ async function getData_table() {
       // data_frame.value = datum.data[i].toString();
       // data_frame.datetime = datum.label;
       // dataTable[i]=data_frame;
-      // dataForm[i].name= temp_mask[i];
+      
+      dataForm[i].name= temp_mask[i];
       dataForm[i].value= datum.data[i].toString();
       dataForm[i].datetime = datum.label;
+      console.log(dataForm[i]);
     }
-    console.log(dataForm);
+    console.log(dataForm[1]);
 }
 
 // document.getElementById("add_table").addEventListener("click", function () {
