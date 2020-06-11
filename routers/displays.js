@@ -221,6 +221,7 @@ router.get('/datatable', async function (req, res) {
     let account;
     let status_data = [];
     let mask_data = [];
+    let num = req.headers.number;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     console.log(req.headers.id);
 
