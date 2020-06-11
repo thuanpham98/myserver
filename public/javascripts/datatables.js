@@ -164,22 +164,6 @@ async function getData_table() {
 function initTable() {
   init_data_table();
   getData_table();
-  dataForm = [
-    {
-      "name": "temperature",
-      "value": "21",
-      "datetime": "2011/04/25"
-    }, {
-      "name": "human",
-      "value": "22",
-      "datetime": "2011/04/25"
-    },
-    {
-      "name": "rain",
-      "value": "23",
-      "datetime": "2011/04/25"
-    }
-  ];
 
   table=$('#dataTable').DataTable({
     "processing":true,
@@ -193,7 +177,7 @@ function initTable() {
         { extend: 'print', className: 'printButton' }
       ]
     },
-    data,
+    dataForm,
     columns: [
       { data: 'name' },
       { data: 'value' },
