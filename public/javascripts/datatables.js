@@ -1,27 +1,19 @@
 "use strict"
 var table;
 var dataForm=[];
-// Call the dataTables jQuery plugin
-
 var dev;
 var num;
-// var data_frame =  {
-//   "name": "temperature",
-//   "value": "23",
-//   "datetime": "2011/04/25"
-// };
 
 async function getData_table() {
   dev = document.getElementById("tables").value;
   num =document.getElementById("number").value;
   if(num=""){
-    num=100;
+    num=1;
   }
   else if(isNaN(num)){
-    num =0;
+    return;
   }
   dataForm=[];
-  // $('#dataTable').dataTable().fnClearTable();
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/datatable', {
         method: 'get',
         mode: 'cors',
