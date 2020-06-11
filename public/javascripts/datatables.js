@@ -144,9 +144,9 @@ async function getData_table() {
       // data_frame.value = datum.data[i].toString();
       // data_frame.datetime = datum.label;
       // dataTable[i]=data_frame;
-      dataTable[i].name= temp_mask[i];
-      dataTable[i].value= datum.data[i].toString();
-      dataTable[i].datetime = datum.label;
+      dataForm[i].name= temp_mask[i];
+      dataForm[i].value= datum.data[i].toString();
+      dataForm[i].datetime = datum.label;
     }
 }
 
@@ -163,7 +163,7 @@ async function getData_table() {
 function initTable() {
   init_data_table();
   getData_table();
-  console.log(dataTable);
+  console.log(dataForm);
   table=$('#dataTable').DataTable({
     "processing":true,
     retrieve: true,
