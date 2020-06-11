@@ -137,7 +137,7 @@ async function getData_table() {
     if (datum === null) {
       return;
     }
-    console.log(datum.body);
+    console.log(datum);
 
     // for (let i = 0; i < datum.data.length; i++) {
     //   // data_frame.name=temp_mask[i];
