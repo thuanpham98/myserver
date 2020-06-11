@@ -166,6 +166,7 @@ function initTable() {
 
   table=$('#dataTable').DataTable({
     "processing":true,
+    retrieve: true,
     dom: 'Bfrtip',
     buttons: {
       buttons: [
