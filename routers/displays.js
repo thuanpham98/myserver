@@ -265,6 +265,7 @@ router.get('/datatable',async function(req,res){
                                 mask_data.splice(i,1);
                             }
                         }
+                        console.log(mask_data);
 
                         data_res.push({ time: dateTime, data: value_data ,mask : mask_data});
                     }
