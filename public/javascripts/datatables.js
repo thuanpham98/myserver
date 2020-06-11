@@ -115,8 +115,8 @@ async function init_data_table() {
     data_frame.name=datum.init[i].mask;
     dataForm[i]=data_frame;
     console.log(dataForm[i]);
-     
   }
+  console.log(temp_mask);
 }
 
 async function getData_table() {
