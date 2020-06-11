@@ -225,7 +225,7 @@ function removeData() {
     if(start==0){
         return;
     }
-    if (k >= 10) {
+    if (k >= 100) {
         //let j = 0;
 
         masslineChart.clear();
