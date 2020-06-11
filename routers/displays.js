@@ -243,7 +243,8 @@ router.get('/datatable',async function(req,res){
                     console.log(mask_data);
                 }
                 else {
-                    res.json({ init: null });
+                    res.json(null);
+                    return;
                 }
             });
 
@@ -258,33 +259,24 @@ router.get('/datatable',async function(req,res){
                         let value_data_temp = Object.values(data.form[0]);
                         let value_data =[];
                         for(let i = 0 ; i < value_data_temp.length; i++){
+                            let mask_data_temp=mask_data;
                             if(status_data[i]){
                                 value_data.push(value_data_temp[i]);
                             }
                             else{
-                                mask_data.splice(i,1);
+                                mask_data_temp.splice(i,1);
                             }
                         }
-                        console.log(mask_data);
+                        console.log(mask_data_temp);
 
-                        data_res.push({ time: dateTime, value: value_data ,mask : mask_data});
+                        data_res.push({ time: dateTime, value: value_data ,mask : mask_data_temp});
                     }
-                    // let resAPI = { label: m_label, data: m_data };
-                    // console.log(resAPI);
                     res.json({ID: account[0].timestamp ,data : data_res});
 
                 }
                 else {
-                    let m_data =[];
-                    for(let i = 0 ; i < status_data.length; i++){
-                        if(status_data[i]){
-                            m_data.push(i+1);
-                        }
-                    }
-                    let m_label = new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
-
-                    let resAPI = { label: m_label, data: m_data };
-                    res.json(resAPI);
+                    res.json(null);
+                    return;
                 }
             }).sort({ _id: -1 }).limit(10);
         }
