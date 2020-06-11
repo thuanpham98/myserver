@@ -240,7 +240,7 @@ router.get('/datatable',async function(req,res){
                         status_data.push(child[i].act);
                         mask_data.push(child[i].mask);
                     }
-                    console.log(status_data);
+                    console.log(mask_data);
                 }
                 else {
                     res.json({ init: null });
