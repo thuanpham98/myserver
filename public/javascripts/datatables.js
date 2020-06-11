@@ -110,12 +110,12 @@ function initTable() {
       "value": "21",
       "datetime": "2011/04/25"
     }, {
-      "name": "temperature",
+      "name": "human",
       "value": "22",
       "datetime": "2011/04/25"
     },
     {
-      "name": "temperature",
+      "name": "rain",
       "value": "23",
       "datetime": "2011/04/25"
     }
