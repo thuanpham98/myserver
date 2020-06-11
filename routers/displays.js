@@ -39,7 +39,7 @@ router.get('/', async function (req, res) {
     await ManageDev.find({ ID: account[0].timestamp, type: 1 }, function (errr, result) {
         device = result;
         // console.log(device.length);
-        if(device===undefined){
+        if (device === undefined) {
             return;
         }
         if (device.length) {
@@ -60,7 +60,7 @@ router.get('/getdata', async function (req, res) {
 
     let account;
     let data;
-    let status_data=[];
+    let status_data = [];
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     console.log(req.headers.id);
 
@@ -92,14 +92,14 @@ router.get('/getdata', async function (req, res) {
 
                 if (result.length) {
                     data = result;
-                    
-                    let data_ob =data[0].form[0];
+
+                    let data_ob = data[0].form[0];
                     let m_label = data[0].datetime;
 
                     let m_data_temp = Object.values(data_ob);
-                    let m_data =[];
-                    for(let i = 0 ; i < m_data_temp.length; i++){
-                        if(status_data[i]){
+                    let m_data = [];
+                    for (let i = 0; i < m_data_temp.length; i++) {
+                        if (status_data[i]) {
                             m_data.push(m_data_temp[i]);
                         }
                     }
@@ -111,10 +111,10 @@ router.get('/getdata', async function (req, res) {
 
                 }
                 else {
-                    let m_data =[];
-                    for(let i = 0 ; i < status_data.length; i++){
-                        if(status_data[i]){
-                            m_data.push(i+1);
+                    let m_data = [];
+                    for (let i = 0; i < status_data.length; i++) {
+                        if (status_data[i]) {
+                            m_data.push(i + 1);
                         }
                     }
                     let m_label = new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
@@ -134,7 +134,7 @@ router.get('/getdata', async function (req, res) {
 
         //         if (result.length) {
         //             data = result;
-                    
+
         //             let data_ob =data[0].form[0];
         //             let m_label = data[0].datetime;
 
@@ -217,17 +217,17 @@ router.post('/getdata', async function (req, res) {
     });
 });
 
-router.get('/datatable',async function(req,res){
+router.get('/datatable', async function (req, res) {
     let account;
-    let status_data=[];
-    let mask_data=[];
+    let status_data = [];
+    let mask_data = [];
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     console.log(req.headers.id);
 
     //check token on database--//
     await User.find({ email: decoded.accessToken }, async function (err, doc) {
         account = doc;
-        if(account.length){
+        if (account.length) {
             await ManageDev.find({ ID: account[0].timestamp, dev: parseInt(req.headers.id, 10) }, function (err, result0) {
 
                 if (result0 === undefined) {
@@ -249,27 +249,27 @@ router.get('/datatable',async function(req,res){
             });
 
             await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
-                let data_res=[];
+                let data_res = [];
                 if (result.length) {
-                    for(let i =0 ; i < result.length;i++){
+                    for (let i = 0; i < result.length; i++) {
 
                         let data = result[i];
                         let dateTime = data.datetime;
-    
+
                         let value_data_temp = Object.values(data.form[0]);
-                        let value_data =[];
+                        let value_data = [];
                         let mask_data_temp = [];
-                        for(let i = 0 ; i < value_data_temp.length; i++){
-                            if(status_data[i]){
+                        for (let i = 0; i < value_data_temp.length; i++) {
+                            if (status_data[i]) {
                                 value_data.push(value_data_temp[i]);
                                 mask_data_temp.push(mask_data[i]);
                             }
                         }
                         console.log(mask_data_temp);
 
-                        data_res.push({ time: dateTime, value: value_data ,mask : mask_data_temp});
+                        data_res.push({ time: dateTime, value: value_data, mask: mask_data_temp });
                     }
-                    res.json({ID: account[0].timestamp ,data : data_res});
+                    res.json({ ID: account[0].timestamp, data: data_res });
 
                 }
                 else {
@@ -278,7 +278,7 @@ router.get('/datatable',async function(req,res){
                 }
             }).sort({ _id: -1 }).limit(10);
         }
-        else{
+        else {
             res.send("who are you");
             return;
         }
