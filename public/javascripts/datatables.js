@@ -12,6 +12,7 @@ var dev;
 
 async function getData_table() {
   dev = document.getElementById("tables").value;
+  dataForm=[];
   // $('#dataTable').dataTable().fnClearTable();
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/datatable', {
         method: 'get',
