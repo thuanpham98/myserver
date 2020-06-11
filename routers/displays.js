@@ -267,7 +267,7 @@ router.get('/datatable',async function(req,res){
                         }
                         console.log(mask_data);
 
-                        data_res.push({ time: dateTime, data: value_data ,mask : mask_data});
+                        data_res.push({ time: dateTime, value: value_data ,mask : mask_data});
                     }
                     // let resAPI = { label: m_label, data: m_data };
                     // console.log(resAPI);
