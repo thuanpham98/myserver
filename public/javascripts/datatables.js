@@ -139,7 +139,6 @@ async function getData_table() {
     }
     console.log(datum.data);
 
-    let dataTable=new Array ( datum.data.length);
     for (let i = 0; i < datum.data.length; i++) {
       // data_frame.name=temp_mask[i];
       // data_frame.value = datum.data[i].toString();
