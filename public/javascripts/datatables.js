@@ -8,7 +8,7 @@ async function getData_table() {
   dev = document.getElementById("tables").value;
   num =document.getElementById("number").value;
   console.log(num);
-  if(num=""){
+  if(num==""){
     num="1";
   }
   else if(isNaN(num)){
