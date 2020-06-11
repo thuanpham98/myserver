@@ -107,7 +107,7 @@ async function init_data_table() {
   if (datum.init == null) {
     return;
   }
-  console.log(datum.init.length);
+  console.log(datum.init);
 
   let data_Table=new Array ( datum.init.length);
   for (let i = 0; i < datum.init.length; i++) {
