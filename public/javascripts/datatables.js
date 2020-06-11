@@ -109,14 +109,14 @@ async function init_data_table() {
   }
   console.log(datum.init);
 
-  let data_Table=new Array ( datum.init.length);
+  dataForm = new Array ( datum.init.length);
   for (let i = 0; i < datum.init.length; i++) {
     temp_mask.push(datum.init[i].mask);
     data_frame.name=datum.init[i].mask;
-    data_Table[i]=data_frame;
+    dataForm[i]=data_frame;
+    console.log(data_Table[i]);
      
   }
-  dataForm = data_Table;
   console.log(dataForm);
 
 }
