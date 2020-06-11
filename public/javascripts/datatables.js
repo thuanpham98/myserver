@@ -22,7 +22,6 @@ async function getData_table() {
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json',
             id:dev,
-            num:num
         }
     });
 
