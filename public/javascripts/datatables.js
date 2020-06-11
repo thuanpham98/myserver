@@ -116,7 +116,7 @@ async function init_data_table() {
     dataForm[i]=data_frame;
     console.log(dataForm[i]);
   }
-  console.log(dataForm[i]);
+  console.log(dataForm[1]);
 }
 
 async function getData_table() {
