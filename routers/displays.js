@@ -266,7 +266,7 @@ router.get('/datatable',async function(req,res){
                     }
                     // let resAPI = { label: m_label, data: m_data };
                     // console.log(resAPI);
-                    res.send(data_res);
+                    res.json({ID: account[0].timestamp ,data : data_res});
 
                 }
                 else {
