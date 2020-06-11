@@ -109,6 +109,6 @@ $(document).ready(function(){
     },
     mouseleave: function(){
       $(this).css("background-color","lightblue");
-    }
-  })
-})
+    },
+  });
+});
