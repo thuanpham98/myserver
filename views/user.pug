@@ -114,7 +114,9 @@ append scripts
     script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js', crossorigin='anonymous')
     script(src='/javascripts/chart-line.js')
     script(src='/javascripts/chart-bar.js')
-    script(src='/javascripts/chart-control.js')
+    script(src='/javascripts/chart-control.js').
+        init_data_bar();
+        init_data_line();
     
     script(src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js', crossorigin='anonymous')
     script(src='https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js', crossorigin='anonymous')
