@@ -4,6 +4,7 @@ var dataForm=[];
 // Call the dataTables jQuery plugin
 
 var dev;
+var num;
 // var data_frame =  {
 //   "name": "temperature",
 //   "value": "23",
@@ -12,6 +13,13 @@ var dev;
 
 async function getData_table() {
   dev = document.getElementById("tables").value;
+  num =document.getElementById("number").value;
+  if(num=""){
+    num=100;
+  }
+  else if(isNaN(num)){
+    num =0;
+  }
   dataForm=[];
   // $('#dataTable').dataTable().fnClearTable();
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/datatable', {
@@ -20,7 +28,8 @@ async function getData_table() {
         headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json',
-            id:dev
+            id:dev,
+            number:num
         }
     });
 

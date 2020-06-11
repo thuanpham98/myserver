@@ -23,15 +23,15 @@ block content
                         -let dev_id = device.dev.toString();
                         -let mask = device.mask.toString();
                         option(value = dev_id) #{mask}
-
+                .form-group
+                    label.small.mb-1(for='number') Number of data
+                    input#number.form-control.py-4(type='text', placeholder='Enter number you want')
                 .row
                     .col-1
                         .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
                         a.btn.btn-primary(type='submit',id="add_table",style="background-color: green;") Choose
                 
-                .form-group
-                    label.small.mb-1(for='number') Number of data
-                    input#number.form-control.py-4(type='text', placeholder='Enter number you want')
+
                 
                 link(href='/stylesheets/option_selector.css', rel="stylesheet")
         br
