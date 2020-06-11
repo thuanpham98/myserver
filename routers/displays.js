@@ -128,49 +128,6 @@ router.get('/getdata', async function (req, res) {
             res.send("who are you");
             return;
         }
-        /** choose data */
-        // if (account.length) {
-        //     await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
-
-        //         if (result.length) {
-        //             data = result;
-
-        //             let data_ob =data[0].form[0];
-        //             let m_label = data[0].datetime;
-
-        //             let m_data_temp = Object.values(data_ob);
-        //             let m_data =[];
-        //             for(let i = 0 ; i < m_data_temp.length; i++){
-        //                 if(status_data[i]){
-        //                     m_data.push(m_data_temp[i]);
-        //                 }
-        //             }
-        //             console.log(m_data);
-
-        //             let resAPI = { label: m_label, data: m_data };
-        //             console.log(resAPI);
-        //             res.json(resAPI);
-
-        //         }
-        //         else {
-        //             let m_data =[];
-        //             for(let i = 0 ; i < status_data.length; i++){
-        //                 if(status_data[i]){
-        //                     m_data.push(i+1);
-        //                 }
-        //             }
-        //             let m_label = new Date().toLocaleString('en-US', { timeZone: process.env.TIME_ZONE });
-
-        //             let resAPI = { label: m_label, data: m_data };
-        //             res.json(resAPI);
-        //         }
-        //     }).sort({ _id: -1 }).limit(1);
-        // }
-
-        // else {
-        //     let resAPI = { label: 0, data: [] };
-        //     res.json(resAPI);
-        // }
     });
 
 });
