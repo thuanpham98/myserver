@@ -250,9 +250,9 @@ router.get('/datatable',async function(req,res){
                 let data_res=[];
                 if (result.length) {
                     for(let i =0 ; i < result.length;i++){
-                        data = result;
-                        let data_ob =data[0].form[0];
-                        let m_label = data[0].datetime;
+                        data = result[i];
+                        let data_ob =data.form[0];
+                        let m_label = data.datetime;
     
                         let m_data_temp = Object.values(data_ob);
                         let m_data =[];
