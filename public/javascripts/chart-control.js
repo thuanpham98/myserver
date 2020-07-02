@@ -5,6 +5,16 @@ init_data_line();
 start=1;
 getData_line();
 getData_bar();
+getData_line();
+getData_bar();
+getData_line();
+getData_bar();
+getData_line();
+getData_bar();
+getData_line();
+getData_bar();
+getData_line();
+getData_bar();
 start=0;
 document.getElementById("choosen").addEventListener("click", function(){
     // console.log("button");
