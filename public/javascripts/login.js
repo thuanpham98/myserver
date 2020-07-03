@@ -22,7 +22,7 @@ async function postData(){
     });
     
     let datum= await response;
-    
+    console.log(datum);
     if(datum.redirected)
     {
         window.location.replace(datum.url);
