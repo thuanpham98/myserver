@@ -23,16 +23,16 @@ async function postData(){
     
     let datum= await response;
     console.log(datum);
-    // if(datum.redirected)
-    // {
-    //     window.location.replace(datum.url);
-    // }
-    // else{
-    //     //window.location.replace( "/login");
-    //     console.log("error");
-    //     document.getElementById("status").innerHTML="email or pass is incorrect";
+    if(datum.redirected)
+    {
+        window.location.replace(datum.url);
+    }
+    else{
+        //window.location.replace( "/login");
+        console.log("error");
+        document.getElementById("status").innerHTML="email or pass is incorrect";
         
-    // }
+    }
 }
 
 document.getElementById("login").addEventListener("click", function(){
