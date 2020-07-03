@@ -24,4 +24,5 @@ module.exports.post = async  function(req, res) {
 
     console.log("login success");
     res.redirect('/user');
+    res.json({'access_token':token});
 };
