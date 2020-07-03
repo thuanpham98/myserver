@@ -61,6 +61,7 @@ module.exports.checkAccount = async function(req, res, next) {
             var token = await jwt.sign({ accessToken: test.email }, process.env.PRIVATE_KEY);
             console.log(token);
             res.cookie('access_token', token);
+            res.headers('access_token', token);
         }
     }
 
