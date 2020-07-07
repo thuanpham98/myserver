@@ -25,6 +25,7 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-error-handler": "^1.1.0",
     "express-mvc-generator": "^2.2.4",
     "express-session": "^1.17.0",
     "google-protobuf": "^3.11.4",
