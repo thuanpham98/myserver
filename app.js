@@ -80,7 +80,7 @@ app.use('/user/config',config);
 //     }
 // });
 
-handler = errorHandler({
+var handler = errorHandler({
     views: {
       '404': '404',
       '500': '500',
