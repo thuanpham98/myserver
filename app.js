@@ -7,7 +7,6 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 //require('dotenv').config();
 var bodyParser = require('body-parser');
-var errorHandler=require('express-error-handler');
 
 /** CORS  */
 app.use(cors());
@@ -79,14 +78,6 @@ app.use('/user/config',config);
 //         res.redirect('http://' + req.headers.host + req.url);
 //     }
 // });
-
-var handler = errorHandler({
-    views: {
-      '404': '404',
-      '500': '500',
-      '401': '401'
-    }
-});
 
 /* server listen */
 app.listen(process.env.PORT, function () {
