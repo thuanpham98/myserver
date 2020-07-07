@@ -79,6 +79,24 @@ app.use('/user/config',config);
 //     }
 // });
 
+// Handle 401
+app.use(function(req, res) {
+    res.status(401);
+    res.render('401', {title: '404: File Not Found'});
+});
+
+// Handle 404
+app.use(function(req, res) {
+    res.status(404);
+    res.render('404', {title: '404: File Not Found'});
+});
+   
+   // Handle 500
+app.use(function(error, req, res, next) {
+    res.status(500);
+    res.render('500', {title:'500: Internal Server Error'});
+});
+
 /* server listen */
 app.listen(process.env.PORT, function () {
     console.log("Server is listening");
