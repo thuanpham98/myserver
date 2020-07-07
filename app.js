@@ -94,7 +94,7 @@ app.use(function(req, res,next) {
    // Handle 500
 app.use(function(error, req, res, next) {
     res.status(500);
-    res.render('500', {title:'500: Internal Server Error'});
+    res.render('500.pug', {title:'500: Internal Server Error'});
 });
 
 /* server listen */
