@@ -80,13 +80,13 @@ app.use('/user/config',config);
 // });
 
 // Handle 401
-app.use(function(req, res) {
+app.use(function(req, res,next) {
     res.status(401);
     res.render('401', {title: '404: File Not Found'});
 });
 
 // Handle 404
-app.use(function(req, res) {
+app.use(function(req, res,next) {
     res.status(404);
     res.render('404', {title: '404: File Not Found'});
 });
