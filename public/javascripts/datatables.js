@@ -91,7 +91,7 @@ document.getElementById("add_table_time").addEventListener("click", async functi
   start=sub_start.getTime()/1000;
   console.log(start);
 
-  let en_date = new Date($('#std').val());
+  let en_date = new Date($('#end').val());
   let en_day = en_date.getUTCDate();
   let en_month = en_date.getUTCMonth();
   let en_year = en_date.getUTCFullYear();
