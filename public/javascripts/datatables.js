@@ -1,7 +1,5 @@
 "use strict"
 
-require("util");
-
 var table;
 var dataForm=[];
 var dev;
