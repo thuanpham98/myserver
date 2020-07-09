@@ -1,6 +1,6 @@
 "use strict"
 
-const { isNumber } = require("util");
+require("util");
 
 var table;
 var dataForm=[];
