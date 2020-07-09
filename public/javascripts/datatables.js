@@ -67,6 +67,7 @@ document.getElementById("add_table_time").addEventListener("click", async functi
   // await initTable();
 
   let st_date = new Date($('#std').val());
+  let mytest =st_date.getTime()/1000;
   let day = st_date.getUTCDate();
   let month = st_date.getUTCMonth();
   let year = st_date.getUTCFullYear();
@@ -77,7 +78,7 @@ document.getElementById("add_table_time").addEventListener("click", async functi
 
   start=sub_start.getTime()/1000;
   alert(start);
-
+  console.log(mytest);
 });
 
 
