@@ -73,9 +73,9 @@ document.getElementById("add_table_time").addEventListener("click", async functi
   let hour = (st_date.getUTCHours());
   let minute = st_date.getUTCMinutes();
 
-  start=new Date(new Date.UTC(year,month,day,hour,minute,'0'));
+  let sub_start=new Date( Date.UTC(year,month,day,hour,minute,'0'));
 
-  start.getTime()/1000;
+  start=sub_start.getTime()/1000;
   alert(start);
 
 });
