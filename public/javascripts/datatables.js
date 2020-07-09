@@ -14,7 +14,6 @@ async function getData_table() {
   else if(isNaN(num)){
     return;
   }
-  else if()
   
   dataForm=[];
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/datatable', {
@@ -67,7 +66,7 @@ document.getElementById("add_table_time").addEventListener("click", async functi
 
   // await initTable();
 
-  var date = new Date($('#date-input').val());
+  var date = new Date($('#std').val());
   let day = date.getDate();
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
