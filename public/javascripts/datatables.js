@@ -67,11 +67,11 @@ document.getElementById("add_table_time").addEventListener("click", async functi
   // await initTable();
 
   let st_date = new Date($('#std').val());
-  let day = st_date.getDate();
-  let month = st_date.getMonth();
-  let year = st_date.getFullYear();
-  let hour = (st_date.getHours());
-  let minute = st_date.getMinutes();
+  let day = st_date.getUTCDateDate();
+  let month = st_date.getUTCMonth();
+  let year = st_date.getUTCFullYear();
+  let hour = (st_date.getUTCHours());
+  let minute = st_date.getUTCMinutes();
 
   start=new Date(Date.UTC(year,month,day,hour,minute,'0'));
 
