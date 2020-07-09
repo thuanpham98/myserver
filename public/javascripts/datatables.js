@@ -2,7 +2,7 @@
 var table;
 var dataForm=[];
 var dev;
-var num;
+var num,start,end;
 
 async function getData_table() {
   dev = document.getElementById("tables").value;
@@ -14,6 +14,7 @@ async function getData_table() {
   else if(isNaN(num)){
     return;
   }
+  else if()
   
   dataForm=[];
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/datatable', {
@@ -24,6 +25,8 @@ async function getData_table() {
             'Content-Type': 'application/json',
             id:dev,
             num :num,
+            start : start,
+            end : end
         }
     });
 
@@ -55,6 +58,23 @@ document.getElementById("add_table").addEventListener("click", async function ()
 
   await initTable();
 });
+
+
+document.getElementById("add_table_time").addEventListener("click", async function () {
+  // let ret = await $('#dataTable').dataTable().fnClearTable();
+  // await table.clear().draw();
+  // await table.destroy();
+
+  // await initTable();
+
+  var date = new Date($('#date-input').val());
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  alert([day, month, year].join('/'));
+
+});
+
 
 async function initTable() {
 
