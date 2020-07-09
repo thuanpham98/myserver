@@ -210,7 +210,7 @@ router.get('/datatable', async function (req, res) {
             });
             if(parseInt(num,10)===0)
             {
-                await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) ,timestamp:{$gt:parseInt(start_time,10)}}, function (err, result) {
+                await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10),timestamp:{ $gt: parseInt(start_time,10), $lt: parseInt(end_time,10) }}, function (err, result) {
                     let data_res = [];
                     if (result.length) {
                         for (let i = 0; i < result.length; i++) {
@@ -238,7 +238,7 @@ router.get('/datatable', async function (req, res) {
                         res.json(null);
                         return;
                     }
-                }).sort({ _id: -1 }).$where('this.timestamp'< end_time);
+                }).sort({ _id: -1 });
             }
             else{
                 await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
