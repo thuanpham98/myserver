@@ -103,7 +103,7 @@ document.getElementById("add_table_time").addEventListener("click", async functi
   end=sub_end.getTime()/1000;
   console.log(end);
 
-  if((!isNaN(start)) || (!isNaN(end))){
+  if((isNaN(start)) || (isNaN(end))){
     return;
   }
   else{
