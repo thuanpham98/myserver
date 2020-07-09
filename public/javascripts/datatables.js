@@ -1,20 +1,28 @@
 "use strict"
+
+const { isNumber } = require("util");
+
 var table;
 var dataForm=[];
 var dev;
 var num,start,end;
 
 async function getData_table() {
+
   dev = document.getElementById("tables").value;
   num =document.getElementById("number").value;
   console.log(num);
   if(num==""){
-    num="1";
+    if(isNumber(start)&&isNumber(start)&&(start>0)&&(end>0)&&(start>end)){
+      num='0';
+    }
+    else{
+      num="1";
+    }
   }
   else if(isNaN(num)){
     return;
   }
-  
   dataForm=[];
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/datatable', {
         method: 'get',
@@ -54,32 +62,52 @@ document.getElementById("add_table").addEventListener("click", async function ()
   // let ret = await $('#dataTable').dataTable().fnClearTable();
   await table.clear().draw();
   await table.destroy();
-
+  start=0;
+  end=0;
   await initTable();
 });
 
 
 document.getElementById("add_table_time").addEventListener("click", async function () {
   // let ret = await $('#dataTable').dataTable().fnClearTable();
-  // await table.clear().draw();
-  // await table.destroy();
+  await table.clear().draw();
+  await table.destroy();
 
-  // await initTable();
+  dev = document.getElementById("tables").value;
 
   let st_date = new Date($('#std').val());
-  let day = st_date.getUTCDate();
-  let month = st_date.getUTCMonth();
-  let year = st_date.getUTCFullYear();
-  let hour = (st_date.getUTCHours());
-  let minute = st_date.getUTCMinutes();
-  let sub_hour=st_date.getHours()
-  console.log(hour);
-  console.log(sub_hour);
+  let st_day = st_date.getUTCDate();
+  let st_month = st_date.getUTCMonth();
+  let st_year = st_date.getUTCFullYear();
+  let st_hour = (st_date.getUTCHours());
+  let st_minute = st_date.getUTCMinutes();
 
-  let sub_start=new Date( Date.UTC(year,month,day,hour,minute,'0'));
+  let sub_start=new Date( Date.UTC(st_year,st_month,st_day,st_hour,st_minute,'0'));
   start=sub_start.getTime()/1000;
+  console.log(start);
 
-  alert(start);
+  let en_date = new Date($('#std').val());
+  let en_day = en_date.getUTCDate();
+  let en_month = en_date.getUTCMonth();
+  let en_year = en_date.getUTCFullYear();
+  let en_hour = (en_date.getUTCHours());
+  let en_minute = en_date.getUTCMinutes();
+ 
+
+  let sub_end=new Date( Date.UTC(en_year,en_month,en_day,en_hour,en_minute,'0'));
+  end=sub_end.getTime()/1000;
+  console.log(end);
+
+  if(start===NaN || end ===NaN){
+    return;
+  }
+  else{
+    num=0;
+    await initTable();
+  }
+
+  
+
 });
 
 
