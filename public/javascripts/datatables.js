@@ -21,7 +21,8 @@ async function getData_table() {
       return;
     }
   }
-
+  start=start.toString();
+  end=end.toString();
   dataForm=[];
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/datatable', {
         method: 'get',
@@ -31,8 +32,8 @@ async function getData_table() {
             'Content-Type': 'application/json',
             id:dev,
             num :num,
-            start : start.toString(),
-            end : end.toString()
+            start : start,
+            end : end
         }
     });
 
