@@ -67,7 +67,7 @@ document.getElementById("add_table_time").addEventListener("click", async functi
   // await initTable();
 
   let st_date = new Date($('#std').val());
-  let day = st_date.getUTCDateDate();
+  let day = st_date.getUTCDate();
   let month = st_date.getUTCMonth();
   let year = st_date.getUTCFullYear();
   let hour = (st_date.getUTCHours());
