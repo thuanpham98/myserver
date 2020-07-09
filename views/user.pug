@@ -99,6 +99,21 @@ block content
                         .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
                         a.btn.btn-primary(type='submit',id="add_table",style="background-color: green;") Choose
                 
+                .form-group
+                    .row
+                        .col-2
+                            label.small.mb-1(for='std') Start day
+                        .col-8
+                            input#std.form-control.py-4(type="datetime-local" , placeholder='Enter year start')
+                    .row
+                        .col-2
+                            label.small.mb-1(for='end') End day
+                        .col-8
+                            input#end.form-control.py-4(type="datetime-local" , placeholder='Enter month start')
+                    .row
+                        .col-1
+                            .form-group.d-flex.align-items-center.justify-content-between.mt-4.mb-0
+                            a.btn.btn-primary(type='submit',id="add_table_time",style="background-color: blue;") Choose
 
                 
                 link(href='/stylesheets/option_selector.css', rel="stylesheet")
