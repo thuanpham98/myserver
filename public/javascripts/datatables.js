@@ -70,7 +70,7 @@ document.getElementById("add_table_time").addEventListener("click", async functi
   let day = st_date.getDate().toString();
   let month = st_date.getMonth().toString();
   let year = st_date.getFullYear().toString();
-  let hour = (st_date.getHours()+7).toString();
+  let hour = (st_date.getHours()+5).toString();
   let minute = st_date.getMinutes().toString();
 
   start=new Date(Date.UTC(year,month,day,hour,minute,'0'));
