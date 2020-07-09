@@ -31,8 +31,8 @@ async function getData_table() {
             'Content-Type': 'application/json',
             id:dev,
             num :num,
-            start : start,
-            end : end
+            start : start.toString(),
+            end : end.toString()
         }
     });
 
@@ -97,15 +97,13 @@ document.getElementById("add_table_time").addEventListener("click", async functi
   end=sub_end.getTime()/1000;
   console.log(end);
 
-  if(start===NaN || end ===NaN){
+  if((!isNaN(start)) || (!isNaN(end))){
     return;
   }
   else{
     num=0;
     await initTable();
   }
-
-  
 
 });
 

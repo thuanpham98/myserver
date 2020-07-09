@@ -179,6 +179,8 @@ router.get('/datatable', async function (req, res) {
     let status_data = [];
     let mask_data = [];
     let num = req.headers.num;
+    let start_time=req.headers.start;
+    let end_time=req.headers.end;
     let decoded = await jwt.verify(req.cookies.access_token, process.env.PRIVATE_KEY);
     console.log(req.headers.id);
     console.log(num);
@@ -206,36 +208,69 @@ router.get('/datatable', async function (req, res) {
                     return;
                 }
             });
-
-            await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
-                let data_res = [];
-                if (result.length) {
-                    for (let i = 0; i < result.length; i++) {
-
-                        let data = result[i];
-                        let dateTime = data.datetime;
-
-                        let value_data_temp = Object.values(data.form[0]);
-                        let value_data = [];
-                        let mask_data_temp = [];
-                        for (let i = 0; i < value_data_temp.length; i++) {
-                            if (status_data[i]) {
-                                value_data.push(value_data_temp[i]);
-                                mask_data_temp.push(mask_data[i]);
+            if(parseInt(num,10)===0)
+            {
+                await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) ,timestamp:{$gt:parseInt(start_time,10)}}, function (err, result) {
+                    let data_res = [];
+                    if (result.length) {
+                        for (let i = 0; i < result.length; i++) {
+    
+                            let data = result[i];
+                            let dateTime = data.datetime;
+    
+                            let value_data_temp = Object.values(data.form[0]);
+                            let value_data = [];
+                            let mask_data_temp = [];
+                            for (let i = 0; i < value_data_temp.length; i++) {
+                                if (status_data[i]) {
+                                    value_data.push(value_data_temp[i]);
+                                    mask_data_temp.push(mask_data[i]);
+                                }
                             }
+                            console.log(mask_data_temp);
+    
+                            data_res.push({ time: dateTime, value: value_data, mask: mask_data_temp });
                         }
-                        console.log(mask_data_temp);
-
-                        data_res.push({ time: dateTime, value: value_data, mask: mask_data_temp });
+                        res.json({ ID: account[0].timestamp, data: data_res });
+    
                     }
-                    res.json({ ID: account[0].timestamp, data: data_res });
-
-                }
-                else {
-                    res.json(null);
-                    return;
-                }
-            }).sort({ _id: -1 }).limit(parseInt(num,10));
+                    else {
+                        res.json(null);
+                        return;
+                    }
+                }).sort({ _id: -1 }).limit(parseInt(num,10));
+            }
+            else{
+                await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
+                    let data_res = [];
+                    if (result.length) {
+                        for (let i = 0; i < result.length; i++) {
+    
+                            let data = result[i];
+                            let dateTime = data.datetime;
+    
+                            let value_data_temp = Object.values(data.form[0]);
+                            let value_data = [];
+                            let mask_data_temp = [];
+                            for (let i = 0; i < value_data_temp.length; i++) {
+                                if (status_data[i]) {
+                                    value_data.push(value_data_temp[i]);
+                                    mask_data_temp.push(mask_data[i]);
+                                }
+                            }
+                            console.log(mask_data_temp);
+    
+                            data_res.push({ time: dateTime, value: value_data, mask: mask_data_temp });
+                        }
+                        res.json({ ID: account[0].timestamp, data: data_res });
+    
+                    }
+                    else {
+                        res.json(null);
+                        return;
+                    }
+                }).sort({ _id: -1 }).limit(parseInt(num,10));
+            }
         }
         else {
             res.send("who are you");
