@@ -72,6 +72,9 @@ document.getElementById("add_table_time").addEventListener("click", async functi
   let year = st_date.getUTCFullYear();
   let hour = (st_date.getUTCHours());
   let minute = st_date.getUTCMinutes();
+  let sub_hour=st_date.getHours()
+  console.log(hour);
+  console.log(sub_hour);
 
   let sub_start=new Date( Date.UTC(year,month,day,hour,minute,'0'));
   start=sub_start.getTime()/1000;
