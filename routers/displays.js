@@ -238,7 +238,7 @@ router.get('/datatable', async function (req, res) {
                         res.json(null);
                         return;
                     }
-                }).sort({ _id: -1 }).limit(parseInt(num,10));
+                }).sort({ _id: -1 }).$where('this.timestamp'< end_time);
             }
             else{
                 await Data.find({ ID: account[0].timestamp, device: parseInt(req.headers.id, 10) }, function (err, result) {
