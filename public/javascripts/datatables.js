@@ -12,17 +12,22 @@ async function getData_table() {
   console.log(num);
   if((!isNaN(start))&&(!isNaN(end))&&(start>0)&&(end>0)&&(start>end)){
     num='0';
+    start=start.toString();
+    end=end.toString();
   }
   else{
     if(num==""){
       num="1";
+      start=0;
+      end=0;
+      start=start.toString();
+      end=end.toString();
     }
     else if(isNaN(num)){
       return;
     }
   }
-  start=start.toString();
-  end=end.toString();
+
   dataForm=[];
     let response = await fetch('https://iot-server-365.herokuapp.com/user/display/datatable', {
         method: 'get',
