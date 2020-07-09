@@ -11,7 +11,7 @@ async function getData_table() {
   num =document.getElementById("number").value;
   console.log(num);
   if(num==""){
-    if(isNumber(start)&&isNumber(start)&&(start>0)&&(end>0)&&(start>end)){
+    if((!isNaN(start))&&(!isNaN(end))&&(start>0)&&(end>0)&&(start>end)){
       num='0';
     }
     else{
