@@ -36,8 +36,8 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                 nav.sb-sidenav-menu-nested.nav.accordion#sidenavAccordionPages
                     a.nav-link.collapsed(href='#', data-toggle='collapse' data-target='#pagesCollapseAuth' aria-expanded='false' aria-controls='pagesCollapseAuth')
                         .sb-nav-link-icon
-                            i.fas.fa-book-open
-                        | Authentication
+                            i.fas.fa-server
+                        | Features
                         .sb-sidenav-collapse-arrow
                             i.fas.fa-angle-down
                     #pagesCollapseAuth.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordionPages')
@@ -49,6 +49,8 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                             a.nav-link(href='/forgetpass') Forgot Password
                             
                     a.nav-link.collapsed(href='#', data-toggle='collapse' data-target='#pagesCollapseAuth' aria-expanded='false' aria-controls='pagesCollapseAuth')
+                        .sb-nav-link-icon
+                            i.fas.fa-cube
                         | Block
                         .sb-sidenav-collapse-arrow
                             i.fas.fa-angle-down
