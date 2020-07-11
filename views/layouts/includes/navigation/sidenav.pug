@@ -44,12 +44,24 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                         nav.sb-sidenav-menu-nested.nav
                             a.nav-link(href='#') 
                                 .sb-nav-link-icon
-                                    i.fas.fa-envelope-open-o
+                                    i.fas.fa-comments-o
                                 | Message 
-                            a.nav-link(href='/user/clone') Data Clone
-                            a.nav-link(href='/user/update') Update
-                            a.nav-link(href='/user/delete') Delete
-                            a.nav-link(href='/forgetpass') Forgot Password
+                            a.nav-link(href='/user/clone')
+                                .sb-nav-link-icon
+                                    i.fas.fa-user-o
+                                | Data Clone
+                            a.nav-link(href='/user/update')
+                                .sb-nav-link-icon
+                                    i.fas.fa-table
+                                | Update
+                            a.nav-link(href='/user/delete')
+                                .sb-nav-link-icon
+                                    i.fas.fa-refresh
+                                | Delete
+                            a.nav-link(href='/forgetpass')
+                                .sb-nav-link-icon
+                                    i.fas.fa-frown-o
+                                | Forgot Password
                             
                     a.nav-link.collapsed(href='#', data-toggle='collapse' data-target='#pagesCollapseAuth' aria-expanded='false' aria-controls='pagesCollapseAuth')
                         .sb-nav-link-icon
@@ -59,7 +71,10 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                             i.fas.fa-angle-down
                     #pagesCollapseAuth.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordionPages')
                         nav.sb-sidenav-menu-nested.nav
-                            a.nav-link(href='/user/gui') Config 
+                            a.nav-link(href='/user/gui')
+                                .sb-nav-link-icon
+                                    i.fas.fa-cog
+                                | Config 
                             a.nav-link(href='/user/gui/blocks')
                                 .sb-nav-link-icon
                                     i.fas.fa-user
