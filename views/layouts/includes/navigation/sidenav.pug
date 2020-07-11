@@ -60,7 +60,10 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                     #pagesCollapseAuth.collapse(aria-labelledby='headingOne', data-parent='#sidenavAccordionPages')
                         nav.sb-sidenav-menu-nested.nav
                             a.nav-link(href='/user/gui') Config 
-                            a.nav-link(href='/user/gui/blocks') Manager
+                            a.nav-link(href='/user/gui/blocks')
+                                .sb-nav-link-icon
+                                    i.fas.fa-user
+                                | Manager
             .sb-sidenav-menu-heading
                 | Addons
             
