@@ -44,7 +44,7 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                         nav.sb-sidenav-menu-nested.nav
                             a.nav-link(href='#') 
                                 .sb-nav-link-icon
-                                    i.fas.fa-comments-o
+                                    i.fas.fa-comments
                                 | Message 
                             a.nav-link(href='/user/clone')
                                 .sb-nav-link-icon
@@ -52,11 +52,11 @@ nav(class=['sb-sidenav', 'accordion'] class=sidenavStyle)#sidenavAccordion
                                 | Data Clone
                             a.nav-link(href='/user/update')
                                 .sb-nav-link-icon
-                                    i.fas.fa-refresh
+                                    i.fas.fa-refresh(aria-hidden="true")
                                 | Update
                             a.nav-link(href='/user/delete')
                                 .sb-nav-link-icon
-                                    i.fas.fa-refresh
+                                    i.fas.fa-frown-o
                                 | Delete
                             a.nav-link(href='/forgetpass')
                                 .sb-nav-link-icon
