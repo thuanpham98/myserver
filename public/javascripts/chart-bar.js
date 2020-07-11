@@ -59,7 +59,7 @@ async function init_data_bar() {
             datasets: temp_dataset_bar
         },
         options: {
-            showScale: false,
+            showScale: true,
             responsive: true,
             maintainAspectRatio: false,
             animation: { duration: 0 },
