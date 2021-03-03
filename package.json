@@ -33,7 +33,7 @@
     "mongoose": "^5.9.7",
     "nodemailer": "^6.4.6",
     "promise": "^8.1.0",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "util": "^0.12.2"
   },
   "devDependencies": {
